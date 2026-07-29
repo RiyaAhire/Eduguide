@@ -1,20 +1,408 @@
 
+
 {% extends 'base.html' %}
+
 {% load static %}
+
 {% block content %}
+
+<!-- Hero Section -->
+<section class="bg-light py-5">
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <h1 class="display-4 fw-bold text-primary">
+                    Welcome to EduGuide
+                </h1>
+
+                <h3 class="fw-semibold mt-3">
+                    Your Smart Admission Guidance System
+                </h3>
+
+                <p class="lead text-muted mt-3">
+                    Find the best engineering colleges based on your marks,
+                    category, branch preference, and previous years' cutoff
+                    trends. Make informed admission decisions with confidence.
+                </p>
+
+                <div class="mt-4">
+
+                    <a href="#" class="btn btn-primary btn-lg px-4 me-3">
+                        Get Started
+                    </a>
+
+                    <a href="#" class="btn btn-outline-primary btn-lg px-4">
+                        Login
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 text-center">
+
+                <img src="{% static 'images/EduGuide Logo.png' %}" alt="EduGuide"
+                     class="img-fluid"
+                     alt="EduGuide">
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- Why Choose EduGuide -->
 
 <section class="py-5">
 
     <div class="container">
 
-        <h1>Welcome to EduGuide</h1>
+        <div class="text-center mb-5">
 
-        <p>
-            Admission Guidance System for Diploma Students.
-        </p>
+            <h2 class="fw-bold">
+                Why Choose EduGuide?
+            </h2>
+
+            <p class="text-muted">
+                Everything you need for smarter admission decisions.
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm border-0 h-100">
+
+                    <div class="card-body text-center">
+
+                        <h3>🎯</h3>
+
+                        <h4 class="mt-3">
+                            Accurate Prediction
+                        </h4>
+
+                        <p class="text-muted">
+                            Predict eligible colleges using previous cutoff
+                            trends and admission data.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm border-0 h-100">
+
+                    <div class="card-body text-center">
+
+                        <h3>📊</h3>
+
+                        <h4 class="mt-3">
+                            Cutoff Analysis
+                        </h4>
+
+                        <p class="text-muted">
+                            Explore year-wise, category-wise and branch-wise
+                            cutoff information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm border-0 h-100">
+
+                    <div class="card-body text-center">
+
+                        <h3>🏫</h3>
+
+                        <h4 class="mt-3">
+                            College Information
+                        </h4>
+
+                        <p class="text-muted">
+                            View college details, branches, facilities and
+                            admission information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
 </section>
 
+<!-- How It Works -->
+
+<section class="bg-light py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold">
+                How It Works
+            </h2>
+
+        </div>
+
+        <div class="row text-center">
+
+            <div class="col-md-3">
+
+                <h1>1️⃣</h1>
+
+                <h5>Enter Your Marks</h5>
+
+                <p class="text-muted">
+                    Fill in your diploma percentage and category.
+                </p>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h1>2️⃣</h1>
+
+                <h5>Select Preferences</h5>
+
+                <p class="text-muted">
+                    Choose branch, location and admission preferences.
+                </p>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h1>3️⃣</h1>
+
+                <h5>View Predictions</h5>
+
+                <p class="text-muted">
+                    Get a list of eligible colleges instantly.
+                </p>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h1>4️⃣</h1>
+
+                <h5>Apply Confidently</h5>
+
+                <p class="text-muted">
+                    Compare options and make informed decisions.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Features -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold">
+                Key Features
+            </h2>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <h4>🏛</h4>
+
+                        <h5>College Search</h5>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <h4>📈</h4>
+
+                        <h5>Cutoff Trends</h5>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <h4>🤖</h4>
+
+                        <h5>Prediction System</h5>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <h4>📚</h4>
+
+                        <h5>Admission Guidance</h5>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Statistics -->
+
+<section class="bg-primary text-white py-5">
+
+    <div class="container">
+
+        <div class="row text-center">
+
+            <div class="col-md-3">
+
+                <h2 class="fw-bold">
+                    1000+
+                </h2>
+
+                <p>Engineering Colleges</p>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h2 class="fw-bold">
+                    3+
+                </h2>
+
+                <p>Years of Cutoff Data</p>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h2 class="fw-bold">
+                    90%
+                </h2>
+
+                <p>Prediction Accuracy</p>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h2 class="fw-bold">
+                    24/7
+                </h2>
+
+                <p>Online Support</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Call To Action -->
+
+<section class="py-5">
+
+    <div class="container text-center">
+
+        <h2 class="fw-bold">
+            Ready to Start Your Admission Journey?
+        </h2>
+
+        <p class="text-muted mt-3">
+            Register today and discover the colleges that best match your profile.
+        </p>
+
+        <a href="" class="btn btn-success btn-lg mt-3 px-5">
+            Register Now
+        </a>
+
+    </div>
+
+</section>
+
+<!-- Footer -->
+
+<footer class="bg-dark text-white py-4">
+
+    <div class="container text-center">
+
+        <h4>EduGuide</h4>
+
+        <p>
+            Smart Admission Guidance System for Diploma Students.
+        </p>
+
+        <hr class="bg-light">
+
+        <p class="mb-0">
+            © 2026 EduGuide. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
 {% endblock %}
+
