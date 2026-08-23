@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'users',
     'colleges',
     'prediction',
-    'dashboard',
+  
 ]
 
 MIDDLEWARE = [
@@ -67,12 +67,13 @@ WSGI_APPLICATION = 'eduguide.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ags_db',
         'USER': 'root',
-        'PASSWORD': '$%AGS+-=32',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
     }

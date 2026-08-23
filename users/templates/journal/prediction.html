@@ -1,0 +1,680 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="prediction-section">
+
+    <div class="container">
+
+        <!-- Heading -->
+
+        <div class="text-center prediction-heading">
+
+            <span class="prediction-label">
+                EDUGUIDE ADMISSION PREDICTOR
+            </span>
+
+            <h1 class="prediction-title">
+                Find Colleges You May Get Into
+            </h1>
+
+            <p class="prediction-subtitle">
+                Enter your academic details and preferences to
+                explore colleges that may match your profile.
+            </p>
+
+        </div>
+
+
+        <!-- Predictor Form -->
+
+        <div class="prediction-form-card">
+
+            <div class="prediction-form-header">
+
+                <div class="prediction-form-icon">
+                    🎯
+                </div>
+
+                <div>
+
+                    <h2>
+                        Your Admission Profile
+                    </h2>
+
+                    <p>
+                        Tell us about your academic performance
+                        and preferences.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="row g-4">
+
+
+                <!-- Percentage -->
+
+                <div class="col-md-6">
+
+                    <label for="studentPercentage">
+                        Your Percentage
+                    </label>
+
+                    <input type="number"
+                           id="studentPercentage"
+                           class="form-control"
+                           placeholder="Enter your percentage"
+                           min="0"
+                           max="100"
+                           step="0.01">
+
+                    <small>
+                        Enter your latest diploma percentage.
+                    </small>
+
+                </div>
+
+
+                <!-- Category -->
+
+                <div class="col-md-6">
+
+                    <label for="studentCategory">
+                        Category
+                    </label>
+
+                    <select id="studentCategory"
+                            class="form-select">
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                        <option value="OPEN">
+                            OPEN
+                        </option>
+
+                        <option value="OBC">
+                            OBC
+                        </option>
+
+                        <option value="SC">
+                            SC
+                        </option>
+
+                        <option value="ST">
+                            ST
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Branch -->
+
+                <div class="col-md-6">
+
+                    <label for="studentBranch">
+                        Preferred Branch
+                    </label>
+
+                    <select id="studentBranch"
+                            class="form-select">
+
+                        <option value="">
+                            Select Branch
+                        </option>
+
+                        <option value="Computer Engineering">
+                            Computer Engineering
+                        </option>
+
+                        <option value="Information Technology">
+                            Information Technology
+                        </option>
+
+                        <option value="Mechanical Engineering">
+                            Mechanical Engineering
+                        </option>
+
+                        <option value="Civil Engineering">
+                            Civil Engineering
+                        </option>
+
+                        <option value="Electrical Engineering">
+                            Electrical Engineering
+                        </option>
+
+                        <option value="Electronics & Telecommunication">
+                            Electronics & Telecommunication
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Location -->
+
+                <div class="col-md-6">
+
+                    <label for="studentLocation">
+                        Preferred Location
+                    </label>
+
+                    <select id="studentLocation"
+                            class="form-select">
+
+                        <option value="">
+                            Select Location
+                        </option>
+
+                        <option value="Nashik">
+                            Nashik
+                        </option>
+
+                        <option value="Pune">
+                            Pune
+                        </option>
+
+                        <option value="Mumbai">
+                            Mumbai
+                        </option>
+
+                        <option value="Nagpur">
+                            Nagpur
+                        </option>
+
+                        <option value="Aurangabad">
+                            Chhatrapati Sambhajinagar
+                        </option>
+
+                        <option value="Any">
+                            Any Location
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- College Type -->
+
+                <div class="col-md-6">
+
+                    <label for="collegeType">
+                        College Type
+                    </label>
+
+                    <select id="collegeType"
+                            class="form-select">
+
+                        <option value="">
+                            Select College Type
+                        </option>
+
+                        <option value="Government">
+                            Government
+                        </option>
+
+                        <option value="Private">
+                            Private
+                        </option>
+
+                        <option value="Autonomous">
+                            Autonomous
+                        </option>
+
+                        <option value="Any">
+                            Any Type
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Admission Year -->
+
+                <div class="col-md-6">
+
+                    <label for="admissionYear">
+                        Admission Year
+                    </label>
+
+                    <select id="admissionYear"
+                            class="form-select">
+
+                        <option value="2027">
+                            2027-28
+                        </option>
+
+                        <option value="2026">
+                            2026-27
+                        </option>
+
+                        <option value="2025">
+                            2025-26
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Predict Button -->
+
+                <div class="col-12">
+
+                    <button type="button"
+                            id="predictButton"
+                            class="btn btn-primary prediction-button">
+
+                        <span>
+                            Predict My Colleges
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Prediction Results -->
+
+        <div id="predictionResults"
+             class="prediction-results"
+             style="display: none;">
+
+
+            <div class="results-heading">
+
+                <span class="prediction-label">
+                    YOUR PREDICTION
+                </span>
+
+                <h2>
+                    Colleges Based on Your Profile
+                </h2>
+
+                <p>
+                    These results are for demonstration purposes
+                    until the prediction system is connected to
+                    actual cutoff data.
+                </p>
+
+            </div>
+
+
+            <!-- Result Cards -->
+
+            <div class="row g-4">
+
+
+                <!-- High Chance -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="prediction-card high-chance">
+
+                        <div class="chance-top">
+
+                            <span class="chance-badge">
+                                High Chance
+                            </span>
+
+                            <span class="chance-icon">
+                                🟢
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Government Polytechnic Nashik
+                        </h3>
+
+                        <p class="prediction-location">
+                            📍 Nashik, Maharashtra
+                        </p>
+
+                        <div class="prediction-card-info">
+
+                            <span>
+                                Computer Engineering
+                            </span>
+
+                            <span>
+                                Government
+                            </span>
+
+                        </div>
+
+                        <div class="chance-bar">
+
+                            <div class="chance-progress high-progress">
+                            </div>
+
+                        </div>
+
+                        <small>
+                            Strong match based on previous cutoffs.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Good Chance -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="prediction-card good-chance">
+
+                        <div class="chance-top">
+
+                            <span class="chance-badge">
+                                Good Chance
+                            </span>
+
+                            <span class="chance-icon">
+                                🔵
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Government Polytechnic Pune
+                        </h3>
+
+                        <p class="prediction-location">
+                            📍 Pune, Maharashtra
+                        </p>
+
+                        <div class="prediction-card-info">
+
+                            <span>
+                                Computer Engineering
+                            </span>
+
+                            <span>
+                                Government
+                            </span>
+
+                        </div>
+
+                        <div class="chance-bar">
+
+                            <div class="chance-progress good-progress">
+                            </div>
+
+                        </div>
+
+                        <small>
+                            Your profile is close to previous cutoffs.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Moderate Chance -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="prediction-card moderate-chance">
+
+                        <div class="chance-top">
+
+                            <span class="chance-badge">
+                                Moderate Chance
+                            </span>
+
+                            <span class="chance-icon">
+                                🟡
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Government Polytechnic Mumbai
+                        </h3>
+
+                        <p class="prediction-location">
+                            📍 Mumbai, Maharashtra
+                        </p>
+
+                        <div class="prediction-card-info">
+
+                            <span>
+                                Computer Engineering
+                            </span>
+
+                            <span>
+                                Government
+                            </span>
+
+                        </div>
+
+                        <div class="chance-bar">
+
+                            <div class="chance-progress moderate-progress">
+                            </div>
+
+                        </div>
+
+                        <small>
+                            Admission may depend on the CAP round.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- Prediction Note -->
+
+            <div class="prediction-note">
+
+                <span>
+                    💡
+                </span>
+
+                <p>
+                    <strong>Remember:</strong>
+                    Admission predictions are based on previous
+                    cutoff trends and are not guaranteed. Actual
+                    admission depends on the current year's cutoff,
+                    seats and admission rules.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- How Prediction Works -->
+
+        <div class="prediction-how-section">
+
+            <div class="text-center">
+
+                <h2>
+                    How Does Prediction Work?
+                </h2>
+
+                <p>
+                    EduGuide will compare your profile with
+                    previous admission trends.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4 mt-3">
+
+
+                <div class="col-md-4">
+
+                    <div class="prediction-step">
+
+                        <div class="step-number">
+                            01
+                        </div>
+
+                        <h3>
+                            Enter Your Details
+                        </h3>
+
+                        <p>
+                            Provide your percentage, category,
+                            preferred branch and other preferences.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="prediction-step">
+
+                        <div class="step-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Compare Cutoffs
+                        </h3>
+
+                        <p>
+                            Your profile will be compared with
+                            previous college cutoff trends.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="prediction-step">
+
+                        <div class="step-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Get Recommendations
+                        </h3>
+
+                        <p>
+                            View colleges grouped into different
+                            admission possibility levels.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Prediction JavaScript -->
+
+<script>
+
+    const predictButton =
+        document.getElementById("predictButton");
+
+    const predictionResults =
+        document.getElementById("predictionResults");
+
+
+    predictButton.addEventListener(
+        "click",
+        function () {
+
+            const percentage =
+                document.getElementById(
+                    "studentPercentage"
+                ).value;
+
+            const category =
+                document.getElementById(
+                    "studentCategory"
+                ).value;
+
+            const branch =
+                document.getElementById(
+                    "studentBranch"
+                ).value;
+
+
+            if (
+                percentage === "" ||
+                category === "" ||
+                branch === ""
+            ) {
+
+                alert(
+                    "Please enter your percentage, category and preferred branch."
+                );
+
+                return;
+
+            }
+
+
+            if (
+                percentage < 0 ||
+                percentage > 100
+            ) {
+
+                alert(
+                    "Please enter a valid percentage between 0 and 100."
+                );
+
+                return;
+
+            }
+
+
+            predictionResults.style.display =
+                "block";
+
+
+            predictionResults.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+    );
+
+</script>
+
+{% endblock %}

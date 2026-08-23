@@ -1,0 +1,512 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="cutoff-section">
+
+    <div class="container">
+
+        <!-- Heading -->
+
+        <div class="text-center cutoff-heading">
+
+            <h1 class="cutoff-title">
+                Check College Cutoffs
+            </h1>
+
+            <p class="cutoff-subtitle">
+                Explore previous admission cutoffs and understand
+                your chances of getting into your preferred college.
+            </p>
+
+        </div>
+
+
+        <!-- Filter Box -->
+
+        <div class="cutoff-filter-box">
+
+            <div class="row g-4">
+
+                <!-- Admission Year -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <label for="cutoffYear">
+                        Admission Year
+                    </label>
+
+                    <select id="cutoffYear"
+                            class="form-select">
+
+                        <option value="2025">
+                            2025-26
+                        </option>
+
+                        <option value="2024">
+                            2024-25
+                        </option>
+
+                        <option value="2023">
+                            2023-24
+                        </option>
+
+                        <option value="2022">
+                            2022-23
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- College -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <label for="cutoffCollege">
+                        College
+                    </label>
+
+                    <select id="cutoffCollege"
+                            class="form-select">
+
+                        <option value="gpnashik">
+                            Government Polytechnic Nashik
+                        </option>
+
+                        <option value="gppune">
+                            Government Polytechnic Pune
+                        </option>
+
+                        <option value="gpmumbai">
+                            Government Polytechnic Mumbai
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Branch -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <label for="cutoffBranch">
+                        Branch
+                    </label>
+
+                    <select id="cutoffBranch"
+                            class="form-select">
+
+                        <option value="computer">
+                            Computer Engineering
+                        </option>
+
+                        <option value="it">
+                            Information Technology
+                        </option>
+
+                        <option value="mechanical">
+                            Mechanical Engineering
+                        </option>
+
+                        <option value="civil">
+                            Civil Engineering
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Category -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <label for="cutoffCategory">
+                        Category
+                    </label>
+
+                    <select id="cutoffCategory"
+                            class="form-select">
+
+                        <option value="open">
+                            OPEN
+                        </option>
+
+                        <option value="obc">
+                            OBC
+                        </option>
+
+                        <option value="sc">
+                            SC
+                        </option>
+
+                        <option value="st">
+                            ST
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Round -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <label for="cutoffRound">
+                        CAP Round
+                    </label>
+
+                    <select id="cutoffRound"
+                            class="form-select">
+
+                        <option value="round1">
+                            CAP Round I
+                        </option>
+
+                        <option value="round2">
+                            CAP Round II
+                        </option>
+
+                        <option value="round3">
+                            CAP Round III
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Search Button -->
+
+                <div class="col-md-6 col-lg-4 d-flex align-items-end">
+
+                    <button type="button"
+                            id="checkCutoffBtn"
+                            class="btn btn-primary cutoff-button">
+
+                        Check Cutoff
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Result -->
+
+        <div class="cutoff-result-section">
+
+            <div class="cutoff-result-header">
+
+                <div>
+
+                    <span class="result-label">
+                        CUTOFF RESULT
+                    </span>
+
+                    <h2 id="resultCollege">
+                        Government Polytechnic Nashik
+                    </h2>
+
+                    <p id="resultBranch">
+                        Computer Engineering
+                    </p>
+
+                </div>
+
+                <div class="result-year"
+                     id="resultYear">
+
+                    2025-26
+
+                </div>
+
+            </div>
+
+
+            <!-- Cutoff Table -->
+
+            <div class="table-responsive">
+
+                <table class="table cutoff-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                CAP Round I
+                            </th>
+
+                            <th>
+                                CAP Round II
+                            </th>
+
+                            <th>
+                                CAP Round III
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                <strong>OPEN</strong>
+                            </td>
+
+                            <td>
+                                91.20%
+                            </td>
+
+                            <td>
+                                90.45%
+                            </td>
+
+                            <td>
+                                89.80%
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <strong>OBC</strong>
+                            </td>
+
+                            <td>
+                                88.40%
+                            </td>
+
+                            <td>
+                                87.75%
+                            </td>
+
+                            <td>
+                                86.90%
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <strong>SC</strong>
+                            </td>
+
+                            <td>
+                                82.15%
+                            </td>
+
+                            <td>
+                                81.30%
+                            </td>
+
+                            <td>
+                                80.45%
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <strong>ST</strong>
+                            </td>
+
+                            <td>
+                                76.30%
+                            </td>
+
+                            <td>
+                                75.20%
+                            </td>
+
+                            <td>
+                                74.50%
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <p class="cutoff-note">
+                * The displayed values are sample frontend data for
+                demonstration purposes.
+            </p>
+
+        </div>
+
+
+        <!-- What is Cutoff -->
+
+        <div class="row g-4 cutoff-info-row">
+
+            <div class="col-lg-6">
+
+                <div class="cutoff-info-card">
+
+                    <div class="info-icon">
+                        📊
+                    </div>
+
+                    <h2>
+                        What is a Cutoff?
+                    </h2>
+
+                    <p>
+                        A cutoff represents the score or percentage
+                        of the last candidate admitted to a particular
+                        college and branch during an admission round.
+                    </p>
+
+                    <p>
+                        Previous year cutoffs can help students
+                        understand the level of competition and
+                        make informed college choices.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-6">
+
+                <div class="cutoff-info-card">
+
+                    <div class="info-icon">
+                        💡
+                    </div>
+
+                    <h2>
+                        How to Use This Page
+                    </h2>
+
+                    <div class="cutoff-steps">
+
+                        <div>
+                            <span>1</span>
+                            Select the admission year.
+                        </div>
+
+                        <div>
+                            <span>2</span>
+                            Select your preferred college.
+                        </div>
+
+                        <div>
+                            <span>3</span>
+                            Choose your desired branch.
+                        </div>
+
+                        <div>
+                            <span>4</span>
+                            Select your category and CAP round.
+                        </div>
+
+                        <div>
+                            <span>5</span>
+                            Check the previous cutoff.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Cutoff JavaScript -->
+
+<script>
+
+    const cutoffYear =
+        document.getElementById("cutoffYear");
+
+    const cutoffCollege =
+        document.getElementById("cutoffCollege");
+
+    const cutoffBranch =
+        document.getElementById("cutoffBranch");
+
+    const checkCutoffBtn =
+        document.getElementById("checkCutoffBtn");
+
+    const resultCollege =
+        document.getElementById("resultCollege");
+
+    const resultBranch =
+        document.getElementById("resultBranch");
+
+    const resultYear =
+        document.getElementById("resultYear");
+
+
+    checkCutoffBtn.addEventListener(
+        "click",
+        function () {
+
+            const collegeText =
+                cutoffCollege.options[
+                    cutoffCollege.selectedIndex
+                ].text;
+
+            const branchText =
+                cutoffBranch.options[
+                    cutoffBranch.selectedIndex
+                ].text;
+
+            const yearText =
+                cutoffYear.options[
+                    cutoffYear.selectedIndex
+                ].text;
+
+
+            resultCollege.textContent =
+                collegeText;
+
+            resultBranch.textContent =
+                branchText;
+
+            resultYear.textContent =
+                yearText;
+
+
+            document
+                .querySelector(".cutoff-result-section")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+    );
+
+</script>
+
+{% endblock %}

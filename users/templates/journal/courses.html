@@ -1,0 +1,530 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="courses-section">
+
+    <div class="container">
+
+        <!-- Heading -->
+
+        <div class="text-center courses-heading">
+
+            <h1 class="courses-title">
+                Explore Courses
+            </h1>
+
+            <p class="courses-subtitle">
+                Discover diploma courses and find the path that
+                matches your interests and career goals.
+            </p>
+
+        </div>
+
+
+        <!-- Search & Filter -->
+
+        <div class="course-search-box">
+
+            <div class="course-search">
+
+                <input type="text"
+                       id="courseSearch"
+                       class="form-control"
+                       placeholder="Search for a course...">
+
+            </div>
+
+
+            <div class="course-filter">
+
+                <select id="courseCategory"
+                        class="form-select">
+
+                    <option value="all">
+                        All Categories
+                    </option>
+
+                    <option value="Computer">
+                        Computer & IT
+                    </option>
+
+                    <option value="Mechanical">
+                        Mechanical
+                    </option>
+
+                    <option value="Civil">
+                        Civil
+                    </option>
+
+                    <option value="Electrical">
+                        Electrical
+                    </option>
+
+                    <option value="Electronics">
+                        Electronics & Telecommunication
+                    </option>
+
+                    <option value="Automobile">
+                        Automobile
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- Course Cards -->
+
+        <div class="row g-4 mt-4"
+             id="courseList">
+
+
+            <!-- Computer Engineering -->
+
+            <div class="col-md-6 col-lg-4 course-item"
+                 data-name="Computer Engineering"
+                 data-category="Computer">
+
+                <div class="course-card">
+
+                    <div class="course-icon">
+                        💻
+                    </div>
+
+                    <h3>
+                        Computer Engineering
+                    </h3>
+
+                    <p class="course-description">
+                        Learn programming, software development,
+                        databases, networking and modern technologies.
+                    </p>
+
+                    <div class="course-info">
+
+                        <span>
+                            ⏳ 3 Years
+                        </span>
+
+                        <span>
+                            🎓 Diploma
+                        </span>
+
+                    </div>
+
+                    <div class="course-skills">
+
+                        <span>Programming</span>
+                        <span>DBMS</span>
+                        <span>Web Development</span>
+
+                    </div>
+
+                    <a href="{% url 'course_details' %}"
+                       class="btn btn-outline-primary rounded-pill mt-3">
+                        Explore Course
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Mechanical Engineering -->
+
+            <div class="col-md-6 col-lg-4 course-item"
+                 data-name="Mechanical Engineering"
+                 data-category="Mechanical">
+
+                <div class="course-card">
+
+                    <div class="course-icon">
+                        ⚙️
+                    </div>
+
+                    <h3>
+                        Mechanical Engineering
+                    </h3>
+
+                    <p class="course-description">
+                        Explore machines, manufacturing, design,
+                        thermodynamics and mechanical systems.
+                    </p>
+
+                    <div class="course-info">
+
+                        <span>
+                            ⏳ 3 Years
+                        </span>
+
+                        <span>
+                            🎓 Diploma
+                        </span>
+
+                    </div>
+
+                    <div class="course-skills">
+
+                        <span>CAD</span>
+                        <span>Manufacturing</span>
+                        <span>Design</span>
+
+                    </div>
+
+                    <a href="#"
+                       class="btn btn-outline-primary rounded-pill mt-3">
+                        Explore Course
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Civil Engineering -->
+
+            <div class="col-md-6 col-lg-4 course-item"
+                 data-name="Civil Engineering"
+                 data-category="Civil">
+
+                <div class="course-card">
+
+                    <div class="course-icon">
+                        🏗️
+                    </div>
+
+                    <h3>
+                        Civil Engineering
+                    </h3>
+
+                    <p class="course-description">
+                        Learn construction, structural design,
+                        surveying and infrastructure development.
+                    </p>
+
+                    <div class="course-info">
+
+                        <span>
+                            ⏳ 3 Years
+                        </span>
+
+                        <span>
+                            🎓 Diploma
+                        </span>
+
+                    </div>
+
+                    <div class="course-skills">
+
+                        <span>Construction</span>
+                        <span>Surveying</span>
+                        <span>Structures</span>
+
+                    </div>
+
+                    <a href="#"
+                       class="btn btn-outline-primary rounded-pill mt-3">
+                        Explore Course
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Electrical Engineering -->
+
+            <div class="col-md-6 col-lg-4 course-item"
+                 data-name="Electrical Engineering"
+                 data-category="Electrical">
+
+                <div class="course-card">
+
+                    <div class="course-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        Electrical Engineering
+                    </h3>
+
+                    <p class="course-description">
+                        Study electrical systems, power generation,
+                        circuits, machines and control systems.
+                    </p>
+
+                    <div class="course-info">
+
+                        <span>
+                            ⏳ 3 Years
+                        </span>
+
+                        <span>
+                            🎓 Diploma
+                        </span>
+
+                    </div>
+
+                    <div class="course-skills">
+
+                        <span>Circuits</span>
+                        <span>Power Systems</span>
+                        <span>Machines</span>
+
+                    </div>
+
+                    <a href="#"
+                       class="btn btn-outline-primary rounded-pill mt-3">
+                        Explore Course
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Electronics & Telecommunication -->
+
+            <div class="col-md-6 col-lg-4 course-item"
+                 data-name="Electronics and Telecommunication Engineering"
+                 data-category="Electronics">
+
+                <div class="course-card">
+
+                    <div class="course-icon">
+                        📡
+                    </div>
+
+                    <h3>
+                        Electronics & Telecommunication
+                    </h3>
+
+                    <p class="course-description">
+                        Learn electronics, communication systems,
+                        digital circuits and embedded technologies.
+                    </p>
+
+                    <div class="course-info">
+
+                        <span>
+                            ⏳ 3 Years
+                        </span>
+
+                        <span>
+                            🎓 Diploma
+                        </span>
+
+                    </div>
+
+                    <div class="course-skills">
+
+                        <span>Electronics</span>
+                        <span>Communication</span>
+                        <span>Embedded</span>
+
+                    </div>
+
+                    <a href="#"
+                       class="btn btn-outline-primary rounded-pill mt-3">
+                        Explore Course
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Automobile Engineering -->
+
+            <div class="col-md-6 col-lg-4 course-item"
+                 data-name="Automobile Engineering"
+                 data-category="Automobile">
+
+                <div class="course-card">
+
+                    <div class="course-icon">
+                        🚗
+                    </div>
+
+                    <h3>
+                        Automobile Engineering
+                    </h3>
+
+                    <p class="course-description">
+                        Explore vehicle technology, automobile design,
+                        engines and modern transportation systems.
+                    </p>
+
+                    <div class="course-info">
+
+                        <span>
+                            ⏳ 3 Years
+                        </span>
+
+                        <span>
+                            🎓 Diploma
+                        </span>
+
+                    </div>
+
+                    <div class="course-skills">
+
+                        <span>Automobiles</span>
+                        <span>Engines</span>
+                        <span>Vehicle Design</span>
+
+                    </div>
+
+                    <a href="#"
+                       class="btn btn-outline-primary rounded-pill mt-3">
+                        Explore Course
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- No Results -->
+
+        <div id="courseNoResults"
+             class="text-center mt-5"
+             style="display: none;">
+
+            <h4>
+                No courses found
+            </h4>
+
+            <p>
+                Try another course name or category.
+            </p>
+
+        </div>
+
+
+        <!-- Course Recommendation Section -->
+
+        <div class="course-recommendation">
+
+            <div>
+
+                <h2>
+                    Not sure which course to choose?
+                </h2>
+
+                <p>
+                    Explore different career paths and discover
+                    a course that matches your interests.
+                </p>
+
+            </div>
+
+            <a href="#"
+               class="btn btn-light rounded-pill px-4">
+                Find My Course →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Course Search & Filter -->
+
+<script>
+
+    const courseSearch =
+        document.getElementById("courseSearch");
+
+    const courseCategory =
+        document.getElementById("courseCategory");
+
+    const courses =
+        document.querySelectorAll(".course-item");
+
+    const courseNoResults =
+        document.getElementById("courseNoResults");
+
+
+    function filterCourses() {
+
+        const searchValue =
+            courseSearch.value.toLowerCase().trim();
+
+        const categoryValue =
+            courseCategory.value;
+
+        let visibleCount = 0;
+
+
+        courses.forEach(function(course) {
+
+            const courseName =
+                course.dataset.name.toLowerCase();
+
+            const courseCategoryValue =
+                course.dataset.category;
+
+
+            const matchesSearch =
+                courseName.includes(searchValue);
+
+
+            const matchesCategory =
+                categoryValue === "all" ||
+                courseCategoryValue === categoryValue;
+
+
+            if (
+                matchesSearch &&
+                matchesCategory
+            ) {
+
+                course.style.display = "";
+
+                visibleCount++;
+
+            } else {
+
+                course.style.display = "none";
+
+            }
+
+        });
+
+
+        if (visibleCount === 0) {
+
+            courseNoResults.style.display = "block";
+
+        } else {
+
+            courseNoResults.style.display = "none";
+
+        }
+
+    }
+
+
+    courseSearch.addEventListener(
+        "input",
+        filterCourses
+    );
+
+
+    courseCategory.addEventListener(
+        "change",
+        filterCourses
+    );
+
+</script>
+
+{% endblock %}

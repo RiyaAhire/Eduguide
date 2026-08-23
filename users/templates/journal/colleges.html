@@ -1,0 +1,454 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="colleges-section">
+
+    <div class="container">
+
+        <!-- Heading -->
+        <div class="text-center mb-5">
+
+            <h1 class="colleges-title">
+                Explore Colleges
+            </h1>
+
+            <p class="colleges-subtitle">
+                Find the right college for your career and future.
+            </p>
+
+        </div>
+
+
+        <!-- Search & Filters -->
+
+        <div class="college-search-box mb-5">
+
+            <!-- Search -->
+
+            <div class="college-search">
+
+                <input type="text"
+                       id="collegeSearch"
+                       class="form-control"
+                       placeholder="Search college by name or location...">
+
+            </div>
+
+
+            <!-- Filters -->
+
+            <div class="row g-3 mt-2">
+
+                <!-- College Type -->
+
+                <div class="col-md-4">
+
+                    <select id="collegeType"
+                            class="form-select">
+
+                        <option value="all">
+                            All College Types
+                        </option>
+
+                        <option value="Government">
+                            Government
+                        </option>
+
+                        <option value="Private">
+                            Private
+                        </option>
+
+                        <option value="Autonomous">
+                            Autonomous
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Location -->
+
+                <div class="col-md-4">
+
+                    <select id="collegeLocation"
+                            class="form-select">
+
+                        <option value="all">
+                            All Locations
+                        </option>
+
+                        <option value="Nashik">
+                            Nashik
+                        </option>
+
+                        <option value="Pune">
+                            Pune
+                        </option>
+
+                        <option value="Mumbai">
+                            Mumbai
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Branch -->
+
+                <div class="col-md-4">
+
+                    <select id="collegeBranch"
+                            class="form-select">
+
+                        <option value="all">
+                            All Branches
+                        </option>
+
+                        <option value="Computer">
+                            Computer Engineering
+                        </option>
+
+                        <option value="IT">
+                            Information Technology
+                        </option>
+
+                        <option value="Mechanical">
+                            Mechanical Engineering
+                        </option>
+
+                        <option value="Civil">
+                            Civil Engineering
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- College Cards -->
+
+        <div class="row g-4" id="collegeList">
+
+
+            <!-- College 1 -->
+
+            <div class="col-md-6 col-lg-4 college-item"
+                 data-name="Government Polytechnic Nashik"
+                 data-location="Nashik"
+                 data-type="Government"
+                 data-branch="Computer IT Mechanical">
+
+                <div class="college-card">
+
+                    <div class="college-icon">
+                        🎓
+                    </div>
+
+                    <h3>
+                        Government Polytechnic Nashik
+                    </h3>
+
+                    <p class="college-location">
+                        📍 Nashik, Maharashtra
+                    </p>
+
+                    <p class="college-description">
+                        A government technical institute offering
+                        diploma courses in various engineering disciplines.
+                    </p>
+
+                    <div class="college-tags">
+
+                        <span class="badge bg-primary">
+                            Government
+                        </span>
+
+                        <span class="badge bg-light text-dark">
+                            Polytechnic
+                        </span>
+
+                    </div>
+
+                    <p class="college-branches">
+                        <strong>Branches:</strong>
+                        Computer • IT • Mechanical
+                    </p>
+
+                    <a href="{% url 'college_details' %}"
+                       class="btn btn-outline-primary rounded-pill mt-2">
+                        View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- College 2 -->
+
+            <div class="col-md-6 col-lg-4 college-item"
+                 data-name="Government Polytechnic Pune"
+                 data-location="Pune"
+                 data-type="Government"
+                 data-branch="Computer IT Civil">
+
+                <div class="college-card">
+
+                    <div class="college-icon">
+                        🎓
+                    </div>
+
+                    <h3>
+                        Government Polytechnic Pune
+                    </h3>
+
+                    <p class="college-location">
+                        📍 Pune, Maharashtra
+                    </p>
+
+                    <p class="college-description">
+                        A well-known government institute providing
+                        technical education and diploma programs.
+                    </p>
+
+                    <div class="college-tags">
+
+                        <span class="badge bg-primary">
+                            Government
+                        </span>
+
+                        <span class="badge bg-light text-dark">
+                            Polytechnic
+                        </span>
+
+                    </div>
+
+                    <p class="college-branches">
+                        <strong>Branches:</strong>
+                        Computer • IT • Civil
+                    </p>
+
+                    <a href="{% url 'college_details' %}"
+                       class="btn btn-outline-primary rounded-pill mt-2">
+                        View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- College 3 -->
+
+            <div class="col-md-6 col-lg-4 college-item"
+                 data-name="Government Polytechnic Mumbai"
+                 data-location="Mumbai"
+                 data-type="Government"
+                 data-branch="Computer IT Mechanical">
+
+                <div class="college-card">
+
+                    <div class="college-icon">
+                        🎓
+                    </div>
+
+                    <h3>
+                        Government Polytechnic Mumbai
+                    </h3>
+
+                    <p class="college-location">
+                        📍 Mumbai, Maharashtra
+                    </p>
+
+                    <p class="college-description">
+                        A technical education institute offering
+                        diploma programs across multiple disciplines.
+                    </p>
+
+                    <div class="college-tags">
+
+                        <span class="badge bg-primary">
+                            Government
+                        </span>
+
+                        <span class="badge bg-light text-dark">
+                            Polytechnic
+                        </span>
+
+                    </div>
+
+                    <p class="college-branches">
+                        <strong>Branches:</strong>
+                        Computer • IT • Mechanical
+                    </p>
+
+                    <a href="{% url 'college_details' %}"
+                       class="btn btn-outline-primary rounded-pill mt-2">
+                        View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- No Results Message -->
+
+        <div id="noResults"
+             class="text-center mt-5"
+             style="display: none;">
+
+            <h4>
+                No colleges found
+            </h4>
+
+            <p>
+                Try changing your search or filters.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Search & Filter JavaScript -->
+
+<script>
+
+    const searchInput = document.getElementById("collegeSearch");
+
+    const typeFilter = document.getElementById("collegeType");
+
+    const locationFilter = document.getElementById("collegeLocation");
+
+    const branchFilter = document.getElementById("collegeBranch");
+
+    const colleges = document.querySelectorAll(".college-item");
+
+    const noResults = document.getElementById("noResults");
+
+
+    function filterColleges() {
+
+        const searchValue =
+            searchInput.value.toLowerCase().trim();
+
+        const typeValue =
+            typeFilter.value;
+
+        const locationValue =
+            locationFilter.value;
+
+        const branchValue =
+            branchFilter.value;
+
+
+        let visibleCount = 0;
+
+
+        colleges.forEach(function(college) {
+
+            const name =
+                college.dataset.name.toLowerCase();
+
+            const location =
+                college.dataset.location;
+
+            const type =
+                college.dataset.type;
+
+            const branches =
+                college.dataset.branch;
+
+
+            const matchesSearch =
+                name.includes(searchValue) ||
+                location.toLowerCase().includes(searchValue);
+
+
+            const matchesType =
+                typeValue === "all" ||
+                type === typeValue;
+
+
+            const matchesLocation =
+                locationValue === "all" ||
+                location === locationValue;
+
+
+            const matchesBranch =
+                branchValue === "all" ||
+                branches.includes(branchValue);
+
+
+            if (
+                matchesSearch &&
+                matchesType &&
+                matchesLocation &&
+                matchesBranch
+            ) {
+
+                college.style.display = "";
+
+                visibleCount++;
+
+            } else {
+
+                college.style.display = "none";
+
+            }
+
+        });
+
+
+        if (visibleCount === 0) {
+
+            noResults.style.display = "block";
+
+        } else {
+
+            noResults.style.display = "none";
+
+        }
+
+    }
+
+
+    searchInput.addEventListener(
+        "input",
+        filterColleges
+    );
+
+
+    typeFilter.addEventListener(
+        "change",
+        filterColleges
+    );
+
+
+    locationFilter.addEventListener(
+        "change",
+        filterColleges
+    );
+
+
+    branchFilter.addEventListener(
+        "change",
+        filterColleges
+    );
+
+</script>
+
+{% endblock %}

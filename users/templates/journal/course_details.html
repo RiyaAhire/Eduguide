@@ -1,0 +1,337 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="course-details-section">
+
+    <div class="container">
+
+        <!-- Back Button -->
+
+        <a href="{% url 'courses' %}" class="course-back-link">
+            ← Back to Explore Courses
+        </a>
+
+
+        <!-- Course Header -->
+
+        <div class="course-details-header">
+
+            <div class="course-details-icon">
+                💻
+            </div>
+
+            <div class="course-header-content">
+
+                <span class="course-label">
+                    Diploma Course
+                </span>
+
+                <h1>
+                    Computer Engineering
+                </h1>
+
+                <p>
+                    Explore programming, software development,
+                    databases, networking and modern technologies.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Main Content -->
+
+        <div class="row g-4">
+
+            <!-- Left Side -->
+
+            <div class="col-lg-8">
+
+
+                <!-- About -->
+
+                <div class="course-details-card">
+
+                    <h2>
+                        About the Course
+                    </h2>
+
+                    <p>
+                        Computer Engineering is a technology-focused
+                        course that introduces students to programming,
+                        software development, databases, computer
+                        networks and other areas of information technology.
+                    </p>
+
+                    <p>
+                        The course combines theoretical knowledge with
+                        practical learning and helps students develop
+                        problem-solving and technical skills required
+                        in the technology industry.
+                    </p>
+
+                </div>
+
+
+                <!-- Subjects -->
+
+                <div class="course-details-card">
+
+                    <h2>
+                        Major Subjects
+                    </h2>
+
+                    <div class="subject-grid">
+
+                        <div class="subject-item">
+                            💻 Programming
+                        </div>
+
+                        <div class="subject-item">
+                            🗄️ Database Management
+                        </div>
+
+                        <div class="subject-item">
+                            🌐 Web Development
+                        </div>
+
+                        <div class="subject-item">
+                            🖥️ Operating Systems
+                        </div>
+
+                        <div class="subject-item">
+                            🌐 Computer Networks
+                        </div>
+
+                        <div class="subject-item">
+                            📊 Data Structures
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Skills -->
+
+                <div class="course-details-card">
+
+                    <h2>
+                        Skills You'll Develop
+                    </h2>
+
+                    <div class="skill-tags">
+
+                        <span>
+                            Programming
+                        </span>
+
+                        <span>
+                            Problem Solving
+                        </span>
+
+                        <span>
+                            Web Development
+                        </span>
+
+                        <span>
+                            Database Management
+                        </span>
+
+                        <span>
+                            Networking
+                        </span>
+
+                        <span>
+                            Software Development
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Career -->
+
+                <div class="course-details-card">
+
+                    <h2>
+                        Career Opportunities
+                    </h2>
+
+                    <div class="career-grid">
+
+                        <div class="career-item">
+                            <strong>
+                                Software Developer
+                            </strong>
+
+                            <span>
+                                Develop software applications.
+                            </span>
+                        </div>
+
+                        <div class="career-item">
+                            <strong>
+                                Web Developer
+                            </strong>
+
+                            <span>
+                                Build websites and web applications.
+                            </span>
+                        </div>
+
+                        <div class="career-item">
+                            <strong>
+                                Database Developer
+                            </strong>
+
+                            <span>
+                                Work with databases and data systems.
+                            </span>
+                        </div>
+
+                        <div class="career-item">
+                            <strong>
+                                Network Engineer
+                            </strong>
+
+                            <span>
+                                Manage computer networks and systems.
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Right Side -->
+
+            <div class="col-lg-4">
+
+
+                <!-- Quick Information -->
+
+                <div class="course-details-card course-quick-info">
+
+                    <h2>
+                        Course Information
+                    </h2>
+
+                    <div class="course-info-row">
+
+                        <span>
+                            Duration
+                        </span>
+
+                        <strong>
+                            3 Years
+                        </strong>
+
+                    </div>
+
+                    <div class="course-info-row">
+
+                        <span>
+                            Level
+                        </span>
+
+                        <strong>
+                            Diploma
+                        </strong>
+
+                    </div>
+
+                    <div class="course-info-row">
+
+                        <span>
+                            Field
+                        </span>
+
+                        <strong>
+                            Computer & IT
+                        </strong>
+
+                    </div>
+
+                    <div class="course-info-row">
+
+                        <span>
+                            Mode
+                        </span>
+
+                        <strong>
+                            Full Time
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Higher Studies -->
+
+                <div class="course-details-card">
+
+                    <h2>
+                        Higher Studies
+                    </h2>
+
+                    <ul class="higher-study-list">
+
+                        <li>
+                            B.E / B.Tech
+                        </li>
+
+                        <li>
+                            Advanced Diploma
+                        </li>
+
+                        <li>
+                            Professional Certifications
+                        </li>
+
+                        <li>
+                            Specialized IT Courses
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- Action -->
+
+                <div class="course-action-card">
+
+                    <h3>
+                        Interested in this course?
+                    </h3>
+
+                    <p>
+                        Explore colleges offering this course.
+                    </p>
+
+                    <a href="{% url 'colleges' %}"
+                       class="btn btn-light rounded-pill px-4">
+
+                        Explore Colleges →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

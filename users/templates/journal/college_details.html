@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="college-details-section">
+
+    <div class="container">
+
+        <!-- Back Button -->
+
+        <a href="{% url 'colleges' %}" class="back-link">
+            ← Back to Explore Colleges
+        </a>
+
+
+        <!-- College Header -->
+
+        <div class="college-details-header">
+
+            <div class="college-details-icon">
+                🎓
+            </div>
+
+            <div>
+
+                <h1>
+                    Government Polytechnic Nashik
+                </h1>
+
+                <p class="college-details-location">
+                    📍 Nashik, Maharashtra
+                </p>
+
+                <div class="college-detail-tags">
+
+                    <span class="badge bg-primary">
+                        Government
+                    </span>
+
+                    <span class="badge bg-light text-dark">
+                        Polytechnic
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Main Information -->
+
+        <div class="row g-4 mt-2">
+
+            <!-- About -->
+
+            <div class="col-lg-8">
+
+                <div class="details-card">
+
+                    <h2>About the College</h2>
+
+                    <p>
+                        Government Polytechnic Nashik is a technical
+                        education institute offering diploma programs
+                        in various engineering and technology disciplines.
+                    </p>
+
+                    <p>
+                        The institute provides students with technical
+                        knowledge, practical skills and opportunities
+                        to develop their professional careers.
+                    </p>
+
+                </div>
+
+
+                <!-- Courses -->
+
+                <div class="details-card">
+
+                    <h2>Available Branches</h2>
+
+                    <div class="branch-list">
+
+                        <div class="branch-item">
+                            <span>💻</span>
+                            Computer Engineering
+                        </div>
+
+                        <div class="branch-item">
+                            <span>🖥️</span>
+                            Information Technology
+                        </div>
+
+                        <div class="branch-item">
+                            <span>⚙️</span>
+                            Mechanical Engineering
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Quick Information -->
+
+            <div class="col-lg-4">
+
+                <div class="details-card quick-info">
+
+                    <h2>College Information</h2>
+
+                    <div class="info-row">
+
+                        <span>College Type</span>
+
+                        <strong>
+                            Government
+                        </strong>
+
+                    </div>
+
+                    <div class="info-row">
+
+                        <span>Location</span>
+
+                        <strong>
+                            Nashik
+                        </strong>
+
+                    </div>
+
+                    <div class="info-row">
+
+                        <span>Institute Type</span>
+
+                        <strong>
+                            Polytechnic
+                        </strong>
+
+                    </div>
+
+                    <div class="info-row">
+
+                        <span>State</span>
+
+                        <strong>
+                            Maharashtra
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Action -->
+
+                <div class="details-card text-center">
+
+                    <h3>
+                        Interested in this college?
+                    </h3>
+
+                    <p>
+                        Explore courses and admission information.
+                    </p>
+
+                    <a href="#"
+                       class="btn btn-primary rounded-pill px-4">
+                        View Cutoff
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

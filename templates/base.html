@@ -23,93 +23,216 @@
 
     <nav class="navbar navbar-expand-lg bg-white shadow-sm">
 
-        <div class="container">
+    <div class="container">
 
-            <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+        <!-- Logo -->
+
+        <a class="navbar-brand d-flex align-items-center"
+           href="{% url 'index' %}">
+
             <img src="{% static 'images/EduGuide Logo.png' %}"
-                alt="EduGuide Logo"
-                class="navbar-logo">
+                 alt="EduGuide Logo"
+                 class="navbar-logo">
 
             <span class="ms-2 fw-bold brand-text">
                 EduGuide
             </span>
-            </a>
 
-            <button class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav">
+        </a>
 
-                <span class="navbar-toggler-icon"></span>
 
-            </button>
+        <!-- Mobile Toggle -->
 
-            <div class="collapse navbar-collapse justify-content-center"
-                 id="navbarNav">
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
 
-                <ul class="navbar-nav">
+            <span class="navbar-toggler-icon"></span>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Home</a>
-                    </li>
+        </button>
 
-                    <li class="nav-item dropdown">
-                       
 
-                       <a class="nav-link dropdown-toggle"
-                          href="#"
-                          id="collegeDropdown"
-                          role="button"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false">
+        <!-- Navbar -->
 
-                         Colleges
+        <div class="collapse navbar-collapse justify-content-center"
+             id="navbarNav">
+
+            <ul class="navbar-nav">
+
+
+                <!-- HOME -->
+
+                <li class="nav-item">
+
+                    <a class="nav-link
+                        {% if request.resolver_match.url_name == 'index' %}
+                            active
+                        {% endif %}"
+                       href="{% url 'index' %}">
+
+                        Home
 
                     </a>
 
-    <ul class="dropdown-menu shadow border-0 rounded-4"
-        aria-labelledby="collegeDropdown">
-
-        <li>
-            <a class="dropdown-item py-2" href="/compare-colleges/">
-                Compare Colleges
-            </a>
-        </li>
-
-        <li>
-            <a class="dropdown-item py-2" href="/courses/">
-                Explore Courses
-            </a>
-        </li>
-
-    </ul>
+                </li>
 
 
-                    </li>
+                <!-- COLLEGES DROPDOWN -->
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/cutoff/">Cutoff</a>
-                    </li>
+                <li class="nav-item dropdown">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/prediction/">Prediction</a>
-                    </li>
+                    <a class="nav-link dropdown-toggle
+                        {% if request.resolver_match.url_name == 'colleges' or request.resolver_match.url_name == 'courses' %}
+                            active-dropdown
+                        {% endif %}"
+                       href="#"
+                       id="collegeDropdown"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about/">About</a>
-                    </li>
+                        Colleges
 
-                </ul>
+                    </a>
 
-            </div>
 
-            <a href="/register/" class="btn btn-primary rounded-pill px-4">
-                Register
-            </a>
+                    <ul class="dropdown-menu shadow border-0 rounded-4"
+                        aria-labelledby="collegeDropdown">
+
+                        <li>
+
+                            <a class="dropdown-item py-2
+                                {% if request.resolver_match.url_name == 'colleges' %}
+                                    active
+                                {% endif %}"
+                               href="{% url 'colleges' %}">
+
+                                Explore Colleges
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a class="dropdown-item py-2
+                                {% if request.resolver_match.url_name == 'courses' %}
+                                    active
+                                {% endif %}"
+                               href="{% url 'courses' %}">
+
+                                Explore Courses
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </li>
+
+
+                <!-- CUTOFF -->
+
+                <li class="nav-item">
+
+                    <a class="nav-link
+                        {% if request.resolver_match.url_name == 'cutoff' %}
+                            active
+                        {% endif %}"
+                       href="{% url 'cutoff' %}">
+
+                        Cutoff
+
+                    </a>
+
+                </li>
+
+
+                <!-- PREDICTION -->
+
+                <li class="nav-item">
+
+                    <a class="nav-link
+                        {% if request.resolver_match.url_name == 'prediction' %}
+                            active
+                        {% endif %}"
+                       href="{% url 'prediction' %}">
+
+                        Prediction
+
+                    </a>
+
+                </li>
+
+
+                <!-- ABOUT -->
+
+                <li class="nav-item">
+
+                    <a class="nav-link
+                        {% if request.resolver_match.url_name == 'about' %}
+                            active
+                        {% endif %}"
+                       href="{% url 'about' %}">
+
+                        About
+
+                    </a>
+
+                </li>
+
+            </ul>
 
         </div>
 
-    </nav>
+
+        <!-- Login / Register / Logout -->
+
+        {% if user.is_authenticated %}
+
+            <span class="me-3 fw-semibold">
+                Hi, {{ user.username }}
+            </span>
+
+            <form method="POST"
+                  action="{% url 'logout' %}"
+                  class="d-inline">
+
+                {% csrf_token %}
+
+                <button type="submit"
+                        class="btn btn-outline-danger rounded-pill px-4">
+
+                    Logout
+
+                </button>
+
+            </form>
+
+        {% else %}
+
+            <a href="{% url 'login' %}"
+               class="btn btn-outline-primary rounded-pill px-4 me-2">
+
+                Login
+
+            </a>
+
+            <a href="{% url 'register' %}"
+               class="btn btn-primary rounded-pill px-4">
+
+                Register
+
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</nav>
 
     <!-- Page Content -->
 
