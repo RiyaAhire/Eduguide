@@ -5,7 +5,7 @@ class College(models.Model):
     college_code = models.CharField(max_length=20, unique=True)
     college_name = models.CharField(max_length=255)
     region = models.CharField(max_length=100, blank=True, null=True)
-    status = models.CharField(max_length=50)
+    status = models.CharField(max_length=255)
 
     def __str__(self):
         return self.college_name
