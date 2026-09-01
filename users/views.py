@@ -1,12 +1,25 @@
-from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate, login, logout
+from colleges.models import College
+
+from django.shortcuts import (
+    render,
+    redirect,
+    get_object_or_404
+)
+
+from django.contrib.auth import (
+    authenticate,
+    login,
+    logout
+)
+
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
 
 
 def main_page(request):
-    return render(request, 'journal/index.html')
-
+    return render(
+        request,
+        "journal/index.html"
+    )
 
 
 def register(request):
@@ -22,27 +35,37 @@ def register(request):
 
             return render(
                 request,
-                "users/register.html",
-                {"error": "Passwords do not match."}
+                "journal/register.html",
+                {
+                    "error": "Passwords do not match."
+                }
             )
 
-        if User.objects.filter(username=username).exists():
+        if User.objects.filter(
+            username=username
+        ).exists():
 
             return render(
                 request,
-                "users/register.html",
-                {"error": "Username already exists."}
+                "journal/register.html",
+                {
+                    "error": "Username already exists."
+                }
             )
 
         User.objects.create_user(
-                username=username,
-                email=email,
-                password=password
-            )
+            username=username,
+            email=email,
+            password=password
+        )
 
         return redirect("login")
 
-    return render(request, "journal/register.html")
+    return render(
+        request,
+        "journal/register.html"
+    )
+
 
 def login_view(request):
 
@@ -59,45 +82,102 @@ def login_view(request):
 
         if user is not None:
 
-            login(request, user)
+            login(
+                request,
+                user
+            )
 
             return redirect("index")
 
-        else:
+        return render(
+            request,
+            "journal/login.html",
+            {
+                "error": "Invalid username or password."
+            }
+        )
 
-            return render(
-                request,
-                "users/login.html",
-                {"error": "Invalid username or password."}
-            )
+    return render(
+        request,
+        "journal/login.html"
+    )
 
-    return render(request, "journal/login.html")
 
 def logout_view(request):
 
     if request.method == "POST":
+
         logout(request)
+
         return redirect("index")
 
-    return redirect("home")
+    return redirect("index")
+
 
 def colleges(request):
-    return render(request, 'journal/colleges.html')
 
-def college_details(request):
-    return render(request, 'journal/college_details.html')
+    colleges = College.objects.all().order_by(
+        "college_name"
+    )
+
+    return render(
+        request,
+        "journal/colleges.html",
+        {
+            "colleges": colleges
+        }
+    )
+
+
+def college_details(
+    request,
+    college_id
+):
+
+    college = get_object_or_404(
+        College,
+        id=college_id
+    )
+
+    return render(
+        request,
+        "journal/college_details.html",
+        {
+            "college": college
+        }
+    )
+
 
 def courses(request):
-    return render(request, 'journal/courses.html')
+    return render(
+        request,
+        "journal/courses.html"
+    )
+
 
 def course_details(request):
-    return render(request, 'journal/course_details.html')
+    return render(
+        request,
+        "journal/course_details.html"
+    )
+
 
 def cutoff(request):
-    return render(request, 'journal/cutoff.html')
+    return render(
+        request,
+        "journal/cutoff.html"
+    )
+
 
 def prediction(request):
-    return render(request, 'journal/prediction.html')
+    return render(
+        request,
+        "journal/prediction.html"
+    )
+
 
 def about(request):
-    return render(request, 'journal/about.html')
+    return render(
+        request,
+        "journal/about.html"
+    )
