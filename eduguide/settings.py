@@ -73,7 +73,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ags_db',
         'USER': 'root',
-        'PASSWORD': '$%AGS+-=32',
+        'PASSWORD': 'agsMsql@231',
         'HOST':'127.0.0.1',
         'PORT': '3306',
     }
