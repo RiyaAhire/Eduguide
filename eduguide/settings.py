@@ -74,7 +74,7 @@ DATABASES = {
         'NAME': 'ags_db',
         'USER': 'root',
         'PASSWORD': '$%AGS+-=32',
-        'HOST':'localhost',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
