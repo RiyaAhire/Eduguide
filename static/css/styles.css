@@ -1,6 +1,35 @@
-/* =========================================
+/* =========================================================
+   EDU GUIDE
+   COMPLETE STYLESHEET
+   Light + Dark Mode
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f8fafc;
+    color: #334155;
+}
+
+
+/* =========================================================
    NAVBAR
-========================================= */
+========================================================= */
 
 .navbar {
     height: 85px;
@@ -11,35 +40,25 @@
     gap: 20px;
 }
 
-
-/* =========================================
-   NAVBAR LINKS
-========================================= */
-
 .navbar-nav .nav-link {
-    font-size: 17px;
-    font-weight: 500;
-    color: #333333 !important;
-
     position: relative;
 
     padding: 8px 10px;
 
+    font-size: 17px;
+    font-weight: 500;
+
+    color: #333333 !important;
+
     transition: color 0.3s ease;
 }
-
-
-/* Hover */
 
 .navbar-nav .nav-link:hover {
     color: #0d6efd !important;
 }
 
 
-/* =========================================
-   ACTIVE NORMAL NAVBAR LINK
-   Home / Cutoff / Prediction / About
-========================================= */
+/* Normal active links */
 
 .navbar-nav .nav-link.active:not(.dropdown-toggle) {
     color: #2563eb !important;
@@ -47,7 +66,7 @@
 }
 
 
-/* Active underline for normal links */
+/* Active underline */
 
 .navbar-nav .nav-link.active:not(.dropdown-toggle)::before {
     content: "";
@@ -56,7 +75,6 @@
 
     left: 10px;
     right: 10px;
-
     bottom: 2px;
 
     height: 3px;
@@ -67,10 +85,7 @@
 }
 
 
-/* =========================================
-   HOVER UNDERLINE
-   Only normal links
-========================================= */
+/* Hover underline */
 
 .navbar-nav .nav-link:not(.dropdown-toggle)::before {
     content: "";
@@ -79,7 +94,6 @@
 
     left: 10px;
     right: 10px;
-
     bottom: 2px;
 
     height: 3px;
@@ -89,40 +103,28 @@
     border-radius: 10px;
 
     transform: scaleX(0);
-
     transform-origin: center;
 
     transition: transform 0.3s ease;
 }
-
 
 .navbar-nav .nav-link:not(.dropdown-toggle):hover::before {
     transform: scaleX(1);
 }
 
 
-/* =========================================
-   COLLEGES DROPDOWN
-========================================= */
-
-/* Active Colleges dropdown */
+/* Colleges active */
 
 .navbar-nav .dropdown-toggle.active-dropdown {
     color: #2563eb !important;
     font-weight: 600;
-}
 
-
-/* Underline for active Colleges dropdown */
-
-.navbar-nav .dropdown-toggle.active-dropdown {
     border-bottom: 3px solid #2563eb;
-
     border-radius: 0;
 }
 
 
-/* Keep Bootstrap dropdown arrow */
+/* Dropdown arrow */
 
 .navbar-nav .dropdown-toggle::after {
     display: inline-block;
@@ -134,27 +136,21 @@
     content: "";
 
     border-top: 0.3em solid;
-
     border-right: 0.3em solid transparent;
-
     border-bottom: 0;
-
     border-left: 0.3em solid transparent;
 }
 
 
-/* =========================================
-   DROPDOWN MENU
-========================================= */
+/* Dropdown */
 
 .navbar-nav .dropdown-menu {
     margin-top: 10px;
 
     background-color: #ffffff;
+
+    border: none;
 }
-
-
-/* Dropdown item */
 
 .navbar-nav .dropdown-item {
     color: #333333;
@@ -164,63 +160,63 @@
     transition: all 0.2s ease;
 }
 
-
-/* Dropdown hover */
-
 .navbar-nav .dropdown-item:hover {
     background-color: #eff6ff;
-
     color: #2563eb;
 }
 
-
-/* Active dropdown item */
-
 .navbar-nav .dropdown-item.active {
     background-color: #eff6ff;
-
     color: #2563eb;
 
     font-weight: 600;
 }
 
 
-/* =========================================
-   LOGO / BRAND
-========================================= */
+/* Logo */
 
 .navbar-brand {
     color: #113991 !important;
 
     font-size: 30px;
-
     font-weight: 700;
 }
 
+.brand-text {
+    color: #2563eb;
+    font-size: 28px;
+    font-weight: 700;
 
-/* Logo */
+    letter-spacing: 0.5px;
+}
 
 .navbar-logo {
     width: 50px;
-
     height: 50px;
 
     object-fit: contain;
 }
 
-.btn-primary{
-    background:#09296e;
-    border:none;
-    padding:12px 28px;
+
+/* =========================================================
+   GENERAL BUTTONS
+========================================================= */
+
+.btn-primary {
+    background: #09296e;
+    border: none;
+
+    padding: 12px 28px;
 }
 
-.btn-primary:hover{
-    background:#0f2972;
+.btn-primary:hover {
+    background: #0f2972;
 }
 
-/* =========================
-   HOMEPAGE
-========================= */
+
+/* =========================================================
+   HOME PAGE
+========================================================= */
 
 .home-page {
     background:
@@ -230,15 +226,12 @@
 }
 
 
-/* =========================
-   HERO
-========================= */
+/* Hero */
 
 .home-hero {
     min-height: calc(60vh - 85px);
 
     display: flex;
-
     align-items: center;
 
     padding: 65px 20px;
@@ -250,17 +243,16 @@
 }
 
 .home-hero .container {
-    max-width: 900px;
+    max-width: 1100px;
 }
 
 
-/* Hero Content */
+/* Hero text */
 
 .home-title {
     color: #173b7a;
 
     font-size: 44px;
-
     font-weight: 700;
 
     line-height: 1.2;
@@ -276,7 +268,6 @@
     color: #374151;
 
     font-size: 20px;
-
     font-weight: 600;
 
     margin-bottom: 14px;
@@ -288,18 +279,16 @@
     color: #64748b;
 
     font-size: 14px;
-
     line-height: 1.8;
 
     margin-bottom: 25px;
 }
 
 
-/* Hero Buttons */
+/* Hero buttons */
 
 .home-buttons {
     display: flex;
-
     align-items: center;
 
     gap: 12px;
@@ -311,25 +300,20 @@
     border-radius: 50px;
 
     font-size: 14px;
-
     font-weight: 600;
 }
 
 
-/* Hero Logo */
+/* Hero logo */
 
 .home-logo {
     width: 300px;
-
     max-width: 80%;
-
     height: auto;
 }
 
 
-/* =========================
-   COMMON SECTIONS
-========================= */
+/* Home sections */
 
 .home-section {
     padding: 70px 20px;
@@ -342,7 +326,7 @@
 }
 
 
-/* Section Heading */
+/* Section heading */
 
 .home-heading {
     max-width: 850px;
@@ -356,30 +340,25 @@
     color: #173b7a;
 
     font-size: 30px;
-
     font-weight: 700;
 
-    margin: 10px 0 10px;
+    margin: 10px 0;
 }
 
 .home-heading p {
     color: #64748b;
 
     font-size: 14px;
-
     line-height: 1.7;
 
     margin: 0;
 }
 
 
-/* =========================
-   WHY CHOOSE US
-========================= */
+/* Why choose */
 
 .home-cards {
     max-width: 1050px;
-
     margin: auto;
 }
 
@@ -391,14 +370,13 @@
     background: #ffffff;
 
     border: 1px solid #e5eaf2;
-
     border-radius: 20px;
 
     box-shadow: 0 7px 22px rgba(0, 0, 0, 0.05);
 
     text-align: center;
 
-    transition: all 0.25s ease;
+    transition: 0.25s ease;
 }
 
 .home-card:hover {
@@ -409,13 +387,10 @@
 
 .home-card-icon {
     width: 52px;
-
     height: 52px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     background: #eff6ff;
@@ -431,7 +406,6 @@
     color: #173b7a;
 
     font-size: 18px;
-
     font-weight: 700;
 
     margin-bottom: 10px;
@@ -441,20 +415,16 @@
     color: #64748b;
 
     font-size: 13px;
-
     line-height: 1.7;
 
     margin: 0;
 }
 
 
-/* =========================
-   HOW IT WORKS
-========================= */
+/* How it works */
 
 .home-process {
     max-width: 1050px;
-
     margin: auto;
 }
 
@@ -466,7 +436,6 @@
     background: #ffffff;
 
     border: 1px solid #e5eaf2;
-
     border-radius: 20px;
 
     box-shadow: 0 7px 22px rgba(0, 0, 0, 0.05);
@@ -476,17 +445,16 @@
     color: #2563eb;
 
     font-size: 13px;
-
     font-weight: 700;
 
     margin-bottom: 20px;
 }
 
+.process-card h3,
 .process-card h4 {
     color: #173b7a;
 
     font-size: 19px;
-
     font-weight: 700;
 
     margin-bottom: 10px;
@@ -496,20 +464,16 @@
     color: #64748b;
 
     font-size: 13px;
-
     line-height: 1.7;
 
     margin: 0;
 }
 
 
-/* =========================
-   KEY FEATURES
-========================= */
+/* Features */
 
 .home-features {
     max-width: 1050px;
-
     margin: auto;
 }
 
@@ -523,29 +487,23 @@
     background: #ffffff;
 
     border: 1px solid #e5eaf2;
-
     border-radius: 20px;
 
     box-shadow: 0 7px 22px rgba(0, 0, 0, 0.05);
 
-    transition: all 0.25s ease;
+    transition: 0.25s ease;
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
-
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
 }
 
 .feature-icon {
     width: 50px;
-
     height: 50px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     background: #eff6ff;
@@ -561,16 +519,13 @@
     color: #173b7a;
 
     font-size: 17px;
-
     font-weight: 700;
 
     margin: 0;
 }
 
 
-/* =========================
-   STATISTICS
-========================= */
+/* Statistics */
 
 .home-stats {
     padding: 55px 20px;
@@ -580,16 +535,9 @@
     color: #ffffff;
 }
 
-.home-stats .container {
-    max-width: 1000px;
-}
-
 .home-stats h2 {
     font-size: 29px;
-
     font-weight: 700;
-
-    margin-bottom: 5px;
 }
 
 .home-stats p {
@@ -601,9 +549,7 @@
 }
 
 
-/* =========================
-   CTA
-========================= */
+/* Home CTA */
 
 .home-cta {
     max-width: 850px;
@@ -629,7 +575,6 @@
 
 .home-cta h2 {
     font-size: 28px;
-
     font-weight: 700;
 
     margin-bottom: 10px;
@@ -659,14 +604,10 @@
 
 .home-cta .btn:hover {
     background: #eff6ff;
-
-    color: #173b7a;
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* Footer */
 
 .home-footer {
     padding: 30px 20px;
@@ -678,17 +619,13 @@
 
 .home-footer h4 {
     font-size: 19px;
-
     font-weight: 600;
-
-    margin-bottom: 8px;
 }
 
 .home-footer p {
     color: #9ca3af;
 
     font-size: 13px;
-
     line-height: 1.6;
 }
 
@@ -697,191 +634,9 @@
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 768px) {
-
-    .home-hero {
-        min-height: auto;
-
-        padding: 50px 18px;
-
-        text-align: center;
-    }
-
-    .home-title {
-        font-size: 34px;
-    }
-
-    .home-subtitle {
-        font-size: 18px;
-    }
-
-    .home-description {
-        margin-left: auto;
-
-        margin-right: auto;
-    }
-
-    .home-buttons {
-        justify-content: center;
-
-        flex-wrap: wrap;
-    }
-
-    .home-logo {
-        width: 230px;
-
-        margin-top: 35px;
-    }
-
-    .home-section {
-        padding: 55px 18px;
-    }
-
-    .home-heading h2 {
-        font-size: 26px;
-    }
-
-    .home-cta {
-        margin: 60px 18px 20px;
-
-        padding: 40px 20px;
-    }
-
-    .home-cta h2 {
-        font-size: 25px;
-    }
-
-}
-
-section{
-
-padding:110px 0;
-
-}
-
-.card{
-
-border:none;
-
-border-radius:20px;
-
-padding:40px;
-
-transition:.4s;
-
-box-shadow:0 15px 35px rgba(0,0,0,.05);
-
-}
-
-.card:hover{
-
-transform:translateY(-12px);
-
-box-shadow:0 25px 45px rgba(37,99,235,.15);
-
-}
-
-background:linear-gradient(135deg,2563EB,1E3A8A);
-
-
-font-size:55px;
-
-font-weight:800;
-
-
-footer{
-
-background:#111827;
-
-padding:80px;
-
-color:white;
-
-}
-
-background:
-radial-gradient(circle at top left,#DBEAFE,transparent 40%),
-radial-gradient(circle at bottom right,#BFDBFE,transparent 30%),
-F8FAFC;
-
-section{
-
-border-radius:40px;
-
-margin:30px;
-
-}
-
-body{
-
-font-family:'Poppins',sans-serif;
-
-background:#F8FAFC;
-
-}
-
-*{
-
-scroll-behavior:smooth;
-
-transition:.3s;
-
-}
-
-
-
-.img-fluid{
-    width: 100%;
-    max-width: 700px;
-    height: auto;
-    display: block;
-    margin: auto;
-}
-
-.img-fluid{
-    width:100%;
-    max-width:600px;
-    animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float{
-    0%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-15px);
-    }
-    100%{
-        transform:translateY(0);
-    }
-}
-
-.img-fluid{
-    width:100%;
-    max-width:600px;
-    border-radius:20px;
-   
-}
-
-
-/* Brand Text */
-
-.brand-text{
-    font-size:28px;
-    color:#2563EB;
-    font-weight:700;
-    letter-spacing:0.5px;
-}
-
-
-
-/* =========================
-   LOGIN & REGISTER
-========================= */
+/* =========================================================
+   LOGIN / REGISTER
+========================================================= */
 
 .auth-section {
     min-height: calc(100vh - 85px);
@@ -890,16 +645,13 @@ transition:.3s;
     align-items: center;
     justify-content: center;
 
+    padding: 60px 20px;
+
     background:
         radial-gradient(circle at top left, #dbeafe, transparent 40%),
         radial-gradient(circle at bottom right, #bfdbfe, transparent 35%),
         #f8fafc;
-
-    padding: 60px 20px;
 }
-
-
-/* Authentication Card */
 
 .auth-card {
     width: 100%;
@@ -914,38 +666,28 @@ transition:.3s;
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.10);
 }
 
-
-/* Heading */
-
 .auth-card h1 {
     font-size: 30px;
     font-weight: 700;
+
     color: #173b7a;
 
     margin-bottom: 10px;
 }
-
-
-/* Description */
 
 .auth-card p {
     color: #64748b;
     font-size: 15px;
 }
 
-
-/* Labels */
-
 .auth-card .form-label {
     font-size: 14px;
     font-weight: 600;
+
     color: #334155;
 
     margin-bottom: 7px;
 }
-
-
-/* Text Fields */
 
 .auth-card .form-control {
     height: 48px;
@@ -957,47 +699,39 @@ transition:.3s;
     padding: 10px 15px;
 
     font-size: 14px;
-
-    width: 100%;
 }
-
-
-/* Focus */
 
 .auth-card .form-control:focus {
     border-color: #2563eb;
 
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12);
 }
-
-
-/* Login / Register Button */
 
 .auth-card .btn-primary {
     width: 200px !important;
     height: 46px;
+
     padding: 10px 25px;
+
     border-radius: 11px;
+
     background: #2563eb;
     border: none;
+
     font-size: 14px;
     font-weight: 600;
+
     display: block;
+
     margin: 5px auto 0;
-    transition: 0.2s ease;
 }
-
-
-/* Button Hover */
 
 .auth-card .btn-primary:hover {
     background: #1d4ed8;
+
     transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
 }
-
-
-/* Bottom Link */
 
 .auth-card .text-center a {
     color: #2563eb;
@@ -1008,14 +742,13 @@ transition:.3s;
 }
 
 .auth-card .text-center a:hover {
-    color: #1e3a8a;
-
     text-decoration: underline;
 }
 
-/* =========================
-   COLLEGES PAGE
-========================= */
+
+/* =========================================================
+   EXPLORE COLLEGES
+========================================================= */
 
 .colleges-section {
     min-height: calc(100vh - 85px);
@@ -1028,18 +761,18 @@ transition:.3s;
         #f8fafc;
 }
 
-
-/* Heading */
-
 .colleges-title {
     font-size: 40px;
     font-weight: 700;
+
     color: #173b7a;
+
     margin-bottom: 10px;
 }
 
 .colleges-subtitle {
     color: #64748b;
+
     font-size: 17px;
 }
 
@@ -1054,7 +787,7 @@ transition:.3s;
 .college-search .form-control {
     height: 50px;
 
-    border-radius: 12px 0 0 12px;
+    border-radius: 12px;
 
     border: 1px solid #d7e0ec;
 
@@ -1064,11 +797,42 @@ transition:.3s;
 .college-search .btn {
     padding: 0 28px;
 
-    border-radius: 0 12px 12px 0;
+    border-radius: 12px;
 }
 
 
-/* College Card */
+/* Search/filter box */
+
+.college-search-box {
+    max-width: 900px;
+
+    margin: auto;
+
+    background: #ffffff;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    border: 1px solid #e5eaf2;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.college-search-box .form-select {
+    height: 45px;
+
+    border-radius: 10px;
+
+    border: 1px solid #d7e0ec;
+
+    font-size: 14px;
+
+    color: #475569;
+}
+
+
+/* College cards */
 
 .college-card {
     height: 100%;
@@ -1083,19 +847,17 @@ transition:.3s;
 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
 
-    transition: all 0.25s ease;
+    transition: 0.25s ease;
 }
 
 .college-card:hover {
     transform: translateY(-6px);
 
-    box-shadow: 0 16px 35px rgba(37, 99, 235, 0.14);
-
     border-color: #bfdbfe;
+
+    box-shadow:
+        0 16px 35px rgba(37, 99, 235, 0.14);
 }
-
-
-/* College Icon */
 
 .college-icon {
     width: 55px;
@@ -1114,12 +876,8 @@ transition:.3s;
     margin-bottom: 20px;
 }
 
-
-/* College Name */
-
 .college-card h3 {
     font-size: 20px;
-
     font-weight: 700;
 
     color: #173b7a;
@@ -1129,30 +887,15 @@ transition:.3s;
     margin-bottom: 10px;
 }
 
-
-/* Location */
-
-.college-location {
-    color: #64748b;
-
-    font-size: 14px;
-
-    margin-bottom: 15px;
-}
-
-
-/* Description */
-
-.college-description {
+.college-location,
+.college-description,
+.college-branches {
     color: #64748b;
 
     font-size: 14px;
 
     line-height: 1.6;
 }
-
-
-/* Tags */
 
 .college-tags {
     margin-top: 18px;
@@ -1166,95 +909,17 @@ transition:.3s;
     font-weight: 500;
 }
 
-
-/* Details Button */
-
 .college-card .btn {
     font-size: 14px;
 
     padding: 8px 18px;
 }
 
-/* =========================
-   COLLEGE SEARCH & FILTERS
-========================= */
 
-.college-search-box {
-    max-width: 900px;
-    margin: auto;
-
-    background: #ffffff;
-
-    padding: 25px;
-
-    border-radius: 20px;
-
-    border: 1px solid #e5eaf2;
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-}
-
-
-/* Search */
-
-.college-search .form-control {
-    height: 50px;
-
-    border-radius: 11px;
-
-    border: 1px solid #d7e0ec;
-
-    padding: 10px 16px;
-
-    font-size: 14px;
-}
-
-.college-search .form-control:focus {
-    border-color: #2563eb;
-
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
-}
-
-
-/* Filters */
-
-.college-search-box .form-select {
-    height: 45px;
-
-    border-radius: 10px;
-
-    border: 1px solid #d7e0ec;
-
-    font-size: 14px;
-
-    color: #475569;
-}
-
-.college-search-box .form-select:focus {
-    border-color: #2563eb;
-
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
-}
-
-
-/* Branches */
-
-.college-branches {
-    color: #64748b;
-
-    font-size: 13px;
-
-    margin-top: 16px;
-
-    margin-bottom: 5px;
-}
-
-
-/* No Results */
+/* No results */
 
 #noResults h4 {
     color: #173b7a;
-
     font-weight: 600;
 }
 
@@ -1262,9 +927,10 @@ transition:.3s;
     color: #64748b;
 }
 
-/* =========================
+
+/* =========================================================
    COLLEGE DETAILS
-========================= */
+========================================================= */
 
 .college-details-section {
     min-height: calc(100vh - 85px);
@@ -1277,9 +943,6 @@ transition:.3s;
         #f8fafc;
 }
 
-
-/* Back Link */
-
 .back-link {
     display: inline-block;
 
@@ -1288,7 +951,6 @@ transition:.3s;
     text-decoration: none;
 
     font-size: 14px;
-
     font-weight: 600;
 
     margin-bottom: 25px;
@@ -1298,12 +960,8 @@ transition:.3s;
     color: #173b7a;
 }
 
-
-/* Header */
-
 .college-details-header {
     display: flex;
-
     align-items: center;
 
     gap: 25px;
@@ -1321,9 +979,6 @@ transition:.3s;
     margin-bottom: 25px;
 }
 
-
-/* Icon */
-
 .college-details-icon {
     width: 80px;
     height: 80px;
@@ -1331,9 +986,7 @@ transition:.3s;
     flex-shrink: 0;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     background: #eff6ff;
@@ -1343,30 +996,18 @@ transition:.3s;
     font-size: 40px;
 }
 
-
-/* College Name */
-
 .college-details-header h1 {
     color: #173b7a;
 
     font-size: 32px;
-
     font-weight: 700;
 
     margin-bottom: 8px;
 }
 
-
-/* Location */
-
 .college-details-location {
     color: #64748b;
-
-    margin-bottom: 12px;
 }
-
-
-/* Tags */
 
 .college-detail-tags .badge {
     padding: 8px 13px;
@@ -1375,9 +1016,6 @@ transition:.3s;
 
     font-weight: 500;
 }
-
-
-/* Details Card */
 
 .details-card {
     background: #ffffff;
@@ -1397,7 +1035,6 @@ transition:.3s;
     color: #173b7a;
 
     font-size: 21px;
-
     font-weight: 700;
 
     margin-bottom: 18px;
@@ -1407,16 +1044,11 @@ transition:.3s;
     color: #64748b;
 
     font-size: 14px;
-
     line-height: 1.7;
 }
 
-
-/* Branches */
-
 .branch-list {
     display: flex;
-
     flex-direction: column;
 
     gap: 12px;
@@ -1424,7 +1056,6 @@ transition:.3s;
 
 .branch-item {
     display: flex;
-
     align-items: center;
 
     gap: 12px;
@@ -1438,15 +1069,7 @@ transition:.3s;
     color: #334155;
 
     font-size: 14px;
-
     font-weight: 500;
-}
-
-
-/* Quick Information */
-
-.quick-info {
-    margin-bottom: 20px;
 }
 
 .info-row {
@@ -1478,32 +1101,9 @@ transition:.3s;
 }
 
 
-/* Responsive */
-
-@media (max-width: 576px) {
-
-    .college-details-header {
-        flex-direction: column;
-
-        align-items: flex-start;
-    }
-
-    .college-details-header h1 {
-        font-size: 25px;
-    }
-
-    .college-details-icon {
-        width: 65px;
-        height: 65px;
-
-        font-size: 32px;
-    }
-
-}
-
-/* =========================
+/* =========================================================
    EXPLORE COURSES
-========================= */
+========================================================= */
 
 .courses-section {
     min-height: calc(100vh - 85px);
@@ -1516,16 +1116,12 @@ transition:.3s;
         #f8fafc;
 }
 
-
-/* Heading */
-
 .courses-heading {
     margin-bottom: 40px;
 }
 
 .courses-title {
     font-size: 40px;
-
     font-weight: 700;
 
     color: #173b7a;
@@ -1546,7 +1142,7 @@ transition:.3s;
 }
 
 
-/* Search Box */
+/* Search */
 
 .course-search-box {
     max-width: 900px;
@@ -1564,7 +1160,6 @@ transition:.3s;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
-
 .course-search .form-control {
     height: 48px;
 
@@ -1580,11 +1175,9 @@ transition:.3s;
 .course-search .form-control:focus {
     border-color: #2563eb;
 
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.10);
 }
-
-
-/* Category Filter */
 
 .course-filter .form-select {
     height: 45px;
@@ -1598,14 +1191,8 @@ transition:.3s;
     color: #475569;
 }
 
-.course-filter .form-select:focus {
-    border-color: #2563eb;
 
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
-}
-
-
-/* Course Card */
+/* Course cards */
 
 .course-card {
     height: 100%;
@@ -1620,7 +1207,7 @@ transition:.3s;
 
     box-shadow: 0 9px 28px rgba(0, 0, 0, 0.06);
 
-    transition: all 0.25s ease;
+    transition: 0.25s ease;
 }
 
 .course-card:hover {
@@ -1628,21 +1215,16 @@ transition:.3s;
 
     border-color: #bfdbfe;
 
-    box-shadow: 0 16px 35px rgba(37, 99, 235, 0.13);
+    box-shadow:
+        0 16px 35px rgba(37, 99, 235, 0.13);
 }
-
-
-/* Course Icon */
 
 .course-icon {
     width: 58px;
-
     height: 58px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     background: #eff6ff;
@@ -1654,23 +1236,16 @@ transition:.3s;
     margin-bottom: 20px;
 }
 
-
-/* Course Title */
-
 .course-card h3 {
     color: #173b7a;
 
     font-size: 20px;
-
     font-weight: 700;
 
     line-height: 1.4;
 
     margin-bottom: 10px;
 }
-
-
-/* Description */
 
 .course-description {
     color: #64748b;
@@ -1682,18 +1257,13 @@ transition:.3s;
     min-height: 67px;
 }
 
-
-/* Course Information */
-
 .course-info {
     display: flex;
+    flex-wrap: wrap;
 
     gap: 10px;
 
-    flex-wrap: wrap;
-
     margin-top: 18px;
-
     margin-bottom: 15px;
 }
 
@@ -1707,19 +1277,14 @@ transition:.3s;
     border-radius: 8px;
 
     font-size: 12px;
-
     font-weight: 500;
 }
 
-
-/* Skills */
-
 .course-skills {
     display: flex;
+    flex-wrap: wrap;
 
     gap: 7px;
-
-    flex-wrap: wrap;
 }
 
 .course-skills span {
@@ -1732,30 +1297,13 @@ transition:.3s;
     border-radius: 15px;
 
     font-size: 11px;
-
     font-weight: 600;
 }
-
-
-/* Explore Button */
 
 .course-card .btn {
     font-size: 13px;
 
     padding: 8px 18px;
-}
-
-
-/* No Results */
-
-#courseNoResults h4 {
-    color: #173b7a;
-
-    font-weight: 600;
-}
-
-#courseNoResults p {
-    color: #64748b;
 }
 
 
@@ -1767,9 +1315,7 @@ transition:.3s;
     padding: 35px 40px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     gap: 25px;
@@ -1780,47 +1326,29 @@ transition:.3s;
 
     color: #ffffff;
 
-    box-shadow: 0 12px 30px rgba(23, 59, 122, 0.18);
+    box-shadow:
+        0 12px 30px rgba(23, 59, 122, 0.18);
 }
 
 .course-recommendation h2 {
     font-size: 24px;
-
     font-weight: 700;
 
     margin-bottom: 8px;
 }
 
 .course-recommendation p {
-    margin: 0;
-
     color: #dbeafe;
 
     font-size: 14px;
+
+    margin: 0;
 }
 
 
-/* Mobile */
-
-@media (max-width: 768px) {
-
-    .courses-title {
-        font-size: 32px;
-    }
-
-    .course-recommendation {
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        padding: 30px;
-    }
-
-}
-
-/* =========================
+/* =========================================================
    COURSE DETAILS
-========================= */
+========================================================= */
 
 .course-details-section {
     min-height: calc(100vh - 85px);
@@ -1833,9 +1361,6 @@ transition:.3s;
         #f8fafc;
 }
 
-
-/* Back Link */
-
 .course-back-link {
     display: inline-block;
 
@@ -1844,22 +1369,13 @@ transition:.3s;
     text-decoration: none;
 
     font-size: 14px;
-
     font-weight: 600;
 
     margin-bottom: 25px;
 }
 
-.course-back-link:hover {
-    color: #173b7a;
-}
-
-
-/* Header */
-
 .course-details-header {
     display: flex;
-
     align-items: center;
 
     gap: 25px;
@@ -1877,20 +1393,14 @@ transition:.3s;
     margin-bottom: 25px;
 }
 
-
-/* Icon */
-
 .course-details-icon {
     width: 85px;
-
     height: 85px;
 
     flex-shrink: 0;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     background: #eff6ff;
@@ -1899,9 +1409,6 @@ transition:.3s;
 
     font-size: 42px;
 }
-
-
-/* Label */
 
 .course-label {
     display: inline-block;
@@ -1915,42 +1422,31 @@ transition:.3s;
     border-radius: 15px;
 
     font-size: 12px;
-
     font-weight: 600;
 
     margin-bottom: 8px;
 }
 
-
-/* Header Title */
-
 .course-header-content h1 {
     color: #173b7a;
 
     font-size: 34px;
-
     font-weight: 700;
 
     margin-bottom: 8px;
 }
-
-
-/* Header Description */
 
 .course-header-content p {
     color: #64748b;
 
     font-size: 14px;
 
-    margin: 0;
-
     max-width: 650px;
 
     line-height: 1.6;
+
+    margin: 0;
 }
-
-
-/* Details Card */
 
 .course-details-card {
     background: #ffffff;
@@ -1970,7 +1466,6 @@ transition:.3s;
     color: #173b7a;
 
     font-size: 21px;
-
     font-weight: 700;
 
     margin-bottom: 18px;
@@ -1980,12 +1475,8 @@ transition:.3s;
     color: #64748b;
 
     font-size: 14px;
-
     line-height: 1.7;
 }
-
-
-/* Subjects */
 
 .subject-grid {
     display: grid;
@@ -1998,23 +1489,18 @@ transition:.3s;
 .subject-item {
     background: #f8fafc;
 
-    color: #334155;
-
     padding: 13px;
 
     border-radius: 10px;
 
-    font-size: 13px;
+    color: #334155;
 
+    font-size: 13px;
     font-weight: 500;
 }
 
-
-/* Skills */
-
 .skill-tags {
     display: flex;
-
     flex-wrap: wrap;
 
     gap: 9px;
@@ -2030,12 +1516,8 @@ transition:.3s;
     border-radius: 18px;
 
     font-size: 12px;
-
     font-weight: 600;
 }
-
-
-/* Career */
 
 .career-grid {
     display: grid;
@@ -2053,7 +1535,6 @@ transition:.3s;
     border-radius: 12px;
 
     display: flex;
-
     flex-direction: column;
 
     gap: 5px;
@@ -2069,15 +1550,7 @@ transition:.3s;
     color: #64748b;
 
     font-size: 12px;
-
     line-height: 1.5;
-}
-
-
-/* Quick Information */
-
-.course-quick-info {
-    margin-bottom: 20px;
 }
 
 .course-info-row {
@@ -2094,10 +1567,6 @@ transition:.3s;
     font-size: 14px;
 }
 
-.course-info-row:last-child {
-    border-bottom: none;
-}
-
 .course-info-row span {
     color: #64748b;
 }
@@ -2108,13 +1577,8 @@ transition:.3s;
     text-align: right;
 }
 
-
-/* Higher Studies */
-
 .higher-study-list {
     padding-left: 20px;
-
-    margin: 0;
 }
 
 .higher-study-list li {
@@ -2125,9 +1589,6 @@ transition:.3s;
     margin-bottom: 12px;
 }
 
-
-/* Action Card */
-
 .course-action-card {
     background: #173b7a;
 
@@ -2137,72 +1598,26 @@ transition:.3s;
 
     color: #ffffff;
 
-    box-shadow: 0 10px 28px rgba(23, 59, 122, 0.18);
+    box-shadow:
+        0 10px 28px rgba(23, 59, 122, 0.18);
 }
 
 .course-action-card h3 {
     font-size: 20px;
-
     font-weight: 700;
-
-    margin-bottom: 8px;
 }
 
 .course-action-card p {
     color: #dbeafe;
 
     font-size: 13px;
-
     line-height: 1.6;
-
-    margin-bottom: 20px;
 }
 
 
-/* Mobile */
-
-@media (max-width: 768px) {
-
-    .course-details-header {
-        flex-direction: column;
-
-        align-items: flex-start;
-    }
-
-    .course-header-content h1 {
-        font-size: 28px;
-    }
-
-    .subject-grid,
-    .career-grid {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-@media (max-width: 576px) {
-
-    .course-details-section {
-        padding: 40px 15px;
-    }
-
-    .course-details-header {
-        padding: 25px;
-    }
-
-    .course-details-icon {
-        width: 70px;
-
-        height: 70px;
-
-        font-size: 34px;
-    }
-
-}
-
-/* =========================
-   CUTOFF PAGE
-========================= */
+/* =========================================================
+   CUTOFF
+========================================================= */
 
 .cutoff-section {
     min-height: calc(100vh - 85px);
@@ -2215,9 +1630,6 @@ transition:.3s;
         #f8fafc;
 }
 
-
-/* Heading */
-
 .cutoff-heading {
     margin-bottom: 40px;
 }
@@ -2226,7 +1638,6 @@ transition:.3s;
     color: #173b7a;
 
     font-size: 40px;
-
     font-weight: 700;
 
     margin-bottom: 10px;
@@ -2240,12 +1651,11 @@ transition:.3s;
     margin: auto;
 
     font-size: 15px;
-
     line-height: 1.6;
 }
 
 
-/* Filter Box */
+/* Filter */
 
 .cutoff-filter-box {
     max-width: 1000px;
@@ -2269,7 +1679,6 @@ transition:.3s;
     color: #334155;
 
     font-size: 13px;
-
     font-weight: 600;
 
     margin-bottom: 8px;
@@ -2287,29 +1696,18 @@ transition:.3s;
     font-size: 14px;
 }
 
-.cutoff-filter-box .form-select:focus {
-    border-color: #2563eb;
-
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
-}
-
-
-/* Button */
-
 .cutoff-button {
     width: 100%;
-
     height: 47px;
 
     border-radius: 10px;
 
     font-size: 14px;
-
     font-weight: 600;
 }
 
 
-/* Result */
+/* Results */
 
 .cutoff-result-section {
     max-width: 1000px;
@@ -2331,7 +1729,6 @@ transition:.3s;
     display: flex;
 
     justify-content: space-between;
-
     align-items: center;
 
     gap: 20px;
@@ -2343,7 +1740,6 @@ transition:.3s;
     color: #2563eb;
 
     font-size: 11px;
-
     font-weight: 700;
 
     letter-spacing: 1px;
@@ -2353,7 +1749,6 @@ transition:.3s;
     color: #173b7a;
 
     font-size: 24px;
-
     font-weight: 700;
 
     margin: 6px 0;
@@ -2377,10 +1772,7 @@ transition:.3s;
     border-radius: 10px;
 
     font-size: 13px;
-
     font-weight: 700;
-
-    white-space: nowrap;
 }
 
 
@@ -2402,16 +1794,7 @@ transition:.3s;
     padding: 14px;
 
     font-size: 13px;
-
     font-weight: 600;
-}
-
-.cutoff-table thead th:first-child {
-    border-radius: 10px 0 0 10px;
-}
-
-.cutoff-table thead th:last-child {
-    border-radius: 0 10px 10px 0;
 }
 
 .cutoff-table tbody td {
@@ -2424,18 +1807,15 @@ transition:.3s;
     font-size: 14px;
 }
 
-.cutoff-table tbody tr:hover {
-    background: #f8fafc;
-}
-
 .cutoff-table tbody td:not(:first-child) {
     font-weight: 600;
 
     color: #173b7a;
 }
 
-
-/* Note */
+.cutoff-table tbody tr:hover td {
+    background: #f8fafc;
+}
 
 .cutoff-note {
     color: #94a3b8;
@@ -2443,12 +1823,10 @@ transition:.3s;
     font-size: 11px;
 
     margin-top: 15px;
-
-    margin-bottom: 0;
 }
 
 
-/* Information Cards */
+/* Information cards */
 
 .cutoff-info-row {
     max-width: 1000px;
@@ -2472,13 +1850,10 @@ transition:.3s;
 
 .info-icon {
     width: 50px;
-
     height: 50px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     background: #eff6ff;
@@ -2494,7 +1869,6 @@ transition:.3s;
     color: #173b7a;
 
     font-size: 20px;
-
     font-weight: 700;
 
     margin-bottom: 15px;
@@ -2504,16 +1878,11 @@ transition:.3s;
     color: #64748b;
 
     font-size: 14px;
-
     line-height: 1.7;
 }
 
-
-/* Steps */
-
 .cutoff-steps {
     display: flex;
-
     flex-direction: column;
 
     gap: 12px;
@@ -2521,7 +1890,6 @@ transition:.3s;
 
 .cutoff-steps div {
     display: flex;
-
     align-items: center;
 
     gap: 12px;
@@ -2533,15 +1901,12 @@ transition:.3s;
 
 .cutoff-steps span {
     width: 28px;
-
     height: 28px;
 
     flex-shrink: 0;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     background: #eff6ff;
@@ -2551,39 +1916,13 @@ transition:.3s;
     border-radius: 50%;
 
     font-size: 12px;
-
     font-weight: 700;
 }
 
 
-/* Responsive */
-
-@media (max-width: 768px) {
-
-    .cutoff-title {
-        font-size: 32px;
-    }
-
-    .cutoff-filter-box,
-    .cutoff-result-section {
-        padding: 22px;
-    }
-
-    .cutoff-result-header {
-        flex-direction: column;
-
-        align-items: flex-start;
-    }
-
-    .cutoff-table {
-        min-width: 650px;
-    }
-
-}
-
-/* =========================
-   PREDICTION PAGE
-========================= */
+/* =========================================================
+   PREDICTION
+========================================================= */
 
 .prediction-section {
     min-height: calc(100vh - 85px);
@@ -2596,9 +1935,6 @@ transition:.3s;
         #f8fafc;
 }
 
-
-/* Heading */
-
 .prediction-heading {
     margin-bottom: 40px;
 }
@@ -2609,7 +1945,6 @@ transition:.3s;
     color: #2563eb;
 
     font-size: 11px;
-
     font-weight: 700;
 
     letter-spacing: 1.2px;
@@ -2621,7 +1956,6 @@ transition:.3s;
     color: #173b7a;
 
     font-size: 40px;
-
     font-weight: 700;
 
     margin-bottom: 10px;
@@ -2635,12 +1969,11 @@ transition:.3s;
     color: #64748b;
 
     font-size: 15px;
-
     line-height: 1.6;
 }
 
 
-/* Form Card */
+/* Form */
 
 .prediction-form-card {
     max-width: 1000px;
@@ -2658,12 +1991,8 @@ transition:.3s;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
-
-/* Form Header */
-
 .prediction-form-header {
     display: flex;
-
     align-items: center;
 
     gap: 15px;
@@ -2677,13 +2006,10 @@ transition:.3s;
 
 .prediction-form-icon {
     width: 52px;
-
     height: 52px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     background: #eff6ff;
@@ -2697,10 +2023,7 @@ transition:.3s;
     color: #173b7a;
 
     font-size: 21px;
-
     font-weight: 700;
-
-    margin-bottom: 4px;
 }
 
 .prediction-form-header p {
@@ -2711,16 +2034,12 @@ transition:.3s;
     margin: 0;
 }
 
-
-/* Form */
-
 .prediction-form-card label {
     display: block;
 
     color: #334155;
 
     font-size: 13px;
-
     font-weight: 600;
 
     margin-bottom: 8px;
@@ -2739,13 +2058,6 @@ transition:.3s;
     font-size: 14px;
 }
 
-.prediction-form-card .form-control:focus,
-.prediction-form-card .form-select:focus {
-    border-color: #2563eb;
-
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
-}
-
 .prediction-form-card small {
     display: block;
 
@@ -2756,18 +2068,12 @@ transition:.3s;
     margin-top: 6px;
 }
 
-
-/* Prediction Button */
-
 .prediction-button {
     width: 100%;
-
     height: 50px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     gap: 12px;
@@ -2775,10 +2081,7 @@ transition:.3s;
     border-radius: 11px;
 
     font-size: 14px;
-
     font-weight: 600;
-
-    margin-top: 5px;
 }
 
 
@@ -2800,7 +2103,6 @@ transition:.3s;
     color: #173b7a;
 
     font-size: 28px;
-
     font-weight: 700;
 
     margin-bottom: 8px;
@@ -2814,12 +2116,10 @@ transition:.3s;
     max-width: 650px;
 
     margin: auto;
-
-    line-height: 1.6;
 }
 
 
-/* Prediction Cards */
+/* Prediction cards */
 
 .prediction-card {
     height: 100%;
@@ -2833,21 +2133,11 @@ transition:.3s;
     border: 1px solid #e5eaf2;
 
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-
-    transition: all 0.25s ease;
-}
-
-.prediction-card:hover {
-    transform: translateY(-5px);
-
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.09);
 }
 
 .chance-top {
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     margin-bottom: 18px;
@@ -2859,16 +2149,8 @@ transition:.3s;
     border-radius: 15px;
 
     font-size: 11px;
-
     font-weight: 700;
 }
-
-.chance-icon {
-    font-size: 20px;
-}
-
-
-/* Chance Colors */
 
 .high-chance {
     border-top: 4px solid #16a34a;
@@ -2876,10 +2158,8 @@ transition:.3s;
 
 .high-chance .chance-badge {
     background: #dcfce7;
-
     color: #15803d;
 }
-
 
 .good-chance {
     border-top: 4px solid #2563eb;
@@ -2887,10 +2167,8 @@ transition:.3s;
 
 .good-chance .chance-badge {
     background: #dbeafe;
-
     color: #1d4ed8;
 }
-
 
 .moderate-chance {
     border-top: 4px solid #eab308;
@@ -2898,21 +2176,14 @@ transition:.3s;
 
 .moderate-chance .chance-badge {
     background: #fef9c3;
-
     color: #a16207;
 }
-
-
-/* Card Content */
 
 .prediction-card h3 {
     color: #173b7a;
 
     font-size: 18px;
-
     font-weight: 700;
-
-    line-height: 1.4;
 
     margin-bottom: 7px;
 }
@@ -2927,7 +2198,6 @@ transition:.3s;
 
 .prediction-card-info {
     display: flex;
-
     flex-wrap: wrap;
 
     gap: 7px;
@@ -2948,11 +2218,10 @@ transition:.3s;
 }
 
 
-/* Progress Bar */
+/* Progress */
 
 .chance-bar {
     width: 100%;
-
     height: 7px;
 
     background: #eef2f7;
@@ -2972,19 +2241,16 @@ transition:.3s;
 
 .high-progress {
     width: 90%;
-
     background: #16a34a;
 }
 
 .good-progress {
     width: 72%;
-
     background: #2563eb;
 }
 
 .moderate-progress {
     width: 52%;
-
     background: #eab308;
 }
 
@@ -2992,8 +2258,6 @@ transition:.3s;
     color: #94a3b8;
 
     font-size: 11px;
-
-    line-height: 1.5;
 }
 
 
@@ -3001,7 +2265,6 @@ transition:.3s;
 
 .prediction-note {
     display: flex;
-
     align-items: flex-start;
 
     gap: 12px;
@@ -3017,22 +2280,17 @@ transition:.3s;
     border: 1px solid #dbeafe;
 }
 
-.prediction-note > span {
-    font-size: 18px;
-}
-
 .prediction-note p {
     color: #475569;
 
     font-size: 12px;
-
     line-height: 1.6;
 
     margin: 0;
 }
 
 
-/* How It Works */
+/* How it works */
 
 .prediction-how-section {
     max-width: 1000px;
@@ -3044,7 +2302,6 @@ transition:.3s;
     color: #173b7a;
 
     font-size: 27px;
-
     font-weight: 700;
 
     margin-bottom: 8px;
@@ -3055,9 +2312,6 @@ transition:.3s;
 
     font-size: 14px;
 }
-
-
-/* Steps */
 
 .prediction-step {
     height: 100%;
@@ -3077,7 +2331,6 @@ transition:.3s;
     color: #2563eb;
 
     font-size: 13px;
-
     font-weight: 700;
 
     margin-bottom: 15px;
@@ -3087,7 +2340,6 @@ transition:.3s;
     color: #334155;
 
     font-size: 17px;
-
     font-weight: 700;
 
     margin-bottom: 8px;
@@ -3097,34 +2349,15 @@ transition:.3s;
     color: #64748b;
 
     font-size: 13px;
-
     line-height: 1.6;
 
     margin: 0;
 }
 
 
-/* Responsive */
-
-@media (max-width: 768px) {
-
-    .prediction-title {
-        font-size: 32px;
-    }
-
-    .prediction-form-card {
-        padding: 23px;
-    }
-
-    .prediction-form-header {
-        align-items: flex-start;
-    }
-
-}
-
-/* =========================
-   ABOUT PAGE
-========================= */
+/* =========================================================
+   ABOUT
+========================================================= */
 
 .about-section {
     min-height: calc(100vh - 85px);
@@ -3144,6 +2377,8 @@ transition:.3s;
     max-width: 850px;
 
     margin: 0 auto 70px;
+
+    text-align: center;
 }
 
 .about-label,
@@ -3151,7 +2386,6 @@ transition:.3s;
     color: #2563eb;
 
     font-size: 11px;
-
     font-weight: 700;
 
     letter-spacing: 1.3px;
@@ -3161,7 +2395,6 @@ transition:.3s;
     color: #173b7a;
 
     font-size: 44px;
-
     font-weight: 700;
 
     line-height: 1.2;
@@ -3183,12 +2416,11 @@ transition:.3s;
     color: #64748b;
 
     font-size: 15px;
-
     line-height: 1.8;
 }
 
 
-/* Introduction */
+/* Intro */
 
 .about-intro {
     max-width: 1000px;
@@ -3206,7 +2438,6 @@ transition:.3s;
     color: #173b7a;
 
     font-size: 30px;
-
     font-weight: 700;
 
     margin: 10px 0 18px;
@@ -3216,14 +2447,13 @@ transition:.3s;
     color: #64748b;
 
     font-size: 14px;
-
     line-height: 1.8;
 
     margin-bottom: 12px;
 }
 
 
-/* Highlight Card */
+/* Highlight */
 
 .about-highlight-card {
     background: #173b7a;
@@ -3234,18 +2464,16 @@ transition:.3s;
 
     border-radius: 25px;
 
-    box-shadow: 0 15px 35px rgba(23, 59, 122, 0.18);
+    box-shadow:
+        0 15px 35px rgba(23, 59, 122, 0.18);
 }
 
 .about-highlight-icon {
     width: 58px;
-
     height: 58px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     background: rgba(255, 255, 255, 0.12);
@@ -3269,10 +2497,7 @@ transition:.3s;
     color: #dbeafe;
 
     font-size: 14px;
-
     line-height: 1.7;
-
-    margin: 0;
 }
 
 
@@ -3292,6 +2517,8 @@ transition:.3s;
     border-radius: 24px;
 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+
+    text-align: center;
 }
 
 .about-mission p {
@@ -3302,19 +2529,17 @@ transition:.3s;
     color: #64748b;
 
     font-size: 14px;
-
     line-height: 1.7;
 }
 
 
-/* Section Heading */
+/* Features */
 
 .about-section-heading {
     margin-bottom: 35px;
+
+    text-align: center;
 }
-
-
-/* Feature Cards */
 
 .about-features {
     max-width: 1050px;
@@ -3335,40 +2560,18 @@ transition:.3s;
 
     box-shadow: 0 7px 22px rgba(0, 0, 0, 0.05);
 
-    transition: all 0.25s ease;
+    transition: 0.25s ease;
 }
 
 .about-feature-card:hover {
     transform: translateY(-5px);
-
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
 }
 
-.feature-icon {
-    width: 50px;
-
-    height: 50px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #eff6ff;
-
-    border-radius: 14px;
-
-    font-size: 23px;
-
-    margin-bottom: 18px;
-}
-
-.about-feature-card h3 {
+.about-feature-card h3,
+.about-feature-card h4 {
     color: #173b7a;
 
     font-size: 18px;
-
     font-weight: 700;
 
     margin-bottom: 10px;
@@ -3378,10 +2581,7 @@ transition:.3s;
     color: #64748b;
 
     font-size: 13px;
-
     line-height: 1.7;
-
-    margin: 0;
 }
 
 
@@ -3391,50 +2591,6 @@ transition:.3s;
     max-width: 1050px;
 
     margin: 90px auto 0;
-}
-
-.process-card {
-    height: 100%;
-
-    padding: 28px;
-
-    background: #ffffff;
-
-    border: 1px solid #e5eaf2;
-
-    border-radius: 20px;
-
-    box-shadow: 0 7px 22px rgba(0, 0, 0, 0.05);
-}
-
-.process-number {
-    color: #2563eb;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    margin-bottom: 20px;
-}
-
-.process-card h3 {
-    color: #173b7a;
-
-    font-size: 20px;
-
-    font-weight: 700;
-
-    margin-bottom: 10px;
-}
-
-.process-card p {
-    color: #64748b;
-
-    font-size: 13px;
-
-    line-height: 1.7;
-
-    margin: 0;
 }
 
 
@@ -3457,12 +2613,11 @@ transition:.3s;
 
     color: #ffffff;
 
-    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.18);
+    text-align: center;
 }
 
 .about-cta h2 {
     font-size: 28px;
-
     font-weight: 700;
 
     margin-bottom: 10px;
@@ -3488,14 +2643,894 @@ transition:.3s;
 
 .about-cta .btn:hover {
     background: #eff6ff;
-
-    color: #173b7a;
 }
 
 
-/* Responsive */
+/* =========================================================
+   DARK / LIGHT TOGGLE
+========================================================= */
+
+.theme-toggle {
+    width: 42px;
+    height: 42px;
+
+    border: none;
+
+    background: transparent;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    margin-right: 15px;
+
+    transition: 0.25s ease;
+}
+
+.theme-toggle:hover {
+    background: #eff6ff;
+}
+
+
+/* =========================================================
+   DARK MODE
+   ONE CONSISTENT EDU GUIDE THEME
+========================================================= */
+
+body.dark-mode {
+    background: #0f172a !important;
+
+    color: #e2e8f0;
+}
+
+
+/* ---------- Navbar ---------- */
+
+body.dark-mode .navbar {
+    background: #111827 !important;
+}
+
+body.dark-mode .navbar-brand,
+body.dark-mode .brand-text {
+    color: #93c5fd !important;
+}
+
+body.dark-mode .navbar-nav .nav-link {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .navbar-nav .nav-link:hover {
+    color: #60a5fa !important;
+}
+
+body.dark-mode .navbar-nav .nav-link.active:not(.dropdown-toggle) {
+    color: #60a5fa !important;
+}
+
+body.dark-mode .navbar-nav .dropdown-toggle.active-dropdown {
+    color: #60a5fa !important;
+
+    border-bottom-color: #60a5fa !important;
+}
+
+
+/* ---------- Dropdown ---------- */
+
+body.dark-mode .navbar-nav .dropdown-menu {
+    background: #1e293b !important;
+}
+
+body.dark-mode .navbar-nav .dropdown-item {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .navbar-nav .dropdown-item:hover {
+    background: #334155 !important;
+
+    color: #93c5fd !important;
+}
+
+body.dark-mode .navbar-nav .dropdown-item.active {
+    background: #1e3a5f !important;
+
+    color: #93c5fd !important;
+}
+
+
+/* ---------- Theme button ---------- */
+
+body.dark-mode .theme-toggle {
+    color: #ffffff;
+}
+
+body.dark-mode .theme-toggle:hover {
+    background: #334155;
+}
+
+
+/* =========================================================
+   DARK - COMMON PAGE BACKGROUNDS
+========================================================= */
+
+body.dark-mode .home-page,
+body.dark-mode .home-section,
+body.dark-mode .colleges-section,
+body.dark-mode .college-details-section,
+body.dark-mode .courses-section,
+body.dark-mode .course-details-section,
+body.dark-mode .cutoff-section,
+body.dark-mode .prediction-section,
+body.dark-mode .about-section {
+    background: #0f172a !important;
+}
+
+
+/* Subtle consistent gradient on major pages */
+
+body.dark-mode .colleges-section,
+body.dark-mode .courses-section,
+body.dark-mode .college-details-section,
+body.dark-mode .course-details-section,
+body.dark-mode .cutoff-section,
+body.dark-mode .prediction-section,
+body.dark-mode .about-section,
+body.dark-mode .auth-section {
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(37, 99, 235, 0.16),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(59, 130, 246, 0.10),
+            transparent 32%
+        ),
+        #0f172a !important;
+}
+
+
+/* =========================================================
+   DARK - HOME
+========================================================= */
+
+body.dark-mode .home-hero {
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(37, 99, 235, 0.20),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(59, 130, 246, 0.12),
+            transparent 35%
+        ),
+        #0f172a !important;
+}
+
+body.dark-mode .home-section-light {
+    background: #111827 !important;
+}
+
+body.dark-mode .home-title {
+    color: #e0f2fe !important;
+}
+
+body.dark-mode .home-title span {
+    color: #60a5fa !important;
+}
+
+body.dark-mode .home-subtitle {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .home-description {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .home-heading h2 {
+    color: #bfdbfe !important;
+}
+
+body.dark-mode .home-heading p {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .home-card,
+body.dark-mode .process-card,
+body.dark-mode .feature-card {
+    background: #1e293b !important;
+
+    border-color: #334155 !important;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.20);
+}
+
+body.dark-mode .home-card h3,
+body.dark-mode .process-card h3,
+body.dark-mode .process-card h4,
+body.dark-mode .feature-card h4 {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .home-card p,
+body.dark-mode .process-card p {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .home-card-icon,
+body.dark-mode .feature-icon {
+    background: #1e3a5f !important;
+}
+
+body.dark-mode .home-stats {
+    background: #172554 !important;
+}
+
+body.dark-mode .home-cta {
+    background:
+        linear-gradient(
+            135deg,
+            #172554,
+            #2563eb
+        ) !important;
+}
+
+body.dark-mode .home-footer {
+    background: #020617 !important;
+}
+
+
+/* =========================================================
+   DARK - AUTH
+========================================================= */
+
+body.dark-mode .auth-card {
+    background: #1e293b !important;
+
+    border: 1px solid #334155;
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.30);
+}
+
+body.dark-mode .auth-card h1 {
+    color: #e0f2fe !important;
+}
+
+body.dark-mode .auth-card p {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .auth-card .form-label {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .auth-card .form-control {
+    background: #111827 !important;
+
+    color: #e2e8f0 !important;
+
+    border-color: #475569 !important;
+}
+
+body.dark-mode .auth-card .form-control::placeholder {
+    color: #64748b !important;
+}
+
+body.dark-mode .auth-card .text-center a {
+    color: #60a5fa !important;
+}
+
+
+/* =========================================================
+   DARK - COLLEGES
+========================================================= */
+
+body.dark-mode .colleges-title,
+body.dark-mode .courses-title,
+body.dark-mode .cutoff-title,
+body.dark-mode .prediction-title {
+    color: #e0f2fe !important;
+}
+
+body.dark-mode .colleges-subtitle,
+body.dark-mode .courses-subtitle,
+body.dark-mode .cutoff-subtitle,
+body.dark-mode .prediction-subtitle {
+    color: #94a3b8 !important;
+}
+
+
+/* Search boxes */
+
+body.dark-mode .college-search-box,
+body.dark-mode .course-search-box,
+body.dark-mode .cutoff-filter-box,
+body.dark-mode .prediction-form-card {
+    background: #1e293b !important;
+
+    border-color: #334155 !important;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.22);
+}
+
+
+/* Inputs */
+
+body.dark-mode .college-search .form-control,
+body.dark-mode .course-search .form-control,
+body.dark-mode .college-search-box .form-select,
+body.dark-mode .course-filter .form-select,
+body.dark-mode .cutoff-filter-box .form-select,
+body.dark-mode .prediction-form-card .form-control,
+body.dark-mode .prediction-form-card .form-select {
+    background: #111827 !important;
+
+    color: #e2e8f0 !important;
+
+    border-color: #475569 !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #64748b !important;
+}
+
+
+/* College cards */
+
+body.dark-mode .college-card {
+    background: #1e293b !important;
+
+    border-color: #334155 !important;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.20);
+}
+
+body.dark-mode .college-card h3 {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .college-location,
+body.dark-mode .college-description,
+body.dark-mode .college-branches {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .college-icon {
+    background: #1e3a5f !important;
+}
+
+
+/* College details */
+
+body.dark-mode .college-details-header,
+body.dark-mode .details-card {
+    background: #1e293b !important;
+
+    border-color: #334155 !important;
+}
+
+body.dark-mode .college-details-header h1,
+body.dark-mode .details-card h2 {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .college-details-location,
+body.dark-mode .details-card p,
+body.dark-mode .info-row span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .info-row strong {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .college-details-icon {
+    background: #1e3a5f !important;
+}
+
+body.dark-mode .branch-item {
+    background: #111827 !important;
+
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .info-row {
+    border-color: #334155 !important;
+}
+
+
+/* =========================================================
+   DARK - COURSES
+========================================================= */
+
+body.dark-mode .course-card {
+    background: #1e293b !important;
+
+    border-color: #334155 !important;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.20);
+}
+
+body.dark-mode .course-card h3 {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .course-description {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .course-icon {
+    background: #1e3a5f !important;
+}
+
+body.dark-mode .course-info span {
+    background: #111827 !important;
+
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .course-skills span {
+    background: #1e3a5f !important;
+
+    color: #93c5fd !important;
+}
+
+body.dark-mode .course-recommendation {
+    background:
+        linear-gradient(
+            135deg,
+            #172554,
+            #2563eb
+        ) !important;
+}
+
+
+/* Course details */
+
+body.dark-mode .course-details-header,
+body.dark-mode .course-details-card {
+    background: #1e293b !important;
+
+    border-color: #334155 !important;
+}
+
+body.dark-mode .course-header-content h1,
+body.dark-mode .course-details-card h2 {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .course-header-content p,
+body.dark-mode .course-details-card p,
+body.dark-mode .course-info-row span,
+body.dark-mode .higher-study-list li {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .course-info-row strong,
+body.dark-mode .career-item strong {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .course-details-icon,
+body.dark-mode .course-label {
+    background: #1e3a5f !important;
+}
+
+body.dark-mode .course-label {
+    color: #93c5fd !important;
+}
+
+body.dark-mode .subject-item,
+body.dark-mode .career-item {
+    background: #111827 !important;
+}
+
+body.dark-mode .career-item span {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .course-info-row {
+    border-color: #334155 !important;
+}
+
+body.dark-mode .course-action-card {
+    background:
+        linear-gradient(
+            135deg,
+            #172554,
+            #2563eb
+        ) !important;
+}
+
+
+/* =========================================================
+   DARK - CUTOFF
+========================================================= */
+
+body.dark-mode .cutoff-result-section,
+body.dark-mode .cutoff-info-card {
+    background: #1e293b !important;
+
+    border-color: #334155 !important;
+}
+
+body.dark-mode .cutoff-result-header h2,
+body.dark-mode .cutoff-info-card h2 {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .cutoff-result-header p,
+body.dark-mode .cutoff-info-card p,
+body.dark-mode .cutoff-steps div {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .result-year {
+    background: #1e3a5f !important;
+
+    color: #93c5fd !important;
+}
+
+body.dark-mode .cutoff-table tbody td {
+    background: #1e293b !important;
+
+    color: #cbd5e1 !important;
+
+    border-color: #334155 !important;
+}
+
+body.dark-mode .cutoff-table tbody td:not(:first-child) {
+    color: #93c5fd !important;
+}
+
+body.dark-mode .cutoff-table tbody tr:hover td {
+    background: #273449 !important;
+}
+
+body.dark-mode .cutoff-steps span,
+body.dark-mode .info-icon {
+    background: #1e3a5f !important;
+
+    color: #93c5fd !important;
+}
+
+
+/* =========================================================
+   DARK - PREDICTION
+========================================================= */
+
+body.dark-mode .prediction-form-header {
+    border-color: #334155 !important;
+}
+
+body.dark-mode .prediction-form-header h2 {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .prediction-form-header p,
+body.dark-mode .prediction-form-card small {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .prediction-form-card label {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .prediction-form-icon {
+    background: #1e3a5f !important;
+}
+
+body.dark-mode .results-heading h2,
+body.dark-mode .prediction-how-section h2 {
+    color: #e0f2fe !important;
+}
+
+body.dark-mode .results-heading p,
+body.dark-mode .prediction-how-section > .text-center p {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .prediction-card,
+body.dark-mode .prediction-step {
+    background: #1e293b !important;
+
+    border-color: #334155 !important;
+}
+
+body.dark-mode .prediction-card h3,
+body.dark-mode .prediction-step h3 {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .prediction-location,
+body.dark-mode .prediction-step p,
+body.dark-mode .prediction-card small {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .prediction-card-info span {
+    background: #111827 !important;
+
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .chance-bar {
+    background: #334155 !important;
+}
+
+body.dark-mode .prediction-note {
+    background: #172554 !important;
+
+    border-color: #1e3a5f !important;
+}
+
+body.dark-mode .prediction-note p {
+    color: #cbd5e1 !important;
+}
+
+
+/* =========================================================
+   DARK - ABOUT
+========================================================= */
+
+body.dark-mode .about-hero h1 {
+    color: #e0f2fe !important;
+}
+
+body.dark-mode .about-hero h1 span {
+    color: #60a5fa !important;
+}
+
+body.dark-mode .about-hero p,
+body.dark-mode .about-content p {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .about-content h2,
+body.dark-mode .about-mission h2,
+body.dark-mode .about-section-heading h2 {
+    color: #e0f2fe !important;
+}
+
+body.dark-mode .about-mission,
+body.dark-mode .about-feature-card,
+body.dark-mode .about-process .process-card {
+    background: #1e293b !important;
+
+    border-color: #334155 !important;
+}
+
+body.dark-mode .about-feature-card h3,
+body.dark-mode .about-feature-card h4,
+body.dark-mode .about-process .process-card h3 {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .about-feature-card p,
+body.dark-mode .about-mission p,
+body.dark-mode .about-process .process-card p {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .about-feature-card .feature-icon {
+    background: #1e3a5f !important;
+}
+
+body.dark-mode .about-highlight-card,
+body.dark-mode .about-cta {
+    background:
+        linear-gradient(
+            135deg,
+            #172554,
+            #2563eb
+        ) !important;
+}
+
+
+/* =========================================================
+   DARK - BOOTSTRAP
+========================================================= */
+
+body.dark-mode .bg-light {
+    background-color: #111827 !important;
+}
+
+body.dark-mode .bg-white {
+    background-color: #0f172a !important;
+}
+
+body.dark-mode .text-muted {
+    color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   DARK - MOBILE NAVBAR
+========================================================= */
+
+body.dark-mode .navbar-toggler {
+    border-color: #475569;
+}
+
+body.dark-mode .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .navbar {
+        height: auto;
+
+        min-height: 85px;
+    }
+
+    .navbar-nav {
+        gap: 5px;
+
+        margin-top: 15px;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 9px 10px;
+    }
+
+    .theme-toggle {
+        margin-top: 10px;
+    }
+}
+
 
 @media (max-width: 768px) {
+
+    /* Home */
+
+    .home-hero {
+        min-height: auto;
+
+        padding: 50px 18px;
+
+        text-align: center;
+    }
+
+    .home-title {
+        font-size: 34px;
+    }
+
+    .home-subtitle {
+        font-size: 18px;
+    }
+
+    .home-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .home-buttons {
+        justify-content: center;
+
+        flex-wrap: wrap;
+    }
+
+    .home-logo {
+        width: 230px;
+
+        margin-top: 35px;
+    }
+
+    .home-section {
+        padding: 55px 18px;
+    }
+
+    .home-heading h2 {
+        font-size: 26px;
+    }
+
+    .home-cta {
+        margin: 60px 18px 20px;
+
+        padding: 40px 20px;
+    }
+
+
+    /* Colleges */
+
+    .colleges-section {
+        padding: 50px 18px;
+    }
+
+    .colleges-title {
+        font-size: 32px;
+    }
+
+
+    /* Courses */
+
+    .courses-section {
+        padding: 50px 18px;
+    }
+
+    .courses-title {
+        font-size: 32px;
+    }
+
+    .course-recommendation {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 30px;
+    }
+
+
+    /* Details */
+
+    .college-details-header,
+    .course-details-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .college-details-header h1,
+    .course-header-content h1 {
+        font-size: 28px;
+    }
+
+
+    /* Cutoff */
+
+    .cutoff-title,
+    .prediction-title {
+        font-size: 32px;
+    }
+
+    .cutoff-filter-box,
+    .cutoff-result-section {
+        padding: 22px;
+    }
+
+    .cutoff-result-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .cutoff-table {
+        min-width: 650px;
+    }
+
+
+    /* Prediction */
+
+    .prediction-form-card {
+        padding: 23px;
+    }
+
+    .prediction-form-header {
+        align-items: flex-start;
+    }
+
+
+    /* About */
 
     .about-section {
         padding: 45px 18px;
@@ -3519,6 +3554,46 @@ transition:.3s;
     .about-mission h2,
     .about-section-heading h2 {
         font-size: 25px;
+    }
+
+
+    /* Course details */
+
+    .subject-grid,
+    .career-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    .auth-card {
+        padding: 32px 24px;
+    }
+
+    .college-details-icon,
+    .course-details-icon {
+        width: 70px;
+        height: 70px;
+
+        font-size: 34px;
+    }
+
+    .college-details-header h1 {
+        font-size: 25px;
+    }
+
+    .course-header-content h1 {
+        font-size: 26px;
+    }
+
+    .course-details-section {
+        padding: 40px 15px;
+    }
+
+    .course-details-header {
+        padding: 25px;
     }
 
 }
