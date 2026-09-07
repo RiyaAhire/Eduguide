@@ -783,7 +783,7 @@ transform:translateY(-12px);
 
 box-shadow:0 25px 45px rgba(37,99,235,.15);
 
-}
+
 
 background:linear-gradient(135deg,2563EB,1E3A8A);
 
@@ -792,7 +792,7 @@ font-size:55px;
 
 font-weight:800;
 
-
+}
 footer{
 
 background:#111827;
@@ -801,12 +801,12 @@ padding:80px;
 
 color:white;
 
-}
+
 
 background:
 radial-gradient(circle at top left,#DBEAFE,transparent 40%),
 radial-gradient(circle at bottom right,#BFDBFE,transparent 30%),
-F8FAFC;
+F8FAFC; }
 
 section{
 
@@ -3521,4 +3521,225 @@ transition:.3s;
         font-size: 25px;
     }
 
+}
+.prediction-info-section {
+    max-width: 1100px;
+    margin: 45px auto 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.prediction-info-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #e5eaf2;
+    box-shadow: 0 7px 22px rgba(0, 0, 0, 0.05);
+}
+
+.prediction-info-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eff6ff;
+    border-radius: 14px;
+    font-size: 23px;
+    margin-bottom: 18px;
+}
+
+.prediction-info-card h2 {
+    color: #173b7a;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.prediction-info-card > p {
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.prediction-factor-list {
+    margin-top: 10px;
+}
+
+.prediction-factor-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eef2f7;
+}
+
+.prediction-factor-item:last-child {
+    border-bottom: none;
+}
+
+.prediction-factor-item > span {
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eff6ff;
+    color: #2563eb;
+    border-radius: 9px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.prediction-factor-item h4 {
+    color: #334155;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 3px;
+}
+
+.prediction-factor-item p {
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.prediction-login-section {
+    max-width: 900px;
+    margin: 55px auto 70px;
+}
+
+.prediction-login-card {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background: linear-gradient(
+        135deg,
+        #eff6ff,
+        #ffffff 60%,
+        #f8fafc
+    );
+    border: 1px solid #bfdbfe;
+    border-radius: 22px;
+    padding: 45px 35px;
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.08);
+}
+
+.prediction-login-icon {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    background: #ffffff;
+    border: 1px solid #dbeafe;
+    border-radius: 50%;
+    font-size: 23px;
+}
+
+.prediction-login-label {
+    display: block;
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+}
+
+.prediction-login-card h2 {
+    color: #173b7a;
+    font-size: 27px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.prediction-login-card > p {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.prediction-login-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.prediction-login-btn,
+.prediction-register-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 170px;
+    padding: 11px 22px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.prediction-login-btn {
+    background: #09296e;
+    color: #ffffff;
+    border: 1px solid #09296e;
+}
+
+.prediction-login-btn:hover {
+    background: #0f2972;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.prediction-register-btn {
+    background: #ffffff;
+    color: #2563eb;
+    border: 1px solid #bfdbfe;
+}
+
+.prediction-register-btn:hover {
+    background: #eff6ff;
+    color: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.prediction-login-card .prediction-login-note {
+    margin-top: 17px;
+    margin-bottom: 0;
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+@media (max-width: 768px) {
+    .prediction-info-section {
+        grid-template-columns: 1fr;
+        margin: 35px auto 50px;
+    }
+
+    .prediction-info-card {
+        padding: 23px;
+    }
+
+    .prediction-login-card {
+        padding: 35px 22px;
+    }
+
+    .prediction-login-card h2 {
+        font-size: 24px;
+    }
+
+    .prediction-login-btn,
+    .prediction-register-btn {
+        width: 100%;
+    }
 }
