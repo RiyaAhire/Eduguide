@@ -3,238 +3,86 @@
 {% block content %}
 
 <section class="course-details-section">
-
     <div class="container">
-
-        <!-- Back Button -->
-
         <a href="{% url 'courses' %}" class="course-back-link">
             ← Back to Explore Courses
         </a>
 
-
-<!-- Course Header -->
-
-        <div class="course-details-header">
-
-            <div class="course-details-icon">
-                💻
-            </div>
+        <header class="course-details-header">
+            <div class="course-details-icon">💻</div>
 
             <div class="course-header-content">
-
-                <span class="course-label">
-                    Diploma Course
-                </span>
-
-                <h1>
-                    <h1>
-                        {{ course.course_name }}
-                    </h1>
-                </h1>
-
-                <p>
-                   <p>
-    <p>{{ course.description|truncatewords:15 }}</p>
-</p>
-                </p>
-
+                <span class="course-label">Diploma Course</span>
+                <h1>{{ course.course_name }}</h1>
+                <p>{{ course.description|truncatewords:15 }}</p>
             </div>
+        </header>
 
-        </div>
+        <div class="row g-4 align-items-start">
+            <main class="col-lg-8">
+                <div class="course-details-main-grid">
+                <section class="course-details-card course-details-card--about">
+                    <h2>About the Course</h2>
+                    <p>{{ course.description }}</p>
+                </section>
 
-
-        <!-- Main Content -->
-
-        <div class="row g-4">
-
-            <!-- Left Side -->
-
-            <div class="col-lg-8">
-
-
-                <!-- About -->
-
-                <div class="course-details-card">
-
-                    <h2>
-                        About the Course
-                    </h2>
-
-                    <p>
-    {{ course.description }}
-</p>
-
-                </div>
-
-
-                <!-- Subjects -->
-
-                <div class="course-details-card">
-
-                    <h2>
-                        Major Subjects
-                    </h2>
-
+                <section class="course-details-card course-details-card--subjects">
+                    <h2>Major Subjects</h2>
                     <div class="subject-grid">
+                        {% for subject in course.subjects_list %}
+                            <div class="subject-item">{{ subject }}</div>
+                        {% endfor %}
+                    </div>
+                </section>
 
-    {% for subject in course.subjects_list %}
-        <div class="subject-item">
-            {{ subject }}
-        </div>
-    {% endfor %}
-
-</div>
-                    
-
+                <section class="course-details-card course-details-card--careers">
+                    <h2>Career Opportunities</h2>
+                    <div class="career-grid">
+                        {% for career in course.career_list %}
+                            <div class="career-item"><strong>{{ career }}</strong></div>
+                        {% endfor %}
+                    </div>
+                </section>
                 </div>
+            </main>
 
+            <aside class="col-lg-4 course-details-sidebar">
+                <section class="course-details-card course-quick-info">
+                    <h2>Course Information</h2>
+                    <div class="course-info-row"><span>Duration</span><strong>{{ course.duration }}</strong></div>
+                    <div class="course-info-row"><span>Level</span><strong>{{ course.level }}</strong></div>
+                    <div class="course-info-row"><span>Field</span><strong>{{ course.field }}</strong></div>
+                    <div class="course-info-row"><span>Mode</span><strong>{{ course.mode }}</strong></div>
+                </section>
 
-                <!-- Skills -->
-
-                <div class="course-details-card">
-
-                    <h2>
-                        Skills You'll Develop
-                    </h2>
-
+                <section class="course-details-card">
+                    <h2>Skills You'll Develop</h2>
                     <div class="skill-tags">
-
-                        <div class="skill-tags">
-
-    {% for skill in course.skills_list %}
-        <span>{{ skill }}</span>
-    {% endfor %}
-
-</div>
+                        {% for skill in course.skills_list %}
+                            <span>{{ skill }}</span>
+                        {% endfor %}
                     </div>
+                </section>
 
-                </div>
-
-
-                <!-- Career -->
-
-                <div class="course-details-card">
-
-                    <h2>
-                        Career Opportunities
-                    </h2>
-
-                   <div class="career-grid">
-
-              {% for career in course.career_list %}
-                <div class="career-item">
-                  <strong>{{ career }}</strong>
-                  </div>
-                  {% endfor %}
-
-                       </div>
-
-            </div>
-
-
-            <!-- Right Side -->
-
-            <div class="col-lg-8">
-
-
-                <!-- Quick Information -->
-
-                <div class="course-details-card course-quick-info">
-
-                    <h2>
-                        Course Information
-                    </h2>
-
-                    <div class="course-info-row">
-
-                        <span>
-                            Duration
-                        </span>
-
-                        <strong>{{ course.duration }}</strong>
-
-                    </div>
-
-                    <div class="course-info-row">
-
-                        <span>
-                            Level
-                        </span>
-
-                       <strong>{{ course.level }}</strong>
-
-                    </div>
-
-                    <div class="course-info-row">
-
-                        <span>
-                            Field
-                        </span>
-
-                        <strong>
-                           <strong>
-    {{ course.field }}
-</strong>
-                        </strong>
-
-                    </div>
-
-                    <div class="course-info-row">
-
-                        <span>
-                            Mode
-                        </span>
-
-                       <strong>{{ course.mode }}</strong>
-                    </div>
-
-                </div>
-
-
-                <!-- Higher Studies -->
-
-                <div class="course-details-card">
-
-                    <h2>
-                        Higher Studies
-                    </h2>
-<ul class="higher-study-list">
-    {% for study in course.higher_studies_list %}
-        <li>{{ study }}</li>
-    {% endfor %}
-</ul>
-                    
-                </div>
-
-
-                <!-- Action -->
+                <section class="course-details-card">
+                    <h2>Higher Studies</h2>
+                    <ul class="higher-study-list">
+                        {% for study in course.higher_studies_list %}
+                            <li>{{ study }}</li>
+                        {% endfor %}
+                    </ul>
+                </section>
 
                 <div class="course-action-card">
-
-                    <h3>
-                        Interested in this course?
-                    </h3>
-
-                    <p>
-                        Explore colleges offering this course.
-                    </p>
-
-                    <a href="{% url 'colleges' %}"
-                       class="btn btn-light rounded-pill px-4">
-
+                    <h3>Interested in this course?</h3>
+                    <p>Explore colleges offering this course.</p>
+                    <a href="{% url 'colleges' %}" class="btn btn-light rounded-pill px-4">
                         Explore Colleges →
-
                     </a>
-
                 </div>
-
-            </div>
-
+            </aside>
         </div>
-
     </div>
-
 </section>
 
 {% endblock %}

@@ -45,29 +45,11 @@
                         All Categories
                     </option>
 
-                    <option value="Computer">
-                        Computer & IT
+                    {% for category in course_categories %}
+                    <option value="{{ category }}">
+                        {{ category }}
                     </option>
-
-                    <option value="Mechanical">
-                        Mechanical
-                    </option>
-
-                    <option value="Civil">
-                        Civil
-                    </option>
-
-                    <option value="Electrical">
-                        Electrical
-                    </option>
-
-                    <option value="Electronics">
-                        Electronics & Telecommunication
-                    </option>
-
-                    <option value="Automobile">
-                        Automobile
-                    </option>
+                    {% endfor %}
 
                 </select>
 
@@ -85,7 +67,8 @@
 
 <div class="col course-item"
      data-name="{{ course.course_name }}"
-     data-category="{{ course.field }}">
+     data-category="{{ course.field }}"
+     data-search="{{ course.course_name }} {{ course.field }} {{ course.description }}">
 
     <div class="course-card d-flex flex-column">
 
@@ -120,6 +103,16 @@
 
 {% endfor %}
 </div>
+
+        <div class="show-more-wrapper" id="courseShowMoreWrapper">
+            <button type="button"
+                    id="courseShowMore"
+                    class="btn btn-outline-primary rounded-pill px-4"
+                    aria-controls="courseList">
+                Show More Courses
+            </button>
+        </div>
+
         <!-- No Results -->
 
         <div id="courseNoResults"
@@ -182,6 +175,15 @@
     const courseNoResults =
         document.getElementById("courseNoResults");
 
+    const courseShowMore =
+        document.getElementById("courseShowMore");
+
+    const courseShowMoreWrapper =
+        document.getElementById("courseShowMoreWrapper");
+
+    const coursesPerPage = 9;
+    let visibleCourseCount = coursesPerPage;
+
 
     function filterCourses() {
 
@@ -191,20 +193,23 @@
         const categoryValue =
             courseCategory.value;
 
-        let visibleCount = 0;
+        const hasActiveFilter =
+            searchValue !== "" || categoryValue !== "all";
+
+        const matchingCourses = [];
 
 
         courses.forEach(function(course) {
 
-            const courseName =
-                course.dataset.name.toLowerCase();
+            const searchableContent =
+                course.dataset.search.toLowerCase();
 
             const courseCategoryValue =
                 course.dataset.category;
 
 
             const matchesSearch =
-                courseName.includes(searchValue);
+                searchableContent.includes(searchValue);
 
 
             const matchesCategory =
@@ -212,25 +217,27 @@
                 courseCategoryValue === categoryValue;
 
 
-            if (
-                matchesSearch &&
-                matchesCategory
-            ) {
-
-                course.style.display = "";
-
-                visibleCount++;
-
-            } else {
-
-                course.style.display = "none";
-
+            if (matchesSearch && matchesCategory) {
+                matchingCourses.push(course);
             }
 
         });
 
+        matchingCourses.forEach(function(course, index) {
+            const shouldShow =
+                hasActiveFilter || index < visibleCourseCount;
 
-        if (visibleCount === 0) {
+            course.style.display = shouldShow ? "" : "none";
+        });
+
+        courses.forEach(function(course) {
+            if (!matchingCourses.includes(course)) {
+                course.style.display = "none";
+            }
+        });
+
+
+        if (matchingCourses.length === 0) {
 
             courseNoResults.style.display = "block";
 
@@ -240,19 +247,39 @@
 
         }
 
+        courseShowMoreWrapper.style.display =
+            !hasActiveFilter && matchingCourses.length > visibleCourseCount
+                ? "block"
+                : "none";
+
     }
-
-
-    courseSearch.addEventListener(
-        "input",
-        filterCourses
-    );
 
 
     courseCategory.addEventListener(
         "change",
-        filterCourses
+        function () {
+            visibleCourseCount = coursesPerPage;
+            filterCourses();
+        }
     );
+
+
+    courseSearch.addEventListener(
+        "input",
+        function () {
+            visibleCourseCount = coursesPerPage;
+            filterCourses();
+        }
+    );
+
+
+    courseShowMore.addEventListener("click", function () {
+        visibleCourseCount += coursesPerPage;
+        filterCourses();
+    });
+
+
+    filterCourses();
 
 </script>
 

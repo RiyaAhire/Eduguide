@@ -159,12 +159,19 @@ def course_details(request, course_id):
 def courses(request):
 
     courses = CourseInfo.objects.all().order_by("course_name")
+    course_categories = (
+        CourseInfo.objects
+        .values_list("field", flat=True)
+        .distinct()
+        .order_by("field")
+    )
 
     return render(
         request,
         "journal/courses.html",
         {
-            "courses": courses
+            "courses": courses,
+            "course_categories": course_categories,
         }
     )
 

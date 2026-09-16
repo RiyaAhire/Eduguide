@@ -1380,6 +1380,23 @@ transition:.3s;
 }
 
 
+/* Progressive listing controls */
+.show-more-wrapper {
+    margin-top: 36px;
+
+    text-align: center;
+}
+
+.show-more-wrapper .btn {
+    min-width: 190px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    font-weight: 600;
+}
+
+
 /* Course cards */
 .course-card {
 
@@ -1683,10 +1700,33 @@ transition:.3s;
     line-height: 1.7;
 }
 
+/* Keep the wider course-content area visually active instead of a long,
+   sparse stack of full-width cards. */
+.course-details-main-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.course-details-main-grid .course-details-card {
+    height: 100%;
+    margin-bottom: 0;
+}
+
+.course-details-card--about {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #ffffff 0%, #f4f8ff 100%);
+}
+
+.course-details-card--about p {
+    max-width: 72ch;
+    margin-bottom: 0;
+}
+
 .subject-grid {
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
     gap: 12px;
 }
@@ -1735,6 +1775,19 @@ transition:.3s;
 
 .career-item{
     height:100%;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 72px;
+
+    padding: 14px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5eaf2;
+
+    border-radius: 12px;
 }
 
 .career-item strong {
@@ -3305,6 +3358,10 @@ body.dark-mode .course-details-card {
     border-color: #334155 !important;
 }
 
+body.dark-mode .course-details-card--about {
+    background: linear-gradient(135deg, #1e293b 0%, #172554 100%) !important;
+}
+
 body.dark-mode .course-header-content h1,
 body.dark-mode .course-details-card h2 {
     color: #e2e8f0 !important;
@@ -3597,6 +3654,10 @@ body.dark-mode .navbar-toggler-icon {
 
 
 @media (max-width: 768px) {
+
+    .course-details-main-grid {
+        grid-template-columns: 1fr;
+    }
 
     /* Home */
 

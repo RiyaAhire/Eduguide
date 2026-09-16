@@ -38,6 +38,7 @@
                 data-name="{{ college.college_name }}"
                 data-location="{{ college.region }}"
                 data-type="{{ college.status }}"
+                data-search="{{ college.college_name }} {{ college.region }} {{ college.status }} {{ college.college_code }}"
             >
 
                 <div class="college-card">
@@ -86,6 +87,15 @@
 
         </div>
 
+        <div class="show-more-wrapper" id="collegeShowMoreWrapper">
+            <button type="button"
+                    id="collegeShowMore"
+                    class="btn btn-outline-primary rounded-pill px-4"
+                    aria-controls="collegeList">
+                Show More Colleges
+            </button>
+        </div>
+
         <div
             id="noResults"
             class="text-center mt-5"
@@ -104,41 +114,41 @@
 const searchInput = document.getElementById("collegeSearch");
 const collegeItems = document.querySelectorAll(".college-item");
 const noResults = document.getElementById("noResults");
+const collegeShowMore = document.getElementById("collegeShowMore");
+const collegeShowMoreWrapper = document.getElementById("collegeShowMoreWrapper");
+const collegesPerPage = 9;
+let visibleCollegeCount = collegesPerPage;
 
-searchInput.addEventListener("input", function () {
+function filterColleges() {
 
-    const searchValue = this.value.toLowerCase().trim();
-
-    let visibleCount = 0;
+    const searchValue = searchInput.value.toLowerCase().trim();
+    const hasActiveSearch = searchValue !== "";
+    const matchingColleges = [];
 
     collegeItems.forEach(function (college) {
 
-        const name =
-            college.dataset.name.toLowerCase();
+        const searchableContent = college.dataset.search.toLowerCase();
 
-        const location =
-            college.dataset.location
-            ? college.dataset.location.toLowerCase()
-            : "";
-
-        const matched =
-            name.includes(searchValue) ||
-            location.includes(searchValue);
+        const matched = searchableContent.includes(searchValue);
 
         if (matched) {
-
-            college.style.display = "";
-            visibleCount++;
-
-        } else {
-
-            college.style.display = "none";
-
+            matchingColleges.push(college);
         }
 
     });
 
-    if (visibleCount === 0) {
+    matchingColleges.forEach(function (college, index) {
+        const shouldShow = hasActiveSearch || index < visibleCollegeCount;
+        college.style.display = shouldShow ? "" : "none";
+    });
+
+    collegeItems.forEach(function (college) {
+        if (!matchingColleges.includes(college)) {
+            college.style.display = "none";
+        }
+    });
+
+    if (matchingColleges.length === 0) {
 
         noResults.style.display = "block";
 
@@ -148,7 +158,26 @@ searchInput.addEventListener("input", function () {
 
     }
 
+    collegeShowMoreWrapper.style.display =
+        !hasActiveSearch && matchingColleges.length > visibleCollegeCount
+            ? "block"
+            : "none";
+}
+
+
+searchInput.addEventListener("input", function () {
+    visibleCollegeCount = collegesPerPage;
+    filterColleges();
 });
+
+
+collegeShowMore.addEventListener("click", function () {
+    visibleCollegeCount += collegesPerPage;
+    filterColleges();
+});
+
+
+filterColleges();
 
 </script>
 
