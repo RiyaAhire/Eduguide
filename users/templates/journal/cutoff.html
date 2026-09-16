@@ -3,510 +3,296 @@
 {% block content %}
 
 <section class="cutoff-section">
-
     <div class="container">
-
-        <!-- Heading -->
-
         <div class="text-center cutoff-heading">
-
-            <h1 class="cutoff-title">
-                Check College Cutoffs
-            </h1>
-
+            <h1 class="cutoff-title">Check College Cutoffs</h1>
             <p class="cutoff-subtitle">
-                Explore previous admission cutoffs and understand
-                your chances of getting into your preferred college.
+                Explore official previous admission cutoffs for 2025–26 and 2026–27.
             </p>
-
         </div>
-
-
-        <!-- Filter Box -->
 
         <div class="cutoff-filter-box">
-
             <div class="row g-4">
-
-                <!-- Admission Year -->
-
                 <div class="col-md-6 col-lg-4">
-
-                    <label for="cutoffYear">
-                        Admission Year
-                    </label>
-
-                    <select id="cutoffYear"
-                            class="form-select">
-
-                        <option value="2025">
-                            2025-26
-                        </option>
-
-                        <option value="2024">
-                            2024-25
-                        </option>
-
-                        <option value="2023">
-                            2023-24
-                        </option>
-
-                        <option value="2022">
-                            2022-23
-                        </option>
-
+                    <label for="cutoffYear">Admission Year</label>
+                    <select id="cutoffYear" class="form-select">
+                        {% for year in admission_years %}
+                            <option value="{{ year }}">{{ year }}</option>
+                        {% empty %}
+                            <option value="">No cutoff data available</option>
+                        {% endfor %}
                     </select>
-
                 </div>
 
-
-                <!-- College -->
-
                 <div class="col-md-6 col-lg-4">
-
-                    <label for="cutoffCollege">
-                        College
-                    </label>
-
-                    <select id="cutoffCollege"
-                            class="form-select">
-
-                        <option value="gpnashik">
-                            Government Polytechnic Nashik
-                        </option>
-
-                        <option value="gppune">
-                            Government Polytechnic Pune
-                        </option>
-
-                        <option value="gpmumbai">
-                            Government Polytechnic Mumbai
-                        </option>
-
+                    <label for="cutoffCollege">College</label>
+                    <select id="cutoffCollege" class="form-select" disabled>
+                        <option value="">Select a college</option>
                     </select>
-
                 </div>
 
-
-                <!-- Branch -->
-
                 <div class="col-md-6 col-lg-4">
-
-                    <label for="cutoffBranch">
-                        Branch
-                    </label>
-
-                    <select id="cutoffBranch"
-                            class="form-select">
-
-                        <option value="computer">
-                            Computer Engineering
-                        </option>
-
-                        <option value="it">
-                            Information Technology
-                        </option>
-
-                        <option value="mechanical">
-                            Mechanical Engineering
-                        </option>
-
-                        <option value="civil">
-                            Civil Engineering
-                        </option>
-
+                    <label for="cutoffCourse">Course</label>
+                    <select id="cutoffCourse" class="form-select" disabled>
+                        <option value="">Select a course</option>
                     </select>
-
                 </div>
 
-
-                <!-- Category -->
-
                 <div class="col-md-6 col-lg-4">
-
-                    <label for="cutoffCategory">
-                        Category
-                    </label>
-
-                    <select id="cutoffCategory"
-                            class="form-select">
-
-                        <option value="open">
-                            OPEN
-                        </option>
-
-                        <option value="obc">
-                            OBC
-                        </option>
-
-                        <option value="sc">
-                            SC
-                        </option>
-
-                        <option value="st">
-                            ST
-                        </option>
-
+                    <label for="cutoffCategory">Category Code</label>
+                    <select id="cutoffCategory" class="form-select" disabled>
+                        <option value="">All category codes</option>
                     </select>
-
                 </div>
 
-
-                <!-- Round -->
-
                 <div class="col-md-6 col-lg-4">
-
-                    <label for="cutoffRound">
-                        CAP Round
-                    </label>
-
-                    <select id="cutoffRound"
-                            class="form-select">
-
-                        <option value="round1">
-                            CAP Round I
-                        </option>
-
-                        <option value="round2">
-                            CAP Round II
-                        </option>
-
-                        <option value="round3">
-                            CAP Round III
-                        </option>
-
+                    <label for="cutoffRound">CAP Round</label>
+                    <select id="cutoffRound" class="form-select" disabled>
+                        <option value="">All CAP rounds</option>
                     </select>
-
                 </div>
-
-
-                <!-- Search Button -->
 
                 <div class="col-md-6 col-lg-4 d-flex align-items-end">
-
-                    <button type="button"
-                            id="checkCutoffBtn"
-                            class="btn btn-primary cutoff-button">
-
+                    <button type="button" id="checkCutoffBtn" class="btn btn-primary cutoff-button" disabled>
                         Check Cutoff
-
                     </button>
-
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- Result -->
-
-        <div class="cutoff-result-section">
-
+        <div class="cutoff-result-section" id="cutoffResults" hidden>
             <div class="cutoff-result-header">
-
                 <div>
-
-                    <span class="result-label">
-                        CUTOFF RESULT
-                    </span>
-
-                    <h2 id="resultCollege">
-                        Government Polytechnic Nashik
-                    </h2>
-
-                    <p id="resultBranch">
-                        Computer Engineering
-                    </p>
-
+                    <span class="result-label">CUTOFF RESULTS</span>
+                    <h2 id="resultCollege"></h2>
+                    <p id="resultCourse"></p>
                 </div>
-
-                <div class="result-year"
-                     id="resultYear">
-
-                    2025-26
-
-                </div>
-
+                <div class="result-year" id="resultYear"></div>
             </div>
-
-
-            <!-- Cutoff Table -->
 
             <div class="table-responsive">
-
                 <table class="table cutoff-table">
-
                     <thead>
-
                         <tr>
-
-                            <th>
-                                Category
-                            </th>
-
-                            <th>
-                                CAP Round I
-                            </th>
-
-                            <th>
-                                CAP Round II
-                            </th>
-
-                            <th>
-                                CAP Round III
-                            </th>
-
+                            <th>Category Code</th>
+                            <th>Seat Category</th>
+                            <th>CAP Round</th>
+                            <th>Cutoff Percentile</th>
+                            <th>Cutoff Merit No.</th>
+                            <th>Stage</th>
                         </tr>
-
                     </thead>
-
-                    <tbody>
-
-                        <tr>
-
-                            <td>
-                                <strong>OPEN</strong>
-                            </td>
-
-                            <td>
-                                91.20%
-                            </td>
-
-                            <td>
-                                90.45%
-                            </td>
-
-                            <td>
-                                89.80%
-                            </td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>
-                                <strong>OBC</strong>
-                            </td>
-
-                            <td>
-                                88.40%
-                            </td>
-
-                            <td>
-                                87.75%
-                            </td>
-
-                            <td>
-                                86.90%
-                            </td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>
-                                <strong>SC</strong>
-                            </td>
-
-                            <td>
-                                82.15%
-                            </td>
-
-                            <td>
-                                81.30%
-                            </td>
-
-                            <td>
-                                80.45%
-                            </td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>
-                                <strong>ST</strong>
-                            </td>
-
-                            <td>
-                                76.30%
-                            </td>
-
-                            <td>
-                                75.20%
-                            </td>
-
-                            <td>
-                                74.50%
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
+                    <tbody id="cutoffResultBody"></tbody>
                 </table>
-
             </div>
 
-            <p class="cutoff-note">
-                * The displayed values are sample frontend data for
-                demonstration purposes.
-            </p>
-
+            <p class="cutoff-note" id="cutoffNote"></p>
         </div>
-
-
-        <!-- What is Cutoff -->
 
         <div class="row g-4 cutoff-info-row">
-
             <div class="col-lg-6">
-
                 <div class="cutoff-info-card">
-
-                    <div class="info-icon">
-                        📊
-                    </div>
-
-                    <h2>
-                        What is a Cutoff?
-                    </h2>
-
+                    <div class="info-icon">📊</div>
+                    <h2>What is a Cutoff?</h2>
                     <p>
-                        A cutoff represents the score or percentage
-                        of the last candidate admitted to a particular
-                        college and branch during an admission round.
+                        A cutoff is the last admitted candidate’s percentile for a college,
+                        course, category, and CAP round. It helps show the previous level of competition.
                     </p>
-
-                    <p>
-                        Previous year cutoffs can help students
-                        understand the level of competition and
-                        make informed college choices.
-                    </p>
-
                 </div>
-
             </div>
 
-
             <div class="col-lg-6">
-
                 <div class="cutoff-info-card">
-
-                    <div class="info-icon">
-                        💡
-                    </div>
-
-                    <h2>
-                        How to Use This Page
-                    </h2>
-
+                    <div class="info-icon">💡</div>
+                    <h2>How to Use This Page</h2>
                     <div class="cutoff-steps">
-
-                        <div>
-                            <span>1</span>
-                            Select the admission year.
-                        </div>
-
-                        <div>
-                            <span>2</span>
-                            Select your preferred college.
-                        </div>
-
-                        <div>
-                            <span>3</span>
-                            Choose your desired branch.
-                        </div>
-
-                        <div>
-                            <span>4</span>
-                            Select your category and CAP round.
-                        </div>
-
-                        <div>
-                            <span>5</span>
-                            Check the previous cutoff.
-                        </div>
-
+                        <div><span>1</span> Choose the admission year.</div>
+                        <div><span>2</span> Select a college and course.</div>
+                        <div><span>3</span> Optionally narrow by category code and CAP round.</div>
+                        <div><span>4</span> Check the recorded cutoff values.</div>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
 
-    </div>
+        <section class="cutoff-code-guide" aria-labelledby="categoryCodeGuideTitle">
+            <div class="cutoff-info-card">
+                <div class="info-icon">📖</div>
+                <h2 id="categoryCodeGuideTitle">Understanding Category Codes</h2>
+                <p class="cutoff-code-intro">
+                    Category codes combine seat type, candidate group, and location. For example,
+                    <strong>NGOPENH</strong> means <strong>N</strong>on-Technical,
+                    <strong>G</strong>eneral, <strong>OPEN</strong> category, and
+                    <strong>H</strong>ome District seat. A shorter code such as
+                    <strong>GOPEN</strong> means General Open category.
+                </p>
 
+                <div class="code-guide-grid">
+                    <div><strong>T</strong><span>Technical</span></div>
+                    <div><strong>N</strong><span>Non-Technical</span></div>
+                    <div><strong>G</strong><span>General</span></div>
+                    <div><strong>L</strong><span>Ladies</span></div>
+                    <div><strong>H</strong><span>Home District seat</span></div>
+                    <div><strong>O</strong><span>Other than Home District seat</span></div>
+                    <div><strong>S</strong><span>State Level seat</span></div>
+                    <div><strong>M</strong><span>Religious Minority</span></div>
+                </div>
+
+                <div class="code-guide-groups">
+                    <p><strong>OPEN</strong> — Open category &nbsp; | &nbsp; <strong>OBC</strong> — Other Backward Class &nbsp; | &nbsp; <strong>SC</strong> — Scheduled Caste &nbsp; | &nbsp; <strong>ST</strong> — Scheduled Tribe</p>
+                    <p><strong>EWS</strong> — Economically Weaker Section &nbsp; | &nbsp; <strong>SEBC</strong> — Socially and Educationally Backward Class &nbsp; | &nbsp; <strong>NT-A/B/C/D</strong> — Nomadic Tribe groups A, B, C, and D</p>
+                    <p><strong>PWD</strong> — Persons with Disabilities &nbsp; | &nbsp; <strong>DEF</strong> — Defence &nbsp; | &nbsp; <strong>TFWS</strong> — Tuition Fee Waiver Scheme &nbsp; | &nbsp; <strong>MI</strong> — Minority seat</p>
+                </div>
+            </div>
+        </section>
+    </div>
 </section>
 
-
-<!-- Cutoff JavaScript -->
-
 <script>
+    const cutoffYear = document.getElementById("cutoffYear");
+    const cutoffCollege = document.getElementById("cutoffCollege");
+    const cutoffCourse = document.getElementById("cutoffCourse");
+    const cutoffCategory = document.getElementById("cutoffCategory");
+    const cutoffRound = document.getElementById("cutoffRound");
+    const checkCutoffBtn = document.getElementById("checkCutoffBtn");
+    const cutoffResults = document.getElementById("cutoffResults");
+    const cutoffResultBody = document.getElementById("cutoffResultBody");
+    const cutoffNote = document.getElementById("cutoffNote");
+    const roundLabels = {
+        CAP1: "CAP Round I",
+        CAP2: "CAP Round II",
+        CAP3: "CAP Round III",
+        CAP4: "CAP Round IV",
+    };
 
-    const cutoffYear =
-        document.getElementById("cutoffYear");
+    function setOptions(select, items, placeholder) {
+        select.innerHTML = "";
+        const placeholderOption = new Option(placeholder, "");
+        select.add(placeholderOption);
 
-    const cutoffCollege =
-        document.getElementById("cutoffCollege");
+        items.forEach(function(item) {
+            const value = typeof item === "string" ? item : item.id;
+            const label = typeof item === "string"
+                ? (roundLabels[item] || item)
+                : item.name;
+            select.add(new Option(label, value));
+        });
 
-    const cutoffBranch =
-        document.getElementById("cutoffBranch");
+        select.disabled = items.length === 0;
+    }
 
-    const checkCutoffBtn =
-        document.getElementById("checkCutoffBtn");
-
-    const resultCollege =
-        document.getElementById("resultCollege");
-
-    const resultBranch =
-        document.getElementById("resultBranch");
-
-    const resultYear =
-        document.getElementById("resultYear");
-
-
-    checkCutoffBtn.addEventListener(
-        "click",
-        function () {
-
-            const collegeText =
-                cutoffCollege.options[
-                    cutoffCollege.selectedIndex
-                ].text;
-
-            const branchText =
-                cutoffBranch.options[
-                    cutoffBranch.selectedIndex
-                ].text;
-
-            const yearText =
-                cutoffYear.options[
-                    cutoffYear.selectedIndex
-                ].text;
-
-
-            resultCollege.textContent =
-                collegeText;
-
-            resultBranch.textContent =
-                branchText;
-
-            resultYear.textContent =
-                yearText;
-
-
-            document
-                .querySelector(".cutoff-result-section")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-
+    function resetSelections(from) {
+        if (from === "year") {
+            setOptions(cutoffCollege, [], "Select a college");
         }
-    );
+        if (from === "year" || from === "college") {
+            setOptions(cutoffCourse, [], "Select a course");
+        }
+        if (from !== "course") {
+            setOptions(cutoffCategory, [], "All category codes");
+            setOptions(cutoffRound, [], "All CAP rounds");
+        }
+        checkCutoffBtn.disabled = true;
+        cutoffResults.hidden = true;
+    }
 
+    function selectedParams() {
+        const params = new URLSearchParams();
+        if (cutoffYear.value) params.set("year", cutoffYear.value);
+        if (cutoffCollege.value) params.set("college", cutoffCollege.value);
+        if (cutoffCourse.value) params.set("course", cutoffCourse.value);
+        if (cutoffCategory.value) params.set("category", cutoffCategory.value);
+        if (cutoffRound.value) params.set("round", cutoffRound.value);
+        return params;
+    }
+
+    async function requestCutoffData() {
+        const response = await fetch("{% url 'cutoff_data' %}?" + selectedParams());
+        if (!response.ok) throw new Error("Unable to load cutoff data.");
+        return response.json();
+    }
+
+    async function loadCollegeOptions() {
+        resetSelections("year");
+        try {
+            const data = await requestCutoffData();
+            setOptions(cutoffCollege, data.colleges, "Select a college");
+        } catch (error) {
+            cutoffNote.textContent = "Cutoff data could not be loaded. Please try again.";
+        }
+    }
+
+    async function loadCourseOptions() {
+        resetSelections("college");
+        try {
+            const data = await requestCutoffData();
+            setOptions(cutoffCourse, data.courses, "Select a course");
+        } catch (error) {
+            cutoffNote.textContent = "Cutoff data could not be loaded. Please try again.";
+        }
+    }
+
+    async function loadFilterOptions() {
+        resetSelections("course");
+        try {
+            const data = await requestCutoffData();
+            setOptions(cutoffCategory, data.categories, "All category codes");
+            setOptions(cutoffRound, data.rounds, "All CAP rounds");
+            checkCutoffBtn.disabled = false;
+        } catch (error) {
+            cutoffNote.textContent = "Cutoff data could not be loaded. Please try again.";
+        }
+    }
+
+    function selectedText(select) {
+        return select.options[select.selectedIndex].text;
+    }
+
+    function renderResults(records) {
+        cutoffResultBody.innerHTML = "";
+
+        records.forEach(function(record) {
+            const row = document.createElement("tr");
+            [
+                record.category,
+                record.seat_category,
+                roundLabels[record.round] || record.round,
+                record.percentile.toFixed(2) + "%",
+                record.merit_no.toLocaleString(),
+                record.stage,
+            ].forEach(function(value) {
+                const cell = document.createElement("td");
+                cell.textContent = value;
+                row.appendChild(cell);
+            });
+            cutoffResultBody.appendChild(row);
+        });
+
+        document.getElementById("resultCollege").textContent = selectedText(cutoffCollege);
+        document.getElementById("resultCourse").textContent = selectedText(cutoffCourse);
+        document.getElementById("resultYear").textContent = selectedText(cutoffYear);
+        cutoffNote.textContent = records.length
+            ? "Results are based on the selected historical admission records."
+            : "No cutoff records match the selected filters.";
+        cutoffResults.hidden = false;
+        cutoffResults.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    cutoffYear.addEventListener("change", loadCollegeOptions);
+    cutoffCollege.addEventListener("change", loadCourseOptions);
+    cutoffCourse.addEventListener("change", loadFilterOptions);
+
+    checkCutoffBtn.addEventListener("click", async function() {
+        try {
+            const data = await requestCutoffData();
+            renderResults(data.records);
+        } catch (error) {
+            cutoffNote.textContent = "Cutoff data could not be loaded. Please try again.";
+            cutoffResults.hidden = false;
+        }
+    });
+
+    if (cutoffYear.value) loadCollegeOptions();
 </script>
 
 {% endblock %}

@@ -1,12 +1,24 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Student(models.Model):
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name="student_profile",
+        null=True,
+        blank=True,
+    )
     full_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     percentage = models.FloatField()
     category = models.CharField(max_length=20)
     branch = models.CharField(max_length=100)
     passing_year = models.IntegerField()
+    preferred_location = models.CharField(max_length=100, default="Any")
+    college_type = models.CharField(max_length=50, default="Any")
+    admission_year = models.CharField(max_length=10, default="2026-27")
+    email_verified = models.BooleanField(default=False)
 
     def __str__(self):
         return self.full_name

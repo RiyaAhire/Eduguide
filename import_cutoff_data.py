@@ -39,22 +39,16 @@ for csv_file in BASE_PATH.rglob("*.csv"):
 
         college_code = str(row["College Code"]).strip()
 
-        college, _ = College.objects.get_or_create(
+        college, _ = College.objects.update_or_create(
             college_code=college_code,
-            defaults={
-                "college_name": str(row["College Name"]).strip(),
-                "status": str(row["Status"]).strip(),
-            }
+            defaults={"college_name": str(row["College Name"]).strip(), "status": str(row["Status"]).strip()},
         )
 
         course_code = str(row["Course Code"]).strip()
 
-        course, _ = Course.objects.get_or_create(
+        course, _ = Course.objects.update_or_create(
             course_code=course_code,
-            defaults={
-                "course_name": str(row["Course Name"]).strip(),
-                "college": college,
-            }
+            defaults={"course_name": str(row["Course Name"]).strip(), "college": college},
         )
 
         percentile = str(row["Cutoff Percentile"]).replace("%", "").strip()
@@ -67,7 +61,7 @@ for csv_file in BASE_PATH.rglob("*.csv"):
         if percentile > 1:
             percentile = percentile / 100
 
-        Cutoff.objects.create(
+        Cutoff.objects.update_or_create(
             course=course,
             cap_round=cap_round,
             admission_year=admission_year,
@@ -75,7 +69,7 @@ for csv_file in BASE_PATH.rglob("*.csv"):
             category_code=str(row["Category Code"]).strip(),
             stage=str(row["Stage"]).strip(),
             cutoff_merit_no=int(row["Cutoff Merit No."]),
-            cutoff_percentile=percentile,
+            defaults={"cutoff_percentile": percentile},
         )
 
 print("Cutoff Import Completed")

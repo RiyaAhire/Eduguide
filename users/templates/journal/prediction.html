@@ -1,807 +1,107 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <section class="prediction-section">
-
-    <div class="container">
-
-        <!-- Heading -->
-
-        <div class="text-center prediction-heading">
-
-            <span class="prediction-label">
-                EDUGUIDE ADMISSION PREDICTOR
-            </span>
-
-            <h1 class="prediction-title">
-                Find Colleges You May Get Into
-            </h1>
-
-            <p class="prediction-subtitle">
-                Enter your academic details and preferences to
-                explore colleges that may match your profile.
-            </p>
-
-        </div>
-
-
-        <!-- =========================================================
-             PREDICTION INFORMATION
-             Visible to all users
-        ========================================================== -->
-
-        <div class="prediction-info-section">
-
-            <div class="prediction-info-card">
-                <div class="prediction-info-icon">💡</div>
-                <h2>What is College Prediction?</h2>
-                <p>
-                    EduGuide's College Prediction system helps students
-                    understand which colleges they may have a chance of
-                    getting admission into based on their academic profile
-                    and preferences.
-                </p>
-                <p>
-                    The system compares your profile with previous admission
-                    cutoff trends to provide useful college recommendations.
-                    It is designed to make the college selection process
-                    easier, clearer and more informed.
-                </p>
-            </div>
-
-            <div class="prediction-info-card">
-                <div class="prediction-info-icon">🎯</div>
-                <h2>What Factors Are Considered?</h2>
-
-                <div class="prediction-factor-list">
-                    <div class="prediction-factor-item">
-                        <span>01</span>
-                        <div>
-                            <h4>Percentage</h4>
-                            <p>Your academic performance is an important factor in estimating admission chances.</p>
-                        </div>
-                    </div>
-
-                    <div class="prediction-factor-item">
-                        <span>02</span>
-                        <div>
-                            <h4>Category</h4>
-                            <p>Category-wise cutoff trends are considered while matching your profile.</p>
-                        </div>
-                    </div>
-
-                    <div class="prediction-factor-item">
-                        <span>03</span>
-                        <div>
-                            <h4>Preferred Branch</h4>
-                            <p>Your selected engineering branch is used to find relevant colleges.</p>
-                        </div>
-                    </div>
-
-                    <div class="prediction-factor-item">
-                        <span>04</span>
-                        <div>
-                            <h4>Location & College Type</h4>
-                            <p>Your preferred location and college type help refine the recommendations.</p>
-                        </div>
-                    </div>
-
-                    <div class="prediction-factor-item">
-                        <span>05</span>
-                        <div>
-                            <h4>Previous Cutoff Trends</h4>
-                            <p>Historical cutoff data helps estimate how closely your profile matches past admissions.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-
-        {% if user.is_authenticated %}
-
-
-        <div class="prediction-form-card">
-
-            <div class="prediction-form-header">
-
-                <div class="prediction-form-icon">
-                    🎯
-                </div>
-
-                <div>
-
-                    <h2>
-                        Your Admission Profile
-                    </h2>
-
-                    <p>
-                        Tell us about your academic performance
-                        and preferences.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="row g-4">
-
-
-                <!-- Percentage -->
-
-                <div class="col-md-6">
-
-                    <label for="studentPercentage">
-                        Your Percentage
-                    </label>
-
-                    <input type="number"
-                           id="studentPercentage"
-                           class="form-control"
-                           placeholder="Enter your percentage"
-                           min="0"
-                           max="100"
-                           step="0.01">
-
-                    <small>
-                        Enter your latest diploma percentage.
-                    </small>
-
-                </div>
-
-
-                <!-- Category -->
-
-                <div class="col-md-6">
-
-                    <label for="studentCategory">
-                        Category
-                    </label>
-
-                    <select id="studentCategory"
-                            class="form-select">
-
-                        <option value="">
-                            Select Category
-                        </option>
-
-                        <option value="OPEN">
-                            OPEN
-                        </option>
-
-                        <option value="OBC">
-                            OBC
-                        </option>
-
-                        <option value="SC">
-                            SC
-                        </option>
-
-                        <option value="ST">
-                            ST
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- Branch -->
-
-                <div class="col-md-6">
-
-                    <label for="studentBranch">
-                        Preferred Branch
-                    </label>
-
-                    <select id="studentBranch"
-                            class="form-select">
-
-                        <option value="">
-                            Select Branch
-                        </option>
-
-                        <option value="Computer Engineering">
-                            Computer Engineering
-                        </option>
-
-                        <option value="Information Technology">
-                            Information Technology
-                        </option>
-
-                        <option value="Mechanical Engineering">
-                            Mechanical Engineering
-                        </option>
-
-                        <option value="Civil Engineering">
-                            Civil Engineering
-                        </option>
-
-                        <option value="Electrical Engineering">
-                            Electrical Engineering
-                        </option>
-
-                        <option value="Electronics & Telecommunication">
-                            Electronics & Telecommunication
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- Location -->
-
-                <div class="col-md-6">
-
-                    <label for="studentLocation">
-                        Preferred Location
-                    </label>
-
-                    <select id="studentLocation"
-                            class="form-select">
-
-                        <option value="">
-                            Select Location
-                        </option>
-
-                        <option value="Nashik">
-                            Nashik
-                        </option>
-
-                        <option value="Pune">
-                            Pune
-                        </option>
-
-                        <option value="Mumbai">
-                            Mumbai
-                        </option>
-
-                        <option value="Nagpur">
-                            Nagpur
-                        </option>
-
-                        <option value="Aurangabad">
-                            Chhatrapati Sambhajinagar
-                        </option>
-
-                        <option value="Any">
-                            Any Location
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- College Type -->
-
-                <div class="col-md-6">
-
-                    <label for="collegeType">
-                        College Type
-                    </label>
-
-                    <select id="collegeType"
-                            class="form-select">
-
-                        <option value="">
-                            Select College Type
-                        </option>
-
-                        <option value="Government">
-                            Government
-                        </option>
-
-                        <option value="Private">
-                            Private
-                        </option>
-
-                        <option value="Autonomous">
-                            Autonomous
-                        </option>
-
-                        <option value="Any">
-                            Any Type
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- Admission Year -->
-
-                <div class="col-md-6">
-
-                    <label for="admissionYear">
-                        Admission Year
-                    </label>
-
-                    <select id="admissionYear"
-                            class="form-select">
-
-                        <option value="2027">
-                            2027-28
-                        </option>
-
-                        <option value="2026">
-                            2026-27
-                        </option>
-
-                        <option value="2025">
-                            2025-26
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- Predict Button -->
-
-                <div class="col-12">
-
-                    <button type="button"
-                            id="predictButton"
-                            class="btn btn-primary prediction-button">
-
-                        <span>
-                            Predict My Colleges
-                        </span>
-
-                        <span>
-                            →
-                        </span>
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Prediction Results -->
-
-        <div id="predictionResults"
-             class="prediction-results"
-             style="display: none;">
-
-
-            <div class="results-heading">
-
-                <span class="prediction-label">
-                    YOUR PREDICTION
-                </span>
-
-                <h2>
-                    Colleges Based on Your Profile
-                </h2>
-
-                <p>
-                    These results are for demonstration purposes
-                    until the prediction system is connected to
-                    actual cutoff data.
-                </p>
-
-            </div>
-
-
-            <!-- Result Cards -->
-
-            <div class="row g-4">
-
-
-                <!-- High Chance -->
-
-                <div class="col-md-6 col-lg-4">
-
-                    <div class="prediction-card high-chance">
-
-                        <div class="chance-top">
-
-                            <span class="chance-badge">
-                                High Chance
-                            </span>
-
-                            <span class="chance-icon">
-                                🟢
-                            </span>
-
-                        </div>
-
-                        <h3>
-                            Government Polytechnic Nashik
-                        </h3>
-
-                        <p class="prediction-location">
-                            📍 Nashik, Maharashtra
-                        </p>
-
-                        <div class="prediction-card-info">
-
-                            <span>
-                                Computer Engineering
-                            </span>
-
-                            <span>
-                                Government
-                            </span>
-
-                        </div>
-
-                        <div class="chance-bar">
-
-                            <div class="chance-progress high-progress">
-                            </div>
-
-                        </div>
-
-                        <small>
-                            Strong match based on previous cutoffs.
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Good Chance -->
-
-                <div class="col-md-6 col-lg-4">
-
-                    <div class="prediction-card good-chance">
-
-                        <div class="chance-top">
-
-                            <span class="chance-badge">
-                                Good Chance
-                            </span>
-
-                            <span class="chance-icon">
-                                🔵
-                            </span>
-
-                        </div>
-
-                        <h3>
-                            Government Polytechnic Pune
-                        </h3>
-
-                        <p class="prediction-location">
-                            📍 Pune, Maharashtra
-                        </p>
-
-                        <div class="prediction-card-info">
-
-                            <span>
-                                Computer Engineering
-                            </span>
-
-                            <span>
-                                Government
-                            </span>
-
-                        </div>
-
-                        <div class="chance-bar">
-
-                            <div class="chance-progress good-progress">
-                            </div>
-
-                        </div>
-
-                        <small>
-                            Your profile is close to previous cutoffs.
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Moderate Chance -->
-
-                <div class="col-md-6 col-lg-4">
-
-                    <div class="prediction-card moderate-chance">
-
-                        <div class="chance-top">
-
-                            <span class="chance-badge">
-                                Moderate Chance
-                            </span>
-
-                            <span class="chance-icon">
-                                🟡
-                            </span>
-
-                        </div>
-
-                        <h3>
-                            Government Polytechnic Mumbai
-                        </h3>
-
-                        <p class="prediction-location">
-                            📍 Mumbai, Maharashtra
-                        </p>
-
-                        <div class="prediction-card-info">
-
-                            <span>
-                                Computer Engineering
-                            </span>
-
-                            <span>
-                                Government
-                            </span>
-
-                        </div>
-
-                        <div class="chance-bar">
-
-                            <div class="chance-progress moderate-progress">
-                            </div>
-
-                        </div>
-
-                        <small>
-                            Admission may depend on the CAP round.
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-            <!-- Prediction Note -->
-
-            <div class="prediction-note">
-
-                <span>
-                    💡
-                </span>
-
-                <p>
-                    <strong>Remember:</strong>
-                    Admission predictions are based on previous
-                    cutoff trends and are not guaranteed. Actual
-                    admission depends on the current year's cutoff,
-                    seats and admission rules.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        {% else %}
-
-        <!-- =========================================================
-             LOGIN REQUIRED
-             Shown only to users who are not logged in
-        ========================================================== -->
-
-        <div class="prediction-login-section">
-            <div class="prediction-login-card">
-
-                <div class="prediction-login-icon">🔐</div>
-
-                <span class="prediction-login-label">
-                    READY TO PREDICT?
-                </span>
-
-                <h2>
-                    Get Your Personalized Admission Prediction
-                </h2>
-
-                <p>
-                    You can explore all the information about EduGuide's
-                    prediction system without an account. When you are ready
-                    to use the prediction model and get personalized college
-                    recommendations, simply login to your account.
-                </p>
-
-                <div class="prediction-login-buttons">
-                    <a href="{% url 'login' %}" class="prediction-login-btn">
-                        Login to Predict →
-                    </a>
-
-                    <a href="{% url 'register' %}" class="prediction-register-btn">
-                        Create Account
-                    </a>
-                </div>
-
-                <p class="prediction-login-note">
-                    Already have an account? Login and access the prediction
-                    tool directly.
-                </p>
-
-            </div>
-        </div>
-
-        {% endif %}
-
-
-        <!-- How Prediction Works -->
-
-        <div class="prediction-how-section">
-
-            <div class="text-center">
-
-                <h2>
-                    How Does Prediction Work?
-                </h2>
-
-                <p>
-                    EduGuide will compare your profile with
-                    previous admission trends.
-                </p>
-
-            </div>
-
-
-            <div class="row g-4 mt-3">
-
-
-                <div class="col-md-4">
-
-                    <div class="prediction-step">
-
-                        <div class="step-number">
-                            01
-                        </div>
-
-                        <h3>
-                            Enter Your Details
-                        </h3>
-
-                        <p>
-                            Provide your percentage, category,
-                            preferred branch and other preferences.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="col-md-4">
-
-                    <div class="prediction-step">
-
-                        <div class="step-number">
-                            02
-                        </div>
-
-                        <h3>
-                            Compare Cutoffs
-                        </h3>
-
-                        <p>
-                            Your profile will be compared with
-                            previous college cutoff trends.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="col-md-4">
-
-                    <div class="prediction-step">
-
-                        <div class="step-number">
-                            03
-                        </div>
-
-                        <h3>
-                            Get Recommendations
-                        </h3>
-
-                        <p>
-                            View colleges grouped into different
-                            admission possibility levels.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
+  <div class="container">
+    <div class="text-center prediction-heading">
+      <span class="prediction-label">EDUGUIDE ADMISSION PREDICTOR</span>
+      <h1 class="prediction-title">Find colleges that fit your profile</h1>
+      <p class="prediction-subtitle">Your recommendations are calculated from your saved profile and historical cutoff records in EduGuide.</p>
     </div>
 
+    {% if user.is_authenticated and student_profile %}
+      <section class="prediction-form-card prediction-profile-card" data-prediction-url="{% url 'prediction_data' %}">
+        <input type="hidden" id="predictionCsrfToken" value="{{ csrf_token }}">
+        <div class="prediction-form-header">
+          <div class="prediction-form-icon">🎯</div>
+          <div><h2>Your saved admission profile</h2><p>These values are used for every prediction. They are loaded directly from your account.</p></div>
+        </div>
+        <div class="prediction-profile-grid">
+          <div><span>Percentage</span><strong>{{ student_profile.percentage }}%</strong></div>
+          <div><span>Category</span><strong>{{ student_profile.category }}</strong></div>
+          <div><span>Preferred branch</span><strong>{{ student_profile.branch }}</strong></div>
+          <div><span>Preferred location</span><strong>{{ student_profile.preferred_location }}</strong></div>
+          <div><span>College type</span><strong>{{ student_profile.college_type }}</strong></div>
+          <div><span>Admission year</span><strong>{{ student_profile.admission_year }}</strong></div>
+        </div>
+        <button type="button" id="predictButton" class="btn btn-primary prediction-button"><span>Calculate my college matches</span><span>→</span></button>
+        <p class="prediction-data-note">We compare your percentage with historical cutoffs for your category and preferred branch. Results are guidance, not an admission guarantee.</p>
+      </section>
+
+      <section id="predictionResults" class="prediction-results" hidden aria-live="polite">
+        <div class="results-heading">
+          <span class="prediction-label">YOUR DATA-BASED RESULTS</span>
+          <h2>College matches for your profile</h2>
+          <p id="predictionSummary"></p>
+        </div>
+        <div id="predictionStatus" class="prediction-status" hidden></div>
+        <div id="predictionCards" class="row g-4"></div>
+        <div class="prediction-note"><span>💡</span><p><strong>How this works:</strong> each result uses the stored cutoff records for your category. A higher margin above the historical average cutoff produces a stronger chance band.</p></div>
+      </section>
+    {% else %}
+      <section class="prediction-login-section"><div class="prediction-login-card">
+        <div class="prediction-login-icon">🔐</div><span class="prediction-login-label">PROFILE REQUIRED</span>
+        <h2>Register before using predictions</h2>
+        <p>Prediction uses your percentage, category, branch, location and college preference. Create an account once and EduGuide will save these details for future visits.</p>
+        <div class="prediction-login-buttons"><a href="{% url 'register' %}" class="prediction-login-btn">Create my profile →</a><a href="{% url 'login' %}" class="prediction-register-btn">Login</a></div>
+      </div></section>
+    {% endif %}
+
+    <section class="prediction-how-section">
+      <div class="text-center"><h2>How the prediction is calculated</h2><p>A transparent comparison of your saved details and the admission data in the database.</p></div>
+      <div class="row g-4 mt-3">
+        <div class="col-md-4"><article class="prediction-step"><div class="step-number">01</div><h3>Match your profile</h3><p>We filter records using your preferred branch, category, location and college type.</p></article></div>
+        <div class="col-md-4"><article class="prediction-step"><div class="step-number">02</div><h3>Compare cutoffs</h3><p>Your percentage is compared against the historical category cutoff for every matching course.</p></article></div>
+        <div class="col-md-4"><article class="prediction-step"><div class="step-number">03</div><h3>Rank the choices</h3><p>Results are ordered by the score gap and shown as high, good, moderate or stretch chances.</p></article></div>
+      </div>
+    </section>
+  </div>
 </section>
 
-
-{% if user.is_authenticated %}
-
-<!-- Prediction JavaScript -->
-
+{% if user.is_authenticated and student_profile %}
 <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const button = document.getElementById('predictButton');
+  const panel = document.querySelector('[data-prediction-url]');
+  const results = document.getElementById('predictionResults');
+  const cards = document.getElementById('predictionCards');
+  const summary = document.getElementById('predictionSummary');
+  const status = document.getElementById('predictionStatus');
+  const csrfToken = document.getElementById('predictionCsrfToken').value;
 
-    const predictButton =
-        document.getElementById("predictButton");
+  const showStatus = (message) => { status.hidden = false; status.textContent = message; };
+  const emptyResults = (message) => { cards.replaceChildren(); showStatus(message); };
+  const detail = (label, value) => { const item = document.createElement('span'); item.textContent = `${label}: ${value}`; return item; };
+  const card = (result) => {
+    const col = document.createElement('div'); col.className = 'col-md-6 col-lg-4';
+    const item = document.createElement('article'); item.className = `prediction-card prediction-card--${result.level}`;
+    const top = document.createElement('div'); top.className = 'chance-top';
+    const badge = document.createElement('span'); badge.className = 'chance-badge'; badge.textContent = result.chance;
+    const confidence = document.createElement('span'); confidence.className = 'chance-icon'; confidence.textContent = `${result.confidence}% match`;
+    top.append(badge, confidence);
+    const title = document.createElement('h3'); title.textContent = result.college;
+    const location = document.createElement('p'); location.className = 'prediction-location'; location.textContent = `📍 ${result.location}`;
+    const info = document.createElement('div'); info.className = 'prediction-card-info'; info.append(detail('Course', result.course), detail('Type', result.college_type));
+    const cutoff = document.createElement('p'); cutoff.className = 'prediction-cutoff'; cutoff.textContent = `Historical average cutoff: ${result.cutoff}% · Your margin: ${result.margin >= 0 ? '+' : ''}${result.margin}%`;
+    const bar = document.createElement('div'); bar.className = 'chance-bar'; const progress = document.createElement('div'); progress.className = 'chance-progress'; progress.style.width = `${result.confidence}%`; bar.appendChild(progress);
+    const note = document.createElement('small'); note.textContent = `Calculated from ${result.records_used} matching cutoff record${result.records_used === 1 ? '' : 's'}.`;
+    item.append(top, title, location, info, cutoff, bar, note); col.appendChild(item); return col;
+  };
 
-    const predictionResults =
-        document.getElementById("predictionResults");
-
-
-    predictButton.addEventListener(
-        "click",
-        function () {
-
-            const percentage =
-                document.getElementById(
-                    "studentPercentage"
-                ).value;
-
-            const category =
-                document.getElementById(
-                    "studentCategory"
-                ).value;
-
-            const branch =
-                document.getElementById(
-                    "studentBranch"
-                ).value;
-
-
-            if (
-                percentage === "" ||
-                category === "" ||
-                branch === ""
-            ) {
-
-                alert(
-                    "Please enter your percentage, category and preferred branch."
-                );
-
-                return;
-
-            }
-
-
-            if (
-                percentage < 0 ||
-                percentage > 100
-            ) {
-
-                alert(
-                    "Please enter a valid percentage between 0 and 100."
-                );
-
-                return;
-
-            }
-
-
-            predictionResults.style.display =
-                "block";
-
-
-            predictionResults.scrollIntoView({
-                behavior: "smooth"
-            });
-
-        }
-    );
-
+  button.addEventListener('click', async () => {
+    button.disabled = true; button.classList.add('is-loading'); button.querySelector('span').textContent = 'Calculating your matches…';
+    results.hidden = false; status.hidden = true; cards.replaceChildren(); summary.textContent = '';
+    try {
+      const response = await fetch(panel.dataset.predictionUrl, { method: 'POST', headers: { 'X-CSRFToken': csrfToken, 'X-Requested-With': 'XMLHttpRequest' }, credentials: 'same-origin' });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || 'We could not calculate your prediction.');
+      if (!data.results.length) { emptyResults(data.error || 'No close matches were found with the selected profile filters. Try changing your saved location or college-type preference.'); }
+      else { cards.replaceChildren(...data.results.map(card)); summary.textContent = `${data.results.length} matches calculated from ${data.data_year} cutoff data.${data.used_latest_year ? ` Your selected year was unavailable, so the latest available year (${data.data_year}) was used.` : ''}`; }
+      results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (error) { emptyResults(error.message || 'Something went wrong while calculating your prediction.'); }
+    finally { button.disabled = false; button.classList.remove('is-loading'); button.querySelector('span').textContent = 'Calculate my college matches'; }
+  });
+});
 </script>
-
 {% endif %}
-
 {% endblock %}

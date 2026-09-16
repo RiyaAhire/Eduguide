@@ -50,7 +50,7 @@ for csv_file in BASE_PATH.rglob("*.csv"):
             }
         )
 
-        SeatMatrix.objects.create(
+        SeatMatrix.objects.update_or_create(
             course=course,
             admission_year=str(row["Admission Year"]).strip(),
             cap_round="INITIAL",
@@ -58,7 +58,7 @@ for csv_file in BASE_PATH.rglob("*.csv"):
             district_type=str(row["District Type"]).strip(),
             category=str(row["Category"]).strip(),
             gender=str(row["Gender"]).strip(),
-            seat_count=int(row["Seat Count"])
+            defaults={"seat_count": int(row["Seat Count"])},
         )
 
 print("\nSeat Matrix Import Completed")
