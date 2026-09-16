@@ -1,4 +1,5 @@
 from colleges.models import College
+from users.models import CourseInfo
 
 from django.shortcuts import (
     render,
@@ -128,16 +129,9 @@ def colleges(request):
         }
     )
 
+def college_details(request, college_id):
 
-def college_details(
-    request,
-    college_id
-):
-
-    college = get_object_or_404(
-        College,
-        id=college_id
-    )
+    college = College.objects.get(id=college_id)
 
     return render(
         request,
@@ -148,18 +142,33 @@ def college_details(
     )
 
 
+def course_details(request, course_id):
+
+    course = CourseInfo.objects.get(id=course_id)
+    course.subjects_list = course.major_subjects.split("|")
+    course.skills_list = course.skills.split("|")
+    course.career_list = course.career_opportunities.split("|")
+    course.higher_studies_list = course.higher_studies.split("|")
+    return render(
+        request,
+        "journal/course_details.html",
+        {
+            "course": course
+        }
+    )
 def courses(request):
+
+    courses = CourseInfo.objects.all().order_by("course_name")
+
     return render(
         request,
-        "journal/courses.html"
+        "journal/courses.html",
+        {
+            "courses": courses
+        }
     )
 
 
-def course_details(request):
-    return render(
-        request,
-        "journal/course_details.html"
-    )
 
 
 def cutoff(request):

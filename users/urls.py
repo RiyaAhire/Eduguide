@@ -45,11 +45,11 @@ urlpatterns = [
         name="courses"
     ),
 
-    path(
-        "course-details/",
-        views.course_details,
-        name="course_details"
-    ),
+   path(
+    "course-details/<int:course_id>/",
+    views.course_details,
+    name="course_details"
+),
 
     path(
         "cutoff/",

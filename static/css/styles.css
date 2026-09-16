@@ -1381,9 +1381,13 @@ transition:.3s;
 
 
 /* Course cards */
-
 .course-card {
+
     height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
 
     background: #ffffff;
 
@@ -1397,8 +1401,8 @@ transition:.3s;
 
     transition: 0.25s ease;
 }
-
 .course-card:hover {
+
     transform: translateY(-6px);
 
     border-color: #bfdbfe;
@@ -1435,14 +1439,18 @@ transition:.3s;
     margin-bottom: 10px;
 }
 
+
 .course-description {
+
     color: #64748b;
 
     font-size: 14px;
 
     line-height: 1.6;
 
-    min-height: 67px;
+    min-height: 80px;
+
+    flex-grow: 1;
 }
 
 .course-info {
@@ -1469,11 +1477,16 @@ transition:.3s;
 }
 
 .course-skills {
+
     display: flex;
+
     flex-wrap: wrap;
 
-    gap: 7px;
+    gap: 10px;
+
+    margin-bottom: 15px;
 }
+
 
 .course-skills span {
     background: #eff6ff;
@@ -1487,8 +1500,12 @@ transition:.3s;
     font-size: 11px;
     font-weight: 600;
 }
-
 .course-card .btn {
+
+    margin-top: auto;
+
+    align-self: flex-start;
+
     font-size: 13px;
 
     padding: 8px 18px;
@@ -1708,24 +1725,16 @@ transition:.3s;
 }
 
 .career-grid {
+
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 
     gap: 15px;
 }
 
-.career-item {
-    background: #f8fafc;
-
-    padding: 16px;
-
-    border-radius: 12px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 5px;
+.career-item{
+    height:100%;
 }
 
 .career-item strong {

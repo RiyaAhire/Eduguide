@@ -78,319 +78,48 @@
 
         <!-- Course Cards -->
 
-        <div class="row g-4 mt-4"
-             id="courseList">
+       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="courseList">
 
 
-            <!-- Computer Engineering -->
+           {% for course in courses %}
 
-            <div class="col-md-6 col-lg-4 course-item"
-                 data-name="Computer Engineering"
-                 data-category="Computer">
+<div class="col course-item"
+     data-name="{{ course.course_name }}"
+     data-category="{{ course.field }}">
 
-                <div class="course-card">
+    <div class="course-card d-flex flex-column">
 
-                    <div class="course-icon">
-                        💻
-                    </div>
-
-                    <h3>
-                        Computer Engineering
-                    </h3>
-
-                    <p class="course-description">
-                        Learn programming, software development,
-                        databases, networking and modern technologies.
-                    </p>
-
-                    <div class="course-info">
-
-                        <span>
-                            ⏳ 3 Years
-                        </span>
-
-                        <span>
-                            🎓 Diploma
-                        </span>
-
-                    </div>
-
-                    <div class="course-skills">
-
-                        <span>Programming</span>
-                        <span>DBMS</span>
-                        <span>Web Development</span>
-
-                    </div>
-
-                    <a href="{% url 'course_details' %}"
-                       class="btn btn-outline-primary rounded-pill mt-3">
-                        Explore Course
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- Mechanical Engineering -->
-
-            <div class="col-md-6 col-lg-4 course-item"
-                 data-name="Mechanical Engineering"
-                 data-category="Mechanical">
-
-                <div class="course-card">
-
-                    <div class="course-icon">
-                        ⚙️
-                    </div>
-
-                    <h3>
-                        Mechanical Engineering
-                    </h3>
-
-                    <p class="course-description">
-                        Explore machines, manufacturing, design,
-                        thermodynamics and mechanical systems.
-                    </p>
-
-                    <div class="course-info">
-
-                        <span>
-                            ⏳ 3 Years
-                        </span>
-
-                        <span>
-                            🎓 Diploma
-                        </span>
-
-                    </div>
-
-                    <div class="course-skills">
-
-                        <span>CAD</span>
-                        <span>Manufacturing</span>
-                        <span>Design</span>
-
-                    </div>
-
-                    <a href="#"
-                       class="btn btn-outline-primary rounded-pill mt-3">
-                        Explore Course
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- Civil Engineering -->
-
-            <div class="col-md-6 col-lg-4 course-item"
-                 data-name="Civil Engineering"
-                 data-category="Civil">
-
-                <div class="course-card">
-
-                    <div class="course-icon">
-                        🏗️
-                    </div>
-
-                    <h3>
-                        Civil Engineering
-                    </h3>
-
-                    <p class="course-description">
-                        Learn construction, structural design,
-                        surveying and infrastructure development.
-                    </p>
-
-                    <div class="course-info">
-
-                        <span>
-                            ⏳ 3 Years
-                        </span>
-
-                        <span>
-                            🎓 Diploma
-                        </span>
-
-                    </div>
-
-                    <div class="course-skills">
-
-                        <span>Construction</span>
-                        <span>Surveying</span>
-                        <span>Structures</span>
-
-                    </div>
-
-                    <a href="#"
-                       class="btn btn-outline-primary rounded-pill mt-3">
-                        Explore Course
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- Electrical Engineering -->
-
-            <div class="col-md-6 col-lg-4 course-item"
-                 data-name="Electrical Engineering"
-                 data-category="Electrical">
-
-                <div class="course-card">
-
-                    <div class="course-icon">
-                        ⚡
-                    </div>
-
-                    <h3>
-                        Electrical Engineering
-                    </h3>
-
-                    <p class="course-description">
-                        Study electrical systems, power generation,
-                        circuits, machines and control systems.
-                    </p>
-
-                    <div class="course-info">
-
-                        <span>
-                            ⏳ 3 Years
-                        </span>
-
-                        <span>
-                            🎓 Diploma
-                        </span>
-
-                    </div>
-
-                    <div class="course-skills">
-
-                        <span>Circuits</span>
-                        <span>Power Systems</span>
-                        <span>Machines</span>
-
-                    </div>
-
-                    <a href="#"
-                       class="btn btn-outline-primary rounded-pill mt-3">
-                        Explore Course
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- Electronics & Telecommunication -->
-
-            <div class="col-md-6 col-lg-4 course-item"
-                 data-name="Electronics and Telecommunication Engineering"
-                 data-category="Electronics">
-
-                <div class="course-card">
-
-                    <div class="course-icon">
-                        📡
-                    </div>
-
-                    <h3>
-                        Electronics & Telecommunication
-                    </h3>
-
-                    <p class="course-description">
-                        Learn electronics, communication systems,
-                        digital circuits and embedded technologies.
-                    </p>
-
-                    <div class="course-info">
-
-                        <span>
-                            ⏳ 3 Years
-                        </span>
-
-                        <span>
-                            🎓 Diploma
-                        </span>
-
-                    </div>
-
-                    <div class="course-skills">
-
-                        <span>Electronics</span>
-                        <span>Communication</span>
-                        <span>Embedded</span>
-
-                    </div>
-
-                    <a href="#"
-                       class="btn btn-outline-primary rounded-pill mt-3">
-                        Explore Course
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- Automobile Engineering -->
-
-            <div class="col-md-6 col-lg-4 course-item"
-                 data-name="Automobile Engineering"
-                 data-category="Automobile">
-
-                <div class="course-card">
-
-                    <div class="course-icon">
-                        🚗
-                    </div>
-
-                    <h3>
-                        Automobile Engineering
-                    </h3>
-
-                    <p class="course-description">
-                        Explore vehicle technology, automobile design,
-                        engines and modern transportation systems.
-                    </p>
-
-                    <div class="course-info">
-
-                        <span>
-                            ⏳ 3 Years
-                        </span>
-
-                        <span>
-                            🎓 Diploma
-                        </span>
-
-                    </div>
-
-                    <div class="course-skills">
-
-                        <span>Automobiles</span>
-                        <span>Engines</span>
-                        <span>Vehicle Design</span>
-
-                    </div>
-
-                    <a href="#"
-                       class="btn btn-outline-primary rounded-pill mt-3">
-                        Explore Course
-                    </a>
-
-                </div>
-
-            </div>
-
-
+        <div class="course-icon">
+            🎓
         </div>
 
+        <h3>
+            {{ course.course_name }}
+        </h3>
 
+        <p class="course-description">
+            {{ course.description|truncatechars:100 }}
+        </p>
+
+        <div class="course-info">
+            <span>⏳ {{ course.duration }}</span>
+            <span>🎓 {{ course.level }}</span>
+        </div>
+
+        <div class="course-skills">
+            <span>{{ course.field }}</span>
+        </div>
+
+     <a href="{% url 'course_details' course.id %}"
+   class="btn btn-outline-primary rounded-pill">
+    Explore Course
+</a>
+    </div>
+
+</div>
+
+{% endfor %}
+</div>
         <!-- No Results -->
 
         <div id="courseNoResults"
