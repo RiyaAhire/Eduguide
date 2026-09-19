@@ -1,4 +1,4 @@
-from colleges.models import College
+from colleges.models import College, Course
 from users.models import CourseInfo, Student
 
 from django.shortcuts import (
@@ -22,7 +22,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from prediction.models import Cutoff
 from django.db import transaction
-from django.db.models import Avg, Count, Q
+from django.db.models import Count, Max, Q
 from django.contrib import messages
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth import get_user_model
@@ -36,6 +36,34 @@ PROFILE_FIELDS = (
     "full_name", "username", "email", "percentage", "category", "branch",
     "preferred_location", "college_type", "admission_year", "passing_year",
 )
+
+FALLBACK_BRANCHES = (
+    "Computer Engineering", "Information Technology", "Mechanical Engineering",
+    "Civil Engineering", "Electrical Engineering", "Electronics & Telecommunication",
+    "Aerospace Engineering", "Textile Engineering", "Dress Designing and Garment Manufacturing",
+)
+
+
+def prediction_branches(selected_branch=""):
+    """Use the courses that actually have cutoff data, with useful first-run fallbacks."""
+    branches = list(
+        Course.objects.filter(cutoff__isnull=False)
+        .values_list("course_name", flat=True)
+        .distinct()
+        .order_by("course_name")
+    )
+    if not branches:
+        branches = list(FALLBACK_BRANCHES)
+    if selected_branch and selected_branch not in branches:
+        branches.append(selected_branch)
+    return branches
+
+
+def profile_context(form_data=None, **extra):
+    context = {"form_data": form_data or {}}
+    context["prediction_branches"] = prediction_branches(context["form_data"].get("branch", ""))
+    context.update(extra)
+    return context
 
 
 def _profile_form_data(request):
@@ -95,14 +123,14 @@ def register(request):
             return render(
                 request,
                 "journal/register.html",
-                {"error": error or "Please complete every required field.", "form_data": form_data},
+                profile_context(form_data, error=error or "Please complete every required field."),
             )
 
         if password != confirm_password:
             return render(
                 request,
                 "journal/register.html",
-                {"error": "Passwords do not match.", "form_data": form_data},
+                profile_context(form_data, error="Passwords do not match."),
             )
 
         try:
@@ -111,21 +139,21 @@ def register(request):
             return render(
                 request,
                 "journal/register.html",
-                {"error": " ".join(validation_error.messages), "form_data": form_data},
+                profile_context(form_data, error=" ".join(validation_error.messages)),
             )
 
         if User.objects.filter(username=form_data["username"]).exists():
             return render(
                 request,
                 "journal/register.html",
-                {"error": "Username already exists.", "form_data": form_data},
+                profile_context(form_data, error="Username already exists."),
             )
 
         if User.objects.filter(email=form_data["email"]).exists() or Student.objects.filter(email=form_data["email"]).exists():
             return render(
                 request,
                 "journal/register.html",
-                {"error": "An account with this email already exists.", "form_data": form_data},
+                profile_context(form_data, error="An account with this email already exists."),
             )
 
         with transaction.atomic():
@@ -151,10 +179,7 @@ def register(request):
         messages.success(request, "Account created. Check your email for the verification link.")
         return redirect("login")
 
-    return render(
-        request,
-        "journal/register.html"
-    )
+    return render(request, "journal/register.html", profile_context())
 
 
 def verify_email(request, uidb64, token):
@@ -204,7 +229,7 @@ def profile(request):
                 error = "An account with this email already exists."
 
         if error:
-            return render(request, "journal/profile.html", {"error": error, "form_data": form_data})
+            return render(request, "journal/profile.html", profile_context(form_data, error=error))
 
         with transaction.atomic():
             user = request.user
@@ -236,7 +261,7 @@ def profile(request):
         "college_type": student_profile.college_type,
         "admission_year": student_profile.admission_year,
     }
-    return render(request, "journal/profile.html", {"form_data": form_data})
+    return render(request, "journal/profile.html", profile_context(form_data))
 
 
 def login_view(request):
@@ -466,9 +491,33 @@ def _branch_terms(branch):
             "electronics engineering",
         ],
         "Information Technology": ["information technology"],
-        "Computer Engineering": ["computer engineering", "computer science"],
+        "Computer Engineering": [
+            "computer engineering",
+            "computer science",
+            "computer technology",
+        ],
+        "Aerospace Engineering": ["aerospace engineering", "aeronautical engineering"],
     }
     return aliases.get(branch, [branch])
+
+
+def _prediction_years(available_years):
+    """Use both of the two latest historical years when they are available."""
+    return available_years[:2]
+
+
+def _college_type_filter(college_type):
+    """Map student-friendly college types to the terminology in source data."""
+    filters = {
+        "Government": Q(course__college__status__icontains="government"),
+        "Private": (
+            Q(course__college__status__icontains="private")
+            | Q(course__college__status__icontains="un-aided")
+            | Q(course__college__status__icontains="unaided")
+        ),
+        "Autonomous": Q(course__college__status__icontains="autonomous"),
+    }
+    return filters.get(college_type, Q())
 
 
 def _chance_for_margin(margin):
@@ -504,17 +553,23 @@ def prediction_data(request):
     if not available_years:
         return JsonResponse({"results": [], "error": "No cutoff records are available for your preferred branch."})
 
-    data_year = profile.admission_year if profile.admission_year in available_years else available_years[0]
-    cutoffs = cutoffs.filter(admission_year=data_year)
+    data_years = _prediction_years(available_years)
+    cutoffs = cutoffs.filter(admission_year__in=data_years)
 
     # Codes such as NGOBC and NGSCH contain the student's reservation category.
-    cutoffs = cutoffs.filter(category_code__icontains=profile.category)
+    # Exclude seats that require extra eligibility information we do not collect.
+    cutoffs = cutoffs.filter(category_code__icontains=profile.category).exclude(
+        Q(category_code__icontains="PWD")
+        | Q(category_code__icontains="DEF")
+        | Q(category_code__icontains="ORPHAN")
+        | Q(category_code__icontains="TFWS")
+    )
 
     if profile.preferred_location and profile.preferred_location != "Any":
         cutoffs = cutoffs.filter(course__college__region__iexact=profile.preferred_location)
 
     if profile.college_type and profile.college_type != "Any":
-        cutoffs = cutoffs.filter(course__college__status__icontains=profile.college_type)
+        cutoffs = cutoffs.filter(_college_type_filter(profile.college_type))
 
     grouped = (
         cutoffs.values(
@@ -525,7 +580,10 @@ def prediction_data(request):
             "course__college__status",
         )
         .annotate(
-            average_cutoff=Avg("cutoff_percentile"),
+            # Use the most competitive applicable cutoff across the two latest
+            # historical years. This is safer than averaging separate CAP
+            # rounds, stages and seat categories into a fictional threshold.
+            reference_cutoff=Max("cutoff_percentile"),
             records_used=Count("id"),
         )
     )
@@ -534,7 +592,7 @@ def prediction_data(request):
     # matching course so a student never receives duplicate college cards.
     results_by_college = {}
     for item in grouped:
-        cutoff_percent = item["average_cutoff"] * 100
+        cutoff_percent = item["reference_cutoff"] * 100
         margin = profile.percentage - cutoff_percent
         # Recommendations more than 8 percentage points below the student's
         # score are too unlikely to present as a useful college prediction.
@@ -551,6 +609,7 @@ def prediction_data(request):
             "level": level,
             "confidence": confidence,
             "cutoff": round(cutoff_percent, 2),
+            "cutoff_basis": "Most competitive eligible cutoff across two years",
             "margin": round(margin, 2),
             "records_used": item["records_used"],
         }
@@ -568,9 +627,9 @@ def prediction_data(request):
     results.sort(key=lambda result: (result["confidence"], result["margin"]), reverse=True)
     return JsonResponse({
         "results": results[:24],
-        "data_year": data_year,
+        "data_years": data_years,
         "requested_year": profile.admission_year,
-        "used_latest_year": data_year != profile.admission_year,
+        "used_latest_year": profile.admission_year not in data_years,
         "profile": {
             "percentage": profile.percentage,
             "category": profile.category,

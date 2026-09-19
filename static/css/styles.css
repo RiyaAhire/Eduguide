@@ -26,6 +26,10 @@ body {
     color: #334155;
 }
 
+html.dark-mode {
+    background: #0f172a;
+}
+
 
 /* =========================================================
    NAVBAR
@@ -170,6 +174,12 @@ body {
     color: #2563eb;
 
     font-weight: 600;
+}
+
+.navbar .btn.active {
+    color: #ffffff;
+    background: #2563eb;
+    border-color: #2563eb;
 }
 
 

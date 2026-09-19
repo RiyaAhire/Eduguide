@@ -82,12 +82,9 @@
                             <label class="form-label" for="branch">Preferred branch</label>
                             <select id="branch" name="branch" class="form-select" required>
                                 <option value="">Select branch</option>
-                                <option value="Computer Engineering" {% if form_data.branch == 'Computer Engineering' %}selected{% endif %}>Computer Engineering</option>
-                                <option value="Information Technology" {% if form_data.branch == 'Information Technology' %}selected{% endif %}>Information Technology</option>
-                                <option value="Mechanical Engineering" {% if form_data.branch == 'Mechanical Engineering' %}selected{% endif %}>Mechanical Engineering</option>
-                                <option value="Civil Engineering" {% if form_data.branch == 'Civil Engineering' %}selected{% endif %}>Civil Engineering</option>
-                                <option value="Electrical Engineering" {% if form_data.branch == 'Electrical Engineering' %}selected{% endif %}>Electrical Engineering</option>
-                                <option value="Electronics & Telecommunication" {% if form_data.branch == 'Electronics & Telecommunication' %}selected{% endif %}>Electronics & Telecommunication</option>
+                                {% for branch in prediction_branches %}
+                                    <option value="{{ branch }}" {% if form_data.branch == branch %}selected{% endif %}>{{ branch }}</option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="col-md-3">

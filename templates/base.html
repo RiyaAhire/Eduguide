@@ -16,9 +16,21 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
+    <script>
+        // Apply the stored theme before the body is painted.
+        if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark-mode");
+        }
+    </script>
+
 </head>
 
 <body>
+    <script>
+        if (document.documentElement.classList.contains("dark-mode")) {
+            document.body.classList.add("dark-mode");
+        }
+    </script>
 
     <!-- =========================
          NAVBAR
@@ -89,7 +101,7 @@
                     <li class="nav-item dropdown">
 
                         <a class="nav-link dropdown-toggle
-                            {% if request.resolver_match.url_name == 'colleges' or request.resolver_match.url_name == 'courses' %}
+                            {% if request.resolver_match.url_name == 'colleges' or request.resolver_match.url_name == 'college_details' or request.resolver_match.url_name == 'courses' or request.resolver_match.url_name == 'course_details' %}
                                 active-dropdown
                             {% endif %}"
                            href="#"
@@ -231,7 +243,7 @@
                     </span>
 
                     <a href="{% url 'profile' %}"
-                       class="btn btn-outline-primary rounded-pill px-3 me-2">
+                       class="btn btn-outline-primary rounded-pill px-3 me-2 {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
                         My profile
                     </a>
 
@@ -309,15 +321,8 @@
 
             /* Check saved theme */
 
-            const savedTheme = localStorage.getItem("theme");
-
-
-            if (savedTheme === "dark") {
-
-                document.body.classList.add("dark-mode");
-
+            if (document.body.classList.contains("dark-mode")) {
                 themeToggle.textContent = "☀️";
-
             }
 
 
@@ -332,6 +337,8 @@
 
                     localStorage.setItem("theme", "dark");
 
+                    document.documentElement.classList.add("dark-mode");
+
                     themeToggle.textContent = "☀️";
 
                 }
@@ -339,6 +346,8 @@
                 else {
 
                     localStorage.setItem("theme", "light");
+
+                    document.documentElement.classList.remove("dark-mode");
 
                     themeToggle.textContent = "🌙";
 
