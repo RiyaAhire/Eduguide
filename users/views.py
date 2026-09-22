@@ -638,6 +638,10 @@ def prediction_data(request):
     })
 
 
+def admission_process(request):
+    return render(request, 'journal/admission_process.html')
+
+
 def about(request):
     return render(
         request,

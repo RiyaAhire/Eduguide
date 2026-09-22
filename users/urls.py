@@ -111,4 +111,9 @@ urlpatterns = [
         name="about"
     ),
 
+    path('admission-process/', 
+         views.admission_process,
+           name='admission_process'
+    ),
+
 ]
