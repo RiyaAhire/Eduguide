@@ -1,136 +1,146 @@
-{% extends 'base.html' %}
-
-{% block content %}
-
-<section class="college-details-section">
-    <div class="container">
-
-        <a href="{% url 'colleges' %}" class="back-link">
-            ← Back to Explore Colleges
-        </a>
-
-        <div class="college-details-header">
-            <div class="college-details-icon">
-                🎓
-            </div>
-
-            <div>
-                <h1>
-                    {{ college.college_name }}
-                </h1>
-
-                <p class="college-details-location">
-                    📍 {{ college.region }}
-                </p>
-
-                <div class="college-detail-tags">
-                    <span class="badge bg-primary">
-                        {{ college.status }}
-                    </span>
-
-                    <span class="badge bg-light text-dark">
-                        College Code: {{ college.college_code }}
-                    </span>
-                </div>
-            </div>
-        </div>
-
-        <div class="row g-4 mt-2">
-
-            <div class="col-lg-8">
-
-                <div class="details-card">
-                    <h2>About the College</h2>
-
-                    <p>
-                        {{ college.college_name }} is an educational institute
-                        located in {{ college.region }} offering technical and
-                        professional courses for students.
-                    </p>
-
-                    <p>
-                        Students can explore available branches, admission
-                        cutoffs and seat availability through EduGuide.
-                    </p>
-                </div>
-
-                <div class="details-card">
-                    <h2>Available Courses</h2>
-
-                    {% if college.courses.all %}
-
-                        <div class="branch-list">
-
-                            {% for course in college.courses.all %}
-
-                                <div class="branch-item">
-                                    <span>📘</span>
-                                    {{ course.course_name }}
-                                </div>
-
-                            {% endfor %}
-
-                        </div>
-
-                    {% else %}
-
-                        <p>No courses available.</p>
-
-                    {% endif %}
-                </div>
-
-            </div>
-
-            <div class="col-lg-4">
-
-                <div class="details-card quick-info">
-
-                    <h2>College Information</h2>
-
-                    <div class="info-row">
-                        <span>College Name</span>
-                        <strong>{{ college.college_name }}</strong>
-                    </div>
-
-                    <div class="info-row">
-                        <span>College Code</span>
-                        <strong>{{ college.college_code }}</strong>
-                    </div>
-
-                    <div class="info-row">
-                        <span>Region</span>
-                        <strong>{{ college.region }}</strong>
-                    </div>
-
-                    <div class="info-row">
-                        <span>Status</span>
-                        <strong>{{ college.status }}</strong>
-                    </div>
-
-                </div>
-
-                <div class="details-card text-center">
-
-                    <h3>
-                        Interested in this college?
-                    </h3>
-
-                    <p>
-                        Explore courses, cutoff trends and admission details.
-                    </p>
-
-                    <a href="{% url 'cutoff' %}"
-                       class="btn btn-primary rounded-pill px-4">
-                        View Cutoff
+{% extends 'base.html' %} 
+ 
+{% block content %} 
+ 
+<section class="college-details-section"> 
+    <div class="container"> 
+ 
+        <a href="{% url 'colleges' %}" class="back-link"> 
+            ← Back to Explore Colleges 
+        </a> 
+ 
+        <div class="college-details-header"> 
+            <div class="college-details-icon"> 
+                🎓 
+            </div> 
+ 
+            <div> 
+                <h1> 
+                    {{ college.college_name }} 
+                </h1> 
+ 
+                <p class="college-details-location"> 
+                    📍 {{ college.region }} 
+                </p> 
+ 
+                <div class="college-detail-tags"> 
+                    <span class="badge bg-primary"> 
+                        {{ college.status }} 
+                    </span> 
+ 
+                    <span class="badge bg-light text-dark"> 
+                        College Code: {{ college.college_code }} 
+                    </span> 
+                </div> 
+            </div> 
+        </div> 
+ 
+        <div class="row g-4 mt-2"> 
+ 
+            <div class="col-lg-8"> 
+ 
+                <div class="details-card"> 
+                    <h2>About the College</h2> 
+ 
+                    <p> 
+                        {{ college.college_name }} is an educational institute 
+                        located in {{ college.region }} offering technical and 
+                        professional courses for students. 
+                    </p> 
+ 
+                    <p> 
+                        Students can explore available branches, admission 
+                        cutoffs and seat availability through EduGuide. 
+                    </p> 
+                </div> 
+ 
+                <div class="details-card"> 
+                    <h2>Available Courses</h2> 
+ 
+                    {% if college.courses.all %} 
+ 
+                        <div class="branch-list"> 
+ 
+                            {% for course in college.courses.all %} 
+ 
+                                <div class="branch-item"> 
+                                    <span>📘</span> 
+                                    {{ course.course_name }} 
+                                </div> 
+ 
+                            {% endfor %} 
+ 
+                        </div> 
+ 
+                    {% else %} 
+ 
+                        <p>No courses available.</p> 
+ 
+                    {% endif %} 
+ 
+                </div> 
+ 
+            </div> 
+ 
+            <div class="col-lg-4"> 
+ 
+                <div class="details-card quick-info"> 
+ 
+                    <h2>College Information</h2> 
+ 
+                    <div class="info-row"> 
+                        <span>College Name</span> 
+                        <strong>{{ college.college_name }}</strong> 
+                    </div> 
+ 
+                    <div class="info-row"> 
+                        <span>College Code</span> 
+                        <strong>{{ college.college_code }}</strong> 
+                    </div> 
+ 
+                    <div class="info-row"> 
+                        <span>Region</span> 
+                        <strong>{{ college.region }}</strong> 
+                    </div> 
+ 
+                    <div class="info-row"> 
+                        <span>Status</span> 
+                        <strong>{{ college.status }}</strong> 
+                    </div> 
+ 
+                </div> 
+ 
+                <div class="details-card text-center"> 
+ 
+                    <h3> 
+                        Interested in this college? 
+                    </h3> 
+ 
+                    <p> 
+                        Explore courses, cutoff trends and admission details. 
+                    </p> 
+ 
+                    <a href="{% url 'cutoff' %}" 
+                       class="btn btn-primary rounded-pill px-4"> 
+                        View Cutoff 
                     </a>
 
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-</section>
-
+                    {% if college.website_info %}
+                        <a href="{{ college.website_info.website }}"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn btn-outline-primary rounded-pill px-4 mt-2">
+                            Visit Official Website
+                        </a>
+                    {% endif %}
+ 
+                </div> 
+ 
+            </div> 
+ 
+        </div> 
+ 
+    </div> 
+</section> 
+ 
 {% endblock %}

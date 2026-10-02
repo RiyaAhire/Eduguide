@@ -1,0 +1,452 @@
+﻿Sr. No.,Institute Code,Institute Name,Website
+1,1006,"Government Polytechnic, Murtijapur",www.gpmzr.ac.in
+2,1007,"Shree Shivaji Education Society's Dr. Panjabrao Deshmukh Polytechnic, Amravati",www.drpdpolyamt.org
+3,1008,"Government Polytechnic, Amravati",www.gpamravati.ac.in
+4,1009,"Government Polytechnic, Khamgaon",www.gpk.edu.in
+5,1010,"Government Polytechnic, Washim",www.gpwashim.edu.in
+6,1011,"Government Polytechnic, Yavatmal",www.gpyavatmal.ac.in
+7,1015,"Government Polytechnic , Achalpur",www.gpachalpur.co.in
+8,1123,"Dr.Rajendra Gode Institute of Technology & Research, Amravati",www.drgitr.ac.in
+9,1125,"Dwarka Bahu Uddeshiya Gramin Vikas Foundation, Rajarshi Shahu College of Engineering, Buldhana",www.rsce.ac.in
+10,1130,"Vision Buldhana Educational & Welfare Society's Pankaj Laddhad Institute of Technology & Management Studies, Yelgaon",www.plit.ac.in
+11,1139,"Shree Shivaji Education Society's Dr. Panjabrao Deshmukh Girls Polytechnic, Amravati",www.drpdgp.org
+12,1150,"Swavalambi Shikshan Sanstha's Sushganga Polytechnic, Wani",sushgangapolytechnic.com
+13,1151,"Late Ahilyabai Kakade Bahuuddeshiya Shikshan Prasarak Mandal, Sai Polytechnic,Kinhi(J),Yavatmal",https://saipoly.com
+14,1153,"Adarsha Bahuuddeshiya Shikshan Prasarak Mandal, Dr. R . N. Lahoti Polytechnic, Sultanpur",www.drrnlahotipolytechnic.com
+15,1182,"Padmashri Dr. V.B. Kolte College of Engineering, Malkapur, Buldhana",www.coemalkapur.ac.in
+16,1244,"Bhiwsan Patil Shinde Shikshan Gramin Vikas & Bahu Sanstha,Shinde Polytechnic, Anjani Bk Tal: Mehkar, Dist: Buldhana",www.shindepoly.org
+17,1268,"Siddhivinayak Technical Campus, School of Engineering & Research Technology, Shirasgon, Nile",stcshegaon.ac.in
+18,1275,"Manav School of Polytechnic, Vyala, Tal.Balapur, Akola",www.manavpolytechnic.mkct.org.in
+19,1277,"TAKSHASHILA POLYTECHNIC, AMRAVATI.",www.takshashilapolytechnic.org
+20,2010,"Government Polytechnic, Aurangabad",www.gpabad.ac.in
+21,2011,"Government Polytechnic, Beed",www.gpbeed.ac.in
+22,2012,"Government Polytechnic, Hingoli",www.gphingoli.in
+23,2013,"Government Polytechnic, Ambad",www.gpambad.ac.in
+24,2014,"Government Polytechnic, Jalna",gpjalna.ac.in
+25,2015,"PURANMAL LAHOTI GOVERNMENT INSTITUTE OF ENGINEERING AND TECHNOLOGY, LATUR",https://plgietl.ac.in
+26,2016,"Government Residential Women's Polytechnic, Latur",www.grwpl.org.in
+27,2017,"Government Polytechnic, Nanded",www.gpnanded.org.in
+28,2018,"Government Polytechnic, Osmanabad",www.gposmanabad.org
+29,2019,"Government Polytechnic, Jintur",www.gpjintur.co.in
+30,2111,"Everest Education Society, Group of Institutions (Integrated Campus), Ohar",www.eescoet.org
+31,2112,"Shree Yash Pratishthan, Shreeyash College of Engineering and Technology, Aurangabad",www.sypoly.org
+32,2129,"M.S. Bidve Engineering College, Latur",www.msbecl.ac.in
+33,2135,"Hi-Tech Institute of Technology, Aurangabad",www.hitechengg.edu.in
+34,2137,"Nagnathappa Halge Engineering College, Parli, Beed",www.nhce.in
+35,2138,"Matsyodari Shikshan Sansatha's College of Engineering and Technology, Jalna",www.msscetjalna.org
+36,2146,"Adarsh Shikshan Prasarak Mandal's K. T. Patil College of Engineering and Technology, Dharashiv",http://www.ktpatilengg.com/
+37,2168,"Shree Sai Samajik Vikas Sanstha, Nath Polytechnic, Paithan, Dist. Aurangabad",www.nathpolytechnic.org
+38,2171,"Gramodyogik Shikshan Mandal's Marathwada Institute Of Technology, Rotegaon, Vaijapur, Dist. Aurangabad.",https://www.mitr.ac.in
+39,2174,"Shree Bharavnath Nisarga Mandal, Diploma in Engineering and Technology, Gevrai Tanda, Aurangabad",www.sbnmpoly.org
+40,2175,"Shiva Trust's Sharadchanraji Pawar Polytechnic College, Aurangabad.",www.sharadchandrapawarpoly.com
+41,2176,"Chatrapati Shahu Maharaj Shikshan Sanstha, C.S.M.S. Sansthas College Of Polytechnic, Kanchanwadi, Aurangabad",www.csmsspoly.com
+42,2178,"Vinayakrao Patil Shikshan Prasarak Mandal, Institute Of Engineering & Technology Kannad",www.ietkannad.com
+43,2180,"Shri Chhatrapati Shivaji Shikshan Sanstha, Vasant Polytechnic College, Beed",vasantpoly.org/
+44,2181,"Mahatma Basaveshwar Education Society's T.B.Girwalkar Polytechnic, Ambejogai, Dist.Beed",www.tbgpoly.ac.in
+45,2182,"Marathwada Shikshan Prasarak Mandal, Yeshwantrao Chavan Institute Of Polytechnic, Beed",www.ycipbeed.in
+46,2183,"Aditya Bahuddeshiya Sanstha, Aditya Polytechnic, Beed",www.adityapolytechnicbeed.com
+47,2184,"Shree Dhaneshwari Manav Vikas Mandal Diploma In Engineering And Technology Institute, Hatta, Tal. Basmat, Hingoli",www.sdmvmspolyhatta.in
+48,2185,"Dharati Janseva Pratishthan, Diploma In Engineering & Technology Institute, Jalna",www.djppolytech.org
+49,2186,"Gunai Shikshan Prasarak Mandal, Rajiv Gandhi Polytechnic, Udgir, Dist Latur",www.rgpudgir.org
+50,2187,"Hindustani Education Society, N.B.S. Institute Of Polytechnic, Ausa, Latur",nbspoly.org
+51,2189,"Vishweshwarayya Institute Of Engineering And Technology, Almala, Tq. Ausa, Dist. Latur",https://www.viet.ac.in/
+52,2190,"Shri Ganesh Shikshan Prasarak Mandal, Balaghat Polytechnic College, Rudha, Latur",www.balaghatcollege.com
+53,2192,"Education Society, Kalawatibai College Of Engineering & Technology (Polytechnic), Naigaon, Nanded",www.kalawatibaipoly.com
+54,2193,"Sahayog Sevabhai Sanstha, Indira Institute Of Technology(Polytechnic), Nanded.",www.sssiitp.ac.in
+55,2194,"Matoshri Pratishthan, Vishwabharati Polytechnic Institute, Vishnupuri, Nanded.",www.mpgi.ac.in
+56,2197,"Shriram Pratishthan, Apurva Polytechnic, Rawalgaon, Parbhani.",www.apurvapolytechnic.com
+57,2224,"Gramodyogik Shikshan Mandal's Marathwada Institute of Technology, Aurangabad",www.mit.asia
+58,2250,CHHATRAPATI SAMBHAJI MAHARAJ COLLEGE OF ENGINEERING,www.aurangabadengg.in
+59,2254,"Vilasrao Deshmukh Foundation Group of Institutions, Latur",https://www.vdfengineering.co.in
+60,2278,"Renukamata KrishiVikas Pratisthan's Swami Vivekanand Polytechnic, Jola, Post Devgaon Tq Kaij, Dist Beed",www.rkvpratishthan.com
+61,2280,"Vetaleshwar Shikshan Sanstha's Rajiv Gandhi Institute of Polytechnic, Latur",https://www.rgip.svss.ac.in/
+62,2281,"Ramchandra Sanskrutik Krida Mandal's Shri R D Bhakta Polytechnic, Daregaon Tal. & Dist Jalna",
+63,2282,"Mitthulalji Sarada Institute of Technology, Nalwandi Road, Beed",www.mspolytechnicbeed.com
+64,2284,"Kiran Bahuuddeshiya Shikshan Sanstha's R R Polytechnic, Hasegaon (K), Tal. Kalamb, Dist Osmanabad",www.kbssindia.com
+65,2285,"Shri Govindaprabhu Gramin & Shahari Vikas Sevabhavi Sanstha's MDA Institute of Polytechnic Kolpa, Latur",www.godavarieducation.com
+66,2287,"People Education Society's P.E.S. Polytechnic, Nagsenvan, Aurangabad",www.pespolytechnic.org
+67,2292,"Anand Charitable Trusts, Diploma in Engineering & Technology, Murshadapur, Ashti, Dist. Beed",www.acsdiet.org
+68,2293,"Mauli Shikhan Prasarak Mandal's Lal Bahadur Shastri Polytechnic, Udgir Dist Latur",www.lbspolytech.org
+69,2294,"Shri Sai Janavikas Pratishtan's Sow.Shardadevi Pandit Polytechnic institute,Alani, Osmanabad",https://www.drvpeducationalcampus.com/s-p-polytechnic-college-dharashiv/
+70,2296,"Sevadas Shikshan Prasarak Mandal's Vasantrao Naik Institute of Technology, Vasarni, Nanded",www.sevadasspmnnd.com
+71,2298,"Shri Sai Institute of Technology(Polytechnic),Aurangabad",www.ssitpoly.org.in
+72,2508,GRAMIN TECHNICAL AND MANAGEMENT CAMPUS NANDED.,graminanded.org.in
+73,2513,"Sharda Polytechnic College, At Post Aurad, Shahajani, Nilanga",www.shardapoly.in
+74,2516,International Centre Of Excellence In Engineering and Management (ICEEM),www.iceemabad.com
+75,2517,"Shri. Shivaji Polytechnic Institute, Wasmat road, Parbhani.",www.sspi.net.in
+76,2522,"STMEI's Sandipani Technical Campus-Faculty of Engineering, Latur.",www.sandipani.ac.in
+77,2525,"Krushnaji Purushottam Chousalkar Yogeshwari Polytechnic, Ambajogai Beed",www.yogeshwaripolytechnic.com
+78,2526,"V.J.Shinde Polytechnic Institute, Osmanabad.",www.vjspco.com
+79,2528,"Rajiv Gandhi Polytechnic, Markhel, Tal.Degloor, Dist.Nanded.",www.rgpmarkhel.org
+80,2534,"Swami Vikekanand Institute of Polytechnic, Latur",www.sviplatur.org.in
+81,2631,"Shri. Ramkrishna Paramhans Polytechnic Institute, Hasnapur, Parbhani",www.srppoly.org
+82,2633,YASHODEEP KNOWLEDGE HUB,www.ykh.org.in
+83,2634,"Eaglewood Polytechnic Institute, A.P Phulepimpalgaon",www.eaglewoodpoly.in
+84,2637,"Jijau Institute of Engineering Technology and Management, Khandgaon (Bendri), Taluka Naigaon, District Nanded",jijaupolytechiccollege.com
+85,2662,R.G. Institute of Engineering and Technology,www.rgpoly.org.in
+86,2663,"Gurukul Institute of Technology, Kshirsagar, Bhokardan",polytechnic.gurukulhub.co.in
+87,2666,Mangaldeep College of Engineering,www.mangaldeep.org
+88,2710,"GOVINDRAO PATIL PAUL POLYTECHNIC AND COMPUTER SCIENE COLLEGE, HADGAON",https://govindraopatilcollege.org/
+89,2750,VASANT KALE COLLEGE OF COMPUTATIONAL AND MANAGEMENT SCIENCE,www.sssvkcocm.com
+90,2759,MDA INSTITUTE OF HIGHER EDUCATION SCIENCES AND RESEARCH,www.mdaris.com
+91,2779,NKSPT INSTITUTE OF ENGINEERING AND TECHNOLOGY PATHIKAR CAMPUS,www.nkspt.org/ioe
+92,2781,"Jay Bharat College of Polytechnic, Dapka",www.jbcpolytechnic.com
+93,2800,"JRD Institute of Technology, Basmat.",
+94,2801,"Anand Charitable Sanstha's Late Anandrao Dhonde Polytechnic College, Patoda",
+95,2802,"Anand Charitable Sanstha's Gangai Polytechnic College , Kada",
+96,2804,"Nandkumar Shinde College of Engineering & Technology, Borsar",
+97,2805,Urvara Pathrikar Engineering College,www.upec.org.in
+98,2806,Ramakrishna Polytechnic,
+99,2807,SRJ Polytechnic,
+100,2808,Raje Shahaji Polytechnic College,https://rajeshahajipoly.com/
+101,3006,"Government Institute of Printing Technology, Mumbai",www.gipt.ac.in
+102,3007,"Government Polytechnic, Mumbai",www.gpmumbai.ac.in
+103,3008,"Government Polytechnic, Pen",www.gppen.ac.in
+104,3009,"Government Polytechnic, Ratnagiri",www.gpratnagiri.org
+105,3010,"Government Polytechnic, Malvan",www.gpmalvan.co.in
+106,3011,"Government Polytechnic, Thane",www.gpthane.org.in
+107,3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",www.vjti.ac.in
+108,3013,"Government Polytechnic, Vikramgad.",www.gpvikramgad.ac.in
+109,3020,"Sasmira's Institute of Manmade Textiles, Mumbai",www.simmt.sasmira.org
+110,3021,"K. J. Somaiya Polytechnic, Mumbai",polytechnic.somaiya.edu.in/
+111,3023,"St. Xavier's Technical Institute, Mumbai",www.xaviertech.ac.in
+112,3024,"Sophia Shree B.K. Somani Memorial Polytechnic, Mumbai",www.sophiapolytechnic.com
+113,3025,Svkm's Shri Bhagubhai Mafatlal Polytechnic & College of Engineering,www.sbmp.ac.in
+114,3026,"M. H. Saboo Siddik Polytechnic, Mumbai",www.mhssp.ac.in
+115,3027,"Premlila Vithaldas Polytechnic(Womens),Mumbai",www.pvpsndt.org
+116,3028,"Father Agnel Technical College (Polytechnic), Bandra(W), Mumbai",atc.fragnel.ac.in
+117,3033,"Dr Babasaheb Ambedkar Technological University, Lonere, Raigad",www.dbatu.ac.in
+118,3142,"Navjeevan Education Society's Polytechnic, Mumbai",www.navjeevanedu.com
+119,3145,"Vivekanand Education Society's Polytechnic, Mumbai",www.ves.ac.in/polytechnic
+120,3198,"KONKAN GYANPEETH COLLEGE OF ENGINEERING, KARJAT",
+121,3218,"Aldel Education Trust's St. John College of Engineering & Management, Vevoor, Palghar",www.sjcem.edu.in
+122,3219,"Koti Vidya Charitable Trust's Smt. Alamuri Ratnamala Institute of Engineering and Technology, Sapgaon, Tal. Shahapur",www.armiet.in
+123,3221,"Vishnu Waman Thakur Charitable Trust, Viva Institute of Technology, Shirgaon",www.vivadiploma.org
+124,3222,"Haji Jamaluddin Thim Trust's Theem College of Engineering, At. Villege Betegaon, Boisar",www.theemcoe.org
+125,3223,"Mahatma Education Society's Pillai HOC College of Engineering & Technology, Tal. Khalapur. Dist. Raigad",www.phcp.ac.in
+126,3255,"Mandar Education Society's Rajaram Shinde Institute of Engineering and Technology, Pedhambe",www.mandaredusoc.org
+127,3256,"Bharati Vidyapeeth's Institute of Technology, Navi Mumbai",www.iotmumbai.bharatividyapeeth.edu
+128,3258,"Agnel Polytechnic (Fr. Agnel Charities) , Vashi, Navi Mumbai",www.apv.ac.in
+129,3260,"Khalapur Taluka Shikshan Prasarak Mandal's, B.L. Patil Polytechnic, Khopoli, Dist.Raigad",www.blppolykhopoli.com
+130,3262,Vidyavardhini's Bhausaheb Vartak Polytechnic,www.vbvp.edu.in
+131,3263,"Smarth Samaj's S. H. Jondhale Polytechnic, Dombivli",www.vjegpolytechnic.org
+132,3264,Sahyadri Shikshan Sanstha's Sahyadri Poly.Sawarde(Ratnagiri),www.sahyadripoly.org
+133,3267,"Sai Shiva Education Trust's, Muchhala Polytechnic,Thane",www.muchhalapolytechnic.com
+134,3268,"Samarth. Samaj's. Shivajirao S. Jondhale Polytechnic, Ambernath(E), Mumbai",www.ssjondhlepoly.org.in
+135,3274,"Vidyalankar Polytechnic, Mumbai",www.vpt.edu.in
+136,3275,"Kala Vidyamandir Institute of Technology (Polytechnic), Malad(W), Mumbai",www.kvmt.co.in
+137,3278,"Anjuman-I-Islam's Abdul Razzak Kalsekar Polytechnic,Panvel, Navi Mumbai",www.aiarkp.org
+138,3280,"Shivajirao S. Jondhle Polytechnic, Asangaon, Shahapur.Thane",www.jondhlepoly.org
+139,3281,"Saraswati Education Society,Saraswati Institute of Technology, Kharghar, Navi Mumbai",www.siot.org.in
+140,3282,"Saraswati Education Society, Yadavrao Tasgaonkar Polytechnic, Chandha, Nasarapur, Bhivpuri Road Railway",www.ytpolytechnic.com
+141,3285,"Dnyan Prasarak Shikshan Sanstha's, Balasaheb Mhatre Polytechnic,Ambarnath",www.bmpolytechnic.co.in
+142,3286,"Leela Education Society, G. V. Acharya Polytechnic,Shelu, Karjat",https://gvacharyapolytechnic.org/
+143,3288,"Bhartiya Education/Social Charitable Trust, Sheth Shri Otarmal Sheshmal Parmar College Of Diploma Engg, Velshet-Nagothane,Raigad",www.ssosppoly.edu.in
+144,3351,BHARAT COLLEGE OF ENGINEERING,bharatenggcollege.com
+145,3353,"Dilkap Research Institute Of Engineering and Management Studies, Village At.Mamdapur, Post- Neral",www.driems.in
+146,3420,"Rajendra Mane Polytechnic, Devrukh, Tal. Sangmeshwar, Dist. Ratnagiri",www.rmp.ind.in
+147,3440,"Metropolitan Institute of Technology & Management, Sukhalwad, Sindhudurg.",www.mitm.ac.in
+148,3445,"Vishwatmak Jangli Maharaj Ashram Trust (Kokamthan), Atma Malik Institute Of Technology & Research",https://www.amitr.edu.in/
+149,3448,"Gokhale Education Society, Katgara Polytechnic Institute, Bordi.",www.katgarapolytechnic.in
+150,3458,"Smt. Geeta D. Tatkare Polytechnic At Gove, Kolad",www.sgdtatkarepoly.com
+151,3466,"Devi Mahalaxmi Polytechnic, Titwala, Kalyan",www.devimahalaxmicollege.in
+152,3469,"Dalvi Education and charitable trust Maharashtra Polytechnic, Soveli, Tal. Mandangad",www.mahapoly.in
+153,3470,"Yashwantrao Bhonsale Institute of Technology, At Post Charathe ( Vazarwadi)",https://ybit.ac.in
+154,3503,"Indala College Of Engineering, Bapsai Tal.Kalyan",www.icoe.ac.in
+155,3722,"Sindhudurg Education Society's Shree Saraswati Institute of Technology, Tondavali,Tq.Kankvali Dist.Sindhudurg",www.sestechnology.in
+156,3726,Imperial College of Engineering,www.ice.edu.in
+157,3731,"Nilkanth Polytechnic, Kalyan",
+158,4008,"Government Polytechnic, Sakoli",www.gpsakoli.ac.in
+159,4009,"Government Polytechnic, Bramhapuri",www.gpbramhapuri.edu.in
+160,4010,"Government Polytechnic, Gadchiroli",www.gpgadchiroli.ac.in
+161,4011,Government Polytechnic Gondia,www.gpgondia.ac.in
+162,4012,"Government Polytechnic, Sadar, Nagpur",www.gpnagpur.ac.in
+163,4013,"Government Polytechnic, Arvi",www.gparvi.ac.in
+164,4015,"Acharya Shrimannarayan Polytechnic, Pimpri-Wardha",www.shikshamandal.org
+165,4026,University Institute of Technology,www.uitgug.ac.in
+166,4135,"Amar Seva Mandal's Shree Govindrao Vanjari College of Engineering & Technology, Nagpur",www.gwcet.ac.in
+167,4138,"Jaidev Education Society, J D College of Engineering and Management, Nagpur",www.jdcoem.ac.in
+168,4142,"G. H. Raisoni College of Engineering & Management, Nagpur",https://ghrcemn.raisoni.net
+169,4145,"Wainganga College of Engineering and Management, Dongargaon, Nagpur",www.wcem.edu.in
+170,4151,"Vidarbha Bahu-Uddeshiya Shikshan Sanstha's Tulshiramji Gaikwad Patil College of Engineering & Technology, Nagpur",www.tgpcet.com
+171,4163,Rajiv Gandhi College of Engineering Research & Technology Chandrapur,www.rcert.ac.in
+172,4177,"Priyadarshini Bhagwati College of Engineering, Harpur Nagar, Umred Road,Nagpur",www.pbcoe.edu.in
+173,4188,"Krushi Jivan Vikas Pratishthan, Ballarpur Institute of Technology, Mouza Bamni",www.bitedu.co.in
+174,4190,"M.D. Yergude Memorial Shikshan Prasarak Mandal's Shri Sai College of Engineering & Technology, Bhadrawati",www.sscet.in
+175,4193,"K.D.M. Education Society, Vidharbha Institute of Technology,Umred Road ,Nagpur",www.vitnagpur.edu.in
+176,4223,"Anjuman Hami-E-Islam's Anjuman Polytechnic, Nagpur",www.anjumanpolytechnic.in
+177,4227,"Vivekanand Polytechnic,SitaSaongi,Tal-Tumsar,Dist-Bhandara",www.vpiedu.com
+178,4229,"Bajaj Chandrapur Polytechnic, Chandrapur",www.bajajpolytechnic.com
+179,4230,"Shri Sadashivrao Patil Shikshan Sanstha's Kamptee Polytechnic, Kamptee",www.kpkamptee.com
+180,4231,"Sanmarg Shikshan Sanstha's Late Vasantdada Polytechnic, Nagpur.",www.lvpnagpur.in
+181,4232,"Navodaya Shikshan Sanstha's Shankarrao Dhawad Polytechnic, Nagpur",www.sdhawadpoly.in
+182,4234,"Late M.D. Yergude Memorial Shikshan Prasarak Mandal's Shri Sai Polytechnic, Chandrapur",www.saipoly.ac.in
+183,4235,"Jai Mahakali Shikshan Sanstha's Agnihotri School of Technology, Ramnagar, Wardha",www.astwardha.com
+184,4238,"Sanmarg Shikshan Sanstha, Shri Krushnarao Pandav Polytechnic, Bahadura, Nagpur",skpp.co.in
+185,4241,"Sanmarg Shikshan Sanstha, Shri Sharadchandra Pawar Polytechnic, Bhilewada",kardha
+186,4242,"Mata Mahakali Bahuuddeshiya Shikshan Prasarak Mandal's Mata Mahakali Polytechnic College, Warora",www.mmbspm.org.in
+187,4245,"Gopal Education Soceity's Shri Mukundrao Pannase Polytechnic, Mauza Mondha",www.smppolytechnic.org
+188,4247,"Laxmanrao Mankar College Of Polytechnic, Amgaon, Gondia",www.slmcop.com
+189,4248,"Shri Sai Shikshan Sanstha's Nit Polytechnic, Nagpur",www.nitpoly.edu.in
+190,4249,"Shri Nirmaladevi Education Society Sonatai Pandav Polytehnic, Paradsinga",www.sppk.co.in
+191,4250,"Maratha Shikshan Sanstha's P.D.Patil Institute of Polytechnic, Talegaon, Asthi, Wardha",pdpoly.in
+192,4251,"Sant Tukdoji Maharaj Shikshan Sanstha's Shri Sai Taj Polytechnic, Drugdhamna, Nagpur",www.saitajpoly.com
+193,4253,"Late Shri Laxmaji Motghare Chritable Trust's Dr. Arun Motghare Polytechnic, Kosara-Konda, Bhandara",www.dramp.org
+194,4254,"Krushna Sahayogi Tantra Shikshan Sanstha, Chatrapati Shivaji Institute Of Technology, Deori, Gondia",www.csitdeori.ac.in
+195,4255,"Jai Mahakali Shikshan Sanstha's Agnihotri Polytechnic, Sindhi (Meghe), Wardha",www.apnwardha.com
+196,4258,"Dharampeth Education Soceity's Dharampeth Polytechnic, Nagpur",www.dharampethpolytechnic.com
+197,4597,"Jai Mahakali Shikshan Sanstha, Pulgaon Polytechnic,Pulgaon, Tah-Deoli,Wardha",www.agnihotrigroup.org
+198,4598,"Maharashtra Shikshan Prasarak Mandals,Sommaya Diploma In Engineering, Wadgaon Dist Chandrapur",www.somayyapolytechnic.com
+199,4601,"Guruvandan Mahila Kalyankari Bahuuddeshiya Mandal's Guru Sai Polytechnic College, Mauza Datala, Chandrapur",www.gurusaipoly.in
+200,4602,"Shri Gurudeo Educational Memorial & Cultural Society, Om Polytechnic College, Mauza Parsodi, Tal-Umrer,Nagpur",www.ompolyumred.in
+201,4603,"Maharashtra Institute of Polytechnic, Betala, Bramhapuri,Chandrapur",www.mipoly.org.in
+202,4605,"Vidyasagar Education Society, Gurukul Polytechnic, Nagra, Gondia",www.gurukulpolytechnicnagra.com
+203,4608,"Shri Lalbahaddur Shastri Shikshan Prasarak Mandal, VJ Polytechnic, Mouza Khamona, Tah- Rajura, Chandrapur",www.vjpoly.com
+204,4609,"Shri Vyankatesh Shikshan Sanstha's,Shri Vyankatesh Polytechnic, Yelakeli, Ta- Seloo,Wardha",www.rjcoe.com
+205,4610,"Ballarpur Seva Samiti, Jainuddin Zaweri Polytechnic, Rampur Tukum, Mul, Dist. Chandrapur",www.zaweripoly.com
+206,4612,"Navneet Bahuuddeshya Sanstha, Kinkar Institute Of Technology,Seloo,Dist.Wardha",www.kitseloo.in
+207,4613,"Suryodaya College of Engineering & Technology, Nagpur",www.scetngp.com
+208,4639,"Renaissance Polytechnic,Chandrapur",renaissancepoly.lovable.app/#home
+209,4679,"Karanjekar College of Engineering & Management, Sakoli",www.kcem.edu.in
+210,4763,"Bamboo Research and Training Center Chichpalli, Chandrapur",brtc.org.in
+211,5006,"Government Polytechnic, Ahmednagar",gpnagar.ac.in
+212,5007,"Shikshan Maharshi Dadasaheb Rawal Government Polytechnic, Dhule",www.gpdhule.org.in
+213,5008,"Government Polytechnic, Jalgaon",www.gpjalgaon.ac.in
+214,5009,"Government Polytechnic, Nandurbar",www.gpnandurbar.ac.in
+215,5010,"Government Polytechnic, Nashik",www.gpnashik.ac.in
+216,5104,"SSBT'S COLLEGE OF ENGINEERING & TECHNOLOGY, JALGOAN",https://www.sscoetjalgaon.ac.in/
+217,5106,"Khandesh College Education Society's College Of Engineering And Management, Jalgaon",www.coem.ac.in
+218,5170,"Hindi Seva Mandal's Shri Sant Gadgebaba College of Engineering & Technology, Bhusawal",www.ssgbcoet.com
+219,5171,"Godavari Foundation's Godavari College Of Engineering, Jalgaon",https://www.gfgcoe.ac.in
+220,5179,"Vishwabharati Academy's College of Engineering, Ahmednagar",www.vacoea.com
+221,5220,"Pravara Rural Education Society's Padmashri Dr. Vittalrao Vikhe Patil Institute of Technology and Engineering Polytechnic ,Pravaranagar",www.pravara.in/polytechnic
+222,5221,"Shri Chhatrapati Shivaji Shikshan Sanstha's Indira Gandhi Poly. Belwandi (su) ,Tal-Shrigonda Dist- Ahmednagar",www.igpbelwandi.org.in
+223,5222,"Sanjivani Rural Education Society's Sanjivani K.B.P. Polytechnic, Kopargaon",www.sanjivanikbp.org.in
+224,5223,"SMT. SHARCHCHANDRIKA SURESH PATIL INSTITUTE OF TECHNOLOGY ( ENGINEERING & POLYTECHNIC), CHOPDA",www.sspitpolytechnic.org
+225,5224,"Sanjay Education Society's Polytechnic, Wadibhokar, Dhule",www.sanjayeducationsociety.org
+226,5226,"K.K Wagh Education Society's K. K. Wagh Polytechnic, Nashik",poly.kkwagh.edu.in
+227,5227,"Nagaon Education Society's Gangamai Polytechnic, Nagaon, Dhule",www.gangamaipolytechnic.org.in
+228,5228,"Shri Shivaji Viddhya Prasarak Sanstha's Bapusaheb Shivajirao Deore Polytechnic, Dhule",www.ssvpspoly.ac.in
+229,5229,"Technical & Medical Education Society's J. T. Mahajan Polytechnic, Faizpur",www.jtmpoly.ac.in
+230,5230,"SNJB's Shri. Hiralal Hastimal (Jain Brothers, Jalgaon) Polytechnic,Chandwad",www.snjb.org/polytechnic/
+231,5231,"Poojya Sane Guruji Vidhya Prasarak Mandal's G. M. Choudhari Polytechnic, Shahada",www.polytechnic.psgvpmandal.com
+232,5232,"Amrutvahini Sheti & Shikshan Vikas Sanstha's Amrutvahini Polytechnic, Amrutnagar",www.amrutpoly.co.in
+233,5235,"Late Bhausaheb Hiray Smarnika Samiti Trust Sanchalit Polytechnic, Malegaon, Nashik",https://dbhit.org
+234,5237,"Shri Krishna Education & Cultural Mandal, Shri Gulabrao Deokar Polytechnic, Jalgaon",www.sgdpjalgaon.org
+235,5238,"Mahavir Polytechnic, Nashik",www.shreemahavir.org
+236,5239,JAMIA INSTITUTE OF TECHNOLOGY,jamiapolytechnic.org
+237,5240,"Guru Gobind Singh Foundation's Guru Gobind Singh Polytechnic, Nashik",www.ggsf.edu.in
+238,5241,"Jagdamba Edu Soc., Santosh N. Darade Polytechnic, Yeola, Nashik",https://www.sndpoly.com
+239,5243,"Nashik Gramin Shikshan Prasarak Mandals Brahma Valley Polytechnic, Nashik",www.brahmavalley.com
+240,5244,"MET's Institute of Technology Polytechnic, Bhujbal Knowledge City, Adgaon Nashik",www.metbhujbalknowledgecity.ac.in
+241,5245,"Sangamner Medical Foundation & Research Institutes,Wamanrao Ethape Polytechnic, Velhale, Sangamner",www.ithapepoly.org
+242,5246,"Kai. Vanjibaba Gramin Vikas Mandal, Shantidevi Chavhan Institute of Engineering & Technology, Chalisgaon",www.sscpolycsn.org
+243,5247,"NDMVPS Samaj's Rajarshee Shahu Maharaj Polytechnic, Nashik",www.rsmpoly.org
+244,5248,"Sulochana Behelekar Samajik & Bahu Uddeshiya Shikshan Sanstha,Dnyaneshwar Polytechnic, Ahmednagar",https://belhekargroupofinstitute.in/websum%20project/indexpoly.html
+245,5249,"Trimurti Shikshan Prasarak Mandal, Trimurti Institute Of Technology, Paladhi Bk, Jalgaon",https://trimurtiinstitute.com/
+246,5251,"Hon. Shri. Babanrao Pachpute Vichardhara Trust's Parikrama Polytechnic,Kashti",www.parikramapolytechnic.com
+247,5252,"The People Education Society's, Diploma College Of Enggineering & Technology,Jamkhed",www.jamkhedpoly.com
+248,5254,"Sunsuba Polytechnic, Igatpuri",www.sunsubapoly.com
+249,5255,"Sanjivani Pratishthan's Institute Of Technology,Kurund",https://spitpolyedu.org.in
+250,5256,MATOSHRI AASARABAI INSTITUTE OF TECHNOLOGY & RESEARCH CENTRE,www.mapoly.co.in
+251,5258,"Sandip Foundation's Sandip Polytechnic, Nashik",sp.sandipfoundation.org
+252,5259,"Shri.Dattakrupa Shaikshanik & Krishi Gram Vikas Pratisthan, Shri Siddhivinayak Polytechnic, Karjat, Ahmednagar",www.siddhivinayakpoly.org
+253,5260,"Jumma Masjid Charitable Trust's Polytechnic,Wadala Road, Wadala, Nashik",www.jmctpolytechnicnashik.org
+254,5261,"Tulajabhavani Seva Pratisthan, Soniya Gandhi Polytechnic, Shrigonda",www.sgppolyshrigonda.org
+255,5263,"Matoshri Education Soceity, Matoshri Institute Of Technology, Dhanore, Nashik",www.mityeola.com
+256,5303,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",www.parikrama.edu.com
+257,5354,"Sakeshwar Gramin Vikas Seva Sanstha, Sau.Sundarbai Manik Adsul Polytechnic, Chas, Ahmednagar",www.adsulpolytechnic.com
+258,5356,"Shree Samarth Academy’s, Shree Samarth Polytechnic, Mhasane Village Mhasane , Tal.Parner, Ahmednagar",www.shreesamarthacademy.org.in
+259,5357,"Maharashtra Shikshan Vikas Mandal's Loknete Gopalraoji Gulwe, Polytehnic,Vilholi,Nashik",lggp.in
+260,5358,"Shri Dattakrupa Shaikshanik & Krushi Gramvikas Pratisthn's Saikrupa Polytechnic, Ghargaon, Tal Shrigonda, Ahmednagar",www.saikrupapolycollege.com
+261,5360,"Savitabai Phule Shikshan Prasarak Mandal's Rajendra Jotiram Phule Polytechnic, Mirajgaon Tal Karjat. Ahmednagar",www.rjppolytechnic.co.in
+262,5361,Raghvendra Shikshan Prasarak Mandal's Late Julalsing Mangtu College of Engg. (Diploma),www.jmcediploma.org
+263,5362,"Shiva Trust's Ajitdada Pawar College of polytechnic,Vadala Mahadeo, Tal Shrirampur, Ahmednagar",www.ajitdadapawarpoly.com
+264,5363,"Amruta Vaishnavi Education & Welfare Trust's Shatabdi Institute of Technology, Agastkhind, Tal Sinner",www.sitnashik.org.in
+265,5365,"Ahinsa Institute of Technology, Post. Dondaicha, Dist.Dhule",www.ahinsainstituteoftechnology.in
+266,5366,"Potdar Foundation Taloda,Potdar Polytechnic, Patne, Malegaon, Nashik",www.potdarfoundation.org.in
+267,5368,"Seva Shikshan Prasarak Mandal, Dr. N. J. Paulbudhe Institute of Technology, Narayandoho Tal Nagar, Ahmednagar",sspm.online.org.in
+268,5369,"Nashik Institute of Technology, Late Annasaheb Patil Polytechnic , Dindori Road Cannol road ,MERI ,Nashik",www.nitnasik.com
+269,5370,"Kedareshwar Gramin Vikas Pratishthan, Samajbhushan Eknathrao Dhakane College, of Engineering, Shevgaon Rakshi, Ahmedngar",www.kgvp.co.in
+270,5371,"Karmaveer R.S.Wagh Education & Health Institute, Kadwa Polytechnic, Rajaram Nagar, Tal-Dindori, Nashik",www.kadwapoly.com
+271,5373,"Sarswati Vidya Prasarak Mandal, Aabasaheb Shivajirao Sitaram Patil Institute of Polytechnic, Chichpura, Tal- Dharangaon,Jalgaon",www.svpmsatkheda.org
+272,5375,"Nath Nangebaba Malti Purpose Mandal's, Polytechnic, Parola, Dist-Jalgaon",www.sbpatilpoly.org
+273,5376,"Raj Laxmi Foundation, Sahkar Maharshi Rajaram Bapu Patil Polytechnic Institute, Madagaon ,Ahmednagar",www.rlfeducationalcampus.com/polytechnic/
+274,5381,"Shri. Jaykumar Rawal Institute of Technology, Dondaicha.",www.sjrit.ac.in
+275,5382,"Ahmednagar Jilha Maratha Vidya Prasarak Samajache, Shri. Chhatrapati Shivaji Maharaj College of Engineering, Nepti",www.scoea.org
+276,5390,"K.V.N. Naik S. P. Sansth's Loknete Gopinathji Munde Institute of Engineering Education & Research, Nashik.",www.logmieer.edu.in
+277,5394,"Sahjivan Shikshan Prasarak Mandal's Vasantrao More Polytechnic, Tehu Tq.Parola, Jalgaon.",www.vmptehu.org
+278,5395,"Ashok Institute of Engineering & Technology(Polytechnic), Shrirampur.",www.ashokengg.co.in
+279,5396,"College of Engineering and Technology ,North Maharashtra Knowledge City, Jalgaon",www.nmkcj.org.in
+280,5402,"Shree. Kapildhara Polytechnic, Igatpuri.",www.shreekapildharapoly.com
+281,5404,"Gurukul Education Society's Institute of Engineering & Technology, Nandgaon",www.gurukulpolytechnic.org
+282,5408,"Vidya Niketan College of Engineering, Bota Sangamner",www.vidyaniketanglobal.com
+283,5409,"Rajiv Gandhi College of Engineering, At Post Karjule Hariya Tal.Parner, Dist.Ahmednagar",www.rgcoe.org
+284,5411,"Maulana Mukhtar Ahmad Nadvi Technical Campus, Malegaon.",www.mmantc.edu.in
+285,5413,"Netaji Subhashchandra Bose Edu Trust,Netaji Polytechnic.,Dhule",netajinpc.org
+286,5414,"Nikam Institute of Technology And Management Studies, Dhule",www.nikampolytechnicdhule.ac.in
+287,5415,"Adarsh Polytechnic, Dhule",http://polytechnic.adarshgroupedu.in/
+288,5417,"Karmaveer Shankarao Kale Education Society's Gautam Polytechnic Institute,(Kolpewadi),Kopargaon",www.kskesgautampoly.org
+289,5419,"Mauli Institute of Technology (Polytechnic), Amalner, Dist. Jalgaon",www.maulipoly.com
+290,5420,Loknete Madhukarrao Pichad Polytechnic College Akole,www.atespoly.co.in
+291,5423,"Potdar Polytechnic, Pachora, Jalgaon",www.potdarfoundation.org
+292,5433,"R.C. Patel College of Engineering and Polytechnic, Shirpur",www.rcpcoep.ac.in
+293,5434,"Gokhale Education Society's Sir Dr.M.S.Gosavi Polytechnic Institute, Nashik Road",www.gespoly.org
+294,5497,P.G. College of Engineering & Technology,pgcet.ac.in
+295,5513,"MKD Institute of Technology, Nadurbar",https://mkdit.edu.in
+296,5543,"N.D. Kasar Institute of Engineering & Technology, Walki",www.dharmarajshaikshanikpratishthan.org
+297,5544,"Shri. Bhaiyasaheb Patil Institute of Technology, Jalgaon",www.sbpiot.com
+298,5661,Ajinkya Institute of Technology,www.prasadgramin.com
+299,5662,Anandgad Polytechnic college,www.arimetvirgaon.com
+300,5663,"Mula Education Society's Institute of Engineering & Technology, Sonai",www.mesiet.org
+301,5667,Phalke Patil College of Engineering,www.ppcoe.sgvpk.com
+302,5668,Indira Polytechnic College,www.ipcsakat.org
+303,5669,"Swami Polytechnic, Abhona",https://www.swamipolytechnic.com/
+304,5670,Shantai Institute of Technology,
+305,5671,Tatyasaheb A B Chaudhari College of Engineering & Technology,
+306,5679,"Shri. Nageshwar Polytechnic & Management Institute, Bhandgaon",www.nageshwarpolymba.in
+307,5680,"Dharmaraj Shaikshanik Pratishthans College of Engineering & Management Studies, Walki",
+308,5681,Lokpanchayat R.T.T.I. Polytechnic,https://poly.lokpanchayatinstitute.in
+309,5682,Sai College of Engineering and Technology,www.senggcp.in
+310,5683,Saptashrungi College of Engineering and Polytechnic,
+311,6007,"Walchand College of Engineering, Sangli",www.walchandsangli.ac.in
+312,6010,"Government Polytechnic, Kolhapur",www.gpkolhapur.org.in
+313,6011,"Government Polytechnic, Awasari (khurd)",https://www.gpawasari.ac.in
+314,6013,"Government Polytechnic, Pune",www.gppune.ac.in
+315,6014,"Government Residence Women Polytechnic, Tasgaon",www.grwptasgaon.ac.in
+316,6015,"Government Polytechnic, Miraj",www.gpmiraj.ac.in
+317,6016,"Government Polytechnic, Karad",www.gpk.ac.in
+318,6017,"Government Polytechnic, Solapur",www.gpsolapur.ac.in
+319,6018,"Institute of Civil and Rural Engineering(aided), Gargoti, Kolhapur",www.smvicre.org
+320,6019,"Maharashtra Institute of Printing Technology(Aided), Pune",www.pvgmipt.ac.in
+321,6020,"Cusrow Wadia Institute of Technology( Aided ), Pune",www.cwitpune.com
+322,6027,"Maharashtra State Institute of Hotel Management & Catering Technology,Pune",www.msihmctpune.org.in
+323,6141,"Jaywant Shikshan Prasarak Mandal's,Rajarshi Shahu College of Engineering, Tathawade, Pune",www.jspmrscoe.edu.in
+324,6149,"Siddhant College of Engineering, A/p Sudumbare, Tal.Maval, Dist-Pune",www.siddhantcoe.in
+325,6214,"K. E. Society's Rajarambapu Institute of Technology, Walwa, Sangli",www.ritindia.edu
+326,6219,"KSGBS's Bharat- Ratna Indira Gandhi College of Engineering, Kegaon, Solapur",www.bigce.in
+327,6225,"Dattajirao Kadam Technical Education Society's Textile & Engineering Institute, Ichalkaranji.",www.dktesdiploma.com
+328,6266,"Shetkari Shikshan Mandal's Pad. Vasnatraodada Patil Institute of Technology, Budhgaon,(Diploma) Sangli",www.pvpitsangli.edu.in
+329,6268,"SWVSM'S Tatyasaheb Kore Institute of Engineering & Technology, Warananagar",www.tkietpolytechnic.ac.in
+330,6288,"Bharati Vidyapeeth's College of Engineering, Kolhapur",www.coekolhapur.bharatividyapeeth.edu
+331,6304,"Loknete Hanumantrao Charitable Trust's Adarsh Institute of Technology and Research Centre, Vita,Sangli",https://www.aitrcvita.edu.in
+332,6313,"Jaywant College of Engineering & Polytechnic , Kille Macchindragad Tal. Walva District- Sangali",www.jcep.edu.in
+333,6315,Sanjeevan Group of Institutions,www.seti.edu.in
+334,6319,"Shahajirao Patil Vikas Pratishthan, S.B.Patil College of Engineering, Vangali, Tal. Indapur",www.sbpcoe.com
+335,6324,"Rajgad Dnyanpeeth's Rajgad Technical Campus,Dhangwadi, Bhor",www.rajgad.org.in
+336,6326,Karmayogi Institute of Technology,www.karmayogiinstitute.ac.in
+337,6402,"New Institute of Technology, Kolhapur",www.nitkop.in
+338,6403,"Latthe Education Society's Polytechnic, Sangli",www.lesp.edu.in
+339,6405,"Shivnagar Vidya Prasarak Mandal's Institute of Tech. & Engg., Malegaon(Bk.)",www.ite.svpm.org.in
+340,6406,"Karmaveer Bhaurao Patil Polytechnic,Satara",www.kbppoly.edu.in
+341,6407,"Satara Education Society's Satara Polytechnic, Satara",www.satarapolytechnicsatara.org
+342,6408,"Bharti Vidyaapeeth's Jawaharlal Nehru Institute of Technology, Pune",www.bvjniot.bharatividyapeeth.edu
+343,6409,"Solapur Education Society's Polytechnic, Solapur",www.sespolytechnic.org.in
+344,6410,"Dr. D. Y. Patil Pratishthan's, Yashwantrao Bhaurao Patil Polytechnic, Pune",www.ybppolytechnic.ac.in
+345,6413,"Pimpri Chinchwad Education Trust's Pimpri Chinchwad Polytechnic,Pune",www.pcpolytechnic.com
+346,6414,"Sinhgad Tech Education Society's Sou. Venutai Chavan Polytechnic, Pune",www.sinhgad.edu
+347,6415,"All India Shri Shivaji Memorial Society's Polytechnic, Pune,",www.aissmspoly.org.in
+348,6418,"Jaihind Comprehensive Educational Institute's Jaihind Polytechnic, Kuran,Tal. Junnar",www.jaihind.edu.in
+349,6420,"Shikshan Prasarak Mandal's Polytechnic,Solapur",www.spmsolapur.org
+350,6421,"Dr. D. Y. Patil Prathisthan's Dr. D.Y. Patil Polytechnic, Kolhapur",dypp.dypgroup.edu.in
+351,6423,"Shri Jain Vidya Prasarak Mandal's Rasiklal M. Dhariwal Institute of Technology, Chinchwadgaon, Pune",www.rmdiot.in
+352,6425,"Jaywant shikshan prasarak Mandal,Jaywantrao Sawant Polytechnic, Hadapsar, Pune",www.jspmjspoly.edu.in
+353,6427,"Bhivrabai Sawant Polytechnic, Wagholi, Pune",www.jspmbspoly.edu.in
+354,6428,"BMSPM's Ashokrao Mane Polytechnic, Vathar Tarf Vadgaon",www.amietv.org
+355,6429,"Vidya Vikas Pratishthan Polytechnic, Solapur",www.vvppolytechnic.org
+356,6431,"Sai Charitable Trust, Indira Institute Of Diploma Engineering(Poly), Sasure, Tal. Barshi",www.indirapoly.in
+357,6433,"Vidyavardhini Charitable Trust's Abhaysinhraje Bhonsle Institute of Technology, Shahunagar- Shendra, Satara",www.abitsatara.org
+358,6434,"Dinkarrao K. Shinde Smarak Trust, Dr. A.D. Shinde Institute Of Technology, Gadhinglaj",www.adshindeiot.edu.in
+359,6435,"Zeal Education Society, Zeal Polytechnic, Narhe Tal. Haveli, Pune",www.zealpolytechnic.com
+360,6436,"Sharad Institute of Technology Polytechnic, Yadrav( Ichalkaranji)",www.sitpolytechnic.ac.in
+361,6437,"Shree Vitthal Edu. and Research Institute, College of Engineering (Polytechnic), Gopalpur, Pandharpur",www.cod.sveri.ac.in
+362,6441,"Dr.D.Y.Patil Educational Academy's D. Y. Patil Polytechnic, Ambi., Talegaon",www.dyppolyambi.com
+363,6442,"Sant Gajanan Maharaj Rural Polytechnic, Gadhingaj, Kolhapur",www.polysgm.in
+364,6443,"Shanti Education Society, A.G. Patil Polytechnic Institute, Solapur",www.agppi.edu.in
+365,6444,"Shriram Institute Of Engineering & Technology, (Poly), Paniv",www.sietpaniv.org
+366,6445,"Vidya Pratishthan's Polytechnic College, Vidyanagari, Indapur",www.vppolytechnic.org
+367,6446,"Kai. Amdar Bramhadevdada Mane Shikshan Va Samajik Pratishthan,Bramhadevdada Mane Polytechnic, Belati, Noth Solapur",www.bmpsolapur.org
+368,6449,"Marathwada Mitra Mandal's Polytechnic, Pune",www.mmpolytechnic.edu.in
+369,6451,"Samarth Rural Education Institute, Samarth Polytechnic, Bangarwadi, Belhe",www.poly.sreir.org
+370,6452,"Shri Umajirao Sanamadikar Medical Foundation's Siddharath Polytechnic, Jath",www.spj.org.in
+371,6455,"Sandipani Charitable Trust, M.D. Jadhav Institute Of Technology.,Bhose",www.mdjitedu.com
+372,6456,"Kasegaon Education Society's Rajarambapu Institute of Technology (Polytechnic), Lohgaon Pune",www.ritppune.com
+373,6458,"Shri. Siddheshwar Deosthan Trust's Siddheshwar Women's Polytechnic, Solapur",www.siddheshwarwomenspoly.org
+374,6463,"Mokashi Krishi Vikas Prasisthan's Dadasaheb Mokashi Polytechnic, Sadashivgad, Satara",www.mokashipratishthan.org
+375,6464,"Rajarshi Shahu Shikshan Sanstha's Vitthal Patil Polytechnic, Miraj",www.vitthalpatilpoly.edu.in
+376,6466,"Shree Santkrupa Shikshan Sanstha, Shree Santkrupa Institute Of Engineering & Technology, Karad",www.sietghogaon.org
+377,6467,"Swami Vivekananda Pratisthan, Swami Vivekananda Institute Of Technology,Khed, Solapur",www.svitsolapur.ac.in
+378,6468,"Swami Vivekananda Shikshan Sanstha, Dr. Bapuji Salunkhe Institute Of Engineering & Technology,Kolhapur",www.bsiet.org
+379,6470,"Shriram Education Soceity's Shivaji Polytechnic, Atpadi, Sangli",www.spatp.org
+380,6471,"Ramkrishna Technical Education Soceity, Shivaji Polytechnic College, Sangola",www.spcsangola.com
+381,6472,"Vidyavardhini Educational Academy's Vidyavardhini Institute Of Technology,Bhudargad",www.vvitpal.in
+382,6473,"Shri. Venkateshwara Shikshan Sanstha's Nanasaheb Mahadik Polytechnic Institute, Peth",www.nmpi.org.in
+383,6474,"Shri Vatavruksha Swami Maharaj Devasthan's, Kai.Kalyanrao (Balasaheb) Ingale Polytechnic College, Akkalkot",swamipolytechnic.org.in
+384,6475,"Smt. Premalatai Chavan Polytechnic, Karad",spcpk.org
+385,6545,"Samarth Education Trust's Arvind Gavali College Of Engineering Panwalewadi, Varye,Satara.",www.agce.edu.in
+386,6628,"Dattakala Group Of Institutions, Swami - Chincholi Tal. Daund Dist. Pune",www.dattakala.edu.in
+387,6632,Navsahyadri Education Society's Group of Institutions,www.navsahyadri.edu.in
+388,6644,"Shri. Ambabai Talim Sanstha's Sanjay Bhokare Group of Institutes, Miraj",www.sbgipoly.org
+389,6649,"TSSM's Bhivarabai Sawant College of Engineering and Research, Narhe, Pune",www.tssm.edu.in
+390,6714,"Shree Datta Shetakari Sahakari Sakhar Karkhana Ltd. Charitable Trust, Appasaheb Alias SA. RE.Patil Instiute of Technology, Dattanagar Tal-Shirol, Dist Kolhapur",www.srpit.ac.in
+391,6715,"Dnyan Kala Krida & Krushi Pratishan,Babasaheb Phadtare Engineering & Technology, Kalamb Walchandnagar, Tal-Indapur, Dist. Pune",www.dkkkpbpp.com
+392,6716,"Barshi Shikshan Prasarak Mandal, Shriman Bhausaheb Zadbuke Institute of Polytechnic, Puri, Tal-Barshi, Solapur",www.sbzippuri.co.in
+393,6721,"Purogami Shikshan Mandal,Gauri Shiv Polytechnic, Khatav Dist - Satara",www.gourishivpoly.org
+394,6722,SHRI SOMESHWAR SHIKSHAN PRASARAK MANDALS SHARADCHANDRA PAWAR INSTITUTE OF TECHNOLOGY SOMESHWARNAGAR.,www.spiotsomeshwarnagar.com
+395,6723,"Chh.Shivaji Shikshan Mandal,Chh.Shivaji Polytechnic Institute,Vaduj, Tal-Khatav, Dist. Satara",www.chhshivajipoly.org
+396,6725,"New Satara Shikshan Sankul,New Satara College of Engineering & Management, Pandharpur",www.newsatarapoly.in
+397,6728,"Shri Narsinha Shikshan Prasarak Mandal,Ramrao Nikam Polytechnic College, Indoli Tal-Karad, Dist-Satara",rnpc.org.in
+398,6729,"Ninaidevi Shikshan Prasarak Mandal,Shri. Shivajirao Deshmukh Institute of Technology, Shirala, Sangli",www.ssdit.org
+399,6732,"Ajeenkya DY Patil School of Engineering, Lohegaon, Pune",www.adypsoe.in
+400,6756,"Fabtech Technical Campus College of Engineering and Research, Sangola",www.ftcpoly.ac.in
+401,6757,"Yashoda Technical Campus, Wadhe, Satara.",www.yes.edu.in
+402,6758,"Sahyadri Valley College of Engineering & Technology, Rajuri, Pune.",www.sahyadrivalleycollege.com
+403,6759,"Shree Ramchandra College of Engineering, Lonikand,Pune",www.srespune.org
+404,6766,Phaltan Education Society's College of Engineering Thakurki Tal- Phaltan Dist-Satara,www.coephaltan.edu.in
+405,6767,"Suman Ramesh Tulsiani Technical Campus: Faculty of Engineering, Kamshet,Pune.",www.srttc.ac.in
+406,6768,"P.K. Technical Campus, Pune.",www.pkinstitute.edu.in
+407,6780,"D.Y.Patil Education Society's,D.Y.Patil Technical Campus, Faculty of Engineering & Faculty of Management,Talsande,Kolhapur.",foet.dypgroup.edu.in
+408,6781,"Bhagwant Institute of Technology, Barshi",www.bitbarshi.edu.in
+409,6782,"Sahakar Maharshee Shankarrao Mohite Patil Institute of Technology & Research, Akluj",www.smsmpitr.edu.in
+410,6797,"Dnyanshree Institute Engineering and Technology, Satara",www.dnyanshree.edu.in
+411,6799,"Shivganga Charitable Trust, Sangli Vishveshwarya Technical Campus, Faculty of Diploma Engineering, Patgaon, Miraj",shivgangavtc.com
+412,6800,"DKTE Society's Yashwantrao Chavan Polytechnic, Ichalkaranji",www.dkteycp.ac.in
+413,6810,"The Great Maulana Abul Kalam Azad Minority Educational Trust's Maulana Azad Polytechnic, Solapur",www.maptechs.in
+414,6811,"Sanjay Ghodawat Institute,Hatkanangale, Dist- Kolhapur",www.sgipolytechnic.in
+415,6814,"K.P. Patil Institute ( Polytechnic ), Bhudargad, Dist.Kolhapur",www.kppatilpolytechnic.com
+416,6817,"Suhas Institute of technology, Javjibuvachiwadi, Post Kasurdi, Daud",www.ntss.edu.in
+417,6824,"Trinity Polytechnic, Pune",www.kjei.edu.in/tpp
+418,6827,"Mahadevrao Wandre Institute of Technology, Turkewadi",www.mesa.org.in
+419,6901,"MAEER's MIT College of Railway Engineering and Research, Jamgaon, Barshi",https://mitcorer.edu.in/
+420,6991,"Dr. D.Y. Patil Technical Campus, Varale, Talegaon, Pune",https://www.dypatiltcs.com/
+421,16121,"Shri. Anandrao Abitkar College of Engineering, Pal",https://akcgroup.edu.in
+422,16359,KTSP Mandal Institute of Technology Management & Research,
+423,16361,"Zeal College of Engineering & Research, Induri, Pune (Off Campus-Induri)",https://zcoer.in/off-campus/
+424,16363,"Y. D. Mane Institute of Technology, Kagal",
+425,16364,SVS College of Engineering & Technology Tembhurni,www.racfoundation.org.in
+426,1247,"Shri Dadasaheb Gavai Charitable Trust's Vikramshila Polytechnic, Darapur, Tal. Daryapur, Dist. Amravati",
+427,1289,"P.R. Patil College of Architecture, Amravati",
+428,3246,"Rizvi College of Architecture, Bandra(W), Mumbai",https://rizviarchitecture.edu.in
+429,3439,"Anjuman-I-Islam's Kalsekar Technical Campus, Panvel",https://aiktc.ac.in
+430,3484,"Smt. K. L. Tiwari College of Architecture, Mira Road, Dist. Thane",https://skltca.in
+431,3496,"Vivekanand Education Society's College of Architecture, Chembur, Mumbai",https://vescoa.ves.ac.in
+432,3516,"VIVA School of Architecture, Virar",https://vivaarch.org
+433,4218,"Swa. Jagannath Jattewar Shikshan Sanstha's, IDEAS – Institute of Design Education & Architectural Studies, Nagpur",https://www.ideasnagpur.edu.in
+434,4642,"Brahmanand Karanjekar Institute of Technology, Sakoli",
+435,5445,"MET's School of Architecture & Interior Design, Govardhan, Nashik",https://www.metbkcsoaid.ac.in
+436,6533,"Marathwada Mitra Mandal's College of Architecture, Pune",http://www.mmcoa.edu.in/
+437,6534,"Appasaheb Birnale College of Architecture, Sangli",https://www.abcasangli.edu.in
+438,6535,"Shri Siddheshwar Shikshan Mandal's College of Architecture, Solapur",https://www.coasolapur.in
+439,6538,"Padmashree Dr. D.Y. Patil College of Architecture, Pune",http://www.dypcoa.ac.in
+440,6837,"Anantrao Pawar College of Architecture, Parvati, Pune",https://apcoapune.org
+441,6880,"Yashoda College of Architecture, Satara",https://www.ycoa.org.in
+442,6883,"K.J. Education Institute Pune, Trinity College of Architecture, Pune",
+443,6895,"Walwa Taluka Education Society's Shri S. D. Patil College of Architecture, Islampur",https://sdparchitecture.edu.in
+444,6896,"Shri Shivaji Maratha Society's College of Architecture, Pune",https://ssmscoa.com
+445,6897,"Pune District Education Association's College of Architecture, Akurdi",https://pdeacoa.edu.in
+446,16123,"Bharati Vidyapeeth University's College of Architecture, Pune",https://bvsoa.bharatividyapeeth.edu
+447,16324,Shahid Sitaram College of Architecture,
+448,1116,"Shri Shivaji Education Society's College of Engineering and Technology, Akola",
+449,16124,Kalaprabodhini's Institute of Design,https://kpinstituteofdesign.org
+450,3244,"Bharati Vidyapeeths College of Architecture, Navi Mumbai",
+451,6840,"S.B. Patil College of Architecture & Design, Nigdi, Pune",https://www.sbpatilarchitecture.com

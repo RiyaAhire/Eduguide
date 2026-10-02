@@ -106,6 +106,12 @@ urlpatterns = [
     ),
 
     path(
+        "prediction/report/pdf/",
+        views.prediction_report_pdf,
+        name="prediction_report_pdf"
+    ),
+
+    path(
         "about/",
         views.about,
         name="about"

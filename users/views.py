@@ -6,7 +6,7 @@ from django.shortcuts import (
     redirect,
     get_object_or_404
 )
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth.decorators import login_required
 
@@ -30,6 +30,7 @@ from django.core.mail import send_mail
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.urls import reverse
+from users.prediction_pdf import build_prediction_pdf
 
 
 PROFILE_FIELDS = (
@@ -578,6 +579,8 @@ def prediction_data(request):
             "course__college__college_name",
             "course__college__region",
             "course__college__status",
+            "course__college__college_code",
+            "course__college__website_info__website",
         )
         .annotate(
             # Use the most competitive applicable cutoff across the two latest
@@ -601,10 +604,13 @@ def prediction_data(request):
 
         label, level, confidence = _chance_for_margin(margin)
         result = {
+            "college_id": item["course__college_id"],
             "college": item["course__college__college_name"],
             "course": item["course__course_name"],
             "location": item["course__college__region"] or "Location not listed",
             "college_type": item["course__college__status"] or "College type not listed",
+            "college_code": item["course__college__college_code"],
+            "official_website": item["course__college__website_info__website"] or "",
             "chance": label,
             "level": level,
             "confidence": confidence,
@@ -625,7 +631,7 @@ def prediction_data(request):
 
     results = list(results_by_college.values())
     results.sort(key=lambda result: (result["confidence"], result["margin"]), reverse=True)
-    return JsonResponse({
+    report_data = {
         "results": results[:24],
         "data_years": data_years,
         "requested_year": profile.admission_year,
@@ -635,7 +641,37 @@ def prediction_data(request):
             "category": profile.category,
             "branch": profile.branch,
         },
-    })
+    }
+    request.session["latest_prediction_report"] = {
+        **report_data,
+        "profile": {
+            "name": profile.full_name or request.user.get_full_name() or request.user.username,
+            "percentage": profile.percentage,
+            "category": profile.category,
+            "branch": profile.branch,
+            "location": profile.preferred_location or "Any",
+            "college_type": profile.college_type or "Any",
+            "admission_year": profile.admission_year,
+        },
+    }
+    return JsonResponse(report_data)
+
+
+@require_POST
+@login_required
+def prediction_report_pdf(request):
+    """Download a standalone prediction PDF without browser print furniture."""
+    report = request.session.get("latest_prediction_report")
+    if not report:
+        return JsonResponse(
+            {"error": "Calculate your college matches before downloading the report."},
+            status=409,
+        )
+    pdf = build_prediction_pdf(report)
+    response = HttpResponse(pdf, content_type="application/pdf")
+    response["Content-Disposition"] = 'attachment; filename="EduGuide-Prediction-Report.pdf"'
+    response["Cache-Control"] = "no-store"
+    return response
 
 
 def admission_process(request):

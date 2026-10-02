@@ -1,25 +1,37 @@
-from django.db import models
+from django.db import models 
 
 
-class College(models.Model):
-    college_code = models.CharField(max_length=20, unique=True)
-    college_name = models.CharField(max_length=255)
-    region = models.CharField(max_length=100, blank=True, null=True)
-    status = models.CharField(max_length=255)
+class College(models.Model): 
+    college_code = models.CharField(max_length=20, unique=True) 
+    college_name = models.CharField(max_length=255) 
+    region = models.CharField(max_length=100, blank=True, null=True) 
+    status = models.CharField(max_length=255) 
+ 
+    def __str__(self): 
+        return self.college_name 
 
-    def __str__(self):
-        return self.college_name
 
-
-class Course(models.Model):
-    course_code = models.CharField(max_length=20, unique=True)
-    course_name = models.CharField(max_length=255)
-
-    college = models.ForeignKey(
+class CollegeWebsite(models.Model):
+    college = models.OneToOneField(
         College,
         on_delete=models.CASCADE,
-        related_name='courses'
+        related_name='website_info'
     )
+    website = models.URLField(max_length=500)
 
     def __str__(self):
+        return self.college.college_name
+
+
+class Course(models.Model): 
+    course_code = models.CharField(max_length=20, unique=True) 
+    course_name = models.CharField(max_length=255) 
+ 
+    college = models.ForeignKey( 
+        College, 
+        on_delete=models.CASCADE, 
+        related_name='courses' 
+    ) 
+ 
+    def __str__(self): 
         return self.course_name
