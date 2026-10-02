@@ -78,7 +78,7 @@
             <div class="distribution-center"><strong id="distributionTotal">0</strong><span>matches</span></div>
           </div>
           <div class="distribution-details"><span class="prediction-label">CHANCE DISTRIBUTION</span><h3>Your match outlook</h3><div class="distribution-legend" id="distributionLegend"></div><p>Chance bands compare your percentage with eligible historical cutoffs. They are guidance, not guarantees.</p></div>
-          <button type="button" id="predictionDownloadButton" class="prediction-print-button" disabled>Download PDF report <span>↓</span></button>
+          <button type="button" id="predictionDownloadButton" class="prediction-print-button" aria-label="Download your prediction report as a PDF" disabled><span class="prediction-download-label">Download prediction report</span><span class="prediction-download-icon" aria-hidden="true">↓</span></button>
         </section>
         <div id="predictionCards" class="row g-4"></div>
         <div class="prediction-note"><span>💡</span><p><strong>How this works:</strong> each result uses the most competitive stored cutoff that matches your category and filters. A higher margin produces a stronger chance band.</p></div>
@@ -192,8 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
   downloadButton.addEventListener('click', async () => {
     if (downloadButton.disabled) return;
     downloadButton.disabled = true;
-    const label = downloadButton.firstChild;
-    label.textContent = 'Preparing your report… ';
+    const label = downloadButton.querySelector('.prediction-download-label');
+    label.textContent = 'Preparing your report…';
     try {
       const response = await fetch(panel.dataset.reportUrl, { method: 'POST', headers: { 'X-CSRFToken': csrfToken, 'X-Requested-With': 'XMLHttpRequest' }, credentials: 'same-origin' });
       if (!response.ok) {
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
       showStatus(error.message || 'We could not prepare your report. Please calculate your matches again.');
     } finally {
       downloadButton.disabled = false;
-      label.textContent = 'Download PDF report ';
+      label.textContent = 'Download prediction report';
     }
   });
 });
