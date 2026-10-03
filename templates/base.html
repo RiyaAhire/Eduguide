@@ -17,8 +17,13 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
+<<<<<<< HEAD
     <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=20261003-seat-matrix-v5">
     <script src="{% static 'js/site-language.js' %}?v=20261003-seat-matrix-v7" defer></script>
+=======
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=20261003-language-dropdown-v1">
+    <script src="{% static 'js/site-language.js' %}?v=20261003-language-dropdown-v1" defer></script>
+>>>>>>> f52f3efdd435fc9f6d0a464b0d2729f2c62e0328
 
     <script>
         // Apply the stored theme before the body is painted.
@@ -51,7 +56,10 @@
 
                 <img src="{% static 'images/EduGuide Logo.png' %}"
                      alt="EduGuide Logo"
-                     class="navbar-logo">
+                     class="navbar-logo navbar-logo-light">
+                <img src="{% static 'images/EduGuide Logo D.png' %}"
+                     alt="EduGuide Logo"
+                     class="navbar-logo navbar-logo-dark">
 
                 <span class="ms-2 fw-bold brand-text">
                     EduGuide
@@ -239,16 +247,16 @@
             <div class="d-flex align-items-center">
 
 
-                <!-- English / Hindi -->
-
-                <button id="languageToggle"
-                        class="language-toggle"
-                        type="button"
-                        aria-label="Switch website language to Hindi"
-                        aria-pressed="false">
+                <!-- Language selector -->
+                <label class="language-selector" for="languageSelect">
                     <span class="language-toggle-globe" aria-hidden="true">🌐</span>
-                    <span id="languageToggleText">हिन्दी</span>
-                </button>
+                    <span class="visually-hidden">Language</span>
+                    <select id="languageSelect" aria-label="Select website language">
+                        <option value="en">English</option>
+                        <option value="hi">हिन्दी</option>
+                        <option value="mr">मराठी</option>
+                    </select>
+                </label>
 
                 <!-- Dark / Light Mode -->
 

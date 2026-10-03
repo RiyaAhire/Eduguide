@@ -80,16 +80,46 @@
           <div class="distribution-details"><span class="prediction-label">CHANCE DISTRIBUTION</span><h3>Your match outlook</h3><div class="distribution-legend" id="distributionLegend"></div><p>Chance bands compare your percentage with eligible historical cutoffs. They are guidance, not guarantees.</p></div>
           <button type="button" id="predictionDownloadButton" class="prediction-print-button" aria-label="Download your prediction report as a PDF" disabled><span class="prediction-download-label">Download prediction report</span><span class="prediction-download-icon" aria-hidden="true">↓</span></button>
         </section>
+        <section id="predictionExplorer" class="prediction-explorer" hidden aria-label="Explore your college matches">
+          <div class="prediction-explorer-heading"><div><span class="prediction-label">EXPLORE YOUR OPTIONS</span><h3>Your college matches</h3></div><span id="predictionVisibleCount" class="prediction-visible-count" aria-live="polite"></span></div>
+          <div class="prediction-explorer-controls">
+            <label class="prediction-search"><span aria-hidden="true">⌕</span><input id="predictionSearch" type="search" placeholder="Search colleges or courses" aria-label="Search college matches"></label>
+            <label class="prediction-sort-label" for="predictionSort">Sort by</label>
+            <select id="predictionSort" class="prediction-sort"><option value="best">Best match</option><option value="name">College name</option><option value="margin">Cutoff margin</option></select>
+          </div>
+          <div class="prediction-filters" role="group" aria-label="Filter matches by chance">
+            <button type="button" class="prediction-filter is-active" data-filter="all" aria-pressed="true">All <span data-filter-count="all">0</span></button>
+            <button type="button" class="prediction-filter" data-filter="high" aria-pressed="false">High <span data-filter-count="high">0</span></button>
+            <button type="button" class="prediction-filter" data-filter="good" aria-pressed="false">Good <span data-filter-count="good">0</span></button>
+            <button type="button" class="prediction-filter" data-filter="moderate" aria-pressed="false">Moderate <span data-filter-count="moderate">0</span></button>
+            <button type="button" class="prediction-filter" data-filter="stretch" aria-pressed="false">Stretch <span data-filter-count="stretch">0</span></button>
+          </div>
+        </section>
         <div id="predictionCards" class="row g-4"></div>
         <div class="prediction-note"><span>💡</span><p><strong>How this works:</strong> each result uses the most competitive stored cutoff that matches your category and filters. A higher margin produces a stronger chance band.</p></div>
       </section>
     {% else %}
-      <section class="prediction-login-section"><div class="prediction-login-card">
-        <div class="prediction-login-icon">🔐</div><span class="prediction-login-label">PROFILE REQUIRED</span>
-        <h2>Register before using predictions</h2>
-        <p>Prediction uses your percentage, category, branch, location and college preference. Create an account once and EduGuide will save these details for future visits.</p>
-        <div class="prediction-login-buttons"><a href="{% url 'register' %}" class="prediction-login-btn">Create my profile →</a><a href="{% url 'login' %}" class="prediction-register-btn">Login</a></div>
-      </div></section>
+      <section class="prediction-login-section" aria-labelledby="predictionGuestTitle">
+        <div class="prediction-login-card">
+          <div class="prediction-login-copy">
+            <span class="prediction-login-label"><span aria-hidden="true">✦</span> YOUR NEXT STEP</span>
+            <h2 id="predictionGuestTitle">Your college shortlist starts with your profile.</h2>
+            <p>Save your marks and preferences once. EduGuide will compare them with historical cutoffs and build a personalized list of colleges to explore.</p>
+            <div class="prediction-login-buttons">
+              <a href="{% url 'register' %}" class="prediction-login-btn">Create my profile <span aria-hidden="true">→</span></a>
+              <a href="{% url 'login' %}" class="prediction-register-btn">Log in to my account <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="prediction-login-assurance"><span aria-hidden="true">✓</span> Your profile is saved for your next visit</div>
+          </div>
+          <div class="prediction-guest-visual" aria-label="How your profile becomes college matches">
+            <div class="prediction-guest-orbit"></div>
+            <div class="prediction-guest-core"><span aria-hidden="true">🎓</span><strong>Your future</strong><small>starts with a plan</small></div>
+            <div class="prediction-guest-float prediction-guest-float--profile"><span>01 · PROFILE</span><strong>Marks & preferences</strong></div>
+            <div class="prediction-guest-float prediction-guest-float--cutoff"><span>02 · COMPARE</span><strong>Historical cutoffs</strong></div>
+            <div class="prediction-guest-float prediction-guest-float--matches"><span>03 · DISCOVER</span><strong>Your college matches</strong></div>
+          </div>
+        </div>
+      </section>
     {% endif %}
 
     <section class="prediction-how-section">
@@ -112,18 +142,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const heading = document.querySelector('.prediction-heading');
   const results = document.getElementById('predictionResults');
   const cards = document.getElementById('predictionCards');
+  const explorer = document.getElementById('predictionExplorer');
+  const searchInput = document.getElementById('predictionSearch');
+  const sortSelect = document.getElementById('predictionSort');
+  const visibleCount = document.getElementById('predictionVisibleCount');
   const summary = document.getElementById('predictionSummary');
   const highlight = document.getElementById('predictionHighlight');
   const status = document.getElementById('predictionStatus');
   const distribution = document.getElementById('predictionDistribution');
   const distributionLegend = document.getElementById('distributionLegend');
   const csrfToken = document.getElementById('predictionCsrfToken').value;
-
-  const showStatus = (message) => { status.hidden = false; status.textContent = message; };
+  const setText = (element, text) => { element.textContent = text; if (window.eduguideTranslateTree) window.eduguideTranslateTree(element); };
+  const showStatus = (message) => { status.hidden = false; setText(status, message); };
   const emptyResults = (message) => { cards.replaceChildren(); showStatus(message); };
-  const detail = (label, value) => { const item = document.createElement('span'); item.textContent = `${label}: ${value}`; return item; };
+  const detail = (label, value) => { const item = document.createElement('span'); const title = document.createElement('span'); title.textContent = `${label}:`; item.append(title, document.createTextNode(` ${value}`)); return item; };
   const card = (result) => {
-    const col = document.createElement('div'); col.className = 'prediction-card-column';
+    const col = document.createElement('div'); col.className = 'prediction-card-column'; col.dataset.level = result.level; col.dataset.name = result.college.toLocaleLowerCase(); col.dataset.search = `${result.college} ${result.course} ${result.location} ${result.college_type}`.toLocaleLowerCase(); col.dataset.confidence = result.confidence; col.dataset.margin = result.margin;
     const item = document.createElement('article'); item.className = `prediction-card prediction-card--${result.level}`;
     const top = document.createElement('div'); top.className = 'chance-top';
     const badge = document.createElement('span'); badge.className = 'chance-badge'; badge.textContent = result.chance;
@@ -131,23 +165,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const title = document.createElement('h3'); title.textContent = result.college;
     const location = document.createElement('p'); location.className = 'prediction-location'; location.textContent = `📍 ${result.location}`;
     const info = document.createElement('div'); info.className = 'prediction-card-info'; info.append(detail('Course', result.course), detail('Type', result.college_type));
-    const cutoff = document.createElement('p'); cutoff.className = 'prediction-cutoff'; cutoff.textContent = `${result.cutoff_basis}: ${result.cutoff}% · Your margin: ${result.margin >= 0 ? '+' : ''}${result.margin}%`;
-    const note = document.createElement('small'); note.textContent = `Calculated from ${result.records_used} matching cutoff record${result.records_used === 1 ? '' : 's'}.`;
+    const cutoff = document.createElement('p'); cutoff.className = 'prediction-cutoff'; const basis = document.createElement('span'); basis.textContent = `${result.cutoff_basis}: ${result.cutoff}% · `; const marginLabel = document.createElement('span'); marginLabel.textContent = 'Your margin:'; cutoff.append(basis, marginLabel, document.createTextNode(` ${result.margin >= 0 ? '+' : ''}${result.margin}%`));
+    const note = document.createElement('small'); const language = document.documentElement.lang; note.textContent = language === 'hi' ? `${result.records_used} मेल खाते कटऑफ रिकॉर्ड के आधार पर गणना की गई।` : language === 'mr' ? `${result.records_used} जुळणाऱ्या कटऑफ नोंदींवरून गणना केली.` : `Calculated from ${result.records_used} matching cutoff record${result.records_used === 1 ? '' : 's'}.`;
     const content = document.createElement('div'); content.className = 'prediction-card-content'; content.append(top, title, location, info, cutoff, note);
     const score = document.createElement('div'); score.className = 'prediction-card-score';
     const meter = document.createElement('div'); meter.className = 'prediction-match-meter'; meter.style.setProperty('--match-score', `${result.confidence}%`); meter.setAttribute('role', 'img'); meter.setAttribute('aria-label', `${result.confidence}% match`);
     const meterValue = document.createElement('strong'); meterValue.textContent = `${result.confidence}%`; meter.appendChild(meterValue);
-    const meterLabel = document.createElement('span'); meterLabel.textContent = 'match';
+    const meterLabel = document.createElement('span'); meterLabel.textContent = language === 'hi' ? 'मेल' : language === 'mr' ? 'जुळणी' : 'match';
     score.append(meter, meterLabel);
     const link = document.createElement('a'); link.className = 'prediction-card-link'; link.href = panel.dataset.collegeDetailBase.replace(/0\/?$/, `${result.college_id}/`); link.setAttribute('aria-label', `Explore ${result.college} details`);
     item.append(content, score); link.appendChild(item); col.appendChild(link); return col;
   };
 
+  let activeFilter = 'all';
+  let latestPredictionData = null;
+  const updateSummary = (data) => {
+    const years = data.data_years.join(' and ');
+    const language = document.documentElement.lang;
+    summary.textContent = language === 'hi' ? `${years} के कटऑफ डेटा से ${data.results.length} कॉलेज मेल मिले।${data.used_latest_year ? ' चुने गए वर्ष का डेटा उपलब्ध नहीं था, इसलिए नवीनतम ऐतिहासिक डेटा इस्तेमाल किया गया।' : ''}` : language === 'mr' ? `${years} च्या कटऑफ माहितीवरून ${data.results.length} महाविद्यालये जुळली.${data.used_latest_year ? ' निवडलेल्या वर्षाची माहिती उपलब्ध नव्हती, म्हणून नवीनतम मागील माहिती वापरली.' : ''}` : `${data.results.length} matches calculated from ${years} cutoff data.${data.used_latest_year ? ` Your selected year was unavailable, so the latest historical data was used.` : ''}`;
+  };
+  const refreshExplorer = () => {
+    const query = searchInput.value.trim().toLocaleLowerCase();
+    const columns = [...cards.children];
+    columns.sort((a, b) => {
+      if (sortSelect.value === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+      if (sortSelect.value === 'margin') return Number(b.dataset.margin) - Number(a.dataset.margin);
+      return Number(b.dataset.confidence) - Number(a.dataset.confidence);
+    });
+    columns.forEach((column) => {
+      const matches = (activeFilter === 'all' || column.dataset.level === activeFilter) && (!query || column.dataset.search.includes(query));
+      column.hidden = !matches;
+      cards.appendChild(column);
+    });
+    const shown = columns.filter((column) => !column.hidden).length;
+    const language = document.documentElement.lang;
+    visibleCount.textContent = language === 'hi' ? `${columns.length} में से ${shown} कॉलेज दिखाए जा रहे हैं` : language === 'mr' ? `${columns.length} पैकी ${shown} जुळणारी महाविद्यालये दाखवत आहोत` : `Showing ${shown} of ${columns.length} matches`;
+    document.querySelectorAll('.prediction-filter').forEach((filter) => {
+      const selected = filter.dataset.filter === activeFilter;
+      filter.classList.toggle('is-active', selected);
+      filter.setAttribute('aria-pressed', String(selected));
+    });
+  };
+  searchInput.addEventListener('input', refreshExplorer);
+  sortSelect.addEventListener('change', refreshExplorer);
+  document.querySelectorAll('.prediction-filter').forEach((filter) => filter.addEventListener('click', () => { activeFilter = filter.dataset.filter; refreshExplorer(); }));
+  window.addEventListener('eduguide-language-change', () => { refreshExplorer(); if (latestPredictionData) updateSummary(latestPredictionData); });
+
   const updateReport = (results) => {
     const counts = { high: 0, good: 0, moderate: 0, stretch: 0 };
     results.forEach((result) => { if (Object.prototype.hasOwnProperty.call(counts, result.level)) counts[result.level] += 1; });
     const strongest = results[0];
-    highlight.textContent = 'You have chances to get into these colleges.';
+    setText(highlight, 'You have chances to get into these colleges.');
     highlight.hidden = false;
     document.getElementById('reportMatchCount').textContent = results.length;
     document.getElementById('reportStrongestMatch').textContent = `${Math.max(...results.map((result) => result.confidence))}%`;
@@ -177,26 +245,36 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   button.addEventListener('click', async () => {
+<<<<<<< HEAD
     button.disabled = true; button.classList.add('is-loading'); button.querySelector('span').textContent = 'Calculating your matches…';
     panel.hidden = true;
     heading.hidden = true;
     downloadButton.disabled = true; results.hidden = false; status.hidden = true; distribution.hidden = true; cards.replaceChildren(); summary.textContent = ''; highlight.hidden = true;
+=======
+    button.disabled = true; button.classList.add('is-loading'); setText(button.querySelector('span'), 'Calculating your matches…');
+    downloadButton.disabled = true; results.hidden = false; status.hidden = true; distribution.hidden = true; explorer.hidden = true; cards.replaceChildren(); summary.textContent = ''; highlight.hidden = true;
+>>>>>>> f52f3efdd435fc9f6d0a464b0d2729f2c62e0328
     try {
       const response = await fetch(panel.dataset.predictionUrl, { method: 'POST', headers: { 'X-CSRFToken': csrfToken, 'X-Requested-With': 'XMLHttpRequest' }, credentials: 'same-origin' });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || 'We could not calculate your prediction.');
       if (!data.results.length) { emptyResults(data.error || 'No close matches were found with the selected profile filters. Try changing your saved location or college-type preference.'); }
-      else { cards.replaceChildren(...data.results.map(card)); updateReport(data.results); summary.textContent = `${data.results.length} matches calculated from ${data.data_years.join(' and ')} cutoff data.${data.used_latest_year ? ` Your selected year was unavailable, so the latest historical data was used.` : ''}`; downloadButton.disabled = false; }
+      else { latestPredictionData = data; cards.replaceChildren(...data.results.map(card)); updateReport(data.results); updateSummary(data); downloadButton.disabled = false; explorer.hidden = false; activeFilter = 'all'; searchInput.value = ''; sortSelect.value = 'best'; const counts = { all: data.results.length, high: 0, good: 0, moderate: 0, stretch: 0 }; data.results.forEach((result) => { if (Object.prototype.hasOwnProperty.call(counts, result.level)) counts[result.level] += 1; }); Object.entries(counts).forEach(([level, count]) => { document.querySelector(`[data-filter-count="${level}"]`).textContent = count; }); refreshExplorer(); }
       results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+<<<<<<< HEAD
     } catch (error) { panel.hidden = false; heading.hidden = false; emptyResults(error.message || 'Something went wrong while calculating your prediction.'); }
     finally { button.disabled = false; button.classList.remove('is-loading'); button.querySelector('span').textContent = 'Calculate my college matches'; }
+=======
+    } catch (error) { emptyResults(error.message || 'Something went wrong while calculating your prediction.'); }
+    finally { button.disabled = false; button.classList.remove('is-loading'); setText(button.querySelector('span'), 'Calculate my college matches'); }
+>>>>>>> f52f3efdd435fc9f6d0a464b0d2729f2c62e0328
   });
 
   downloadButton.addEventListener('click', async () => {
     if (downloadButton.disabled) return;
     downloadButton.disabled = true;
     const label = downloadButton.querySelector('.prediction-download-label');
-    label.textContent = 'Preparing your report…';
+    setText(label, 'Preparing your report…');
     try {
       const response = await fetch(panel.dataset.reportUrl, { method: 'POST', headers: { 'X-CSRFToken': csrfToken, 'X-Requested-With': 'XMLHttpRequest' }, credentials: 'same-origin' });
       if (!response.ok) {
@@ -217,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
       showStatus(error.message || 'We could not prepare your report. Please calculate your matches again.');
     } finally {
       downloadButton.disabled = false;
-      label.textContent = 'Download prediction report';
+      setText(label, 'Download prediction report');
     }
   });
 });
