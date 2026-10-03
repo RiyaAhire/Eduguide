@@ -70,15 +70,9 @@ urlpatterns = [
     ),
 
     path(
-<<<<<<< HEAD
         "college/<str:college_code>/seat-matrix/",
         views.seat_matrix,
         name="seat_matrix",
-=======
-        "college/<int:college_id>/seat-matrix/",
-        views.college_seat_matrix,
-        name="college_seat_matrix"
->>>>>>> ff15f7ad82f0bea51914ac805dd894684db69570
     ),
 
     path(

@@ -6742,7 +6742,6 @@ body.dark-mode .college-detail-tags .college-code-badge {
     color: #e5eefb !important;
 }
 
-<<<<<<< HEAD
 /* College seat matrix: reuse AGS cards, buttons and typography. */
 .seat-matrix-header { align-items: center; gap: 22px; }
 .seat-matrix-college-copy { flex: 1; }
@@ -6796,7 +6795,8 @@ body.dark-mode .seat-matrix-empty p { color: #a7b8d0; }
     .seat-matrix-section-heading, .seat-matrix-results-heading { align-items: flex-start; flex-direction: column; }
     .seat-matrix-filter-actions { flex-wrap: wrap; }
     .seat-matrix-pagination { flex-wrap: wrap; }
-=======
+}
+
 /* Logged-out prediction page: make the path into prediction clear and actionable. */
 .prediction-section:has(.prediction-login-section) { padding-top: 42px; }
 .prediction-section:has(.prediction-login-section) .prediction-heading { margin-bottom: 30px; }
@@ -6883,5 +6883,4 @@ body.dark-mode .prediction-guest-core small, body.dark-mode .prediction-guest-fl
     .prediction-login-btn, .prediction-register-btn { width: 100%; }
     .prediction-guest-visual { min-height: 230px; transform: scale(.9); }
     .prediction-guest-float--cutoff { right: -13px; }
->>>>>>> f52f3efdd435fc9f6d0a464b0d2729f2c62e0328
 }

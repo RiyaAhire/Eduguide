@@ -343,7 +343,6 @@ def college_details(request, college_id):
     )
 
 
-<<<<<<< HEAD
 def seat_matrix(request, college_code):
     """Explore one college's seat records with database filtering and pagination."""
     college = get_object_or_404(College, college_code=college_code)
@@ -395,103 +394,6 @@ def seat_matrix(request, college_code):
             ("ORPHAN", "Orphan Reservation"), ("PWD", "Persons with Disabilities"),
             ("DEF", "Defence Category"), ("NA", "Not Applicable"),
         ],
-=======
-def college_seat_matrix(request, college_id):
-    college = get_object_or_404(College, id=college_id)
-    all_records = (
-        SeatMatrix.objects.filter(Q(college_code=college.college_code) | Q(course__college=college))
-        .select_related("course", "course__college")
-    )
-
-    course_rows = all_records.order_by().values(
-        "course_id", "course_code", "course_name", "course__course_code", "course__course_name"
-    ).distinct()
-    courses_by_name = {}
-    for row in course_rows:
-        name = (row["course_name"] or row["course__course_name"] or "").strip()
-        code = row["course_code"] or row["course__course_code"]
-        normalized_name = " ".join(name.casefold().split())
-        if normalized_name:
-            courses_by_name.setdefault(normalized_name, {"name": name, "codes": set()})
-            if code:
-                courses_by_name[normalized_name]["codes"].add(code)
-    courses = [
-        {"name": item["name"], "code": ",".join(sorted(item["codes"]))}
-        for item in courses_by_name.values()
-    ]
-    courses.sort(key=lambda item: item["name"].casefold())
-    categories = sorted(set(all_records.order_by().values_list("category", flat=True).distinct()) - {""})
-    genders = sorted(set(all_records.order_by().values_list("gender", flat=True).distinct()) - {""})
-    district_types = sorted(set(all_records.order_by().values_list("district_type", flat=True).distinct()) - {""})
-    admission_years = sorted(set(all_records.order_by().values_list("admission_year", flat=True).distinct()) - {""}, reverse=True)
-
-    student_profile = None
-    if request.user.is_authenticated:
-        student_profile = getattr(request.user, "student_profile", None)
-
-    selected = {
-        "course": request.GET.get("course", "").strip(),
-        "category": request.GET.get("category", "").strip(),
-        "gender": request.GET.get("gender", "").strip(),
-        "district_type": request.GET.get("district_type", "").strip(),
-        "admission_year": request.GET.get("admission_year", "").strip(),
-    }
-    if not request.GET:
-        profile_category = getattr(student_profile, "category", "") if student_profile else ""
-        profile_gender = getattr(student_profile, "gender", "") if student_profile else ""
-        profile_year = getattr(student_profile, "admission_year", "") if student_profile else ""
-        if profile_category in categories:
-            selected["category"] = profile_category
-        if profile_gender in genders:
-            selected["gender"] = profile_gender
-        if profile_year in admission_years:
-            selected["admission_year"] = profile_year
-        elif admission_years:
-            selected["admission_year"] = admission_years[0]
-
-    records = all_records
-    if selected["course"]:
-        course_codes = selected["course"].split(",")
-        records = records.filter(Q(course_code__in=course_codes) | Q(course__course_code__in=course_codes))
-    if selected["category"]:
-        records = records.filter(category=selected["category"])
-    if selected["gender"]:
-        records = records.filter(gender=selected["gender"])
-    if selected["district_type"]:
-        records = records.filter(district_type=selected["district_type"])
-    if selected["admission_year"]:
-        records = records.filter(admission_year=selected["admission_year"])
-
-    search_query = request.GET.get("q", "").strip()
-    if search_query:
-        records = records.filter(
-            Q(course_name__icontains=search_query)
-            | Q(course_code__icontains=search_query)
-            | Q(course__course_name__icontains=search_query)
-            | Q(course__course_code__icontains=search_query)
-            | Q(category__icontains=search_query)
-        )
-
-    records = records.order_by("course_name", "course__course_name", "category", "gender", "district_type", "seat_type", "id")
-    page_obj = Paginator(records, 50).get_page(request.GET.get("page"))
-    context = {
-        "college": college,
-        "website": getattr(college, "website_info", None),
-        "courses": courses,
-        "categories": categories,
-        "genders": genders,
-        "district_types": district_types,
-        "admission_years": admission_years,
-        "selected": selected,
-        "search_query": search_query,
-        "page_obj": page_obj,
-        "total_courses": all_records.values("course_id").distinct().count(),
-        "total_records": all_records.count(),
-        "total_categories": len(categories),
-        "summary_year": selected["admission_year"] or (admission_years[0] if admission_years else "—"),
-        "showing_start": page_obj.start_index() if page_obj.paginator.count else 0,
-        "showing_end": page_obj.end_index() if page_obj.paginator.count else 0,
->>>>>>> ff15f7ad82f0bea51914ac805dd894684db69570
     }
     return render(request, "journal/seat_matrix.html", context)
 
