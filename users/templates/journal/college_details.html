@@ -77,6 +77,13 @@
                         <p>No courses available.</p> 
  
                     {% endif %} 
+
+                    <div class="mt-3">
+                        <a href="{% url 'seat_matrix' college.college_code %}"
+                           class="btn btn-primary rounded-pill px-4">
+                            Discover Seat Availability
+                        </a>
+                    </div>
  
                 </div> 
  

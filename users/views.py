@@ -20,13 +20,14 @@ from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
-from prediction.models import Cutoff
+from prediction.models import Cutoff, SeatMatrix
 from django.db import transaction
 from django.db.models import Count, Max, Q
 from django.contrib import messages
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
+from django.core.paginator import Paginator
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.urls import reverse
@@ -340,6 +341,61 @@ def college_details(request, college_id):
             "college": college
         }
     )
+
+
+def seat_matrix(request, college_code):
+    """Explore one college's seat records with database filtering and pagination."""
+    college = get_object_or_404(College, college_code=college_code)
+    base_records = SeatMatrix.objects.filter(
+        course__college=college
+    ).select_related("course", "course__college")
+
+    filter_fields = {
+        "course": "course_id",
+        "admission_year": "admission_year",
+        "seat_type": "seat_type",
+        "district_type": "district_type",
+        "category": "category",
+        "gender": "gender",
+    }
+    selected = {key: request.GET.get(key, "").strip() for key in filter_fields}
+    records = base_records
+    for key, field in filter_fields.items():
+        value = selected[key]
+        if value:
+            records = records.filter(**{field: value})
+
+    options = {}
+    for key, field in filter_fields.items():
+        options[key] = base_records.values_list(field, flat=True).distinct().order_by(field)
+
+    available_courses = Course.objects.filter(
+        seatmatrix__course__college=college
+    ).distinct().order_by("course_name")
+
+    paginator = Paginator(records.order_by("course__course_name", "admission_year", "seat_type", "category"), 25)
+    page_obj = paginator.get_page(request.GET.get("page"))
+    context = {
+        "college": college,
+        "filter_options": options,
+        "available_courses": available_courses,
+        "selected_filters": selected,
+        "page_obj": page_obj,
+        "number_of_courses": college.courses.count(),
+        "total_seat_records": base_records.count(),
+        "legend": [
+            ("G", "General"), ("L", "Ladies"), ("HD", "Home District"),
+            ("OHD", "Other Home District"), ("OPEN", "Open Category"),
+            ("SC", "Scheduled Caste"), ("ST", "Scheduled Tribe"),
+            ("VJDT", "Vimukta Jati / Denotified Tribes"), ("NTB", "Nomadic Tribe B"),
+            ("NTC", "Nomadic Tribe C"), ("NTD", "Nomadic Tribe D"),
+            ("OBC", "Other Backward Class"),
+            ("SEBC", "Socially and Educationally Backward Class"),
+            ("ORPHAN", "Orphan Reservation"), ("PWD", "Persons with Disabilities"),
+            ("DEF", "Defence Category"), ("NA", "Not Applicable"),
+        ],
+    }
+    return render(request, "journal/seat_matrix.html", context)
 
 
 def course_details(request, course_id):
