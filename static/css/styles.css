@@ -3557,7 +3557,9 @@ body.dark-mode .college-search-box .form-select,
 body.dark-mode .course-filter .form-select,
 body.dark-mode .cutoff-filter-box .form-select,
 body.dark-mode .prediction-form-card .form-control,
-body.dark-mode .prediction-form-card .form-select {
+body.dark-mode .prediction-form-card .form-select,
+body.dark-mode .seat-matrix-filters .form-control,
+body.dark-mode .seat-matrix-filters .form-select {
     background: #111827 !important;
 
     color: #e2e8f0 !important;
@@ -4650,6 +4652,10 @@ body.dark-mode .navbar-toggler-icon {
 
 .prediction-profile-card {
     max-width: 1050px;
+}
+
+#predictionResults {
+    scroll-margin-top: 100px;
 }
 
 .prediction-profile-grid {
@@ -6606,4 +6612,59 @@ body.dark-mode .college-detail-tags .college-code-badge {
     border: 1px solid #4b6485 !important;
     background-color: #2b405d !important;
     color: #e5eefb !important;
+}
+
+/* College seat matrix: reuse AGS cards, buttons and typography. */
+.seat-matrix-header { align-items: center; gap: 22px; }
+.seat-matrix-college-copy { flex: 1; }
+.seat-matrix-eyebrow { display: block; margin-bottom: 7px; color: #2563eb; font-size: 11px; font-weight: 700; letter-spacing: .09em; }
+.seat-matrix-website { flex: 0 0 auto; }
+.seat-matrix-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 24px 0; }
+.seat-summary-card { display: flex; flex-direction: column; gap: 8px; margin: 0; }
+.seat-summary-card span { color: #64748b; font-size: 13px; }
+.seat-summary-card strong { color: #173b7a; font-size: 25px; line-height: 1.2; }
+.seat-matrix-filter-card, .seat-matrix-results { margin-top: 22px; }
+.seat-matrix-section-heading, .seat-matrix-results-heading { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 20px; }
+.seat-matrix-section-heading h2, .seat-matrix-results-heading h2 { margin: 0; color: #173b7a; font-size: 22px; font-weight: 650; }
+.seat-matrix-section-heading p, .seat-matrix-results-heading p { margin: 4px 0 0; color: #64748b; font-size: 13px; }
+.seat-matrix-filters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: end; }
+.seat-matrix-filters label { display: grid; gap: 7px; color: #334155; font-size: 13px; font-weight: 600; }
+.seat-matrix-filter-actions { display: flex; gap: 10px; align-items: center; }
+.seat-matrix-results-heading { align-items: center; }
+.seat-matrix-page-count { color: #64748b; font-size: 13px; }
+.seat-matrix-table-wrap { max-height: 68vh; border: 1px solid #e2e8f0; border-radius: 12px; }
+.seat-matrix-table { min-width: 1480px; margin: 0; color: #334155; font-size: 13px; }
+.seat-matrix-table thead th { position: sticky; top: 0; z-index: 2; white-space: nowrap; background: #edf4ff; color: #173b7a; font-size: 12px; }
+.seat-matrix-table td { white-space: nowrap; }
+.seat-matrix-table td:first-child { white-space: normal; min-width: 230px; }
+.seat-matrix-table td:first-child small { display: block; margin-top: 3px; color: #718096; }
+.seat-matrix-pagination { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 18px; color: #64748b; font-size: 13px; }
+.seat-matrix-empty { padding: 48px 16px; text-align: center; }
+.seat-matrix-empty > span { display: inline-grid; place-items: center; width: 52px; height: 52px; margin-bottom: 12px; border-radius: 16px; background: #eff6ff; font-size: 24px; }
+.seat-matrix-empty h3 { margin: 0 0 8px; color: #173b7a; font-size: 20px; }
+.seat-matrix-empty p { margin: 0 0 18px; color: #64748b; }
+body.dark-mode .seat-summary-card strong,
+body.dark-mode .seat-matrix-section-heading h2,
+body.dark-mode .seat-matrix-results-heading h2,
+body.dark-mode .seat-matrix-empty h3 { color: #e5eefb; }
+body.dark-mode .seat-matrix-section-heading p,
+body.dark-mode .seat-matrix-results-heading p,
+body.dark-mode .seat-summary-card span,
+body.dark-mode .seat-matrix-page-count,
+body.dark-mode .seat-matrix-pagination { color: #a7b8d0; }
+body.dark-mode .seat-matrix-filters label { color: #d6e1ef; }
+body.dark-mode .seat-matrix-table-wrap { border-color: #33445d; }
+body.dark-mode .seat-matrix-table { color: #d6e1ef; --bs-table-bg: #1e293b; --bs-table-color: #d6e1ef; --bs-table-border-color: #33445d; --bs-table-hover-bg: #26364d; --bs-table-hover-color: #f1f5f9; }
+body.dark-mode .seat-matrix-table thead th { background: #263a58; color: #d9e8ff; }
+body.dark-mode .seat-matrix-table td:first-child small { color: #9eafc7; }
+body.dark-mode .seat-matrix-empty > span { background: #263a58; }
+body.dark-mode .seat-matrix-empty p { color: #a7b8d0; }
+@media (max-width: 767.98px) {
+    .seat-matrix-header { align-items: flex-start; flex-wrap: wrap; }
+    .seat-matrix-website { margin-left: 74px; }
+    .seat-matrix-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .seat-matrix-filters { grid-template-columns: 1fr; }
+    .seat-matrix-section-heading, .seat-matrix-results-heading { align-items: flex-start; flex-direction: column; }
+    .seat-matrix-filter-actions { flex-wrap: wrap; }
+    .seat-matrix-pagination { flex-wrap: wrap; }
 }

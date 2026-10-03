@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="college-details-section seat-matrix-page">
+  <div class="container">
+    <a href="{% url 'college_details' college.id %}" class="back-link">← Back to College Details</a>
+
+    <header class="college-details-header seat-matrix-header">
+      <div class="college-details-icon" aria-hidden="true">🎓</div>
+      <div class="seat-matrix-college-copy">
+        <span class="seat-matrix-eyebrow">COLLEGE SEAT MATRIX</span>
+        <h1>{{ college.college_name }}</h1>
+        <p class="college-details-location">📍 {{ college.region|default:"Region not listed" }}</p>
+        <div class="college-detail-tags">
+          <span class="badge bg-primary">{{ college.status }}</span>
+          <span class="badge bg-light text-dark college-code-badge">College Code: {{ college.college_code }}</span>
+        </div>
+      </div>
+      {% if website %}
+        <a href="{{ website.website }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary rounded-pill px-4 seat-matrix-website">Visit Official Website ↗</a>
+      {% endif %}
+    </header>
+
+    <div class="seat-matrix-summary" aria-label="Seat matrix summary">
+      <article class="details-card seat-summary-card"><span>Total Courses</span><strong>{{ total_courses }}</strong></article>
+      <article class="details-card seat-summary-card"><span>Total Seat Records</span><strong>{{ total_records }}</strong></article>
+      <article class="details-card seat-summary-card"><span>Available Categories</span><strong>{{ total_categories }}</strong></article>
+      <article class="details-card seat-summary-card"><span>Admission Year</span><strong>{{ summary_year }}</strong></article>
+    </div>
+
+    <section class="details-card seat-matrix-filter-card" aria-labelledby="seatMatrixFiltersHeading">
+      <div class="seat-matrix-section-heading">
+        <div><span class="seat-matrix-eyebrow">FIND YOUR OPTIONS</span><h2 id="seatMatrixFiltersHeading">Filter Seat Records</h2></div>
+        <p>Choose the course and admission details you want to review.</p>
+      </div>
+      <form method="get" class="seat-matrix-filters">
+        <label>Course
+          <select class="form-select" name="course">
+            <option value="">All courses</option>
+            {% for course in courses %}<option value="{{ course.code }}" {% if selected.course == course.code %}selected{% endif %}>{{ course.name }}</option>{% endfor %}
+          </select>
+        </label>
+        <label>Category
+          <select class="form-select" name="category">
+            <option value="">All categories</option>
+            {% for category in categories %}<option value="{{ category }}" {% if selected.category == category %}selected{% endif %}>{{ category }}</option>{% endfor %}
+          </select>
+        </label>
+        <label>Gender
+          <select class="form-select" name="gender">
+            <option value="">All genders</option>
+            {% for gender in genders %}<option value="{{ gender }}" {% if selected.gender == gender %}selected{% endif %}>{{ gender }}</option>{% endfor %}
+          </select>
+        </label>
+        <label>District Type
+          <select class="form-select" name="district_type">
+            <option value="">All district types</option>
+            {% for district_type in district_types %}<option value="{{ district_type }}" {% if selected.district_type == district_type %}selected{% endif %}>{{ district_type }}</option>{% endfor %}
+          </select>
+        </label>
+        <label>Admission Year
+          <select class="form-select" name="admission_year">
+            <option value="">All years</option>
+            {% for year in admission_years %}<option value="{{ year }}" {% if selected.admission_year == year %}selected{% endif %}>{{ year }}</option>{% endfor %}
+          </select>
+        </label>
+        <label class="seat-matrix-search">Search
+          <input class="form-control" type="search" name="q" value="{{ search_query }}" placeholder="Search course or category">
+        </label>
+        <div class="seat-matrix-filter-actions">
+          <button type="submit" class="btn btn-primary rounded-pill px-4">Apply Filters</button>
+          <a href="{% url 'college_seat_matrix' college.id %}" class="btn btn-outline-primary rounded-pill px-4">Reset</a>
+        </div>
+      </form>
+    </section>
+
+    <section class="details-card seat-matrix-results" aria-labelledby="seatMatrixResultsHeading">
+      <div class="seat-matrix-results-heading">
+        <div><h2 id="seatMatrixResultsHeading">Seat Matrix</h2><p>Showing {{ showing_start }}–{{ showing_end }} of {{ page_obj.paginator.count }} seat records</p></div>
+        {% if page_obj.paginator.num_pages > 1 %}<span class="seat-matrix-page-count">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>{% endif %}
+      </div>
+
+      {% if page_obj.object_list %}
+        <div class="table-responsive seat-matrix-table-wrap">
+          <table class="table table-hover align-middle seat-matrix-table">
+            <thead><tr>
+              <th scope="col">Course</th><th scope="col">Category</th><th scope="col">Gender</th><th scope="col">District Type</th><th scope="col">Seat Type</th><th scope="col">Seat Count</th><th scope="col">CAP Seats</th><th scope="col">MS Seats</th><th scope="col">Minority Seats</th><th scope="col">Institute Seats</th><th scope="col">Orphan Seats</th><th scope="col">EWS Seats</th><th scope="col">PWD Seats</th><th scope="col">DEF Seats</th>
+            </tr></thead>
+            <tbody>
+              {% for seat in page_obj %}
+                <tr>
+                  <td><strong>{{ seat.course_name|default:seat.course.course_name }}</strong><small>{{ seat.course_code|default:seat.course.course_code }}</small></td>
+                  <td>{{ seat.category|default:"—" }}</td><td>{{ seat.gender|default:"—" }}</td><td>{{ seat.district_type|default:"—" }}</td><td>{{ seat.seat_type|default:"—" }}</td><td>{{ seat.seat_count|default:0 }}</td><td>{{ seat.cap_seats|default_if_none:"—" }}</td><td>{{ seat.ms_seats|default_if_none:"—" }}</td><td>{{ seat.minority_seats|default_if_none:"—" }}</td><td>{{ seat.institute_seats|default_if_none:"—" }}</td><td>{{ seat.orphan_seats|default_if_none:"—" }}</td><td>{{ seat.ews_seats|default_if_none:"—" }}</td><td>{{ seat.pwd_seats|default_if_none:"—" }}</td><td>{{ seat.def_seats|default_if_none:"—" }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% if page_obj.paginator.num_pages > 1 %}
+          <nav class="seat-matrix-pagination" aria-label="Seat matrix pages">
+            {% if page_obj.has_previous %}<a class="btn btn-outline-primary rounded-pill" href="?page={{ page_obj.previous_page_number }}&course={{ selected.course|urlencode }}&category={{ selected.category|urlencode }}&gender={{ selected.gender|urlencode }}&district_type={{ selected.district_type|urlencode }}&admission_year={{ selected.admission_year|urlencode }}&q={{ search_query|urlencode }}">← Previous</a>{% else %}<span></span>{% endif %}
+            <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+            {% if page_obj.has_next %}<a class="btn btn-outline-primary rounded-pill" href="?page={{ page_obj.next_page_number }}&course={{ selected.course|urlencode }}&category={{ selected.category|urlencode }}&gender={{ selected.gender|urlencode }}&district_type={{ selected.district_type|urlencode }}&admission_year={{ selected.admission_year|urlencode }}&q={{ search_query|urlencode }}">Next →</a>{% else %}<span></span>{% endif %}
+          </nav>
+        {% endif %}
+      {% else %}
+        <div class="seat-matrix-empty"><span aria-hidden="true">📋</span><h3>No seat records match these filters</h3><p>Try a different course, category, district type or admission year.</p><a href="{% url 'college_seat_matrix' college.id %}" class="btn btn-primary rounded-pill px-4">Clear Filters</a></div>
+      {% endif %}
+    </section>
+  </div>
+</section>
+{% endblock %}

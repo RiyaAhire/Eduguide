@@ -70,6 +70,12 @@ urlpatterns = [
     ),
 
     path(
+        "college/<int:college_id>/seat-matrix/",
+        views.college_seat_matrix,
+        name="college_seat_matrix"
+    ),
+
+    path(
         "courses/",
         views.courses,
         name="courses"
