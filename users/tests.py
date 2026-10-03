@@ -6,7 +6,7 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 
 from colleges.models import College, Course
-from prediction.models import Cutoff
+from prediction.models import Cutoff, SeatMatrix
 from users.models import Student
 
 
@@ -157,3 +157,59 @@ class PredictionDataTests(TestCase):
     def test_password_reset_page_is_available(self):
         response = self.client.get(reverse("password_reset"))
         self.assertEqual(response.status_code, 200)
+
+
+class SeatMatrixViewTests(TestCase):
+    def setUp(self):
+        self.college = College.objects.create(
+            college_code="SEAT01",
+            college_name="Seat Matrix Polytechnic",
+            region="Pune",
+            status="Government",
+        )
+        self.course = Course.objects.create(
+            course_code="SEAT01001",
+            course_name="Computer Engineering",
+            college=self.college,
+        )
+
+    def create_record(self, *, gender, category="OPEN"):
+        return SeatMatrix.objects.create(
+            course=self.course,
+            admission_year="2026-27",
+            cap_round="MATRIX",
+            seat_type="Technical",
+            district_type="HD",
+            category=category,
+            gender=gender,
+            seat_count=1,
+        )
+
+    def test_seat_matrix_hides_invalid_values_and_uses_full_gender_labels(self):
+        self.create_record(gender="G")
+        self.create_record(gender="L", category="SC")
+        self.create_record(gender="nan", category="OBC")
+
+        response = self.client.get(reverse("seat_matrix", args=[self.college.college_code]))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context["gender_options"], [
+            {"value": "Gents", "label": "Gents"},
+            {"value": "Ladies", "label": "Ladies"},
+        ])
+        self.assertContains(response, "Gents")
+        self.assertContains(response, "Ladies")
+        self.assertNotContains(response, "nan", html=False)
+
+    def test_seat_matrix_accepts_legacy_gender_filter_links(self):
+        self.create_record(gender="G")
+        self.create_record(gender="L", category="SC")
+
+        response = self.client.get(
+            reverse("seat_matrix", args=[self.college.college_code]),
+            {"gender": "G"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context["selected_filters"]["gender"], "Gents")
+        self.assertEqual([record.gender_label for record in response.context["page_obj"]], ["Gents"])

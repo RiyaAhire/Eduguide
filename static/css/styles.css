@@ -6743,6 +6743,15 @@ body.dark-mode .college-detail-tags .college-code-badge {
 }
 
 /* College seat matrix: reuse AGS cards, buttons and typography. */
+.seat-availability-cta { display: flex; }
+.seat-availability-button { display: inline-flex; align-items: center; gap: 13px; min-width: min(100%, 330px); padding: 14px 18px; border: 1px solid #164da8; border-radius: 14px; background: linear-gradient(135deg, #0d3f97, #2563d8); box-shadow: 0 10px 22px rgba(22, 78, 168, .26); color: #fff; font-size: 16px; font-weight: 750; line-height: 1.2; text-decoration: none; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+.seat-availability-button:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(22, 78, 168, .34); background: linear-gradient(135deg, #0a3580, #1d56c0); color: #fff; }
+.seat-availability-button:focus-visible { outline: 3px solid #78a9ff; outline-offset: 3px; color: #fff; }
+.seat-availability-button-icon { display: grid; width: 34px; height: 34px; flex: 0 0 34px; place-items: center; border: 1px solid rgba(255,255,255,.36); border-radius: 9px; background: rgba(255,255,255,.15); font-size: 20px; }
+.seat-availability-button small { display: block; margin-bottom: 3px; color: #dce9ff; font-size: 11px; font-weight: 650; letter-spacing: .04em; text-transform: uppercase; }
+.seat-availability-button-arrow { margin-left: auto; font-size: 23px; line-height: 1; }
+body.dark-mode .seat-availability-button { border-color: #5e97ee; background: linear-gradient(135deg, #2859a7, #3976d2); box-shadow: 0 10px 22px rgba(0, 0, 0, .3); }
+body.dark-mode .seat-availability-button:hover { background: linear-gradient(135deg, #336bc2, #4a87e5); color: #fff; }
 .seat-matrix-header { align-items: center; gap: 22px; }
 .seat-matrix-college-copy { flex: 1; }
 .seat-matrix-eyebrow { display: block; margin-bottom: 7px; color: #2563eb; font-size: 11px; font-weight: 700; letter-spacing: .09em; }

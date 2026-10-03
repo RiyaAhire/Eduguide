@@ -64,7 +64,7 @@
         </div>
         <div class="col-md-4">
           <label class="form-label" for="filter-gender">Gender</label>
-          <select class="form-select" id="filter-gender" name="gender"><option value="">All genders</option>{% for value in filter_options.gender %}<option value="{{ value }}" {% if selected_filters.gender == value %}selected{% endif %}>{{ value }}</option>{% endfor %}</select>
+          <select class="form-select" id="filter-gender" name="gender"><option value="">All genders</option>{% for option in gender_options %}<option value="{{ option.value }}" {% if selected_filters.gender == option.value %}selected{% endif %}>{{ option.label }}</option>{% endfor %}</select>
         </div>
         <div class="col-12 d-flex flex-wrap gap-2">
           <button class="btn btn-primary rounded-pill px-4" type="submit">Apply Filters</button>
@@ -91,7 +91,7 @@
             <thead><tr><th>Course Name</th><th>Admission Year</th><th>Seat Type</th><th>District Type</th><th>Category</th><th>Gender</th><th>Seat Count</th></tr></thead>
             <tbody>
               {% for record in page_obj %}
-                <tr><td>{{ record.course.course_name }}</td><td>{{ record.admission_year }}</td><td>{{ record.seat_type }}</td><td>{{ record.district_type }}</td><td>{{ record.category }}</td><td>{{ record.gender }}</td><td>{{ record.seat_count }}</td></tr>
+                <tr><td>{{ record.course.course_name }}</td><td>{{ record.admission_year }}</td><td>{{ record.seat_type }}</td><td>{{ record.district_type }}</td><td>{{ record.category }}</td><td>{{ record.gender_label }}</td><td>{{ record.seat_count }}</td></tr>
               {% endfor %}
             </tbody>
           </table>

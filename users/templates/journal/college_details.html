@@ -78,10 +78,15 @@
  
                     {% endif %} 
 
-                    <div class="mt-3">
+                    <div class="seat-availability-cta mt-4">
                         <a href="{% url 'seat_matrix' college.college_code %}"
-                           class="btn btn-primary rounded-pill px-4">
-                            Discover Seat Availability
+                           class="seat-availability-button">
+                            <span class="seat-availability-button-icon" aria-hidden="true">▦</span>
+                            <span>
+                                <small>Plan your admission</small>
+                                Discover Seat Availability
+                            </span>
+                            <span class="seat-availability-button-arrow" aria-hidden="true">→</span>
                         </a>
                     </div>
  

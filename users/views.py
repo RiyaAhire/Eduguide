@@ -45,6 +45,46 @@ FALLBACK_BRANCHES = (
     "Aerospace Engineering", "Textile Engineering", "Dress Designing and Garment Manufacturing",
 )
 
+SEAT_MATRIX_MISSING_VALUES = ("", "nan", "n/a", "none", "null", "-")
+SEAT_MATRIX_GENDER_VALUES = {
+    "Gents": ("G", "Gent", "Gents", "Male", "M"),
+    "Ladies": ("L", "Lady", "Ladies", "Female", "F"),
+}
+
+
+def _seat_matrix_gender_label(value):
+    """Return one clear gender label for current and legacy seat-matrix rows."""
+    normalized = (value or "").strip().casefold()
+    for label, aliases in SEAT_MATRIX_GENDER_VALUES.items():
+        if normalized in {alias.casefold() for alias in aliases}:
+            return label
+    return ""
+
+
+def _valid_seat_matrix_records(queryset):
+    """Exclude incomplete legacy rows before they reach filters or the table."""
+    invalid = Q()
+    for field in ("admission_year", "seat_type", "district_type", "category", "gender"):
+        for value in SEAT_MATRIX_MISSING_VALUES:
+            invalid |= Q(**{f"{field}__iexact": value})
+
+    valid_gender = Q()
+    for aliases in SEAT_MATRIX_GENDER_VALUES.values():
+        for value in aliases:
+            valid_gender |= Q(gender__iexact=value)
+    return queryset.exclude(invalid).filter(valid_gender)
+
+
+def _gender_filter(value):
+    """Allow old bookmarked G/L links while querying the canonical labels."""
+    label = _seat_matrix_gender_label(value)
+    if not label:
+        return None, Q()
+    match = Q()
+    for alias in SEAT_MATRIX_GENDER_VALUES[label]:
+        match |= Q(gender__iexact=alias)
+    return label, match
+
 
 def prediction_branches(selected_branch=""):
     """Use the courses that actually have cutoff data, with useful first-run fallbacks."""
@@ -346,9 +386,11 @@ def college_details(request, college_id):
 def seat_matrix(request, college_code):
     """Explore one college's seat records with database filtering and pagination."""
     college = get_object_or_404(College, college_code=college_code)
-    base_records = SeatMatrix.objects.filter(
-        course__college=college
-    ).select_related("course", "course__college")
+    base_records = _valid_seat_matrix_records(
+        SeatMatrix.objects.filter(course__college=college).select_related(
+            "course", "course__college"
+        )
+    )
 
     filter_fields = {
         "course": "course_id",
@@ -359,32 +401,53 @@ def seat_matrix(request, college_code):
         "gender": "gender",
     }
     selected = {key: request.GET.get(key, "").strip() for key in filter_fields}
+    if selected["course"] and not selected["course"].isdigit():
+        selected["course"] = ""
+    selected["gender"], gender_match = _gender_filter(selected["gender"])
+    selected["gender"] = selected["gender"] or ""
     records = base_records
     for key, field in filter_fields.items():
         value = selected[key]
         if value:
-            records = records.filter(**{field: value})
+            records = (
+                records.filter(gender_match)
+                if key == "gender"
+                else records.filter(**{field: value})
+            )
 
     options = {}
     for key, field in filter_fields.items():
+        if key == "gender":
+            continue
         options[key] = base_records.values_list(field, flat=True).distinct().order_by(field)
 
+    gender_options = [
+        {"value": label, "label": label}
+        for label in SEAT_MATRIX_GENDER_VALUES
+        if base_records.filter(_gender_filter(label)[1]).exists()
+    ]
     available_courses = Course.objects.filter(
-        seatmatrix__course__college=college
+        id__in=base_records.values("course_id")
     ).distinct().order_by("course_name")
 
-    paginator = Paginator(records.order_by("course__course_name", "admission_year", "seat_type", "category"), 25)
+    paginator = Paginator(
+        records.order_by("course__course_name", "admission_year", "seat_type", "category"),
+        25,
+    )
     page_obj = paginator.get_page(request.GET.get("page"))
+    for record in page_obj:
+        record.gender_label = _seat_matrix_gender_label(record.gender)
     context = {
         "college": college,
         "filter_options": options,
+        "gender_options": gender_options,
         "available_courses": available_courses,
         "selected_filters": selected,
         "page_obj": page_obj,
         "number_of_courses": college.courses.count(),
         "total_seat_records": base_records.count(),
         "legend": [
-            ("G", "General"), ("L", "Ladies"), ("HD", "Home District"),
+            ("G", "Gents"), ("L", "Ladies"), ("HD", "Home District"),
             ("OHD", "Other Home District"), ("OPEN", "Open Category"),
             ("SC", "Scheduled Caste"), ("ST", "Scheduled Tribe"),
             ("VJDT", "Vimukta Jati / Denotified Tribes"), ("NTB", "Nomadic Tribe B"),

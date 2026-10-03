@@ -40,10 +40,35 @@ OPTIONAL_TOTAL_COLUMNS = (
     "cap_seats", "ms_seats", "minority_seats", "institute_seats", "orphan_seats",
     "ews_seats", "pwd_seats", "def_seats",
 )
+MISSING_VALUES = frozenset({"nan", "n/a", "none", "null", "-"})
+GENDER_VALUES = {
+    "g": "Gents",
+    "gent": "Gents",
+    "gents": "Gents",
+    "male": "Gents",
+    "m": "Gents",
+    "l": "Ladies",
+    "lady": "Ladies",
+    "ladies": "Ladies",
+    "female": "Ladies",
+    "f": "Ladies",
+}
 
 
 def clean(value):
-    return str(value or "").strip()
+    cleaned = str(value or "").strip()
+    return "" if cleaned.casefold() in MISSING_VALUES else cleaned
+
+
+def normalize_gender(value):
+    """Convert source abbreviations to the labels shown throughout the site."""
+    cleaned = clean(value)
+    if not cleaned:
+        return ""
+    try:
+        return GENDER_VALUES[cleaned.casefold()]
+    except KeyError as exc:
+        raise ValueError(f"Invalid gender: {cleaned}") from exc
 
 
 def normalized_headers(row):
@@ -122,7 +147,7 @@ def make_record(row, consolidated, colleges, courses, regions):
     seat_type = row_value(row, "seat_type", "Seat Type")
     district_type = row_value(row, "district_type", "District Type")
     category = row_value(row, "category", "Category")
-    gender = row_value(row, "gender", "Gender")
+    gender = normalize_gender(row_value(row, "gender", "Gender"))
 
     required = {
         "college_code": college_code,
@@ -247,6 +272,13 @@ def main():
 
                 for line_number, row in enumerate(reader, start=2):
                     rows_seen += 1
+                    try:
+                        normalized_gender = normalize_gender(
+                            row_value(row, "gender", "Gender")
+                        )
+                    except ValueError:
+                        # Let make_record reject the row and record the reason.
+                        normalized_gender = ""
                     key_values = (
                         row_value(row, "course_code", "Course Code"),
                         row_value(row, "admission_year", "Admission Year"),
@@ -257,7 +289,7 @@ def main():
                         row_value(row, "seat_type", "Seat Type"),
                         row_value(row, "district_type", "District Type"),
                         row_value(row, "category", "Category"),
-                        row_value(row, "gender", "Gender"),
+                        normalized_gender,
                     )
                     if all(key_values) and key_values in seen_keys:
                         duplicate_count += 1
