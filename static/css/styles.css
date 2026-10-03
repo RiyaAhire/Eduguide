@@ -247,8 +247,20 @@ html.dark-mode {
 .navbar-logo {
     width: 50px;
     height: 50px;
-
+    border-radius: 50%;
     object-fit: contain;
+}
+
+.navbar-logo-dark {
+    display: none;
+}
+
+body.dark-mode .navbar-logo-light {
+    display: none;
+}
+
+body.dark-mode .navbar-logo-dark {
+    display: block;
 }
 
 
@@ -6356,6 +6368,53 @@ body.dark-mode .mistake-card:hover {
     --bs-gutter-x: 0;
     --bs-gutter-y: 0;
 }
+.prediction-explorer {
+    margin: 8px 0 16px;
+    padding: 20px 22px 15px;
+    border: 1px solid #e5edf7;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 10px 25px #7895bd0d;
+}
+.prediction-explorer-heading,
+.prediction-explorer-controls,
+.prediction-filters { display: flex; align-items: center; }
+.prediction-explorer-heading { justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+.prediction-explorer-heading h3 { margin: 3px 0 0; color: #173b7a; font-size: 20px; font-weight: 750; }
+.prediction-visible-count { color: #71819a; font-size: 12px; font-weight: 600; }
+.prediction-explorer-controls { gap: 10px; margin-bottom: 13px; }
+.prediction-search { display: flex; flex: 1 1 300px; align-items: center; gap: 9px; min-width: 0; height: 44px; padding: 0 13px; border: 1px solid #dfe7f1; border-radius: 12px; color: #7a8ca6; background: #f9fbfe; }
+.prediction-search:focus-within { border-color: #8eaddb; box-shadow: 0 0 0 3px #dce9fa; }
+.prediction-search > span { font-size: 21px; line-height: 1; }
+.prediction-search input { width: 100%; border: 0; outline: 0; color: #334155; background: transparent; font: inherit; font-size: 13px; }
+.prediction-sort-label { color: #71819a; font-size: 12px; font-weight: 600; }
+.prediction-sort { min-width: 150px; height: 44px; padding: 0 12px; border: 1px solid #dfe7f1; border-radius: 12px; color: #334155; background: #fff; font: inherit; font-size: 13px; }
+.prediction-sort:focus-visible, .prediction-filter:focus-visible { outline: 3px solid #b7cff0; outline-offset: 2px; }
+.prediction-filters { flex-wrap: wrap; gap: 8px; }
+.prediction-filter { display: inline-flex; align-items: center; gap: 8px; padding: 7px 11px; border: 1px solid #e5eaf2; border-radius: 999px; color: #64748b; background: #fff; font: inherit; font-size: 12px; font-weight: 650; transition: background-color .18s ease, border-color .18s ease, color .18s ease; }
+.prediction-filter span { display: grid; min-width: 21px; height: 21px; place-items: center; border-radius: 50%; color: #64748b; background: #f1f5f9; font-size: 10px; }
+.prediction-filter:hover { border-color: #bdcde2; background: #f8faff; }
+.prediction-filter.is-active { border-color: #315b98; color: #fff; background: #315b98; }
+.prediction-filter.is-active span { color: #315b98; background: #fff; }
+.prediction-card-column[hidden] { display: none !important; }
+body.dark-mode .prediction-explorer { border-color: #33445f; background: #172338; box-shadow: 0 10px 24px #070d1840; }
+body.dark-mode .prediction-explorer-heading h3 { color: #edf4ff; }
+body.dark-mode .prediction-visible-count, body.dark-mode .prediction-sort-label { color: #aebdd2; }
+body.dark-mode .prediction-search, body.dark-mode .prediction-sort { border-color: #40536f; color: #d9e4f3; background: #202f46; }
+body.dark-mode .prediction-search input, body.dark-mode .prediction-sort { color: #d9e4f3; }
+body.dark-mode .prediction-search input::placeholder { color: #92a3ba; }
+body.dark-mode .prediction-filter { border-color: #40536f; color: #c1cee0; background: #202f46; }
+body.dark-mode .prediction-filter span { color: #c1cee0; background: #33445f; }
+body.dark-mode .prediction-filter.is-active { border-color: #7897c1; color: #101a2c; background: #b9cee9; }
+body.dark-mode .prediction-filter.is-active span { color: #101a2c; background: #edf4ff; }
+@media (max-width: 575px) {
+    .prediction-explorer { padding: 16px 14px 13px; }
+    .prediction-explorer-controls { flex-wrap: wrap; }
+    .prediction-search { flex-basis: 100%; }
+    .prediction-sort-label { margin-left: auto; }
+    .prediction-sort { flex: 1; }
+}
+
 .prediction-card-column { flex: 0 0 100%; width: 100%; max-width: 100%; }
 .prediction-results .prediction-card {
     display: grid;
