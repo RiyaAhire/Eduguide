@@ -42,6 +42,13 @@ class Cutoff(models.Model):
 
 class SeatMatrix(models.Model):
 
+    # Keep the source identifiers alongside the existing course relation so
+    # the matrix remains easy to filter and the legacy relation stays intact.
+    college_code = models.CharField(max_length=20, blank=True, default="", db_index=True)
+    college_name = models.CharField(max_length=255, blank=True, default="")
+    course_code = models.CharField(max_length=20, blank=True, default="", db_index=True)
+    course_name = models.CharField(max_length=255, blank=True, default="")
+
     course = models.ForeignKey(
         Course,
         on_delete=models.CASCADE
@@ -51,13 +58,21 @@ class SeatMatrix(models.Model):
     cap_round = models.CharField(max_length=10)
     seat_type = models.CharField(max_length=50)
 
-    district_type = models.CharField(max_length=20)
-
-    category = models.CharField(max_length=20)
-
-    gender = models.CharField(max_length=10)
-
     seat_count = models.IntegerField()
+    cap_seats = models.PositiveIntegerField(blank=True, null=True)
+    ms_seats = models.PositiveIntegerField(blank=True, null=True)
+    minority_seats = models.PositiveIntegerField(blank=True, null=True)
+    institute_seats = models.PositiveIntegerField(blank=True, null=True)
+    orphan_seats = models.PositiveIntegerField(blank=True, null=True)
+    ews_seats = models.PositiveIntegerField(blank=True, null=True)
+    pwd_seats = models.PositiveIntegerField(blank=True, null=True)
+    def_seats = models.PositiveIntegerField(blank=True, null=True)
+
+    category = models.CharField(max_length=20, db_index=True)
+
+    gender = models.CharField(max_length=10, db_index=True)
+
+    district_type = models.CharField(max_length=20, db_index=True)
 
     class Meta:
         constraints = [
