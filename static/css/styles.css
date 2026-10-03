@@ -36,6 +36,9 @@ html.dark-mode {
 ========================================================= */
 
 .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
     height: 85px;
     background-color: #ffffff;
 }
