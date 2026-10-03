@@ -151,10 +151,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const distribution = document.getElementById('predictionDistribution');
   const distributionLegend = document.getElementById('distributionLegend');
   const csrfToken = document.getElementById('predictionCsrfToken').value;
-
-  const showStatus = (message) => { status.hidden = false; status.textContent = message; };
+  const setText = (element, text) => { element.textContent = text; if (window.eduguideTranslateTree) window.eduguideTranslateTree(element); };
+  const showStatus = (message) => { status.hidden = false; setText(status, message); };
   const emptyResults = (message) => { cards.replaceChildren(); showStatus(message); };
-  const detail = (label, value) => { const item = document.createElement('span'); item.textContent = `${label}: ${value}`; return item; };
+  const detail = (label, value) => { const item = document.createElement('span'); const title = document.createElement('span'); title.textContent = `${label}:`; item.append(title, document.createTextNode(` ${value}`)); return item; };
   const card = (result) => {
     const col = document.createElement('div'); col.className = 'prediction-card-column'; col.dataset.level = result.level; col.dataset.name = result.college.toLocaleLowerCase(); col.dataset.search = `${result.college} ${result.course} ${result.location} ${result.college_type}`.toLocaleLowerCase(); col.dataset.confidence = result.confidence; col.dataset.margin = result.margin;
     const item = document.createElement('article'); item.className = `prediction-card prediction-card--${result.level}`;
@@ -164,19 +164,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const title = document.createElement('h3'); title.textContent = result.college;
     const location = document.createElement('p'); location.className = 'prediction-location'; location.textContent = `📍 ${result.location}`;
     const info = document.createElement('div'); info.className = 'prediction-card-info'; info.append(detail('Course', result.course), detail('Type', result.college_type));
-    const cutoff = document.createElement('p'); cutoff.className = 'prediction-cutoff'; cutoff.textContent = `${result.cutoff_basis}: ${result.cutoff}% · Your margin: ${result.margin >= 0 ? '+' : ''}${result.margin}%`;
-    const note = document.createElement('small'); note.textContent = `Calculated from ${result.records_used} matching cutoff record${result.records_used === 1 ? '' : 's'}.`;
+    const cutoff = document.createElement('p'); cutoff.className = 'prediction-cutoff'; const basis = document.createElement('span'); basis.textContent = `${result.cutoff_basis}: ${result.cutoff}% · `; const marginLabel = document.createElement('span'); marginLabel.textContent = 'Your margin:'; cutoff.append(basis, marginLabel, document.createTextNode(` ${result.margin >= 0 ? '+' : ''}${result.margin}%`));
+    const note = document.createElement('small'); const language = document.documentElement.lang; note.textContent = language === 'hi' ? `${result.records_used} मेल खाते कटऑफ रिकॉर्ड के आधार पर गणना की गई।` : language === 'mr' ? `${result.records_used} जुळणाऱ्या कटऑफ नोंदींवरून गणना केली.` : `Calculated from ${result.records_used} matching cutoff record${result.records_used === 1 ? '' : 's'}.`;
     const content = document.createElement('div'); content.className = 'prediction-card-content'; content.append(top, title, location, info, cutoff, note);
     const score = document.createElement('div'); score.className = 'prediction-card-score';
     const meter = document.createElement('div'); meter.className = 'prediction-match-meter'; meter.style.setProperty('--match-score', `${result.confidence}%`); meter.setAttribute('role', 'img'); meter.setAttribute('aria-label', `${result.confidence}% match`);
     const meterValue = document.createElement('strong'); meterValue.textContent = `${result.confidence}%`; meter.appendChild(meterValue);
-    const meterLabel = document.createElement('span'); meterLabel.textContent = 'match';
+    const meterLabel = document.createElement('span'); meterLabel.textContent = language === 'hi' ? 'मेल' : language === 'mr' ? 'जुळणी' : 'match';
     score.append(meter, meterLabel);
     const link = document.createElement('a'); link.className = 'prediction-card-link'; link.href = panel.dataset.collegeDetailBase.replace(/0\/?$/, `${result.college_id}/`); link.setAttribute('aria-label', `Explore ${result.college} details`);
     item.append(content, score); link.appendChild(item); col.appendChild(link); return col;
   };
 
   let activeFilter = 'all';
+  let latestPredictionData = null;
+  const updateSummary = (data) => {
+    const years = data.data_years.join(' and ');
+    const language = document.documentElement.lang;
+    summary.textContent = language === 'hi' ? `${years} के कटऑफ डेटा से ${data.results.length} कॉलेज मेल मिले।${data.used_latest_year ? ' चुने गए वर्ष का डेटा उपलब्ध नहीं था, इसलिए नवीनतम ऐतिहासिक डेटा इस्तेमाल किया गया।' : ''}` : language === 'mr' ? `${years} च्या कटऑफ माहितीवरून ${data.results.length} महाविद्यालये जुळली.${data.used_latest_year ? ' निवडलेल्या वर्षाची माहिती उपलब्ध नव्हती, म्हणून नवीनतम मागील माहिती वापरली.' : ''}` : `${data.results.length} matches calculated from ${years} cutoff data.${data.used_latest_year ? ` Your selected year was unavailable, so the latest historical data was used.` : ''}`;
+  };
   const refreshExplorer = () => {
     const query = searchInput.value.trim().toLocaleLowerCase();
     const columns = [...cards.children];
@@ -191,7 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
       cards.appendChild(column);
     });
     const shown = columns.filter((column) => !column.hidden).length;
-    visibleCount.textContent = `Showing ${shown} of ${columns.length} matches`;
+    const language = document.documentElement.lang;
+    visibleCount.textContent = language === 'hi' ? `${columns.length} में से ${shown} कॉलेज दिखाए जा रहे हैं` : language === 'mr' ? `${columns.length} पैकी ${shown} जुळणारी महाविद्यालये दाखवत आहोत` : `Showing ${shown} of ${columns.length} matches`;
     document.querySelectorAll('.prediction-filter').forEach((filter) => {
       const selected = filter.dataset.filter === activeFilter;
       filter.classList.toggle('is-active', selected);
@@ -201,12 +208,13 @@ document.addEventListener('DOMContentLoaded', () => {
   searchInput.addEventListener('input', refreshExplorer);
   sortSelect.addEventListener('change', refreshExplorer);
   document.querySelectorAll('.prediction-filter').forEach((filter) => filter.addEventListener('click', () => { activeFilter = filter.dataset.filter; refreshExplorer(); }));
+  window.addEventListener('eduguide-language-change', () => { refreshExplorer(); if (latestPredictionData) updateSummary(latestPredictionData); });
 
   const updateReport = (results) => {
     const counts = { high: 0, good: 0, moderate: 0, stretch: 0 };
     results.forEach((result) => { if (Object.prototype.hasOwnProperty.call(counts, result.level)) counts[result.level] += 1; });
     const strongest = results[0];
-    highlight.textContent = 'You have chances to get into these colleges.';
+    setText(highlight, 'You have chances to get into these colleges.');
     highlight.hidden = false;
     document.getElementById('reportMatchCount').textContent = results.length;
     document.getElementById('reportStrongestMatch').textContent = `${Math.max(...results.map((result) => result.confidence))}%`;
@@ -236,24 +244,24 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   button.addEventListener('click', async () => {
-    button.disabled = true; button.classList.add('is-loading'); button.querySelector('span').textContent = 'Calculating your matches…';
+    button.disabled = true; button.classList.add('is-loading'); setText(button.querySelector('span'), 'Calculating your matches…');
     downloadButton.disabled = true; results.hidden = false; status.hidden = true; distribution.hidden = true; explorer.hidden = true; cards.replaceChildren(); summary.textContent = ''; highlight.hidden = true;
     try {
       const response = await fetch(panel.dataset.predictionUrl, { method: 'POST', headers: { 'X-CSRFToken': csrfToken, 'X-Requested-With': 'XMLHttpRequest' }, credentials: 'same-origin' });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || 'We could not calculate your prediction.');
       if (!data.results.length) { emptyResults(data.error || 'No close matches were found with the selected profile filters. Try changing your saved location or college-type preference.'); }
-    else { cards.replaceChildren(...data.results.map(card)); updateReport(data.results); summary.textContent = `${data.results.length} matches calculated from ${data.data_years.join(' and ')} cutoff data.${data.used_latest_year ? ` Your selected year was unavailable, so the latest historical data was used.` : ''}`; downloadButton.disabled = false; explorer.hidden = false; activeFilter = 'all'; searchInput.value = ''; sortSelect.value = 'best'; const counts = { all: data.results.length, high: 0, good: 0, moderate: 0, stretch: 0 }; data.results.forEach((result) => { if (Object.prototype.hasOwnProperty.call(counts, result.level)) counts[result.level] += 1; }); Object.entries(counts).forEach(([level, count]) => { document.querySelector(`[data-filter-count="${level}"]`).textContent = count; }); refreshExplorer(); }
+      else { latestPredictionData = data; cards.replaceChildren(...data.results.map(card)); updateReport(data.results); updateSummary(data); downloadButton.disabled = false; explorer.hidden = false; activeFilter = 'all'; searchInput.value = ''; sortSelect.value = 'best'; const counts = { all: data.results.length, high: 0, good: 0, moderate: 0, stretch: 0 }; data.results.forEach((result) => { if (Object.prototype.hasOwnProperty.call(counts, result.level)) counts[result.level] += 1; }); Object.entries(counts).forEach(([level, count]) => { document.querySelector(`[data-filter-count="${level}"]`).textContent = count; }); refreshExplorer(); }
       results.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (error) { emptyResults(error.message || 'Something went wrong while calculating your prediction.'); }
-    finally { button.disabled = false; button.classList.remove('is-loading'); button.querySelector('span').textContent = 'Calculate my college matches'; }
+    finally { button.disabled = false; button.classList.remove('is-loading'); setText(button.querySelector('span'), 'Calculate my college matches'); }
   });
 
   downloadButton.addEventListener('click', async () => {
     if (downloadButton.disabled) return;
     downloadButton.disabled = true;
     const label = downloadButton.querySelector('.prediction-download-label');
-    label.textContent = 'Preparing your report…';
+    setText(label, 'Preparing your report…');
     try {
       const response = await fetch(panel.dataset.reportUrl, { method: 'POST', headers: { 'X-CSRFToken': csrfToken, 'X-Requested-With': 'XMLHttpRequest' }, credentials: 'same-origin' });
       if (!response.ok) {
@@ -274,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
       showStatus(error.message || 'We could not prepare your report. Please calculate your matches again.');
     } finally {
       downloadButton.disabled = false;
-      label.textContent = 'Download prediction report';
+      setText(label, 'Download prediction report');
     }
   });
 });

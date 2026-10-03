@@ -6718,6 +6718,12 @@ body.dark-mode .college-detail-tags .college-code-badge {
 .prediction-guest-float--matches { bottom: 1px; left: 13%; }
 .prediction-section:has(.prediction-login-section) .prediction-how-section { max-width: 1050px; margin-top: 52px; }
 .prediction-section:has(.prediction-login-section) .prediction-step p { font-size: 14px; line-height: 1.65; }
+.language-selector { display: inline-flex; flex-shrink: 0; align-items: center; gap: 7px; min-height: 38px; margin: 0 8px 0 0; padding: 0 10px; border: 1px solid #c9d9ef; border-radius: 999px; color: #244d8b; background: #f7faff; }
+.language-selector:focus-within { outline: 3px solid #b9d2f3; outline-offset: 2px; }
+.language-selector select { max-width: 110px; padding: 0 14px 0 0; border: 0; outline: 0; color: inherit; background: transparent; font: inherit; font-size: 13px; font-weight: 650; cursor: pointer; }
+.language-selector select option { color: #1f2937; background: #fff; }
+body.dark-mode .language-selector { border-color: #405879; color: #d5e5ff; background: #1c2b42; }
+body.dark-mode .language-selector select option { color: #e6edf7; background: #1e293b; }
 body.dark-mode .prediction-login-card { border-color: #2c4262; background: linear-gradient(120deg, #172338 0%, #192b45 55%, #1d3452 100%); box-shadow: 0 22px 60px #050b1645; }
 body.dark-mode .prediction-login-label { color: #a9c9f5; }
 body.dark-mode .prediction-login-label > span { color: #afd0ff; background: #263e5f; }
