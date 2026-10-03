@@ -99,12 +99,27 @@
         <div class="prediction-note"><span>💡</span><p><strong>How this works:</strong> each result uses the most competitive stored cutoff that matches your category and filters. A higher margin produces a stronger chance band.</p></div>
       </section>
     {% else %}
-      <section class="prediction-login-section"><div class="prediction-login-card">
-        <div class="prediction-login-icon">🔐</div><span class="prediction-login-label">PROFILE REQUIRED</span>
-        <h2>Register before using predictions</h2>
-        <p>Prediction uses your percentage, category, branch, location and college preference. Create an account once and EduGuide will save these details for future visits.</p>
-        <div class="prediction-login-buttons"><a href="{% url 'register' %}" class="prediction-login-btn">Create my profile →</a><a href="{% url 'login' %}" class="prediction-register-btn">Login</a></div>
-      </div></section>
+      <section class="prediction-login-section" aria-labelledby="predictionGuestTitle">
+        <div class="prediction-login-card">
+          <div class="prediction-login-copy">
+            <span class="prediction-login-label"><span aria-hidden="true">✦</span> YOUR NEXT STEP</span>
+            <h2 id="predictionGuestTitle">Your college shortlist starts with your profile.</h2>
+            <p>Save your marks and preferences once. EduGuide will compare them with historical cutoffs and build a personalized list of colleges to explore.</p>
+            <div class="prediction-login-buttons">
+              <a href="{% url 'register' %}" class="prediction-login-btn">Create my profile <span aria-hidden="true">→</span></a>
+              <a href="{% url 'login' %}" class="prediction-register-btn">Log in to my account <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="prediction-login-assurance"><span aria-hidden="true">✓</span> Your profile is saved for your next visit</div>
+          </div>
+          <div class="prediction-guest-visual" aria-label="How your profile becomes college matches">
+            <div class="prediction-guest-orbit"></div>
+            <div class="prediction-guest-core"><span aria-hidden="true">🎓</span><strong>Your future</strong><small>starts with a plan</small></div>
+            <div class="prediction-guest-float prediction-guest-float--profile"><span>01 · PROFILE</span><strong>Marks & preferences</strong></div>
+            <div class="prediction-guest-float prediction-guest-float--cutoff"><span>02 · COMPARE</span><strong>Historical cutoffs</strong></div>
+            <div class="prediction-guest-float prediction-guest-float--matches"><span>03 · DISCOVER</span><strong>Your college matches</strong></div>
+          </div>
+        </div>
+      </section>
     {% endif %}
 
     <section class="prediction-how-section">
