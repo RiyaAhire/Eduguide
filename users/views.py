@@ -1,5 +1,7 @@
+from datetime import date
+
 from colleges.models import College, Course
-from users.models import CourseInfo, Student
+from users.models import AdmissionNotice, ChecklistTask, CourseInfo, FavoriteCollege, PersonalReminder, Student
 
 from django.shortcuts import (
     render,
@@ -31,6 +33,8 @@ from django.core.paginator import Paginator
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.urls import reverse
+from django.utils.http import url_has_allowed_host_and_scheme
+from django.utils import timezone
 from users.prediction_pdf import build_prediction_pdf
 
 
@@ -149,6 +153,47 @@ def main_page(request):
         request,
         "journal/index.html",
     )
+
+
+CHECKLIST_DEFAULTS = (
+    ("profile", "Review your admission profile", "Confirm your marks, category, preferred branch and admission year are correct."),
+    ("marksheets", "Keep qualifying marksheets ready", "Keep your original marksheet and clear copies ready for the admission process."),
+    ("identity", "Prepare identity and domicile documents", "Check the current official brochure for the documents required for your candidature."),
+    ("category", "Check category documents if applicable", "If claiming a reservation benefit, verify the current certificate requirements and validity dates."),
+    ("official_schedule", "Check the official admission schedule", "Use the official DTE admission portal for current dates and instructions."),
+    ("application", "Complete and review your application", "Before submitting, review every entry and document against the official instructions."),
+)
+
+
+def _ensure_checklist(user):
+    for position, (key, title, description) in enumerate(CHECKLIST_DEFAULTS, start=1):
+        ChecklistTask.objects.get_or_create(
+            user=user,
+            key=key,
+            defaults={"title": title, "description": description, "position": position},
+        )
+
+
+@login_required(login_url="login")
+def dashboard(request):
+    _ensure_checklist(request.user)
+    tasks = ChecklistTask.objects.filter(user=request.user)
+    task_count = tasks.count()
+    completed_count = tasks.filter(completed=True).count()
+    next_task = tasks.filter(completed=False).first()
+    next_reminder = PersonalReminder.objects.filter(
+        user=request.user, completed=False, due_date__gte=timezone.localdate()
+    ).first()
+    student_profile = getattr(request.user, "student_profile", None)
+    return render(request, "journal/dashboard.html", {
+        "student_profile": student_profile,
+        "saved_count": FavoriteCollege.objects.filter(user=request.user).count(),
+        "task_count": task_count,
+        "completed_count": completed_count,
+        "checklist_percent": round(completed_count * 100 / task_count) if task_count else 0,
+        "next_task": next_task,
+        "next_reminder": next_reminder,
+    })
 
 
 def register(request):
@@ -326,9 +371,11 @@ def login_view(request):
                 user
             )
 
-            # Take the student straight back to the feature that uses the
-            # account-linked profile.  The prediction page loads the saved
-            # Student record for this authenticated user.
+            next_url = request.POST.get("next") or request.GET.get("next", "")
+            if next_url and url_has_allowed_host_and_scheme(
+                next_url, allowed_hosts={request.get_host()}, require_https=request.is_secure()
+            ):
+                return redirect(next_url)
             return redirect("prediction")
 
         return render(
@@ -362,11 +409,16 @@ def colleges(request):
         "college_name"
     )
 
+    saved_college_ids = set()
+    if request.user.is_authenticated:
+        saved_college_ids = set(FavoriteCollege.objects.filter(user=request.user).values_list("college_id", flat=True))
+
     return render(
         request,
         "journal/colleges.html",
         {
-            "colleges": colleges
+            "colleges": colleges,
+            "saved_college_ids": saved_college_ids,
         }
     )
 
@@ -374,13 +426,123 @@ def college_details(request, college_id):
 
     college = get_object_or_404(College, id=college_id)
 
+    is_saved = request.user.is_authenticated and FavoriteCollege.objects.filter(user=request.user, college=college).exists()
     return render(
         request,
         "journal/college_details.html",
         {
-            "college": college
+            "college": college,
+            "is_saved": is_saved,
         }
     )
+
+
+@login_required(login_url="login")
+@require_POST
+def toggle_saved_college(request, college_id):
+    college = get_object_or_404(College, pk=college_id)
+    favorite, created = FavoriteCollege.objects.get_or_create(user=request.user, college=college)
+    if not created:
+        favorite.delete()
+    return_to = request.POST.get("return_to", "")
+    if return_to and url_has_allowed_host_and_scheme(
+        return_to, allowed_hosts={request.get_host()}, require_https=request.is_secure()
+    ):
+        return redirect(return_to)
+    return redirect("saved_colleges")
+
+
+@login_required(login_url="login")
+def saved_colleges(request):
+    favorites = FavoriteCollege.objects.filter(user=request.user).select_related("college")
+    return render(request, "journal/saved_colleges.html", {"favorites": favorites})
+
+
+@login_required(login_url="login")
+def compare_shortlist(request):
+    total_saved = FavoriteCollege.objects.filter(user=request.user).count()
+    favorites = list(
+        FavoriteCollege.objects.filter(user=request.user)
+        .select_related("college")
+        .prefetch_related("college__courses")[:4]
+    )
+    return render(request, "journal/compare_shortlist.html", {
+        "favorites": favorites,
+        "extra_saved_count": max(total_saved - 4, 0),
+    })
+
+
+@login_required(login_url="login")
+def application_checklist(request):
+    _ensure_checklist(request.user)
+    tasks = ChecklistTask.objects.filter(user=request.user)
+    task_count = tasks.count()
+    completed_count = tasks.filter(completed=True).count()
+    return render(request, "journal/application_checklist.html", {
+        "tasks": tasks,
+        "task_count": task_count,
+        "completed_count": completed_count,
+        "progress_percent": round(completed_count * 100 / task_count) if task_count else 0,
+    })
+
+
+@login_required(login_url="login")
+@require_POST
+def toggle_checklist_task(request, task_id):
+    task = get_object_or_404(ChecklistTask, pk=task_id, user=request.user)
+    task.completed = not task.completed
+    task.save(update_fields=["completed", "updated_at"])
+    return redirect("application_checklist")
+
+
+@login_required(login_url="login")
+def updates_reminders(request):
+    if request.method == "POST":
+        title = request.POST.get("title", "").strip()
+        note = request.POST.get("note", "").strip()
+        due_date_value = request.POST.get("due_date", "").strip()
+        try:
+            due_date = date.fromisoformat(due_date_value)
+        except (ValueError, TypeError):
+            due_date = None
+
+        if not title or len(title) > 160:
+            messages.error(request, "Add a reminder title (up to 160 characters).")
+        elif due_date is None:
+            messages.error(request, "Choose a valid reminder date.")
+        elif due_date < timezone.localdate():
+            messages.error(request, "Choose today or a future date for your reminder.")
+        else:
+            PersonalReminder.objects.create(user=request.user, title=title, note=note[:500], due_date=due_date)
+            messages.success(request, "Your reminder has been saved.")
+        return redirect("updates_reminders")
+
+    return render(request, "journal/updates_reminders.html", {
+        "notices": AdmissionNotice.objects.filter(is_published=True),
+        "reminders": PersonalReminder.objects.filter(user=request.user),
+        "today": timezone.localdate().isoformat(),
+    })
+
+
+@login_required(login_url="login")
+@require_POST
+def toggle_reminder(request, reminder_id):
+    reminder = get_object_or_404(PersonalReminder, pk=reminder_id, user=request.user)
+    reminder.completed = not reminder.completed
+    reminder.save(update_fields=["completed"])
+    return redirect("updates_reminders")
+
+
+@login_required(login_url="login")
+@require_POST
+def delete_reminder(request, reminder_id):
+    get_object_or_404(PersonalReminder, pk=reminder_id, user=request.user).delete()
+    messages.success(request, "Reminder deleted.")
+    return redirect("updates_reminders")
+
+
+def help_faqs(request):
+    return render(request, "journal/help_faqs.html")
 
 
 def seat_matrix(request, college_code):
@@ -600,6 +762,12 @@ def prediction(request):
         "journal/prediction.html",
         {"student_profile": student_profile},
     )
+
+
+@login_required(login_url="login")
+def prediction_report(request):
+    report = request.session.get("latest_prediction_report")
+    return render(request, "journal/prediction_report.html", {"report": report})
 
 
 def _branch_terms(branch):

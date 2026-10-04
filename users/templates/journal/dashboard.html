@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="workspace-page"><div class="container workspace-container">
+  <header class="workspace-heading"><span class="workspace-kicker">MY ADMISSION DASHBOARD</span><h1>Welcome back, {{ user.username }}.</h1><p>A simple place to pick up your admission plan.</p></header>
+  <section class="workspace-focus" aria-labelledby="focusTitle">
+    <div class="workspace-focus-icon">{% if next_task %}↗{% else %}✓{% endif %}</div>
+    <div class="workspace-focus-copy"><span class="workspace-kicker">YOUR NEXT STEP</span>
+      {% if next_task %}<h2 id="focusTitle">{{ next_task.title }}</h2><p>{{ next_task.description }}</p><a class="btn btn-primary rounded-pill px-4" href="{% url 'application_checklist' %}">Open checklist <span aria-hidden="true">→</span></a>
+      {% else %}<h2 id="focusTitle">Your checklist is complete</h2><p>You’ve completed all the admission preparation steps in your checklist.</p><a class="btn btn-primary rounded-pill px-4" href="{% url 'updates_reminders' %}">Review reminders <span aria-hidden="true">→</span></a>{% endif %}
+    </div>
+  </section>
+  <section class="workspace-glance" aria-label="A quick glance at your plan">
+    <div><span>Checklist</span><strong>{{ completed_count }} of {{ task_count }} steps</strong><div class="workspace-progress"><span style="width: {{ checklist_percent }}%"></span></div></div>
+    <div><span>Shortlist</span><strong>{{ saved_count }} saved college{{ saved_count|pluralize }}</strong><a href="{% url 'saved_colleges' %}">Open shortlist →</a></div>
+    <div><span>Next reminder</span>{% if next_reminder %}<strong>{{ next_reminder.title }}</strong><small>{{ next_reminder.due_date|date:"j M Y" }}</small>{% else %}<strong>No upcoming reminder</strong><a href="{% url 'updates_reminders' %}">Add a reminder →</a>{% endif %}</div>
+  </section>
+</div></main>
+{% endblock %}

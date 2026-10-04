@@ -17,8 +17,8 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=20261004-two-row-nav-v10">
-    <script src="{% static 'js/site-language.js' %}?v=20261004-language-menu-v2" defer></script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=20261005-workspace-nav-v3">
+    <script src="{% static 'js/site-language.js' %}?v=20261005-workspace-language-v3" defer></script>
 
     <script>
         // Apply the stored theme before the body is painted.
@@ -40,107 +40,66 @@
          NAVBAR
     ========================== -->
 
-    <nav class="navbar navbar-expand-lg shadow-sm eduguide-navbar">
-    <div class="container eduguide-navbar-shell">
-        <div class="navbar-main-row">
-            <!-- CHANGED: brand contains only its logo and EduGuide wordmark. -->
-            <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}">
-                <img src="{% static 'images/EduGuide Logo.png' %}" alt="EduGuide Logo" class="navbar-logo navbar-logo-light">
-                <img src="{% static 'images/EduGuide Logo D.png' %}" alt="EduGuide Logo" class="navbar-logo navbar-logo-dark">
-                <span class="fw-bold brand-text">EduGuide</span>
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'colleges' or request.resolver_match.url_name == 'college_details' or request.resolver_match.url_name == 'courses' or request.resolver_match.url_name == 'course_details' %}active-dropdown{% endif %}"
-                           href="#" id="collegeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Colleges</a>
-                        <ul class="dropdown-menu shadow border-0 rounded-4" aria-labelledby="collegeDropdown">
-                            <li><a class="dropdown-item py-2 {% if request.resolver_match.url_name == 'colleges' %}active{% endif %}" href="{% url 'colleges' %}">Explore Colleges</a></li>
-                            <li><a class="dropdown-item py-2 {% if request.resolver_match.url_name == 'courses' %}active{% endif %}" href="{% url 'courses' %}">Explore Courses</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'cutoff' %}active{% endif %}" href="{% url 'cutoff' %}">Cutoff</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'prediction' %}active{% endif %}" href="{% url 'prediction' %}">Prediction</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'admission_process' %}active{% endif %}" href="{% url 'admission_process' %}">Admission Process</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a>
-                    </li>
+    <nav class="navbar shadow-sm eduguide-navbar" aria-label="Main navigation">
+        <div class="container eduguide-navbar-shell">
+            <div class="navbar-top-row">
+                <button class="sidebar-menu-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#studentSidebar" aria-controls="studentSidebar" aria-label="Open personal sidebar"><span></span><span></span><span></span></button>
+                <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}">
+                    <img src="{% static 'images/EduGuide Logo.png' %}" alt="" class="navbar-logo navbar-logo-light">
+                    <img src="{% static 'images/EduGuide Logo D.png' %}" alt="" class="navbar-logo navbar-logo-dark">
+                    <span class="fw-bold brand-text">EduGuide</span>
+                </a>
+                <ul class="navbar-nav eduguide-primary-nav">
+                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'colleges' or request.resolver_match.url_name == 'college_details' %}active{% endif %}" href="{% url 'colleges' %}">Colleges</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'courses' or request.resolver_match.url_name == 'course_details' %}active{% endif %}" href="{% url 'courses' %}">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'cutoff' %}active{% endif %}" href="{% url 'cutoff' %}">Cutoff</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'prediction' %}active{% endif %}" href="{% url 'prediction' %}">Prediction</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'admission_process' %}active{% endif %}" href="{% url 'admission_process' %}">Admission Process</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
                 </ul>
-
-                <!-- Language and theme controls stay on the far right. -->
+                <div class="navbar-top-spacer"></div>
                 <div class="navbar-main-actions">
-                    <button id="themeToggle" class="theme-toggle" type="button" title="Toggle dark/light mode" aria-label="Toggle dark/light mode">🌙</button>
+                    <button id="themeToggle" class="theme-toggle" type="button" title="Toggle dark/light mode" aria-label="Switch to dark mode">🌙</button>
                     <div class="language-selector language-control" id="languageControl">
-                        <select id="languageSelect" class="language-native-select" aria-label="Select website language" tabindex="-1">
-                            <option value="en">English</option>
-                            <option value="hi">हिन्दी</option>
-                            <option value="mr">मराठी</option>
-                        </select>
-                        <button type="button" class="language-trigger" id="languageTrigger" aria-label="Select website language" aria-expanded="false" aria-controls="languageOptions">
-                            <span class="language-toggle-globe" aria-hidden="true">🌐</span>
-                            <span class="language-current" id="languageCurrent">English</span>
-                            <span class="language-chevron" aria-hidden="true">⌄</span>
-                        </button>
+                        <select id="languageSelect" class="language-native-select" aria-label="Select website language" tabindex="-1"><option value="en">English</option><option value="hi">हिन्दी</option><option value="mr">मराठी</option></select>
+                        <button type="button" class="language-trigger" id="languageTrigger" aria-label="Select website language" aria-expanded="false" aria-controls="languageOptions"><span class="language-toggle-globe" aria-hidden="true">🌐</span><span class="language-current" id="languageCurrent">English</span><span class="language-chevron" aria-hidden="true">⌄</span></button>
                         <div class="language-options" id="languageOptions" role="listbox" aria-label="Website languages" hidden>
-                            <button type="button" class="language-option" role="option" data-language="en">
-                                <span class="language-option-code">EN</span><span class="language-option-copy"><strong>English</strong><small>English</small></span><span class="language-option-check" aria-hidden="true">✓</span>
-                            </button>
-                            <button type="button" class="language-option" role="option" data-language="hi">
-                                <span class="language-option-code">हि</span><span class="language-option-copy"><strong>हिन्दी</strong><small>Hindi</small></span><span class="language-option-check" aria-hidden="true">✓</span>
-                            </button>
-                            <button type="button" class="language-option" role="option" data-language="mr">
-                                <span class="language-option-code">म</span><span class="language-option-copy"><strong>मराठी</strong><small>Marathi</small></span><span class="language-option-check" aria-hidden="true">✓</span>
-                            </button>
+                            <button type="button" class="language-option" role="option" data-language="en"><span class="language-option-code">EN</span><span class="language-option-copy"><strong>English</strong><small>English</small></span><span class="language-option-check" aria-hidden="true">✓</span></button>
+                            <button type="button" class="language-option" role="option" data-language="hi"><span class="language-option-code">हि</span><span class="language-option-copy"><strong>हिन्दी</strong><small>Hindi</small></span><span class="language-option-check" aria-hidden="true">✓</span></button>
+                            <button type="button" class="language-option" role="option" data-language="mr"><span class="language-option-code">म</span><span class="language-option-copy"><strong>मराठी</strong><small>Marathi</small></span><span class="language-option-check" aria-hidden="true">✓</span></button>
                         </div>
                     </div>
-                    {% if user.is_authenticated %}
-                        <div class="dropdown navbar-user-dropdown">
-                            <button class="navbar-account-trigger" type="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account menu for {{ user.username }}">
-                                <span class="navbar-profile-avatar" aria-hidden="true"><span>{{ user.username|slice:":1"|upper }}</span><i></i></span>
-                                <span class="navbar-account-name">{{ user.username }}</span>
-                                <span class="navbar-account-chevron" aria-hidden="true">⌃</span>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end navbar-user-menu" aria-labelledby="accountDropdown">
-                                <div class="navbar-user-summary">
-                                    <span class="navbar-profile-avatar" aria-hidden="true"><span>{{ user.username|slice:":1"|upper }}</span><i></i></span>
-                                    <span><small>Signed in as</small><strong>{{ user.username }}</strong></span>
-                                </div>
-                                <a class="dropdown-item navbar-user-menu-item {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" href="{% url 'profile' %}"><span aria-hidden="true">👤</span>My profile</a>
-                                <a class="dropdown-item navbar-user-menu-item {% if request.resolver_match.url_name == 'prediction' %}active{% endif %}" href="{% url 'prediction' %}"><span aria-hidden="true">🎯</span>My predictions</a>
-                                <div class="navbar-user-menu-divider"></div>
-                                <form method="POST" action="{% url 'logout' %}" class="navbar-user-logout-form">
-                                    {% csrf_token %}
-                                    <button type="submit" class="dropdown-item navbar-user-menu-item navbar-user-logout"><span aria-hidden="true">🚪</span>Logout</button>
-                                </form>
-                            </div>
-                        </div>
-                    {% else %}
-                        <div class="navbar-guest-actions">
-                            <a href="{% url 'login' %}" class="navbar-guest-link">Login</a>
-                            <a href="{% url 'register' %}" class="navbar-guest-link navbar-guest-register">Register</a>
-                        </div>
-                    {% endif %}
+                    {% if user.is_authenticated %}<span class="navbar-account-name" aria-label="Signed in as {{ user.username }}">{{ user.username }}</span>{% endif %}
                 </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
+    <div class="offcanvas offcanvas-start eduguide-sidebar" tabindex="-1" id="studentSidebar" aria-labelledby="studentSidebarTitle">
+        <div class="offcanvas-header eduguide-sidebar-header"><div><span class="sidebar-eyebrow">EDUGUIDE</span><h2 class="offcanvas-title" id="studentSidebarTitle">Your admission space</h2></div><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close sidebar"></button></div>
+        <div class="offcanvas-body">
+            {% if user.is_authenticated %}
+                <div class="sidebar-user-summary"><span class="sidebar-user-mark" aria-hidden="true">{{ user.username|slice:":1"|upper }}</span><span><small>Signed in as</small><strong>{{ user.username }}</strong></span></div>
+            {% else %}
+                <div class="sidebar-guest-summary"><strong>Welcome to EduGuide</strong><span>Sign in to save your admission profile.</span><div><a href="{% url 'login' %}">Log in</a><a href="{% url 'register' %}">Create account</a></div></div>
+            {% endif %}
+            <div class="sidebar-section-label">MY ADMISSION PLAN</div>
+            <a class="sidebar-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}" href="{% url 'dashboard' %}"><span>▣</span><span>My Dashboard</span></a>
+            <a class="sidebar-link {% if request.resolver_match.url_name == 'prediction_report' %}active{% endif %}" href="{% url 'prediction_report' %}"><span>▤</span><span>Prediction Report</span>{% if request.session.latest_prediction_report %}<small>Ready</small>{% endif %}</a>
+            <a class="sidebar-link {% if request.resolver_match.url_name == 'saved_colleges' %}active{% endif %}" href="{% url 'saved_colleges' %}"><span>♡</span><span>Saved Colleges</span></a>
+            <a class="sidebar-link {% if request.resolver_match.url_name == 'compare_shortlist' %}active{% endif %}" href="{% url 'compare_shortlist' %}"><span>⇄</span><span>Compare Shortlist</span></a>
+            <div class="sidebar-section-label">STAY ON TRACK</div>
+            <a class="sidebar-link {% if request.resolver_match.url_name == 'application_checklist' %}active{% endif %}" href="{% url 'application_checklist' %}"><span>☑</span><span>Application Checklist</span></a>
+            <a class="sidebar-link {% if request.resolver_match.url_name == 'updates_reminders' %}active{% endif %}" href="{% url 'updates_reminders' %}"><span>◷</span><span>Updates &amp; Reminders</span></a>
+            <div class="sidebar-section-label">ACCOUNT &amp; SUPPORT</div>
+            {% if user.is_authenticated %}
+                <a class="sidebar-link {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" href="{% url 'profile' %}"><span>♙</span><span>Profile &amp; Preferences</span></a>
+                <form method="POST" action="{% url 'logout' %}" class="sidebar-logout-form">{% csrf_token %}<button type="submit" class="sidebar-link sidebar-logout"><span>⇥</span><span>Log out</span></button></form>
+            {% endif %}
+            <a class="sidebar-link {% if request.resolver_match.url_name == 'help_faqs' %}active{% endif %}" href="{% url 'help_faqs' %}"><span>?</span><span>Help &amp; FAQs</span></a>
+        </div>
+    </div>
 
     <!-- =========================
          PAGE CONTENT
@@ -175,6 +134,7 @@
 
             if (document.body.classList.contains("dark-mode")) {
                 themeToggle.textContent = "☀️";
+                themeToggle.setAttribute("aria-label", "Switch to light mode");
             }
 
 
@@ -192,6 +152,7 @@
                     document.documentElement.classList.add("dark-mode");
 
                     themeToggle.textContent = "☀️";
+                    themeToggle.setAttribute("aria-label", "Switch to light mode");
 
                 }
 
@@ -202,6 +163,7 @@
                     document.documentElement.classList.remove("dark-mode");
 
                     themeToggle.textContent = "🌙";
+                    themeToggle.setAttribute("aria-label", "Switch to dark mode");
 
                 }
 

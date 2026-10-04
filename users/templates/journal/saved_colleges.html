@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="workspace-page"><div class="container workspace-container">
+  <header class="workspace-heading"><span class="workspace-kicker">MY ADMISSION PLAN</span><h1>Saved colleges</h1><p>Your personal shortlist, ready to review or compare.</p></header>
+  {% if messages %}{% for message in messages %}<div class="alert alert-info">{{ message }}</div>{% endfor %}{% endif %}
+  {% if favorites %}<div class="workspace-college-grid">
+    {% for favorite in favorites %}<article class="workspace-college-card"><div class="workspace-college-symbol">🏫</div><div class="workspace-college-main"><span class="workspace-kicker">{{ favorite.college.college_code }}</span><h2>{{ favorite.college.college_name }}</h2><p>📍 {{ favorite.college.region|default:"Location not listed" }} · {{ favorite.college.status }}</p><div class="workspace-card-actions"><a class="btn btn-primary rounded-pill px-3" href="{% url 'college_details' favorite.college.id %}">View college</a><form method="post" action="{% url 'toggle_saved_college' favorite.college.id %}">{% csrf_token %}<input type="hidden" name="return_to" value="{% url 'saved_colleges' %}"><button class="btn btn-outline-danger rounded-pill px-3" type="submit">Remove</button></form></div></div></article>{% endfor %}
+  </div><div class="workspace-bottom-actions"><a class="btn btn-outline-primary rounded-pill px-4" href="{% url 'compare_shortlist' %}">Compare shortlist</a><a class="btn btn-link" href="{% url 'colleges' %}">Find more colleges</a></div>
+  {% else %}<section class="workspace-empty"><div>♡</div><h2>Your shortlist starts here</h2><p>Save colleges from Explore Colleges or a college’s details page. They’ll appear here for quick access and comparison.</p><a class="btn btn-primary rounded-pill px-4" href="{% url 'colleges' %}">Explore colleges <span aria-hidden="true">→</span></a></section>{% endif %}
+</div></main>
+{% endblock %}

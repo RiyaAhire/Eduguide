@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="workspace-page"><div class="container workspace-container">
+  <header class="workspace-heading"><span class="workspace-kicker">YOUR SAVED SESSION REPORT</span><h1>Prediction report</h1><p>Your latest college match report from the prediction tool is shown here for this signed-in session.</p></header>
+  {% if report %}
+    <section class="report-profile-strip"><div><span>Applicant</span><strong>{{ report.profile.name }}</strong></div><div><span>Score</span><strong>{{ report.profile.percentage }}%</strong></div><div><span>Category</span><strong>{{ report.profile.category }}</strong></div><div><span>Preferred course</span><strong>{{ report.profile.branch }}</strong></div><div><span>Admission year</span><strong>{{ report.profile.admission_year }}</strong></div></section>
+    <div class="report-heading-row"><div><span class="workspace-kicker">COLLEGE MATCHES</span><h2>{{ report.results|length }} possible match{{ report.results|length|pluralize }}</h2><p>Based on eligible historical cutoff data: {{ report.data_years|join:", " }}.{% if report.used_latest_year %} Your selected year was unavailable, so the latest available historical data was used.{% endif %}</p></div>
+      <form method="post" action="{% url 'prediction_report_pdf' %}">{% csrf_token %}<button class="btn btn-outline-primary rounded-pill px-4" type="submit">Download PDF report ↓</button></form>
+    </div>
+    {% if report.results %}<div class="workspace-table-wrap"><table class="table workspace-compare-table prediction-report-table"><thead><tr><th scope="col">Chance</th><th scope="col">College</th><th scope="col">Course</th><th scope="col">Location</th><th scope="col">Historical cutoff</th><th scope="col">Your margin</th><th scope="col">Details</th></tr></thead><tbody>
+      {% for result in report.results %}<tr><td><span class="report-chance report-chance--{{ result.level }}">{{ result.chance }}</span><small class="report-confidence">{{ result.confidence }}% match</small></td><td>{{ result.college }}<small class="report-confidence">Code: {{ result.college_code }}</small></td><td>{{ result.course }}</td><td>{{ result.location }}</td><td>{{ result.cutoff }}%</td><td>{% if result.margin >= 0 %}+{% endif %}{{ result.margin }}%</td><td><a href="{% url 'college_details' result.college_id %}">View →</a></td></tr>{% endfor %}
+    </tbody></table></div>{% else %}<section class="workspace-empty"><div>⌕</div><h2>No matches in this report</h2><p>Try updating your preferences or check back when more cutoff records are available.</p><a class="btn btn-primary rounded-pill px-4" href="{% url 'prediction' %}">Run prediction again</a></section>{% endif %}
+    <p class="workspace-data-note">Prediction results are guidance based on historical cutoffs, not an admission guarantee. Confirm current eligibility and dates with the official admission authority.</p>
+  {% else %}
+    <section class="workspace-empty"><div>▤</div><h2>No prediction report yet</h2><p>Calculate your college matches first. Your latest report will then appear here while your session is active.</p><a class="btn btn-primary rounded-pill px-4" href="{% url 'prediction' %}">Go to Predictions <span aria-hidden="true">→</span></a></section>
+  {% endif %}
+</div></main>
+{% endblock %}

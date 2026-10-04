@@ -72,6 +72,14 @@
                     >
                         View Details
                     </a>
+                    {% if user.is_authenticated %}
+                        <form method="post" action="{% url 'toggle_saved_college' college.id %}" class="mt-2">
+                            {% csrf_token %}<input type="hidden" name="return_to" value="{{ request.path }}">
+                            <button class="btn {% if college.id in saved_college_ids %}btn-primary{% else %}btn-outline-primary{% endif %} rounded-pill" type="submit">{% if college.id in saved_college_ids %}♥ Saved · Remove{% else %}♡ Save College{% endif %}</button>
+                        </form>
+                    {% else %}
+                        <a class="btn btn-outline-primary rounded-pill mt-2" href="{% url 'login' %}?next={{ request.path|urlencode }}">Log in to save</a>
+                    {% endif %}
 
                 </div>
 

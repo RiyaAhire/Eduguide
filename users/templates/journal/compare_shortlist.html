@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="workspace-page"><div class="container workspace-container">
+  <header class="workspace-heading"><span class="workspace-kicker">MY ADMISSION PLAN</span><h1>Compare your shortlist</h1><p>Compare the information EduGuide currently has for your saved colleges.</p></header>
+  {% if extra_saved_count %}<div class="alert alert-info">Showing the first four saved colleges. Remove a saved college to compare another one.</div>{% endif %}
+  {% if favorites %}<div class="workspace-table-wrap"><table class="table workspace-compare-table"><thead><tr><th scope="col">College information</th>{% for favorite in favorites %}<th scope="col">{{ favorite.college.college_name }}</th>{% endfor %}</tr></thead><tbody>
+    <tr><th scope="row">College code</th>{% for favorite in favorites %}<td>{{ favorite.college.college_code }}</td>{% endfor %}</tr>
+    <tr><th scope="row">Location</th>{% for favorite in favorites %}<td>{{ favorite.college.region|default:"Not listed" }}</td>{% endfor %}</tr>
+    <tr><th scope="row">College type</th>{% for favorite in favorites %}<td>{{ favorite.college.status|default:"Not listed" }}</td>{% endfor %}</tr>
+    <tr><th scope="row">Listed courses</th>{% for favorite in favorites %}<td>{% with courses=favorite.college.courses.all %}{% if courses %}<ul class="compare-course-list">{% for course in courses|slice:":8" %}<li>{{ course.course_name }}</li>{% endfor %}</ul>{% else %}<span class="text-muted">No course data listed</span>{% endif %}{% endwith %}</td>{% endfor %}</tr>
+    <tr><th scope="row">Details</th>{% for favorite in favorites %}<td><a href="{% url 'college_details' favorite.college.id %}">View college →</a></td>{% endfor %}</tr>
+  </tbody></table></div><p class="workspace-data-note">Comparison uses the college and course information currently stored in EduGuide. Fees, placements and facilities are not shown unless verified data is added.</p>
+  {% else %}<section class="workspace-empty"><div>⇄</div><h2>Save colleges to compare them</h2><p>Your comparison will use the college name, region, type and listed courses.</p><a class="btn btn-primary rounded-pill px-4" href="{% url 'colleges' %}">Explore colleges</a></section>{% endif %}
+</div></main>
+{% endblock %}

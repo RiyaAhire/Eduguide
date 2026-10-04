@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="workspace-page"><div class="container workspace-container">
+  <header class="workspace-heading"><span class="workspace-kicker">HELP &amp; SUPPORT</span><h1>How can we help?</h1><p>Quick answers about EduGuide’s data and admission tools.</p></header>
+  <div class="workspace-faq-list" id="helpFaqs">
+    <details class="workspace-faq" open><summary>How does the college prediction work?</summary><p>EduGuide compares the admission profile saved to your account with historical cutoff records that match the selected course, category and admission year. Results are estimates for guidance and do not guarantee admission.</p></details>
+    <details class="workspace-faq"><summary>Why might a college or course be missing?</summary><p>EduGuide can only display records currently available in its database. A missing course, college or cutoff may not yet be included or may not have a matching historical record.</p></details>
+    <details class="workspace-faq"><summary>Are cutoff marks and seat details current?</summary><p>Historical cutoffs describe previous admission rounds. Seat information can vary by year and round. Check the academic year shown on the page and confirm current information through the official admission authority.</p></details>
+    <details class="workspace-faq"><summary>Can I save colleges and compare them?</summary><p>Yes. Use Save College from Explore Colleges or a college detail page. Your shortlist is private to your account, and Compare Shortlist shows up to four saved colleges at a time.</p></details>
+    <details class="workspace-faq"><summary>Will EduGuide send me deadline notifications?</summary><p>You can create and manage personal reminders in Updates &amp; Reminders. At present they are displayed in EduGuide; automatic email, SMS and push notifications are not enabled.</p></details>
+    <details class="workspace-faq"><summary>Where should I verify an official admission date?</summary><p>Use the linked official DTE or course admission portal. EduGuide may link to notices that have been added to its update list, but always confirm the latest date on the authority’s own site.</p></details>
+    <details class="workspace-faq"><summary>How do I change my marks or preferences?</summary><p>Open Profile &amp; Preferences in the sidebar, update your admission details, and save. Your next prediction will use the updated profile.</p></details>
+  </div>
+  <section class="workspace-support-callout"><div><span class="workspace-kicker">NEED MORE HELP?</span><h2>Contact the official admission support team</h2><p>For application status, eligibility and document decisions, contact the authority responsible for your admission process.</p></div><a class="btn btn-outline-primary rounded-pill px-4" href="https://poly26.dtemaharashtra.gov.in/" target="_blank" rel="noopener noreferrer">Open DTE Diploma Portal ↗</a></section>
+</div></main>
+{% endblock %}

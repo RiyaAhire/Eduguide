@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="workspace-page"><div class="container workspace-container">
+  <header class="workspace-heading"><span class="workspace-kicker">STAY ON TRACK</span><h1>Updates &amp; reminders</h1><p>Review notices published by EduGuide and keep your own admission tasks on schedule.</p></header>
+  {% if messages %}{% for message in messages %}<div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %}" role="status">{{ message }}</div>{% endfor %}{% endif %}
+  <div class="workspace-two-column">
+    <section class="workspace-panel"><div class="workspace-panel-heading"><div><span class="workspace-kicker">YOUR PERSONAL DATES</span><h2>My reminders</h2></div></div>
+      <form class="workspace-reminder-form" method="post" action="{% url 'updates_reminders' %}">{% csrf_token %}<label for="reminderTitle">Reminder</label><input class="form-control" id="reminderTitle" name="title" maxlength="160" placeholder="e.g. Review my option form" required><label for="reminderNote">Note <span>(optional)</span></label><input class="form-control" id="reminderNote" name="note" maxlength="500" placeholder="Add a short note"><label for="reminderDate">Remind me on</label><input class="form-control" type="date" id="reminderDate" name="due_date" min="{{ today }}" required><button class="btn btn-primary rounded-pill px-4" type="submit">Add reminder</button><small>Reminders are saved to this page; EduGuide does not send automatic email or push alerts yet.</small></form>
+      <div class="workspace-reminders">{% for reminder in reminders %}<article class="workspace-reminder {% if reminder.completed %}is-complete{% endif %}"><div><span class="workspace-reminder-date">{{ reminder.due_date|date:"j M Y" }}</span><h3>{{ reminder.title }}</h3>{% if reminder.note %}<p>{{ reminder.note }}</p>{% endif %}</div><div class="workspace-reminder-actions"><form method="post" action="{% url 'toggle_reminder' reminder.id %}">{% csrf_token %}<button class="btn btn-sm btn-outline-primary rounded-pill" type="submit">{% if reminder.completed %}Reopen{% else %}Done{% endif %}</button></form><form method="post" action="{% url 'delete_reminder' reminder.id %}">{% csrf_token %}<button class="btn btn-sm btn-link text-danger" type="submit">Delete</button></form></div></article>{% empty %}<div class="workspace-inline-empty">No reminders yet. Add one above to keep track of a date that matters to you.</div>{% endfor %}</div>
+    </section>
+    <section class="workspace-panel"><div class="workspace-panel-heading"><div><span class="workspace-kicker">OFFICIAL SOURCES</span><h2>Admission notices</h2></div></div>
+      {% for notice in notices %}<article class="workspace-notice"><div class="workspace-notice-date">{{ notice.published_on|date:"j M Y" }}{% if notice.academic_year %} · {{ notice.academic_year }}{% endif %}</div><h3>{{ notice.title }}</h3><p>{{ notice.summary }}</p><a href="{{ notice.source_url }}" target="_blank" rel="noopener noreferrer">Open official notice ↗</a></article>{% empty %}<div class="workspace-inline-empty">EduGuide has no notices published here yet. For current deadlines, check the official sources directly.</div>{% endfor %}
+      <div class="workspace-official-links"><a href="https://poly26.dtemaharashtra.gov.in/" target="_blank" rel="noopener noreferrer">DTE Diploma Admission Portal ↗</a><a href="https://dte.maharashtra.gov.in/latest-news/" target="_blank" rel="noopener noreferrer">DTE Latest News ↗</a></div>
+      <p class="workspace-data-note">Official dates can change. Confirm deadlines on the linked authority portal before acting.</p>
+    </section>
+  </div>
+</div></main>
+{% endblock %}

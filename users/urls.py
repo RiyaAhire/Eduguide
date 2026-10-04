@@ -33,6 +33,17 @@ urlpatterns = [
         views.profile,
         name="profile"
     ),
+    path("dashboard/", views.dashboard, name="dashboard"),
+    path("saved-colleges/", views.saved_colleges, name="saved_colleges"),
+    path("college/<int:college_id>/save/", views.toggle_saved_college, name="toggle_saved_college"),
+    path("compare-shortlist/", views.compare_shortlist, name="compare_shortlist"),
+    path("application-checklist/", views.application_checklist, name="application_checklist"),
+    path("application-checklist/<int:task_id>/toggle/", views.toggle_checklist_task, name="toggle_checklist_task"),
+    path("updates-reminders/", views.updates_reminders, name="updates_reminders"),
+    path("reminders/<int:reminder_id>/toggle/", views.toggle_reminder, name="toggle_reminder"),
+    path("reminders/<int:reminder_id>/delete/", views.delete_reminder, name="delete_reminder"),
+    path("help/", views.help_faqs, name="help_faqs"),
+    path("prediction/report/", views.prediction_report, name="prediction_report"),
 
     path("verify-email/<uidb64>/<token>/", views.verify_email, name="verify_email"),
     path("resend-verification/", views.resend_verification, name="resend_verification"),

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="workspace-page"><div class="container workspace-container">
+  <header class="workspace-heading"><span class="workspace-kicker">STAY ON TRACK</span><h1>Application checklist</h1><p>Keep useful preparation steps together. Always confirm requirements in the current official brochure.</p></header>
+  <section class="workspace-progress-panel"><div><strong>{{ completed_count }} of {{ task_count }} completed</strong><span>{{ progress_percent }}% complete</span></div><div class="workspace-progress workspace-progress-large"><span style="width: {{ progress_percent }}%"></span></div></section>
+  <div class="workspace-task-list">{% for task in tasks %}<article class="workspace-task {% if task.completed %}is-complete{% endif %}">
+    <form method="post" action="{% url 'toggle_checklist_task' task.id %}">{% csrf_token %}<button class="workspace-task-check" type="submit" aria-label="{% if task.completed %}Mark incomplete{% else %}Mark complete{% endif %}">{% if task.completed %}✓{% endif %}</button></form>
+    <div><h2>{{ task.title }}</h2><p>{{ task.description }}</p></div><span class="workspace-task-status">{% if task.completed %}Done{% else %}To do{% endif %}</span>
+  </article>{% endfor %}</div>
+  <div class="workspace-source-note">Checklist guidance is general. Document rules can vary by admission year and candidate category; verify them on the official admission portal.</div>
+</div></main>
+{% endblock %}
