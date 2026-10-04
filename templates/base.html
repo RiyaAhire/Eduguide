@@ -17,7 +17,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=20261004-two-row-nav-v9">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=20261004-two-row-nav-v10">
     <script src="{% static 'js/site-language.js' %}?v=20261004-language-menu-v2" defer></script>
 
     <script>
@@ -58,27 +58,27 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}"><span class="nav-item-icon" aria-hidden="true">🏠</span><span>Home</span></a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'colleges' or request.resolver_match.url_name == 'college_details' or request.resolver_match.url_name == 'courses' or request.resolver_match.url_name == 'course_details' %}active-dropdown{% endif %}"
-                           href="#" id="collegeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="nav-item-icon" aria-hidden="true">🏛️</span><span>Colleges</span></a>
+                           href="#" id="collegeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Colleges</a>
                         <ul class="dropdown-menu shadow border-0 rounded-4" aria-labelledby="collegeDropdown">
                             <li><a class="dropdown-item py-2 {% if request.resolver_match.url_name == 'colleges' %}active{% endif %}" href="{% url 'colleges' %}">Explore Colleges</a></li>
                             <li><a class="dropdown-item py-2 {% if request.resolver_match.url_name == 'courses' %}active{% endif %}" href="{% url 'courses' %}">Explore Courses</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'cutoff' %}active{% endif %}" href="{% url 'cutoff' %}"><span class="nav-item-icon" aria-hidden="true">📊</span><span>Cutoff</span></a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'cutoff' %}active{% endif %}" href="{% url 'cutoff' %}">Cutoff</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'prediction' %}active{% endif %}" href="{% url 'prediction' %}"><span class="nav-item-icon" aria-hidden="true">🎯</span><span>Prediction</span></a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'prediction' %}active{% endif %}" href="{% url 'prediction' %}">Prediction</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'admission_process' %}active{% endif %}" href="{% url 'admission_process' %}"><span class="nav-item-icon" aria-hidden="true">📝</span><span>Admission Process</span></a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'admission_process' %}active{% endif %}" href="{% url 'admission_process' %}">Admission Process</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}"><span class="nav-item-icon" aria-hidden="true">💡</span><span>About</span></a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a>
                     </li>
                 </ul>
 
