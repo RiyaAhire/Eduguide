@@ -760,9 +760,51 @@
   window.eduguideTranslateTree = (root = document.body) => translateTree(root, language);
   languageSelect.value = language;
   setLanguage(language);
+  const languageControl = document.getElementById("languageControl");
+  const languageTrigger = document.getElementById("languageTrigger");
+  const languageCurrent = document.getElementById("languageCurrent");
+  const languageOptions = document.getElementById("languageOptions");
+  const languageNames = { en: "English", hi: "हिन्दी", mr: "मराठी" };
+  const closeLanguageOptions = () => {
+    if (!languageOptions || !languageTrigger) return;
+    languageOptions.hidden = true;
+    languageTrigger.setAttribute("aria-expanded", "false");
+  };
+  const syncLanguageControl = () => {
+    if (!languageOptions || !languageCurrent) return;
+    languageCurrent.textContent = languageNames[languageSelect.value] || languageNames.en;
+    languageOptions.querySelectorAll(".language-option").forEach((option) => {
+      const selected = option.dataset.language === languageSelect.value;
+      option.classList.toggle("selected", selected);
+      option.setAttribute("aria-selected", String(selected));
+    });
+  };
+  if (languageControl && languageTrigger && languageOptions) {
+    syncLanguageControl();
+    languageTrigger.addEventListener("click", () => {
+      const isOpen = languageTrigger.getAttribute("aria-expanded") === "true";
+      languageOptions.hidden = isOpen;
+      languageTrigger.setAttribute("aria-expanded", String(!isOpen));
+    });
+    languageOptions.querySelectorAll(".language-option").forEach((option) => {
+      option.addEventListener("click", () => {
+        languageSelect.value = option.dataset.language;
+        languageSelect.dispatchEvent(new Event("change", { bubbles: true }));
+        closeLanguageOptions();
+        languageTrigger.focus();
+      });
+    });
+    document.addEventListener("click", (event) => {
+      if (!languageControl.contains(event.target)) closeLanguageOptions();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeLanguageOptions();
+    });
+  }
   languageSelect.addEventListener("change", () => {
     language = ["en", "hi", "mr"].includes(languageSelect.value) ? languageSelect.value : "en";
     setLanguage(language);
+    syncLanguageControl();
   });
 
   new MutationObserver((records) => {

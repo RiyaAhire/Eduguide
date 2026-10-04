@@ -2291,7 +2291,7 @@ data\seatmatrix_output.csv,10770,Missing required field(s): district_type
 data\seatmatrix_output.csv,10771,Missing required field(s): district_type
 data\seatmatrix_output.csv,10772,Missing required field(s): district_type
 data\seatmatrix_output.csv,10773,Missing required field(s): district_type
-data\seatmatrix_output.csv,10774,Missing required field(s): district_type
+data\seatmatrix_output.csv,10774,Invalid gender: G+L
 data\seatmatrix_output.csv,10815,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,10816,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,10817,"Missing required field(s): district_type, gender"
@@ -2453,7 +2453,7 @@ data\seatmatrix_output.csv,11452,Missing required field(s): district_type
 data\seatmatrix_output.csv,11453,Missing required field(s): district_type
 data\seatmatrix_output.csv,11454,Missing required field(s): district_type
 data\seatmatrix_output.csv,11455,Missing required field(s): district_type
-data\seatmatrix_output.csv,11456,Missing required field(s): district_type
+data\seatmatrix_output.csv,11456,Invalid gender: G+L
 data\seatmatrix_output.csv,11497,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,11498,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,11499,"Missing required field(s): district_type, gender"
@@ -2510,7 +2510,7 @@ data\seatmatrix_output.csv,11629,Missing required field(s): district_type
 data\seatmatrix_output.csv,11630,Missing required field(s): district_type
 data\seatmatrix_output.csv,11631,Missing required field(s): district_type
 data\seatmatrix_output.csv,11632,Missing required field(s): district_type
-data\seatmatrix_output.csv,11633,Missing required field(s): district_type
+data\seatmatrix_output.csv,11633,Invalid gender: G+L
 data\seatmatrix_output.csv,11674,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,11675,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,11676,"Missing required field(s): district_type, gender"
@@ -2546,7 +2546,7 @@ data\seatmatrix_output.csv,11705,Missing required field(s): district_type
 data\seatmatrix_output.csv,11706,Missing required field(s): district_type
 data\seatmatrix_output.csv,11707,Missing required field(s): district_type
 data\seatmatrix_output.csv,11708,Missing required field(s): district_type
-data\seatmatrix_output.csv,11709,Missing required field(s): district_type
+data\seatmatrix_output.csv,11709,Invalid gender: G+L
 data\seatmatrix_output.csv,11750,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,11751,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,11752,"Missing required field(s): district_type, gender"
@@ -2624,7 +2624,7 @@ data\seatmatrix_output.csv,11983,Missing required field(s): district_type
 data\seatmatrix_output.csv,11984,Missing required field(s): district_type
 data\seatmatrix_output.csv,11985,Missing required field(s): district_type
 data\seatmatrix_output.csv,11986,Missing required field(s): district_type
-data\seatmatrix_output.csv,11987,Missing required field(s): district_type
+data\seatmatrix_output.csv,11987,Invalid gender: G+L
 data\seatmatrix_output.csv,12028,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,12029,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,12030,"Missing required field(s): district_type, gender"
@@ -2702,7 +2702,7 @@ data\seatmatrix_output.csv,12261,Missing required field(s): district_type
 data\seatmatrix_output.csv,12262,Missing required field(s): district_type
 data\seatmatrix_output.csv,12263,Missing required field(s): district_type
 data\seatmatrix_output.csv,12264,Missing required field(s): district_type
-data\seatmatrix_output.csv,12265,Missing required field(s): district_type
+data\seatmatrix_output.csv,12265,Invalid gender: G+L
 data\seatmatrix_output.csv,12306,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,12307,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,12308,"Missing required field(s): district_type, gender"
@@ -2759,7 +2759,7 @@ data\seatmatrix_output.csv,12438,Missing required field(s): district_type
 data\seatmatrix_output.csv,12439,Missing required field(s): district_type
 data\seatmatrix_output.csv,12440,Missing required field(s): district_type
 data\seatmatrix_output.csv,12441,Missing required field(s): district_type
-data\seatmatrix_output.csv,12442,Missing required field(s): district_type
+data\seatmatrix_output.csv,12442,Invalid gender: G+L
 data\seatmatrix_output.csv,12483,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,12484,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,12485,"Missing required field(s): district_type, gender"
@@ -2900,7 +2900,7 @@ data\seatmatrix_output.csv,13019,Missing required field(s): district_type
 data\seatmatrix_output.csv,13020,Missing required field(s): district_type
 data\seatmatrix_output.csv,13021,Missing required field(s): district_type
 data\seatmatrix_output.csv,13022,Missing required field(s): district_type
-data\seatmatrix_output.csv,13023,Missing required field(s): district_type
+data\seatmatrix_output.csv,13023,Invalid gender: G+L
 data\seatmatrix_output.csv,13064,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,13065,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,13066,"Missing required field(s): district_type, gender"
@@ -3062,7 +3062,7 @@ data\seatmatrix_output.csv,13501,Missing required field(s): district_type
 data\seatmatrix_output.csv,13502,Missing required field(s): district_type
 data\seatmatrix_output.csv,13503,Missing required field(s): district_type
 data\seatmatrix_output.csv,13504,Missing required field(s): district_type
-data\seatmatrix_output.csv,13505,Missing required field(s): district_type
+data\seatmatrix_output.csv,13505,Invalid gender: G+L
 data\seatmatrix_output.csv,13546,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,13547,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,13548,"Missing required field(s): district_type, gender"
@@ -3203,7 +3203,7 @@ data\seatmatrix_output.csv,14042,Missing required field(s): district_type
 data\seatmatrix_output.csv,14043,Missing required field(s): district_type
 data\seatmatrix_output.csv,14044,Missing required field(s): district_type
 data\seatmatrix_output.csv,14045,Missing required field(s): district_type
-data\seatmatrix_output.csv,14046,Missing required field(s): district_type
+data\seatmatrix_output.csv,14046,Invalid gender: G+L
 data\seatmatrix_output.csv,14087,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,14088,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,14089,"Missing required field(s): district_type, gender"
@@ -10095,7 +10095,7 @@ data\seatmatrix_output.csv,47254,Missing required field(s): district_type
 data\seatmatrix_output.csv,47255,Missing required field(s): district_type
 data\seatmatrix_output.csv,47256,Missing required field(s): district_type
 data\seatmatrix_output.csv,47257,Missing required field(s): district_type
-data\seatmatrix_output.csv,47258,Missing required field(s): district_type
+data\seatmatrix_output.csv,47258,Invalid gender: G+L
 data\seatmatrix_output.csv,47299,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,47300,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,47301,"Missing required field(s): district_type, gender"
@@ -10173,7 +10173,7 @@ data\seatmatrix_output.csv,47492,Missing required field(s): district_type
 data\seatmatrix_output.csv,47493,Missing required field(s): district_type
 data\seatmatrix_output.csv,47494,Missing required field(s): district_type
 data\seatmatrix_output.csv,47495,Missing required field(s): district_type
-data\seatmatrix_output.csv,47496,Missing required field(s): district_type
+data\seatmatrix_output.csv,47496,Invalid gender: G+L
 data\seatmatrix_output.csv,47537,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,47538,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,47539,"Missing required field(s): district_type, gender"
@@ -10230,7 +10230,7 @@ data\seatmatrix_output.csv,47669,Missing required field(s): district_type
 data\seatmatrix_output.csv,47670,Missing required field(s): district_type
 data\seatmatrix_output.csv,47671,Missing required field(s): district_type
 data\seatmatrix_output.csv,47672,Missing required field(s): district_type
-data\seatmatrix_output.csv,47673,Missing required field(s): district_type
+data\seatmatrix_output.csv,47673,Invalid gender: G+L
 data\seatmatrix_output.csv,47714,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,47715,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,47716,"Missing required field(s): district_type, gender"
@@ -10537,7 +10537,7 @@ data\seatmatrix_output.csv,49016,Missing required field(s): district_type
 data\seatmatrix_output.csv,49017,Missing required field(s): district_type
 data\seatmatrix_output.csv,49018,Missing required field(s): district_type
 data\seatmatrix_output.csv,49019,Missing required field(s): district_type
-data\seatmatrix_output.csv,49020,Missing required field(s): district_type
+data\seatmatrix_output.csv,49020,Invalid gender: G+L
 data\seatmatrix_output.csv,49061,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,49062,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,49063,"Missing required field(s): district_type, gender"
@@ -10636,7 +10636,7 @@ data\seatmatrix_output.csv,49395,Missing required field(s): district_type
 data\seatmatrix_output.csv,49396,Missing required field(s): district_type
 data\seatmatrix_output.csv,49397,Missing required field(s): district_type
 data\seatmatrix_output.csv,49398,Missing required field(s): district_type
-data\seatmatrix_output.csv,49399,Missing required field(s): district_type
+data\seatmatrix_output.csv,49399,Invalid gender: G+L
 data\seatmatrix_output.csv,49440,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,49441,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,49442,"Missing required field(s): district_type, gender"
@@ -10693,7 +10693,7 @@ data\seatmatrix_output.csv,49572,Missing required field(s): district_type
 data\seatmatrix_output.csv,49573,Missing required field(s): district_type
 data\seatmatrix_output.csv,49574,Missing required field(s): district_type
 data\seatmatrix_output.csv,49575,Missing required field(s): district_type
-data\seatmatrix_output.csv,49576,Missing required field(s): district_type
+data\seatmatrix_output.csv,49576,Invalid gender: G+L
 data\seatmatrix_output.csv,49617,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,49618,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,49619,"Missing required field(s): district_type, gender"
@@ -10897,7 +10897,7 @@ data\seatmatrix_output.csv,50416,Missing required field(s): district_type
 data\seatmatrix_output.csv,50417,Missing required field(s): district_type
 data\seatmatrix_output.csv,50418,Missing required field(s): district_type
 data\seatmatrix_output.csv,50419,Missing required field(s): district_type
-data\seatmatrix_output.csv,50420,Missing required field(s): district_type
+data\seatmatrix_output.csv,50420,Invalid gender: G+L
 data\seatmatrix_output.csv,50461,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,50462,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,50463,"Missing required field(s): district_type, gender"
@@ -11017,7 +11017,7 @@ data\seatmatrix_output.csv,50896,Missing required field(s): district_type
 data\seatmatrix_output.csv,50897,Missing required field(s): district_type
 data\seatmatrix_output.csv,50898,Missing required field(s): district_type
 data\seatmatrix_output.csv,50899,Missing required field(s): district_type
-data\seatmatrix_output.csv,50900,Missing required field(s): district_type
+data\seatmatrix_output.csv,50900,Invalid gender: G+L
 data\seatmatrix_output.csv,50941,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,50942,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,50943,"Missing required field(s): district_type, gender"
@@ -16344,7 +16344,7 @@ data\seatmatrix_output.csv,76063,Missing required field(s): district_type
 data\seatmatrix_output.csv,76064,Missing required field(s): district_type
 data\seatmatrix_output.csv,76065,Missing required field(s): district_type
 data\seatmatrix_output.csv,76066,Missing required field(s): district_type
-data\seatmatrix_output.csv,76067,Missing required field(s): district_type
+data\seatmatrix_output.csv,76067,Invalid gender: G+L
 data\seatmatrix_output.csv,76108,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,76109,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,76110,"Missing required field(s): district_type, gender"
@@ -16443,7 +16443,7 @@ data\seatmatrix_output.csv,76442,Missing required field(s): district_type
 data\seatmatrix_output.csv,76443,Missing required field(s): district_type
 data\seatmatrix_output.csv,76444,Missing required field(s): district_type
 data\seatmatrix_output.csv,76445,Missing required field(s): district_type
-data\seatmatrix_output.csv,76446,Missing required field(s): district_type
+data\seatmatrix_output.csv,76446,Invalid gender: G+L
 data\seatmatrix_output.csv,76487,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,76488,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,76489,"Missing required field(s): district_type, gender"
@@ -16520,7 +16520,7 @@ data\seatmatrix_output.csv,76679,Missing required field(s): district_type
 data\seatmatrix_output.csv,76680,Missing required field(s): district_type
 data\seatmatrix_output.csv,76681,Missing required field(s): district_type
 data\seatmatrix_output.csv,76682,Missing required field(s): district_type
-data\seatmatrix_output.csv,76683,Missing required field(s): district_type
+data\seatmatrix_output.csv,76683,Invalid gender: G+L
 data\seatmatrix_output.csv,76724,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,76725,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,76726,"Missing required field(s): district_type, gender"
@@ -21725,7 +21725,7 @@ data\seatmatrix_output.csv,100764,Missing required field(s): district_type
 data\seatmatrix_output.csv,100765,Missing required field(s): district_type
 data\seatmatrix_output.csv,100766,Missing required field(s): district_type
 data\seatmatrix_output.csv,100767,Missing required field(s): district_type
-data\seatmatrix_output.csv,100768,Missing required field(s): district_type
+data\seatmatrix_output.csv,100768,Invalid gender: G+L
 data\seatmatrix_output.csv,100809,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,100810,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,100811,"Missing required field(s): district_type, gender"
@@ -21887,7 +21887,7 @@ data\seatmatrix_output.csv,101406,Missing required field(s): district_type
 data\seatmatrix_output.csv,101407,Missing required field(s): district_type
 data\seatmatrix_output.csv,101408,Missing required field(s): district_type
 data\seatmatrix_output.csv,101409,Missing required field(s): district_type
-data\seatmatrix_output.csv,101410,Missing required field(s): district_type
+data\seatmatrix_output.csv,101410,Invalid gender: G+L
 data\seatmatrix_output.csv,101451,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,101452,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,101453,"Missing required field(s): district_type, gender"
@@ -31409,7 +31409,7 @@ data\seatmatrix_output.csv,147328,Missing required field(s): district_type
 data\seatmatrix_output.csv,147329,Missing required field(s): district_type
 data\seatmatrix_output.csv,147330,Missing required field(s): district_type
 data\seatmatrix_output.csv,147331,Missing required field(s): district_type
-data\seatmatrix_output.csv,147332,Missing required field(s): district_type
+data\seatmatrix_output.csv,147332,Invalid gender: G+L
 data\seatmatrix_output.csv,147373,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,147374,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,147375,"Missing required field(s): district_type, gender"
@@ -31466,7 +31466,7 @@ data\seatmatrix_output.csv,147505,Missing required field(s): district_type
 data\seatmatrix_output.csv,147506,Missing required field(s): district_type
 data\seatmatrix_output.csv,147507,Missing required field(s): district_type
 data\seatmatrix_output.csv,147508,Missing required field(s): district_type
-data\seatmatrix_output.csv,147509,Missing required field(s): district_type
+data\seatmatrix_output.csv,147509,Invalid gender: G+L
 data\seatmatrix_output.csv,147550,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,147551,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,147552,"Missing required field(s): district_type, gender"
@@ -31817,7 +31817,7 @@ data\seatmatrix_output.csv,148736,Missing required field(s): district_type
 data\seatmatrix_output.csv,148737,Missing required field(s): district_type
 data\seatmatrix_output.csv,148738,Missing required field(s): district_type
 data\seatmatrix_output.csv,148739,Missing required field(s): district_type
-data\seatmatrix_output.csv,148740,Missing required field(s): district_type
+data\seatmatrix_output.csv,148740,Invalid gender: G+L
 data\seatmatrix_output.csv,148781,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,148782,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,148783,"Missing required field(s): district_type, gender"
@@ -31916,7 +31916,7 @@ data\seatmatrix_output.csv,149115,Missing required field(s): district_type
 data\seatmatrix_output.csv,149116,Missing required field(s): district_type
 data\seatmatrix_output.csv,149117,Missing required field(s): district_type
 data\seatmatrix_output.csv,149118,Missing required field(s): district_type
-data\seatmatrix_output.csv,149119,Missing required field(s): district_type
+data\seatmatrix_output.csv,149119,Invalid gender: G+L
 data\seatmatrix_output.csv,149160,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,149161,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,149162,"Missing required field(s): district_type, gender"
@@ -31994,7 +31994,7 @@ data\seatmatrix_output.csv,149393,Missing required field(s): district_type
 data\seatmatrix_output.csv,149394,Missing required field(s): district_type
 data\seatmatrix_output.csv,149395,Missing required field(s): district_type
 data\seatmatrix_output.csv,149396,Missing required field(s): district_type
-data\seatmatrix_output.csv,149397,Missing required field(s): district_type
+data\seatmatrix_output.csv,149397,Invalid gender: G+L
 data\seatmatrix_output.csv,149438,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,149439,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,149440,"Missing required field(s): district_type, gender"
@@ -32072,7 +32072,7 @@ data\seatmatrix_output.csv,149671,Missing required field(s): district_type
 data\seatmatrix_output.csv,149672,Missing required field(s): district_type
 data\seatmatrix_output.csv,149673,Missing required field(s): district_type
 data\seatmatrix_output.csv,149674,Missing required field(s): district_type
-data\seatmatrix_output.csv,149675,Missing required field(s): district_type
+data\seatmatrix_output.csv,149675,Invalid gender: G+L
 data\seatmatrix_output.csv,149716,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,149717,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,149718,"Missing required field(s): district_type, gender"
@@ -32213,7 +32213,7 @@ data\seatmatrix_output.csv,150252,Missing required field(s): district_type
 data\seatmatrix_output.csv,150253,Missing required field(s): district_type
 data\seatmatrix_output.csv,150254,Missing required field(s): district_type
 data\seatmatrix_output.csv,150255,Missing required field(s): district_type
-data\seatmatrix_output.csv,150256,Missing required field(s): district_type
+data\seatmatrix_output.csv,150256,Invalid gender: G+L
 data\seatmatrix_output.csv,150297,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,150298,"Missing required field(s): district_type, gender"
 data\seatmatrix_output.csv,150299,"Missing required field(s): district_type, gender"
