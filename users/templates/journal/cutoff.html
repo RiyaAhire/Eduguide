@@ -67,7 +67,11 @@
                     <h2 id="resultCollege"></h2>
                     <p id="resultCourse"></p>
                 </div>
-                <div class="result-year" id="resultYear"></div>
+                <div class="cutoff-result-actions">
+                    <div class="result-year" id="resultYear"></div>
+                    <button type="button" class="cutoff-predict-button" id="predictNextCutoffBtn"><span aria-hidden="true">↗</span> Predict next year's cutoff</button>
+                    <div class="cutoff-forecast" id="cutoffForecast" role="status" aria-live="polite" hidden></div>
+                </div>
             </div>
 
             <div class="table-responsive">
@@ -77,7 +81,7 @@
                             <th>Category Code</th>
                             <th>Seat Category</th>
                             <th>CAP Round</th>
-                            <th>Cutoff Percentile</th>
+                            <th>Cutoff Percentage</th>
                             <th>Cutoff Merit No.</th>
                             <th>Stage</th>
                         </tr>
@@ -95,7 +99,7 @@
                     <div class="info-icon">📊</div>
                     <h2>What is a Cutoff?</h2>
                     <p>
-                        A cutoff is the last admitted candidate’s percentile for a college,
+                        A cutoff is the last admitted candidate’s percentage for a college,
                         course, category, and CAP round. It helps show the previous level of competition.
                     </p>
                 </div>
@@ -158,6 +162,8 @@
     const cutoffResults = document.getElementById("cutoffResults");
     const cutoffResultBody = document.getElementById("cutoffResultBody");
     const cutoffNote = document.getElementById("cutoffNote");
+    const predictNextCutoffBtn = document.getElementById("predictNextCutoffBtn");
+    const cutoffForecast = document.getElementById("cutoffForecast");
     const roundLabels = {
         CAP1: "CAP Round I",
         CAP2: "CAP Round II",
@@ -257,7 +263,7 @@
                 record.category,
                 record.seat_category,
                 roundLabels[record.round] || record.round,
-                record.percentile.toFixed(2) + "%",
+                record.percentage.toFixed(2) + "%",
                 record.merit_no.toLocaleString(),
                 record.stage,
             ].forEach(function(value) {
@@ -271,6 +277,8 @@
         document.getElementById("resultCollege").textContent = selectedText(cutoffCollege);
         document.getElementById("resultCourse").textContent = selectedText(cutoffCourse);
         document.getElementById("resultYear").textContent = selectedText(cutoffYear);
+        cutoffForecast.hidden = true;
+        cutoffForecast.textContent = "";
         cutoffNote.textContent = records.length
             ? "Results are based on the selected historical admission records."
             : "No cutoff records match the selected filters.";
@@ -281,6 +289,34 @@
     cutoffYear.addEventListener("change", loadCollegeOptions);
     cutoffCollege.addEventListener("change", loadCourseOptions);
     cutoffCourse.addEventListener("change", loadFilterOptions);
+
+    predictNextCutoffBtn.addEventListener("click", async function() {
+        predictNextCutoffBtn.disabled = true;
+        predictNextCutoffBtn.innerHTML = '<span aria-hidden="true">⟳</span> Predicting…';
+        cutoffForecast.hidden = false;
+        cutoffForecast.textContent = "Fitting a regression model to the matching historical cutoffs…";
+        try {
+            const response = await fetch("{% url 'cutoff_prediction_data' %}?" + selectedParams());
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.error || "Unable to predict the next cutoff.");
+            cutoffForecast.replaceChildren();
+            const kicker = document.createElement("span");
+            kicker.className = "cutoff-forecast-kicker";
+            kicker.textContent = `PREDICTED ${data.admission_year} CUTOFF`;
+            const value = document.createElement("strong");
+            value.className = "cutoff-forecast-value";
+            value.textContent = `${data.percentage.toFixed(2)}%`;
+            const detail = document.createElement("span");
+            detail.className = "cutoff-forecast-detail";
+            detail.textContent = `Estimated by ${data.model} using ${data.history_years} years of matching cutoff history.`;
+            cutoffForecast.append(kicker, value, detail);
+        } catch (error) {
+            cutoffForecast.textContent = error.message || "A prediction could not be generated.";
+        } finally {
+            predictNextCutoffBtn.disabled = false;
+            predictNextCutoffBtn.innerHTML = '<span aria-hidden="true">↗</span> Predict next year\'s cutoff';
+        }
+    });
 
     checkCutoffBtn.addEventListener("click", async function() {
         try {

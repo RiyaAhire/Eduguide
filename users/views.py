@@ -1,4 +1,5 @@
 from datetime import date
+import re
 
 from colleges.models import College, Course
 from users.models import AdmissionNotice, ChecklistTask, CourseInfo, FavoriteCollege, PersonalReminder, Student
@@ -23,6 +24,7 @@ from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from prediction.models import Cutoff, SeatMatrix
+from prediction.ml import predict_next_cutoff
 from django.db import transaction
 from django.db.models import Count, Max, Q
 from django.contrib import messages
@@ -728,7 +730,7 @@ def cutoff_data(request):
                 "category": cutoff.category_code,
                 "seat_category": cutoff.seat_category,
                 "round": cutoff.cap_round,
-                "percentile": round(cutoff.cutoff_percentile * 100, 2),
+                "percentage": round(cutoff.cutoff_percentile * 100, 2),
                 "merit_no": cutoff.cutoff_merit_no,
                 "stage": cutoff.stage,
             }
@@ -750,6 +752,34 @@ def cutoff_data(request):
         "rounds": rounds,
         "records": records,
     })
+
+
+@require_GET
+def cutoff_prediction_data(request):
+    """Forecast the selected course's next cutoff from its historical records."""
+    course_id = request.GET.get("course", "")
+    year = request.GET.get("year", "")
+    category = request.GET.get("category", "")
+    cap_round = request.GET.get("round", "")
+    if not course_id.isdigit() or not year:
+        return JsonResponse({"error": "Select an admission year and course first."}, status=400)
+
+    match = re.search(r"\d{4}", year)
+    through_year = int(match.group()) if match else None
+    if through_year is None:
+        return JsonResponse({"error": "The selected admission year is not valid."}, status=400)
+
+    history = Cutoff.objects.filter(course_id=course_id)
+    if category:
+        history = history.filter(category_code=category)
+    if cap_round:
+        history = history.filter(cap_round=cap_round)
+    forecast = predict_next_cutoff(
+        history.values_list("admission_year", "cutoff_percentile"), through_year=through_year
+    )
+    if forecast is None:
+        return JsonResponse({"error": "At least two years of matching cutoff history are needed to train the prediction model."}, status=422)
+    return JsonResponse(forecast)
 
 
 def prediction(request):
@@ -861,6 +891,7 @@ def prediction_data(request):
 
     grouped = (
         cutoffs.values(
+            "course_id",
             "course__college_id",
             "course__course_name",
             "course__college__college_name",
@@ -882,7 +913,12 @@ def prediction_data(request):
     # matching course so a student never receives duplicate college cards.
     results_by_college = {}
     for item in grouped:
-        cutoff_percent = item["reference_cutoff"] * 100
+        course_history = Cutoff.objects.filter(
+            course_id=item["course_id"],
+            category_code__icontains=profile.category,
+        ).values_list("admission_year", "cutoff_percentile")
+        forecast = predict_next_cutoff(course_history)
+        cutoff_percent = forecast["percentage"] if forecast else item["reference_cutoff"] * 100
         margin = profile.percentage - cutoff_percent
         # Recommendations more than 8 percentage points below the student's
         # score are too unlikely to present as a useful college prediction.
@@ -902,7 +938,8 @@ def prediction_data(request):
             "level": level,
             "confidence": confidence,
             "cutoff": round(cutoff_percent, 2),
-            "cutoff_basis": "Most competitive eligible cutoff across two years",
+            "cutoff_basis": "ML next-year estimate" if forecast else "Most competitive eligible cutoff across two years",
+            "predicted_admission_year": forecast["admission_year"] if forecast else "",
             "margin": round(margin, 2),
             "records_used": item["records_used"],
         }

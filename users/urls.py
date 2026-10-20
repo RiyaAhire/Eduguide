@@ -109,6 +109,7 @@ urlpatterns = [
         views.cutoff_data,
         name="cutoff_data"
     ),
+    path("cutoff/prediction/", views.cutoff_prediction_data, name="cutoff_prediction_data"),
 
     path(
         "prediction/",
