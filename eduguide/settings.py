@@ -1,6 +1,10 @@
 import os
 from pathlib import Path
 
+import pymysql
+
+pymysql.install_as_MySQLdb()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,12 +29,26 @@ load_local_env()
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+IS_VERCEL = os.getenv("VERCEL") == "1"
+
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "django-insecure-development-only-change-me")
+if IS_VERCEL and (not os.getenv("DJANGO_SECRET_KEY") or SECRET_KEY == "django-insecure-development-only-change-me"):
+    raise RuntimeError("Set DJANGO_SECRET_KEY in Vercel project environment variables.")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DJANGO_DEBUG", "True").lower() in {"1", "true", "yes", "on"}
+if IS_VERCEL and DEBUG:
+    raise RuntimeError("Set DJANGO_DEBUG=False in Vercel project environment variables.")
 
 ALLOWED_HOSTS = [host.strip() for host in os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1").split(",") if host.strip()]
+if IS_VERCEL and not os.getenv("DJANGO_ALLOWED_HOSTS"):
+    raise RuntimeError("Set DJANGO_ALLOWED_HOSTS in Vercel project environment variables.")
+
+CSRF_TRUSTED_ORIGINS = [
+    origin.strip()
+    for origin in os.getenv("DJANGO_CSRF_TRUSTED_ORIGINS", "").split(",")
+    if origin.strip()
+]
 
 
 # Application definition
@@ -83,12 +101,18 @@ WSGI_APPLICATION = 'eduguide.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 
+DB_REQUIRED_VARS = ("DB_NAME", "DB_USER", "DB_PASSWORD", "DB_HOST")
+if IS_VERCEL:
+    missing_db_vars = [name for name in DB_REQUIRED_VARS if not os.getenv(name)]
+    if missing_db_vars:
+        raise RuntimeError("Set required Vercel database variables: " + ", ".join(missing_db_vars))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.getenv('DB_NAME', 'ags_db'),
         'USER': os.getenv('DB_USER', 'root'),
-        'PASSWORD': os.getenv('DB_PASSWORD', '$%AGS+-=32'),
+        'PASSWORD': os.getenv('DB_PASSWORD', ''),
         'HOST': os.getenv('DB_HOST', '127.0.0.1'),
         'PORT': os.getenv('DB_PORT', '3306'),
     }
@@ -130,6 +154,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "staticfiles_build"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
